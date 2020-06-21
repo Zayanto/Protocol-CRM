@@ -1,0 +1,74 @@
+<!-- templates/books/book_list.html -->
+{% extends '_base.html' %}
+
+{% block title %}Properties{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Widgets</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Widgets</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+
+                    {% for property in property_list %}
+                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                        <div class="card bg-light">
+                            <div class="card-header text-muted border-bottom-0">
+                                {{ property.title }}
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="lead"><b>{{ property.address }} {{ property.street_number }}</b></h2>
+                                        <p class="text-muted text-sm"><b>No. Rooms: </b> {{ property.rooms }} </p>
+                                        <p class="text-muted text-sm"><b>Rent Price: </b> {{ property.rent }} </p>
+                                        <p class="text-muted text-sm"><b>Listing Date: </b> {{ property.list_date}} </p>
+
+                                    </div>
+                                    {% if property.photo_main %}
+                                    <div class="col-5 text-center">
+                                        <img src="{{ property.photo_main.url }}" alt="user-avatar"
+                                            class="img img-fluid">
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a href="#" class="btn btn-sm bg-teal">
+                                        <i class="fas fa-comments"></i>
+                                    </a>
+                                    <a href="{{ property.get_absolute_url }}" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-user"></i> View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,146 @@
+{% extends "_base.html" %}
+{% block title %}Properties: {{ property.title }}{% endblock %}
+{% block content %}
+<div class="property-detail">
+    {% if book.cover %}
+    <img class="bookcover" src="{{ book.cover.url}}" alt="{{ book.title }}">
+    {% endif %}
+
+    <p>Author: {{ book.author }}</p>
+    <p>Price: {{ book.price }}</p>
+
+</div>
+
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Profile</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">User Profile</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+
+                            <h3 class="profile-username text-center">{{ property.title }}</h3>
+
+                            <p class="text-muted text-center">{{ property.address }} {{ property.street_number }},
+                                bl.{{ property.building }}, sc.{{ property.entrance }}</p>
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <h3>Size</h3>
+                                <li class="list-group-item">
+                                    {% if property.layout %}
+                                    <b>Layout</b> <a class="float-right">{{ property.layout }}</a>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    {% if property.usable_sqm  %}
+                                    <b>SQM</b> <a class="float-right">{{ property.usable_sqm }}</a>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    {% if property.build_sqm %}
+                                    <b>Build SQM</b> <a class="float-right">{{ property.build_sqm }}</a>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    {% if property.balcony %}
+                                    <b>Balcony</b> <a class="float-right">{{ property.balcony }}</a>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    {% if property.garage %}
+                                    <b>Garage</b> <a class="float-right">{{ property.garage }}</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <h3>Compoartimentare</h3>
+                                <li class="list-group-item">
+                                    {% if property.rooms %}
+                                    <b>No. Rooms</b> <a class="float-right">{{ property.rooms }}</a>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    {% if property.bedrooms %}
+                                    <b>No. Bedrooms</b> <a class="float-right">{{ property.bedrooms }}</a>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    {% if property.kitchen %}
+                                    <b>No. Kitchen</b> <a class="float-right">{{ property.kitchen }}</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+
+                            <a href="#" class="btn btn-primary btn-block"><b>Update</b></a>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                    <!-- About Me Box -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">About Me</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                            {% if contact.description %}
+                            <p class="text-muted">
+                                {{ contact.description }}
+                            </p>
+                            {% endif %}
+
+                            <hr>
+
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Country of Origin</strong>
+                            {% if contact.country_of_origin %}
+                            <p class="text-muted">
+                                {{ contact.country_of_origin.name }}
+                                <img src="{{ contact.country_of_origin.flag }}" />
+                            </p>
+                            {% endif %}
+
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Since</strong>
+                            {% if contact.created_on %}
+                            <p class="text-muted">
+                                {{ contact.created_on }}
+                            </p>
+                            {% endif %}
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+{% endblock content %}
