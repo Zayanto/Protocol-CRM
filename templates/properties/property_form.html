@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+{% block title %}{{ view.action|default:"Add" }} Property{% endblock title %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+{% with action=view.action|default:"Add" %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <h1>{{ action }} Property</h1>
+            <form method="post" action=".">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">{{ action }}</button>
+            </form>
+
+        </div>
+    </section>
+</div>
+
+
+{% endwith %}
+
+{% endblock %}

@@ -159,3 +159,17 @@ class Property(models.Model):
         permissions = [
             ('special_status', 'Can read all books'),
         ]
+
+
+class Comment(models.Model):  # new
+
+    property_comment = models.ManyToManyField(
+        Property, related_name='comments')
+    comment = models.CharField(max_length=500)
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.comment
