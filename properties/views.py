@@ -4,19 +4,30 @@ from .models import Property
 from django.shortcuts import render
 
 
-class PropertyListView(LoginRequiredMixin, ListView):  # new
+class PropertyListView(LoginRequiredMixin, ListView):
     model = Property
     context_object_name = 'property_list'
     template_name = 'properties/property_list.html'
-    login_url = 'account_login'  # new
+    login_url = 'account_login'
 
 
-class PropertyDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):  # new
+class PropertyDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Property
     context_object_name = 'property'
     template_name = 'properties/property_detail.html'
-    login_url = 'account_login'  # new
-    permission_required = 'properties.special_status'  # new
+    login_url = 'account_login'
+    permission_required = 'properties.special_status'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        obj = kwargs['object']
+        # print(obj)
+        tenants = obj.reviews.all()
+        context.update({
+            'tenants': tenants,
+        })
+        # print(context)
+        return context
 
 
 class PropertyCreateView(LoginRequiredMixin, CreateView):

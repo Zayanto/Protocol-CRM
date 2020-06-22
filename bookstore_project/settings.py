@@ -35,21 +35,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # new
+    'django.contrib.sites',
 
     # Third-party
-    'crispy_forms',  # new
-    'allauth',  # new
-    'allauth.account',  # new
+    'crispy_forms',
+    'allauth',
+    'allauth.account',
     'django_countries',
 
 
-    'users.apps.UsersConfig',  # new
-    'pages.apps.PagesConfig',  # new
-    'books.apps.BooksConfig',  # new
-    'orders.apps.OrdersConfig',  # new
-    'properties.apps.PropertiesConfig',  # new
-    'tenants.apps.TenantsConfig',  # new
+    'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
+    'orders.apps.OrdersConfig',
+    'properties.apps.PropertiesConfig',
+    'tenants.apps.TenantsConfig',
+    'contracts.apps.ContractsConfig',
+    'payments.apps.PaymentsConfig',
 ]
 
 # django-allauth config

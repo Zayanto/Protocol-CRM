@@ -96,11 +96,19 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <strong><i class="fas fa-book mr-1"></i> Education</strong>
-                            {% if contact.description %}
+                            {% for tenant in tenants %}
+                            <li>{{tenant.full_name}}</li>
+                            {% endfor %}
                             <p class="text-muted">
-                                {{ contact.description }}
+
+                            <ul>
+
+                                
+                                
+                            </ul>
+
                             </p>
-                            {% endif %}
+
 
                             <hr>
 

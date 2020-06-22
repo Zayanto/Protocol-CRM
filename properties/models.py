@@ -166,6 +166,7 @@ class Comment(models.Model):  # new
     property_comment = models.ManyToManyField(
         Property, related_name='comments')
     comment = models.CharField(max_length=500)
+    
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
