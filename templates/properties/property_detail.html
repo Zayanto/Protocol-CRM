@@ -2,336 +2,7 @@
 {% block title %}Properties: {{ property.title }}{% endblock %}
 {% block content %}
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Profile</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">User Profile</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3">
-
-                    <!-- Profile Image box -->
-                    <div class="card card-primary card-outline">
-                        <div class="card-body box-profile">
-
-                            <h3 class="profile-username text-center">{{ property.title }}</h3>
-
-                            <p class="text-muted text-center">{{ property.address }} {{ property.street_number }},
-                                bl.{{ property.building }}, sc.{{ property.entrance }}</p>
-
-                            <ul class="list-group list-group-unbordered mb-3">
-                                <h3>Size</h3>
-                                <li class="list-group-item">
-                                    {% if property.layout %}
-                                    <b>Layout</b> <a class="float-right">{{ property.layout }}</a>
-                                    {% endif %}
-                                </li>
-                                <li class="list-group-item">
-                                    {% if property.usable_sqm  %}
-                                    <b>SQM</b> <a class="float-right">{{ property.usable_sqm }}</a>
-                                    {% endif %}
-                                </li>
-                                <li class="list-group-item">
-                                    {% if property.build_sqm %}
-                                    <b>Build SQM</b> <a class="float-right">{{ property.build_sqm }}</a>
-                                    {% endif %}
-                                </li>
-                                <li class="list-group-item">
-                                    {% if property.balcony %}
-                                    <b>Balcony</b> <a class="float-right">{{ property.balcony }}</a>
-                                    {% endif %}
-                                </li>
-                                <li class="list-group-item">
-                                    {% if property.garage %}
-                                    <b>Garage</b> <a class="float-right">{{ property.garage }}</a>
-                                    {% endif %}
-                                </li>
-                            </ul>
-                            <ul class="list-group list-group-unbordered mb-3">
-                                <h3>Compoartimentare</h3>
-                                <li class="list-group-item">
-                                    {% if property.rooms %}
-                                    <b>No. Rooms</b> <a class="float-right">{{ property.rooms }}</a>
-                                    {% endif %}
-                                </li>
-                                <li class="list-group-item">
-                                    {% if property.bedrooms %}
-                                    <b>No. Bedrooms</b> <a class="float-right">{{ property.bedrooms }}</a>
-                                    {% endif %}
-                                </li>
-                                <li class="list-group-item">
-                                    {% if property.kitchen %}
-                                    <b>No. Kitchen</b> <a class="float-right">{{ property.kitchen }}</a>
-                                    {% endif %}
-                                </li>
-                            </ul>
-
-                            <a href="#" class="btn btn-primary btn-block"><b>Update</b></a>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-                    <!-- About Me Box -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">About Me</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <strong><i class="fas fa-book mr-1"></i> Education</strong>
-                            {% for tenant in tenants %}
-                            <li>{{tenant.full_name}}</li>
-                            {% endfor %}
-                            <p class="text-muted">
-
-                            <ul>
-
-
-
-                            </ul>
-
-                            </p>
-
-
-                            <hr>
-
-                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Country of Origin</strong>
-                            {% if contact.country_of_origin %}
-                            <p class="text-muted">
-                                {{ contact.country_of_origin.name }}
-                                <img src="{{ contact.country_of_origin.flag }}" />
-                            </p>
-                            {% endif %}
-
-                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Since</strong>
-                            {% if contact.created_on %}
-                            <p class="text-muted">
-                                {{ contact.created_on }}
-                            </p>
-                            {% endif %}
-
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-
-
-
-                <!-- Comment & Photo Section -->
-                <div class="col-md-9">
-                    <!-- Photos -->
-                    <div class="col-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    Ekko Lightbox
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-
-                                    {% if property.photo_main %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_main.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_main.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-
-                                    {% if property.photo_1 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_1.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_1.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-
-                                    {% if property.photo_2 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_2.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_2.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-
-                                    {% if property.photo_3 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_3.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_3.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                    {% if property.photo_4 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_4.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_4.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                    {% if property.photo_5 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_5.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_5.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                    {% if property.photo_6 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_6.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_6.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                    {% if property.photo_7 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_7.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_7.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                    {% if property.photo_8 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_8.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_8.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                    {% if property.photo_9 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_9.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_9.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-                                    {% if property.photo_10 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_10.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_10.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-
-                                    {% if property.photo_11 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_11.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_11.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-
-                                    {% if property.photo_12 %}
-                                    <div class="col-sm-2">
-                                        <a href="{{ property.photo_12.url }}" data-toggle="lightbox"
-                                            data-title="sample 1 - white" data-gallery="gallery">
-                                            <img src="{{ property.photo_12.url }}" class="img-fluid mb-2"
-                                                alt="white sample" />
-                                        </a>
-                                    </div>
-                                    {% endif %}
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#activity" data-toggle="tab">Comments</a>
-                                </li>
-                            </ul>
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
-
-                                    {% for comment in property.comments.all %}
-                                    <!-- Post -->
-                                    <div class="post clearfix">
-                                        <div class="user-block">
-
-                                            <span class="username">
-                                                <a href="#">Sarah Ross</a>
-                                                <a href="#" class="float-right btn-tool"><i
-                                                        class="fas fa-times"></i></a>
-                                            </span>
-                                            <span class="description">Sent you a message - 3 days ago</span>
-                                        </div>
-                                        <!-- /.user-block -->
-                                        <p>
-                                            {{ comment.comment }}
-                                        </p>
-
-                                        <form class="form-horizontal">
-                                            <div class="input-group input-group-sm mb-0">
-                                                <input class="form-control form-control-sm" placeholder="Response">
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-danger">Send</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!-- /.post -->
-                                    {% endfor %}
-                                    <!-- Post -->
-
-                                </div>
-                                <!-- /.tab-pane -->
-                            </div>
-                            <!-- /.tab-content -->
-                        </div><!-- /.card-body -->
-                    </div>
-                    <!-- /.nav-tabs-custom -->
-                </div>
-
-            </div>
-        </div>
-    </section>
-</div>
 
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -345,193 +16,7 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Opportunity Stage</h5>
-                                </div>
-                            </div>
 
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Owner Full Name</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Property Address</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Asking For</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong>
-                                                            </td>
-                                                            <td class="pb-0">
-                                                                <strong>Expected ROI</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>  
-                                                            <td>$65.000</td>
-                                                            <td>$500</td>
-                                                            <td>7%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Opportunity Stage</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Owner Full Name</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Property Address</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Asking For</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong>
-                                                            </td>
-                                                            <td class="pb-0">
-                                                                <strong>Expected ROI</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>  
-                                                            <td>$65.000</td>
-                                                            <td>$500</td>
-                                                            <td>7%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Opportunity Stage</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Owner Full Name</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Property Address</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Asking For</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong>
-                                                            </td>
-                                                            <td class="pb-0">
-                                                                <strong>Expected ROI</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>  
-                                                            <td>$65.000</td>
-                                                            <td>$500</td>
-                                                            <td>7%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Opportunity Stage</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Owner Full Name</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Property Address</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Asking For</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong>
-                                                            </td>
-                                                            <td class="pb-0">
-                                                                <strong>Expected ROI</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>  
-                                                            <td>$65.000</td>
-                                                            <td>$500</td>
-                                                            <td>7%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -541,6 +26,45 @@
                                         <div class="row">
                                             <!-- Property Information Card -->
                                             <div class="col-lg-4">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title mb-1">Gallery
+                                                                <i
+                                                                    class="cursor-pointer bx bx-dots-vertical-rounded float-right"></i>
+                                                            </h5>
+                                                            <div class="row">
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-10.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-11.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-12.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-13.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-05.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-06.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-07.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-08.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
+                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-09.jpg" class="img-fluid" alt="gallery avtar img">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <!-- Basic Info Card-->
                                                 <div class="card">
                                                     <div class="card-content">
@@ -592,86 +116,40 @@
                                                                     <i
                                                                         class="cursor-pointer bx bx-trending-up text-primary mr-50 mt-25"></i><span>
                                                                         <a href="JavaScript:void(0);"
-                                                                            class="mr-50">#ManJonas:</a>Frest
-                                                                        comes with
-                                                                        built-in
+                                                                            class="mr-50">Information:</a>Some Info here
                                                                     </span>
                                                                 </li>
                                                                 <li class="d-flex mb-25">
                                                                     <i
                                                                         class="cursor-pointer bx bx-trending-up text-primary mr-50 mt-25"></i><span>
                                                                         <a href="JavaScript:void(0);"
-                                                                            class="mr-50">LadyJonas:</a>dark
-                                                                        layouts,
-                                                                        select as</span>
+                                                                            class="mr-50">Information:</a>Some Info here</span>
                                                                 </li>
                                                                 <li class="d-flex mb-25">
                                                                     <i
                                                                         class="cursor-pointer bx bx-trending-up text-primary mr-50 mt-25"></i><span>
                                                                         <a href="JavaScript:void(0);"
-                                                                            class="mr-50">#Germany:</a>Frest
-                                                                        comes with
-                                                                        built-in
+                                                                            class="mr-50">Information:</a>Some Info here
                                                                     </span>
                                                                 </li>
                                                                 <li class="d-flex mb-25">
                                                                     <i
                                                                         class="cursor-pointer bx bx-trending-up text-primary mr-50 mt-25"></i><span>
                                                                         <a href="JavaScript:void(0);"
-                                                                            class="mr-50">#SundayNoon:</a>dark
-                                                                        layouts,
-                                                                        select as</span>
+                                                                            class="mr-50">Floor:</a>Some Info here</span>
                                                                 </li>
                                                                 <li class="d-flex">
                                                                     <i
                                                                         class="cursor-pointer bx bx-trending-up text-primary mr-50 mt-25"></i><span>
                                                                         <a href="JavaScript:void(0);"
-                                                                            class="mr-50">NoWorries:</a>heme
-                                                                        navigation
-                                                                        with you</span>
+                                                                            class="mr-50">Building Year:</a>Some Info here</span>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- Basic Info Card-->
-                                                <div class="card">
-                                                    <div class="card-content">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title mb-1">Financial Situation
-                                                                <i
-                                                                    class="cursor-pointer bx bx-dots-vertical-rounded float-right"></i>
-                                                            </h5>
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-flex align-items-center mb-25">
-                                                                    <i class="bx bx-area mr-50 cursor-pointer"></i>
-                                                                    <span>{{ property.title }}</span>
-                                                                </li>
-
-                                                                {% if property.layout %}
-                                                                <li class="d-flex align-items-center mb-25">
-                                                                    <i class="bx bx-building-house mr-50"></i>
-                                                                    <span>{{ property.layout }}</span>
-                                                                </li>
-                                                                {% endif %}
-
-                                                                {% if property.usable_sqm %}
-                                                                <li class="d-flex align-items-center mb-25">
-                                                                    <i class="bx bx-layer mr-50"></i>
-                                                                    <span>{{ property.usable_sqm }}</span>
-                                                                </li>
-                                                                {% endif %}
-
-                                                                {% if property.layout %}
-                                                                <li class="d-flex align-items-center mb-25">
-                                                                    <i class="bx bx-building-house mr-50"></i>
-                                                                    <span>{{ property.layout }}</span>
-                                                                </li>
-                                                                {% endif %}
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
+                                                
                                             </div>
 
                                             <!-- Current tenant & owner-->
@@ -899,6 +377,274 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-details d-flex align-items-center">
+                                    <h5>For Rent</h5>
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="pb-0">
+                                                                <strong>Owner Full Name</strong></td>
+                                                            <td class="pb-0">
+                                                                <strong>Property Address</strong></td>
+
+                                                            <td class="pb-0">
+                                                                <strong>Asking For</strong></td>
+                                                            <td class="pb-0">
+                                                                <strong>Potential Rent</strong>
+                                                            </td>
+                                                            <td class="pb-0">
+                                                                <strong>Expected ROI</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Radu Gafita</td>
+                                                            <td>Str. Alexandru Beldiman Nr. 16</td>
+                                                            <td>$65.000</td>
+                                                            <td>$500</td>
+                                                            <td>7%</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-details d-flex align-items-center">
+                                    <h5>Under Renovation</h5>
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="pb-0">
+                                                                <strong>Owner Full Name</strong></td>
+                                                            <td class="pb-0">
+                                                                <strong>Property Address</strong></td>
+
+                                                            <td class="pb-0">
+                                                                <strong>Asking For</strong></td>
+                                                            <td class="pb-0">
+                                                                <strong>Potential Rent</strong>
+                                                            </td>
+                                                            <td class="pb-0">
+                                                                <strong>Expected ROI</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Radu Gafita</td>
+                                                            <td>Str. Alexandru Beldiman Nr. 16</td>
+                                                            <td>$65.000</td>
+                                                            <td>$500</td>
+                                                            <td>7%</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-details d-flex align-items-center">
+                                    <h5>Buying</h5>
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="pb-0 pl-0">
+                                                                <strong>Notary Costs</strong></td>
+                                                            <td class="pb-0 pl-0">
+                                                                <strong>Legal Costs</strong></td>
+
+                                                            <td class="pb-0 pl-0">
+                                                                <strong>Accountant Costs</strong></td>
+                                                            <td class="pb-0 pl-0">
+                                                                <strong>Other Costs</strong>
+                                                            <td class="pb-0">
+                                                                <strong>Potential Rent</strong>
+                                                            </td>
+                                                            <td class="pb-0 pl-0">
+                                                                <strong>Expected ROI</strong></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="pl-0">
+                                                                <div
+                                                                    class="badge badge-light-danger text-bold-500 py-50">
+                                                                    $3.500</div>
+                                                            </td>
+                                                            <td class="pl-0">
+                                                                <div
+                                                                    class="badge badge-light-danger text-bold-500 py-50">
+                                                                    $1.750</div>
+                                                            </td>
+                                                            <td class="pl-0">
+                                                                <div
+                                                                    class="badge badge-light-danger text-bold-500 py-50">
+                                                                    $500</div>
+                                                            </td>
+                                                            <td class="pl-0">
+                                                                <div
+                                                                    class="badge badge-light-danger text-bold-500 py-50">
+                                                                    $250</div>
+                                                            </td>
+                                                            <td>$500</td>
+                                                            <td class="pl-0">
+                                                                <div
+                                                                    class="badge badge-light-warning text-bold-500 py-50">
+                                                                    7%</div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="card-body">
+                                                <!-- timeline widget start -->
+                                                <ul class="widget-timeline">
+                                                    <li class="timeline-items timeline-icon-success active">
+                                                        <div class="timeline-time">Tue 8:17pm</div>
+                                                        <h6 class="timeline-title">Martina Ash</h6>
+                                                        <p class="timeline-text">on <a
+                                                                href="JavaScript:void(0);">Received Gift</a></p>
+                                                        <div class="timeline-content">
+                                                            Welcome to vedio game and lame is very creative
+                                                        </div>
+                                                    </li>
+                                                    <li class="timeline-items timeline-icon-primary active">
+                                                        <div class="timeline-time">5 days ago</div>
+                                                        <h6 class="timeline-title">Jonny Richie attached file</h6>
+                                                        <p class="timeline-text">on <a
+                                                                href="JavaScript:void(0);">Project name</a></p>
+
+                                                    </li>
+                                                    <li class="timeline-items timeline-icon-danger active">
+                                                        <div class="timeline-time">7 hours ago</div>
+                                                        <h6 class="timeline-title">Mathew Slick docs</h6>
+                                                        <p class="timeline-text">on <a
+                                                                href="JavaScript:void(0);">Project name</a></p>
+
+                                                    </li>
+                                                    <li class="timeline-items timeline-icon-info active">
+                                                        <div class="timeline-time">5 hour ago</div>
+                                                        <h6 class="timeline-title">Petey Cruiser send you a message</h6>
+                                                        <p class="timeline-text">on <a
+                                                                href="JavaScript:void(0);">Redited message</a></p>
+                                                        <div class="timeline-content">
+                                                            Nor again is there anyone who loves or pursues or desires to
+                                                            obtain pain of itself, because it
+                                                            is
+                                                            pain, but because occasionally circumstances
+                                                        </div>
+                                                    </li>
+                                                    <li class="timeline-items timeline-icon-warning">
+                                                        <div class="timeline-time">2 min ago</div>
+                                                        <h6 class="timeline-title">Anna mull liked </h6>
+                                                        <p class="timeline-text">on <a
+                                                                href="JavaScript:void(0);">Liked</a></p>
+                                                        <div class="timeline-content">
+                                                            The Amairates
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <!-- timeline widget ends -->
+                                                <div class="text-center">
+                                                    <button class="btn btn-primary">View All Activity</button>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title-details d-flex align-items-center">
+                                    <h5>Opportunity Stage</h5>
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="pb-0">
+                                                                <strong>Owner Full Name</strong></td>
+                                                            <td class="pb-0">
+                                                                <strong>Property Address</strong></td>
+
+                                                            <td class="pb-0">
+                                                                <strong>Asking For</strong></td>
+                                                            <td class="pb-0">
+                                                                <strong>Potential Rent</strong>
+                                                            </td>
+                                                            <td class="pb-0">
+                                                                <strong>Expected ROI</strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Radu Gafita</td>
+                                                            <td>Str. Alexandru Beldiman Nr. 16</td>
+                                                            <td>$65.000</td>
+                                                            <td>$500</td>
+                                                            <td>7%</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
