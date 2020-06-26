@@ -86,6 +86,8 @@ class Property(models.Model):
     balcony = models.BooleanField(default=False)
     garage = models.BooleanField(default=False)
 
+    location = models.CharField(max_length=200, null=True)
+
     # Caracteristici Imobil
 
     class BuildingType(models.TextChoices):
@@ -166,7 +168,7 @@ class Comment(models.Model):  # new
     property_comment = models.ManyToManyField(
         Property, related_name='comments')
     comment = models.CharField(max_length=500)
-    
+
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
@@ -174,3 +176,10 @@ class Comment(models.Model):  # new
 
     def __str__(self):
         return self.comment
+
+# class UnderRenovation(models.Model):
+
+    # renovation_budget =
+    # date_receiving_money =
+    # date_receiving_key =
+    # renovation_start_date =
