@@ -127,7 +127,7 @@ shrink-to-fit=no">
                                         <div class="media d-flex align-items-center">
                                             <div class="media-left pr-0">
                                                 <div class="avatar mr-1 m-0"><img
-                                                        src="../../../app-assets/images/portrait/small/avatar-s-11.jpg"
+                                                        src="{% static 'css/app-assets/images/portrait/small/avatar-s-11.jpg' %}"
                                                         alt="avatar" height="39" width="39"></div>
                                             </div>
                                             <div class="media-body">
@@ -141,7 +141,7 @@ shrink-to-fit=no">
                                         <div class="media d-flex align-items-center">
                                             <div class="media-left pr-0">
                                                 <div class="avatar mr-1 m-0"><img
-                                                        src="../../../app-assets/images/portrait/small/avatar-s-16.jpg"
+                                                        src="{% static 'css/app-assets/images/portrait/small/avatar-s-16.jpg' %}"
                                                         alt="avatar" height="39" width="39"></div>
                                             </div>
                                             <div class="media-body">
@@ -154,7 +154,7 @@ shrink-to-fit=no">
                                     <div class="d-flex justify-content-between cursor-pointer">
                                         <div class="media d-flex align-items-center py-0">
                                             <div class="media-left pr-0"><img class="mr-1"
-                                                    src="../../../app-assets/images/icon/sketch-mac-icon.png"
+                                                    src="{% static 'css/app-assets/images/icon/sketch-mac-icon.png' %}"
                                                     alt="avatar" height="39" width="39"></div>
                                             <div class="media-body">
                                                 <h6 class="media-heading"><span class="text-bold-500">Updates
@@ -222,7 +222,7 @@ shrink-to-fit=no">
                                         <div class="media d-flex align-items-center">
                                             <div class="media-left pr-0">
                                                 <div class="avatar mr-1 m-0"><img
-                                                        src="../../../app-assets/images/portrait/small/avatar-s-4.jpg"
+                                                        src="{% static 'css/app-assets/images/portrait/small/avatar-s-4.jpg' %}"
                                                         alt="avatar" height="39" width="39"></div>
                                             </div>
                                             <div class="media-body">
@@ -251,7 +251,7 @@ shrink-to-fit=no">
                                         <div class="media d-flex align-items-center border-0">
                                             <div class="media-left pr-0">
                                                 <div class="avatar mr-1 m-0"><img
-                                                        src="../../../app-assets/images/portrait/small/avatar-s-16.jpg"
+                                                        src="{% static 'css/app-assets/images/portrait/small/avatar-s-16.jpg' %}"
                                                         alt="avatar" height="39" width="39"></div>
                                             </div>
                                             <div class="media-body">
@@ -271,7 +271,7 @@ shrink-to-fit=no">
                                 class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name">John Doe</span><span
                                         class="user-status text-muted">Available</span></div><span><img class="round"
-                                        src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar"
+                                        src="{% static 'css/app-assets/images/portrait/small/avatar-s-11.jpg' %}" alt="avatar"
                                         height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right pb-0"><a class="dropdown-item"
@@ -297,7 +297,7 @@ shrink-to-fit=no">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand"
                         href="../../../html/ltr/vertical-menu-template/index.html">
-                        <div class="brand-logo"><img class="logo" src="../../../app-assets/images/logo/logo.png" />
+                        <div class="brand-logo"><img class="logo" src="{% static 'css/app-assets/images/logo/logo.png' %}" />
                         </div>
                         <h2 class="brand-text mb-0">Frest</h2>
                     </a></li>
@@ -387,30 +387,30 @@ shrink-to-fit=no">
 
     {% block javascript %}
     <!-- BEGIN: Vendor JS-->
-    <script src="{% static 'js/app-assets/vendors/js/vendors.min.js' }"></script>
-    <script src="{% static 'js/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.tools.js' }"></script>
-    <script src="{% static 'js/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js' }"></script>
-    <script src="{% static 'js/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.min.js' }"></script>
+    <script src="{% static 'js/app-assets/vendors/js/vendors.min.js' %}"></script>
+    <script src="{% static 'js/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.tools.js' %}"></script>
+    <script src="{% static 'js/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js' %}"></script>
+    <script src="{% static 'js/app-assets/fonts/LivIconsEvo/js/LivIconsEvo.min.js' %}"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="{% static 'js/app-assets/vendors/js/pickers/daterange/moment.min.js' }"></script>
-    <script src="{% static 'js/app-assets/vendors/js/pickers/daterange/daterangepicker.js' }"></script>
-    <script src="{% static 'js/app-assets/vendors/js/forms/select/select2.full.min.js' }"></script>
-    <script src="{% static 'js/app-assets/vendors/js/editors/quill/quill.min.js' }"></script>
-    <script src="{% static 'js/app-assets/vendors/js/extensions/dragula.min.js' }"></script>
+    <script src="{% static 'js/app-assets/vendors/js/pickers/daterange/moment.min.js' %}"></script>
+    <script src="{% static 'js/app-assets/vendors/js/pickers/daterange/daterangepicker.js' %}"></script>
+    <script src="{% static 'js/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+    <script src="{% static 'js/app-assets/vendors/js/editors/quill/quill.min.js' %}"></script>
+    <script src="{% static 'js/app-assets/vendors/js/extensions/dragula.min.js' %}"></script>
      <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="{% static 'js/app-assets/js/scripts/configs/vertical-menu-light.js' }"></script>
-    <script src="{% static 'js/app-assets/js/core/app-menu.js' }"></script>
-    <script src="{% static 'js/app-assets/js/core/app.js' }"></script>
-    <script src="{% static 'js/app-assets/js/scripts/components.js' }"></script>
-    <script src="{% static 'js/app-assets/js/scripts/footer.js' }"></script>
+    <script src="{% static 'js/app-assets/js/scripts/configs/vertical-menu-light.js' %}"></script>
+    <script src="{% static 'js/app-assets/js/core/app-menu.js' %}"></script>
+    <script src="{% static 'js/app-assets/js/core/app.js' %}"></script>
+    <script src="{% static 'js/app-assets/js/scripts/components.js' %}"></script>
+    <script src="{% static 'js/app-assets/js/scripts/footer.js' %}"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{% static 'js/app-assets/js/scripts/pages/app-todo.js' }"></script>
+    <script src="{% static 'js/app-assets/js/scripts/pages/app-todo.js' %}"></script>
     <!-- END: Page JS-->
     {% endblock javascript %}
 </body>
