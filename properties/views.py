@@ -33,7 +33,6 @@ class PropertyDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView
 class PropertyCreateView(LoginRequiredMixin, CreateView):
     model = Property
     fields = [
-        'location',
         'title',
         'residence_complex',
         'state',

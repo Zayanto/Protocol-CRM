@@ -6,23 +6,36 @@
 
 {% with action=view.action|default:"Add" %}
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-
-    <section class="content">
-        <div class="container-fluid">
-            <h1>{{ action }} Property</h1>
-            <form method="post" action=".">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="btn btn-primary">{{ action }}</button>
-            </form>
-
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
         </div>
-    </section>
+        <div class="content-body">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+
+                        <section class="content">
+                            <div class="container-fluid">
+                                <h1>{{ action }} Property</h1>
+                                <form method="post" action=".">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <button type="submit" class="btn btn-primary">{{ action }}</button>
+                                </form>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-{% endwith %}
 
-{% endblock %}
+        {% endwith %}
+
+        {% endblock %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'v&64ny@1!bygkq+fx5v_-y=nj3in@5^g)&(5q9%e#)fme1%rs='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'django_countries',
 
-
+    # Local Apps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'books.apps.BooksConfig',
@@ -52,23 +52,24 @@ INSTALLED_APPS = [
     'tenants.apps.TenantsConfig',
     'contracts.apps.ContractsConfig',
     'payments.apps.PaymentsConfig',
+    'owners.apps.OwnersConfig',
 ]
 
 # django-allauth config
-SITE_ID = 1  # new
-ACCOUNT_SESSION_REMEMBER = True  # new
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # new
-ACCOUNT_USERNAME_REQUIRED = False  # new
-ACCOUNT_AUTHENTICATION_METHOD = 'email'  # new
-ACCOUNT_EMAIL_REQUIRED = True  # new
-ACCOUNT_UNIQUE_EMAIL = True  # new
+SITE_ID = 1  
+ACCOUNT_SESSION_REMEMBER = True  
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  
+ACCOUNT_USERNAME_REQUIRED = False  
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  
+ACCOUNT_EMAIL_REQUIRED = True  
+ACCOUNT_UNIQUE_EMAIL = True  
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',  # new
+    'allauth.account.auth_backends.AuthenticationBackend',  
 )
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'  # new
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,7 +86,7 @@ ROOT_URLCONF = 'bookstore_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # new
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,16 +152,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+"django.contrib.staticfiles.finders.FileSystemFinder",
+"django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

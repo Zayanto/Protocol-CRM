@@ -86,7 +86,7 @@ class Property(models.Model):
     balcony = models.BooleanField(default=False)
     garage = models.BooleanField(default=False)
 
-    location = models.CharField(max_length=200, null=True)
+  
 
     # Caracteristici Imobil
 
