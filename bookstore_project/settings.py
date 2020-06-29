@@ -106,13 +106,24 @@ WSGI_APPLICATION = 'bookstore_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'project',
+#         'USER': 'admin',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',
+#         'PORT': 5432
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'project',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'uzfxsado',
+        'USER': 'uzfxsado',
+        'PASSWORD': '650CGngtV-DeFhXDuaNykth5BkC9mJQh',
+        'HOST': 'ruby.db.elephantsql.com',
         'PORT': 5432
     }
 }
