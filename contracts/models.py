@@ -54,7 +54,7 @@ class Contract(models.Model):
 
     def get_absolute_url(self):
         """"Return absolute URL to the Contact Detail page."""
-        return reverse('contract_detail', kwargs={'pk': str(self.pk)})
+        return reverse('contract:contract_detail', kwargs={'pk': str(self.pk)})
 
     @property
     def created_on_arrow(self):
