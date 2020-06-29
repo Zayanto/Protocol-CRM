@@ -171,10 +171,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_FINDERS = [
-"django.contrib.staticfiles.finders.FileSystemFinder",
-"django.contrib.staticfiles.finders.AppDirectoriesFinder",
-]
+# STATICFILES_FINDERS = [
+# "django.contrib.staticfiles.finders.FileSystemFinder",
+# "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+# ]
 # STATICFILES_FINDERS = [
 #     "django.contrib.staticfiles.finders.FileSystemFinder",
 #     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
@@ -194,5 +194,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
 
+# TWILIO SETUP BEGIN
 TWILIO_ACCOUNT_SID='AC6c42431e52233421a2c7083c57781ec5'
 TWILIO_AUTH_TOKEN='1cea2c50661a7337d8091877e07549c4'
+# TWILIO SETUP END
+
+# AWS S3 SETUP BEGIN
+AWS_ACCESS_KEY_ID = 'AKIAQG5MKHVJYSSOY7OU'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'radu-project-bucket'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_acl = False
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_S3_REGION_NAME = "eu-central-1"
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS S3 SETUP END
