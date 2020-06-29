@@ -117,13 +117,14 @@ WSGI_APPLICATION = 'bookstore_project.wsgi.application'
 #     }
 # }
 
+# AWS Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'uzfxsado',
-        'USER': 'uzfxsado',
-        'PASSWORD': '650CGngtV-DeFhXDuaNykth5BkC9mJQh',
-        'HOST': 'ruby.db.elephantsql.com',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'database-2.cvkltg8zibjh.eu-central-1.rds.amazonaws.com',
         'PORT': 5432
     }
 }
