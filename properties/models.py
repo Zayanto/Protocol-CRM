@@ -151,7 +151,7 @@ class Property(models.Model):
 
     def get_absolute_url(self):
         """"Return absolute URL to the Property Detail page."""
-        return reverse('property_detail', kwargs={"pk": str(self.pk)})
+        return reverse('property:property_detail', kwargs={"pk": str(self.pk)})
 
     @ property
     def created_on_arrow(self):
