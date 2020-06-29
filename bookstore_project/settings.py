@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'django_countries',
     'rest_framework',
+    'django_cleanup',
 
     # Local Apps
     'users.apps.UsersConfig',
