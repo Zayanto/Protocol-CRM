@@ -8,6 +8,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.contrib.auth import get_user_model  # new
 from tenants.models import Tenant
+from properties.models import Property
 
 
 class Contract(models.Model):
@@ -24,8 +25,29 @@ class Contract(models.Model):
         Tenant,
         on_delete=models.CASCADE,
     )
+    apartment = models.ForeignKey(
+        Property,
+        on_delete=models.CASCADE,
+        null=True
+    )
+
     rent_tenant = models.CharField(
         "Rent he/she pays", max_length=10, blank=True)
+
+    class ContractStatus(models.TextChoices):
+        ACTIVE = "active", "Active"
+        PENDING = "pending", "Pending"
+        INACTIVE = "inactive", "Inactive"
+
+    contract_status = models.CharField("Status", max_length=20,
+                                       choices=ContractStatus.choices, default=ContractStatus.ACTIVE)
+
+    class ContractPaymentStatus(models.TextChoices):
+        PAID = "paid", "Paid"
+        UNPAID = "unpaid", "Unpaid"
+
+    contract_payment_status = models.CharField("Payment Status", max_length=20,
+                                               choices=ContractPaymentStatus.choices, default=ContractPaymentStatus.UNPAID)
 
     def __str__(self):
         return self.title
