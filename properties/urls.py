@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import PropertyListView, PropertyDetailView, PropertyUpdateView, PropertyCreateView
 from django.conf import settings
+from django.conf.urls.static import static
+
+
 
 urlpatterns = [
     path('', PropertyListView.as_view(), name='property_list'),

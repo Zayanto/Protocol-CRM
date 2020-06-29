@@ -158,17 +158,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-<<<<<<< HEAD
 STATICFILES_FINDERS = [
-"django.contrib.staticfiles.finders.FileSystemFinder",
-"django.contrib.staticfiles.finders.AppDirectoriesFinder",
-]
-=======
-# STATICFILES_FINDERS = [
-#     "django.contrib.staticfiles.finders.FileSystemFinder",
-#     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-# ]
->>>>>>> 1281cecb4c4a7f3bcbfe56701e54c524dbd94fa2
+     "django.contrib.staticfiles.finders.FileSystemFinder",
+     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+ ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
 

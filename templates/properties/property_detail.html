@@ -17,7 +17,7 @@
                     <div class="col-12">
 
 
-
+                        <!-- gallery -->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tab-content">
@@ -35,39 +35,39 @@
                                                             </h5>
                                                             <div class="row">
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-10.jpg"
+                                                                    <img src="{{ property.photo_main.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-11.jpg"
+                                                                    <img src="{{ property.photo_1.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-12.jpg"
+                                                                    <img src="{{ property.photo_2.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-13.jpg"
+                                                                    <img src="{{ property.photo_3.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-05.jpg"
+                                                                    <img src="{{ property.photo_4.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-06.jpg"
+                                                                    <img src="{{ property.photo_5.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-07.jpg"
+                                                                    <img src="{{ property.photo_6.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-08.jpg"
+                                                                    <img src="{{ property.photo_7.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="../../../app-assets/images/profile/user-uploads/user-09.jpg"
+                                                                    <img src="{{ property.photo_8.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                             </div>
@@ -79,8 +79,12 @@
                                                     <div class="card-content">
                                                         <div class="card-body">
                                                             <h5 class="card-title mb-1">Basic Info
-                                                                <i
-                                                                    class="cursor-pointer bx bx-dots-vertical-rounded float-right"></i>
+                                                         
+                                                                    <a href="{% url 'add' %}" class="btn btn-sm btn-primary glow float-right">
+                                                                        <i class="fas fa-user"></i> View Details
+                                                                    </a>
+                                                                
+                                                                
                                                             </h5>
                                                             <ul class="list-unstyled mb-0">
                                                                 <li class="d-flex align-items-center mb-25">
@@ -392,7 +396,7 @@
 
                                                             <td class="pb-0">
                                                                 <strong>Potential Rent</strong></td>
-                                                            
+
                                                             <td class="pb-0">
                                                                 <strong>Expected ROI</strong></td>
                                                         </tr>
@@ -436,7 +440,7 @@
 
                                                             <td class="pb-0">
                                                                 <strong>Potential Rent</strong></td>
-                                                            
+
                                                             <td class="pb-0">
                                                                 <strong>Expected ROI</strong></td>
                                                         </tr>
@@ -470,7 +474,7 @@
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="card-body">
-                                            
+
                                             <div class="table-responsive">
                                                 <table class="table table-borderless">
                                                     <tbody>
@@ -503,7 +507,7 @@
                                                 <div class="progress-bar progress-label" role="progressbar"
                                                     aria-valuenow="35" style="width:35%"></div>
                                             </div>
-                                            
+
                                             <div class="table-responsive">
                                                 <table id="users-list-datatable" class="table">
                                                     <span>Renovation Team 1, 2, 3, 4, 5</span>
@@ -673,7 +677,8 @@
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <span>Below will be a timeline with events that happened regarding this property. (recent activities) </span>
+                                            <span>Below will be a timeline with events that happened regarding this
+                                                property. (recent activities) </span>
 
                                             <div class="table-responsive">
                                                 <table class="table table-borderless">
@@ -726,7 +731,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                           
+
 
 
                                         </div>
