@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
@@ -13,6 +12,39 @@
             <section id="dashboard-ecommerce">
 
                 <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body p-0">
+                                    <div class="d-lg-flex justify-content-between">
+                                        <div class="widget-card-details d-flex flex-column justify-content-between p-2 w-100">
+                                            <form id="send-whatsapp-form">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon3">Send Whatsapp message: </span>
+                                                    </div>
+                                                    <textarea id="message" rows="4" class="form-control" placeholder="write your message here" required></textarea>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon3">Put the mobile number: </span>
+                                                    </div>
+                                                    <input id="target-number" type="number" class="form-control" aria-describedby="basic-addon3" placeholder="+112233445566" required>
+                                                    <div class="input-group-append">
+                                                        <button id="send-whatsapp-btn" class="btn btn-secondary" type="submit">
+                                                            <span id="send-whatsapp-status" class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" style="display: none;"></span> 
+                                                            Process
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div id="radial-chart-primary"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-content">
@@ -87,4 +119,31 @@
     </div>
 </div>
 
+
 {% endblock content %}  
+
+
+{% block javascript %}
+    <script>
+        $('#send-whatsapp-form').submit(function(e) {
+            e.preventDefault();
+            let phone_number = $('#target-number').val();
+            let message = $('#message').val();
+            $('#send-whatsapp-status').show();
+
+            $.ajax({
+                url: `{% url 'sms-api:send-whatsapp-sms' %}`,
+                method: 'GET',
+                data: {
+                    phone_number,
+                    message
+                },
+                success: function(response) {
+                    $('#send-whatsapp-status').hide();
+                    console.log(response);
+                }
+            })
+        });
+    </script>
+{% endblock javascript %}
+    

@@ -22,6 +22,9 @@ urlpatterns = [
     path('contracts/', include('contracts.urls')),
     path('owner/', include('owners.urls')),
 
+    # API (v1)
+    path('api/v1/', include('sms.api.urls', namespace='sms-api')),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

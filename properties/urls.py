@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 
 
 
+app_name='property'
+
 urlpatterns = [
     path('', PropertyListView.as_view(), name='property_list'),
 
