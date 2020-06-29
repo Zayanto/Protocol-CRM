@@ -6,32 +6,31 @@ from datetime import datetime
 from django.urls import reverse
 from django.conf import settings
 from django.urls import reverse
-from django.contrib.auth import get_user_model  # new
+from django.contrib.auth import get_user_model  #
 
 
-class Property(models.Model):
+class StageOpportunity(models.Model):
 
-    id = models.UUIDField(  # new
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False)
 
-    title = models.CharField(max_length=2000, null=True)
 
-    # Localizare
-    residence_complex = models.CharField(max_length=200, null=True)
-    state = models.CharField(max_length=200, null=True)
+    owner = models.CharField(max_length=200, null=True)
+    asking_price = models.CharField(max_length=200, null=True)
     city = models.CharField(max_length=200, null=True)
+    residence_complex = models.CharField(max_length=200, null=True)
     address = models.CharField(max_length=200, null=True)
-    street_number = models.IntegerField()
     zipcode = models.CharField(max_length=200, null=True)
     building = models.CharField(max_length=200, null=True)
     entrance = models.CharField(max_length=200, null=True)
-    apartament = models.CharField(max_length=200, null=True)
+    floor = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    apartament_number = models.CharField(max_length=200, null=True)
     reper = models.CharField(max_length=200, null=True)
     vecinatati = models.CharField(max_length=200, null=True)
 
-    # Caracteristici
+    usable_sqm = models.DecimalField(
+        max_digits=10, decimal_places=1, null=True)
+
+    build_sqm = models.DecimalField(
+        max_digits=10, decimal_places=1,  null=True)
 
     class Destination(models.TextChoices):
         BIROURI = "birouri", "Birouri"
@@ -51,8 +50,6 @@ class Property(models.Model):
     layout = models.CharField("Layout", max_length=20,
                               choices=Layout.choices, default=Layout.DECOMANDAT)
 
-    floor = models.DecimalField(max_digits=10, decimal_places=1, null=True)
-
     class ComfortType(models.TextChoices):
         UNU = "1", "1"
         DOI = "2", "2"
@@ -71,24 +68,13 @@ class Property(models.Model):
 
     interior_state = models.CharField("Interior State", max_length=20,
                                       choices=InteriorState.choices, default=InteriorState.OTHER)
-    building_age = models.IntegerField()
-    usable_sqm = models.DecimalField(
-        max_digits=10, decimal_places=1, null=True)
-    build_sqm = models.DecimalField(
-        max_digits=10, decimal_places=1,  null=True)
 
-    # Incaperi si Anexe
-
-    rooms = models.IntegerField(null=True)
+    number_of_rooms = models.IntegerField(null=True)
     bedrooms = models.IntegerField(null=True)
     kitchen = models.IntegerField(null=True)
     bathrooms = models.IntegerField(null=True)
     balcony = models.BooleanField(default=False)
     garage = models.BooleanField(default=False)
-
-  
-
-    # Caracteristici Imobil
 
     class BuildingType(models.TextChoices):
         BETON = "beton", "Beton"
@@ -100,30 +86,46 @@ class Property(models.Model):
 
     building_type = models.CharField("Building Type", max_length=20,
                                      choices=BuildingType.choices, default=BuildingType.BETON)
-    construction_date = models.DateTimeField(null=True, blank=True)
-
-    class ConstructionType(models.TextChoices):
-        HOUSE = "house", "House"
-        MIXT_BUILDING = "mix-building", "Mix-Building"
-        STUDIO_BUILDING = "studio-building", "Studio-Building"
-
-    construction_type = models.CharField("Construction Type", max_length=20,
-                                         choices=ConstructionType.choices, default=ConstructionType.MIXT_BUILDING)
-
+    building_construction_date = models.DateTimeField(null=True, blank=True)
     basement = models.BooleanField(default=True)
-    notes = models.TextField(blank=True)
-    lot_size = models.DecimalField(max_digits=10, decimal_places=1)
+    potential_rent = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    description = models.TextField(blank=True)
 
-    # Dotari si Utilitati
+class StageBuying(models.Model):
 
-    # Pret
-
+    # Expenses
+    agent_costs = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    notary_costs = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    legal_costs = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    accountant_costs = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    other_costs = models.DecimalField(max_digits=10, decimal_places=1, null=True)
     buy_price = models.DecimalField(max_digits=10, decimal_places=1, null=True)
-    sell_price = models.DecimalField(
-        max_digits=10, decimal_places=1, null=True)
-    rent = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    description = models.TextField(blank=True)
 
-    # Poze
+    # User needs to add other costs in the future. So this needs to be dynamic I think.
+    
+class StageRenovation(models.Model):
+    
+    investor = models.CharField(max_length=200, null=True)
+    renovation_budget = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    date_receiving_money = models.DateTimeField(blank=True)
+    date_receiving_key = models.DateTimeField(blank=True)
+    description = models.TextField(blank=True)
+
+class StageForRent(models.Model):
+    expected_rent = models.IntegerField(null=True)
+
+class StageWithTenant(models.Model):
+    actual_rent = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    description = models.TextField(blank=True)
+    
+
+class Property(models.Model):
+
+    id = models.UUIDField(  
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False)
 
     photo_main = models.ImageField(upload_to='properties/', blank=True)
     photo_1 = models.ImageField(upload_to='properties/', blank=True)
@@ -142,8 +144,6 @@ class Property(models.Model):
     description = models.TextField(blank=True)
 
     # Listing Details
-
-    is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
@@ -163,23 +163,5 @@ class Property(models.Model):
         ]
 
 
-class Comment(models.Model):  # new
 
-    property_comment = models.ManyToManyField(
-        Property, related_name='comments')
-    comment = models.CharField(max_length=500)
 
-    author = models.ForeignKey(
-        get_user_model(),
-        on_delete=models.CASCADE,
-    )
-
-    def __str__(self):
-        return self.comment
-
-# class UnderRenovation(models.Model):
-
-    # renovation_budget =
-    # date_receiving_money =
-    # date_receiving_key =
-    # renovation_start_date =
