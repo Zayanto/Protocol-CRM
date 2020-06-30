@@ -24,8 +24,11 @@ class PropertyDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView
         obj = kwargs['object']
         # print(obj)
         tenants = obj.reviews.all()
+        property_images = obj.images.all()
+        print(property_images)
         context.update({
             'tenants': tenants,
+            'property_images': property_images,
         })
         # print(context)
         return context

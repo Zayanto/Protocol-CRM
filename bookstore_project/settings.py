@@ -118,7 +118,7 @@ WSGI_APPLICATION = 'bookstore_project.wsgi.application'
 #     }
 # }
 
-# AWS Configuration
+# AWS RDS Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -205,7 +205,7 @@ AWS_ACCESS_KEY_ID = 'AKIAQG5MKHVJYSSOY7OU'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'radu-project-bucket'
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_acl = False
+AWS_DEFAULT_ACL = None
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_REGION_NAME = "eu-central-1"
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

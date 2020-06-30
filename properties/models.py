@@ -139,19 +139,19 @@ class Property(models.Model):
 
     title = models.CharField(max_length=200, null=True)
 
-    photo_main = models.ImageField(upload_to='properties/', blank=True)
-    photo_1 = models.ImageField(upload_to='properties/', blank=True)
-    photo_2 = models.ImageField(upload_to='properties/', blank=True)
-    photo_3 = models.ImageField(upload_to='properties/', blank=True)
-    photo_4 = models.ImageField(upload_to='properties/', blank=True)
-    photo_5 = models.ImageField(upload_to='properties/', blank=True)
-    photo_6 = models.ImageField(upload_to='properties/', blank=True)
-    photo_7 = models.ImageField(upload_to='properties/', blank=True)
-    photo_8 = models.ImageField(upload_to='properties/', blank=True)
-    photo_9 = models.ImageField(upload_to='properties/', blank=True)
-    photo_10 = models.ImageField(upload_to='properties/', blank=True)
-    photo_11 = models.ImageField(upload_to='properties/', blank=True)
-    photo_12 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_main = models.ImageField(upload_to='properties/', blank=True)
+    # photo_1 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_2 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_3 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_4 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_5 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_6 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_7 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_8 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_9 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_10 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_11 = models.ImageField(upload_to='properties/', blank=True)
+    # photo_12 = models.ImageField(upload_to='properties/', blank=True)
 
     description = models.TextField(blank=True)
 
@@ -167,7 +167,14 @@ class Property(models.Model):
     def created_on_arrow(self):
         return arrow.get(self.created_on).humanize()
 
+    def first_photo(self):
+        return self.images.first()
+
     class Meta:  # new
         permissions = [
             ('special_status', 'Can read all books'),
         ]
+
+class PropertyImage(models.Model):
+    image = models.ImageField(upload_to='properties/', blank=True)
+    _property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')

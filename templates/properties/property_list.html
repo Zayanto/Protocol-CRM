@@ -43,9 +43,9 @@
                                         <p class="text-muted text-sm"><b>Listing Date: </b> {{ property.list_date}} </p>
 
                                     </div>
-                                    {% if property.photo_main %}
+                                    {% if property.first_photo %}
                                     <div class="col-5 text-center">
-                                        <img src="{{ property.photo_main.url }}" alt="user-avatar"
+                                        <img src="{{ property.first_photo.image.url }}" alt="user-avatar"
                                             class="img img-fluid">
                                     </div>
                                     {% endif %}
