@@ -42,6 +42,7 @@ shrink-to-fit=no">
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/plugins/forms/wizard.css' %}">
     <!-- END: Custom CSS-->
     {% endblock %}
 
@@ -112,9 +113,10 @@ shrink-to-fit=no">
                                     <i class="bx bx-search primary">
                                     </i>
                                 </div>
-                                <form class="form-inline mt-2 mt-md-0" action="{% url 'property:search_results' %}" method="get">
-                                    <input name="q" class="input" type="text" placeholder="Explore Frest..." tabindex="-1"
-                                        data-search="template-search">
+                                <form class="form-inline mt-2 mt-md-0" action="{% url 'property:search_results' %}"
+                                    method="get">
+                                    <input name="q" class="input" type="text" placeholder="Explore Frest..."
+                                        tabindex="-1" data-search="template-search">
                                 </form>
                                 <div class="search-input-close">
                                     <i class="bx bx-x">
@@ -349,8 +351,6 @@ shrink-to-fit=no">
 
     {% endblock content %}
 
-    <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
@@ -363,7 +363,7 @@ shrink-to-fit=no">
         </p>
     </footer>
 
-
+    {% block javascript %}
 
     <!-- BEGIN: Vendor JS-->
     <script src="{% static 'js/vendors/js/vendors.min.js' %}"></script>
@@ -387,10 +387,12 @@ shrink-to-fit=no">
     <script src="{% static 'js/js/scripts/components.js' %}"></script>
     <script src="{% static 'js/js/scripts/footer.js' %}"></script>
     <!-- END: Theme JS-->
+    <script src="{% static 'js/vendors/js/extensions/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/forms/validation/jquery.validate.min.js' %}"></script>
+    
+    <script src="{% static 'js/js/scripts/forms/wizard-steps.js' %}"></script>
 
-    <script src="{% static 'js/js/scripts/pages/app-todo.js' %}"></script>
-
-    {% block javascript %}
+   
     {% endblock javascript %}
 
 </body>
