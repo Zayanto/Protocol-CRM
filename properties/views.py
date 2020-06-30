@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin  # new
 from .models import Property
 from django.shortcuts import render
+from django.db.models import Q
 
 
 class PropertyListView(LoginRequiredMixin, ListView):
@@ -144,3 +145,15 @@ class PropertyUpdateView(LoginRequiredMixin, UpdateView):
         'list_date'
     ]
     action = "Update"
+
+
+class SearchResultsListView(ListView):
+    model = Property
+    context_object_name = 'property_list'
+    template_name = 'properties/search_results.html'
+
+    def get_queryset(self):  
+        query = self.request.GET.get('q')
+        return Property.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query)
+        )
