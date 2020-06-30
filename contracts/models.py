@@ -28,7 +28,7 @@ class Contract(models.Model):
     apartment = models.ForeignKey(
         Property,
         on_delete=models.CASCADE,
-        null=True
+        null=True,
     )
 
     rent_tenant = models.CharField(
@@ -48,8 +48,6 @@ class Contract(models.Model):
 
     contract_payment_status = models.CharField("Payment Status", max_length=20,
                                                choices=ContractPaymentStatus.choices, default=ContractPaymentStatus.UNPAID)
-
- 
 
     def get_absolute_url(self):
         """"Return absolute URL to the Contact Detail page."""

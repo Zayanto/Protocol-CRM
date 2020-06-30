@@ -37,7 +37,7 @@ class Review(models.Model):  # new
     book = models.ForeignKey(
         Book,
         on_delete=models.CASCADE,
-        related_name='reviews',
+    
     )
     review = models.CharField(max_length=255)
     author = models.ForeignKey(
