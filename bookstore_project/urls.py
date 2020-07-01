@@ -23,7 +23,8 @@ urlpatterns = [
     path('owner/', include('owners.urls')),
 
     # API (v1)
-    path('api/v1/', include('sms.api.urls', namespace='sms-api')),
+    path('api/v1/', include('sms.api.urls')),
+    path('api/v1/', include('properties.api.urls')),
 
 
 
