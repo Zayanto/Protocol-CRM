@@ -19,15 +19,5 @@ class ContractDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView
     login_url = 'account_login'
     permission_required = 'contracts.special_status'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        obj = kwargs['object']
-        # print(obj)
-        photo_main = obj.reviews.all()
-        context.update({
-            'photo_main': photo_main,
-        })
-        # print(context)
-        return context
 
 

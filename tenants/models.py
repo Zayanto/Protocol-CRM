@@ -8,6 +8,7 @@ from django.conf import settings
 from properties.models import Property
 
 
+
 class Tenant(models.Model):
 
     id = models.UUIDField(  # new
@@ -34,6 +35,11 @@ class Tenant(models.Model):
         related_name='reviews',
     )
 
+    # contract = models.ForeignKey(
+    #     Contract,
+    #     on_delete=models.CASCADE,
+    # )
+
     rent_tenant = models.CharField(
         "Rent he/she pays", max_length=10, blank=True)
 
@@ -41,7 +47,7 @@ class Tenant(models.Model):
         return self.full_name
 
     def get_absolute_url(self):
-        """"Return absolute URL to the Contact Detail page."""
+        """"Return absolute URL to the Tenant Detail page."""
         return reverse('tenant_detail', kwargs={'pk': str(self.pk)})
 
     @property

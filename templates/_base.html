@@ -339,6 +339,7 @@ shrink-to-fit=no">
                             data-i18n="Email">Owners</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">Payments</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">SMS Notification</span></a>
+                <li class=" nav-item"><a href="{% url 'email:email_list' %}"><span class="menu-title" data-i18n="Email">Email</span></a>
 
 
 
@@ -367,6 +368,7 @@ shrink-to-fit=no">
 
     <!-- BEGIN: Vendor JS-->
     <script src="{% static 'js/vendors/js/vendors.min.js' %}"></script>
+
     <script src="{% static 'js/fonts/LivIconsEvo/js/LivIconsEvo.tools.js' %}"></script>
     <script src="{% static 'js/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js' %}"></script>
     <script src="{% static 'js/fonts/LivIconsEvo/js/LivIconsEvo.min.js' %}"></script>
@@ -389,7 +391,7 @@ shrink-to-fit=no">
     <!-- END: Theme JS-->
     <script src="{% static 'js/vendors/js/extensions/jquery.steps.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/forms/validation/jquery.validate.min.js' %}"></script>
-    
+
     <script src="{% static 'js/js/scripts/forms/wizard-steps.js' %}"></script>
 
    
