@@ -49,6 +49,9 @@ class Contract(models.Model):
     contract_payment_status = models.CharField("Payment Status", max_length=20,
                                                choices=ContractPaymentStatus.choices, default=ContractPaymentStatus.UNPAID)
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         """"Return absolute URL to the Contact Detail page."""
         return reverse('contract:contract_detail', kwargs={'pk': str(self.pk)})

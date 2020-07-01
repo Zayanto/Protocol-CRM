@@ -23,27 +23,38 @@ shrink-to-fit=no">
     <link rel="stylesheet" type="text/css"
         href="{% static 'css/app-assets/vendors/css/editors/quill/quill.snow.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/extensions/dragula.min.css' %}">
-    <!-- END: Vendor CSS-->
 
-    <!-- BEGIN: Theme CSS-->
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'css/app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
+    
+
+
+    <!-- BEGIN: App-Assets CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/bootstrap-extended.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/colors.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/components.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/themes/dark-layout.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/themes/semi-dark-layout.css' %}">
-    <!-- END: Theme CSS-->
-
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css"
-        href="{% static 'css/app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-todo.css' %}">
-    <!-- END: Page CSS-->
-
-    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-kanban.css' %}">
+    
+    <!-- BEGIN: Assets CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/plugins/forms/wizard.css' %}">
-    <!-- END: Custom CSS-->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
+
+     <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/jkanban/jkanban.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/editors/quill/quill.snow.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/pickers/pickadate/pickadate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/charts/apexcharts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/extensions/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/dashboard-ecommerce.css' %}">
+    <!-- BEGIN: Vendor CSS-->
     {% endblock %}
 
 </head>
@@ -339,6 +350,7 @@ shrink-to-fit=no">
                             data-i18n="Email">Owners</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">Payments</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">SMS Notification</span></a>
+                <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">Email</span></a>
 
 
 
@@ -367,6 +379,7 @@ shrink-to-fit=no">
 
     <!-- BEGIN: Vendor JS-->
     <script src="{% static 'js/vendors/js/vendors.min.js' %}"></script>
+
     <script src="{% static 'js/fonts/LivIconsEvo/js/LivIconsEvo.tools.js' %}"></script>
     <script src="{% static 'js/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js' %}"></script>
     <script src="{% static 'js/fonts/LivIconsEvo/js/LivIconsEvo.min.js' %}"></script>
@@ -380,17 +393,25 @@ shrink-to-fit=no">
     <script src="{% static 'js/vendors/js/extensions/dragula.min.js' %}"></script>
     <!-- END: Page Vendor JS-->
 
+    <script src="{% static 'js/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="{% static 'js/vendors/js/pickers/pickadate/picker.date.js"></script>
+
     <!-- BEGIN: Theme JS-->
     <script src="{% static 'js/js/scripts/configs/vertical-menu-light.js' %}"></script>
     <script src="{% static 'js/js/core/app-menu.js' %}"></script>
-    <script src="{% static 'js/js/core/app.js' %}"></script>
+    <script src="{% static 'js/js/core/app.js' %}"></script>    
     <script src="{% static 'js/js/scripts/components.js' %}"></script>
     <script src="{% static 'js/js/scripts/footer.js' %}"></script>
     <!-- END: Theme JS-->
     <script src="{% static 'js/vendors/js/extensions/jquery.steps.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/forms/validation/jquery.validate.min.js' %}"></script>
-    
+    <script src="{% static 'js/vendors/js/jkanban/jkanban.min.js' %}"></script>
+
     <script src="{% static 'js/js/scripts/forms/wizard-steps.js' %}"></script>
+    <script src="{% static 'js/js/scripts/pages/app-kanban.js' %}"></script>
+    <script src="{% static 'js/js/scripts/pages/dashboard-ecommerce.js' %}"></script>
+    <script src="{% static 'js/vendors/js/charts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/extensions/swiper.min.js' %}"></script>
 
    
     {% endblock javascript %}

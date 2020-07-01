@@ -71,19 +71,6 @@ class PropertyCreateView(LoginRequiredMixin, CreateView):
         'buy_price',
         'sell_price',
         'rent',
-        'photo_main',
-        'photo_1',
-        'photo_2',
-        'photo_3',
-        'photo_4',
-        'photo_5',
-        'photo_6',
-        'photo_7',
-        'photo_8',
-        'photo_9',
-        'photo_10',
-        'photo_11',
-        'photo_12',
         'description',
         'is_published',
         'list_date']
@@ -130,19 +117,6 @@ class PropertyUpdateView(LoginRequiredMixin, UpdateView):
         'buy_price',
         'sell_price',
         'rent',
-        'photo_main',
-        'photo_1',
-        'photo_2',
-        'photo_3',
-        'photo_4',
-        'photo_5',
-        'photo_6',
-        'photo_7',
-        'photo_8',
-        'photo_9',
-        'photo_10',
-        'photo_11',
-        'photo_12',
         'description',
         'is_published',
         'list_date'
@@ -155,7 +129,7 @@ class SearchResultsListView(ListView):
     context_object_name = 'property_list'
     template_name = 'properties/search_results.html'
 
-    def get_queryset(self):  
+    def get_queryset(self):
         query = self.request.GET.get('q')
         return Property.objects.filter(
             Q(title__icontains=query) | Q(description__icontains=query)
