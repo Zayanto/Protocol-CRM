@@ -4,6 +4,68 @@
 {% block title %}Properties{% endblock title %}
 
 {% block content %}
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-12 mb-2 mt-1">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h5 class="content-header-title float-left pr-1 mb-0">Basic Card</h5>
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb p-0 mb-0">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#">Card</a>
+                                </li>
+                                <li class="breadcrumb-item active">Basic Card
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Background variants section start -->
+            <section id="bg-variants">
+                
+                <div class="row">
+                    {% for property in property_list %}
+                    <div class="col-xl-4 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row no-gutters">
+                                    {% if property.first_photo %}
+                                    <div class="col-md-12 col-lg-4">
+                                        <img src="{{ property.first_photo.image.url }}" alt="element 01"
+                                            class="h-100 w-100 rounded-left">
+                                    </div>
+                                    {% endif %}
+
+                                    <div class="col-md-12 col-lg-8">
+                                        <div class="card-body">
+                                            
+                                            <p class="card-text text-ellipsis">
+                                                Tiramisu dessert gingerbread topping tiramisu tart bonbon. Powder
+                                                cotton candy sweet roll sugar plum donut jelly-o donut chocolate.
+                                            </p>
+                                            <span><i class="bx bx-heart font-size-large align-middle mr-50"></i> 1
+                                                ARTICLE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </section>
+            <!-- Background variants section end -->
+        </div>
+    </div>
+</div>
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -115,12 +177,13 @@
                                 </fieldset>
                             </div>
                             <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
-                                <button href="{% url 'property:add' %}" class="btn btn-primary btn-block glow  mb-0">Add Property</button>
+                                <button href="{% url 'property:add' %}" class="btn btn-primary btn-block glow  mb-0">Add
+                                    Property</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                
+
                 <div class="users-list-table">
                     <div class="card">
                         <div class="card-content">
@@ -141,21 +204,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for property in property_list %} 
+                                            {% for property in property_list %}
                                             <tr>
                                                 <td>{{ property.title }}</td>
-                                                <td><a href="../../../html/ltr/vertical-menu-template/page-users-view.html">wesley0508</a>
+                                                <td><a
+                                                        href="../../../html/ltr/vertical-menu-template/page-users-view.html">wesley0508</a>
                                                 </td>
                                                 <td>Wesley Oneil</td>
                                                 <td>05/08/2020</td>
                                                 <td>No</td>
                                                 <td>Staff</td>
                                                 <td><span class="badge badge-light-danger">Banned</span></td>
-                                                <td><a href="{{ property.get_absolute_url }}"><i class="bx bx-edit-alt"></i></a></td>
+                                                <td><a href="{{ property.get_absolute_url }}"><i
+                                                            class="bx bx-edit-alt"></i></a></td>
                                             </tr>
                                             {% endfor %}
-                                            
-                                            
+
+
                                         </tbody>
                                     </table>
                                 </div>
