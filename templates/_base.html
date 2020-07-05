@@ -53,6 +53,10 @@ shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/pickers/pickadate/pickadate.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/charts/apexcharts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/extensions/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/iziToast.min.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/extensions/toastr.min.css' %}"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/plugins/extensions/toastr.min.css' %}"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/dashboard-ecommerce.css' %}">
     <!-- BEGIN: Vendor CSS-->
     {% endblock %}
@@ -375,7 +379,7 @@ shrink-to-fit=no">
         </p>
     </footer>
 
-    {% block javascript %}
+
 
     <!-- BEGIN: Vendor JS-->
     <script src="{% static 'js/vendors/js/vendors.min.js' %}"></script>
@@ -404,16 +408,18 @@ shrink-to-fit=no">
     <script src="{% static 'js/js/scripts/footer.js' %}"></script>
     <!-- END: Theme JS-->
     <script src="{% static 'js/vendors/js/extensions/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'js/iziToast.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/forms/validation/jquery.validate.min.js' %}"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
     <script src="{% static 'js/vendors/js/jkanban/jkanban.min.js' %}"></script>
 
-    <script src="{% static 'js/js/scripts/forms/wizard-steps.js' %}"></script>
+    <!-- <script src="{% static 'js/js/scripts/forms/wizard-steps.js' %}"></script> -->
     <script src="{% static 'js/js/scripts/pages/app-kanban.js' %}"></script>
     <script src="{% static 'js/js/scripts/pages/dashboard-ecommerce.js' %}"></script>
     <script src="{% static 'js/vendors/js/charts/apexcharts.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/extensions/swiper.min.js' %}"></script>
 
-   
+    {% block javascript %}
     {% endblock javascript %}
 
 </body>

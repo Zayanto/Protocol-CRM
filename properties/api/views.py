@@ -1,3 +1,5 @@
+import datetime
+
 from rest_framework import generics
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -31,44 +33,47 @@ class StageOpportunityAPIView(APIView):
         
         if not property_id:
             raise exceptions.NotFound('property_id is not given')
-
+        
         try:
             properties = Property.objects.get(id=property_id)
         except Exception as e:
             raise exceptions.NotFound(e)
 
-        obj, _ = StageOpportunity.objects.get_or_create(properties=property_id)
-        obj.owner = obj.owner if not request.POST.get('owner', None) else obj.owner
-        obj.asking_price = obj.asking_price if not request.POST.get('asking_price', None) else obj.asking_price
-        obj.city = obj.city if not request.POST.get('city', None) else obj.city
-        obj.residence_complex = obj.residence_complex if not request.POST.get('residence_complex', None) else obj.residence_complex
-        obj.address = obj.address if not request.POST.get('address', None) else obj.address
-        obj.zipcode = obj.zipcode if not request.POST.get('zipcode', None) else obj.zipcode
-        obj.building = obj.building if not request.POST.get('building', None) else obj.building
-        obj.entrance = obj.entrance if not request.POST.get('entrance', None) else obj.entrance
-        obj.floor = obj.floor if not request.POST.get('floor', None) else obj.floor
-        obj.apartament_number = obj.apartament_number if not request.POST.get('apartament_number', None) else obj.apartament_number
-        obj.reper = obj.reper if not request.POST.get('reper', None) else obj.reper
-        obj.vecinatati = obj.vecinatati if not request.POST.get('vecinatati', None) else obj.vecinatati
-        obj.usable_sqm = obj.usable_sqm if not request.POST.get('usable_sqm', None) else obj.usable_sqm
-        obj.build_sqm = obj.build_sqm if not request.POST.get('build_sqm', None) else obj.build_sqm
-        obj.destination = obj.destination if not request.POST.get('destination', None) else obj.destination
-        obj.layout = obj.layout if not request.POST.get('layout', None) else obj.layout
-        obj.comfort_type = obj.comfort_type if not request.POST.get('comfort_type', None) else obj.comfort_type
-        obj.interior_state = obj.interior_state if not request.POST.get('interior_state', None) else obj.interior_state
-        obj.number_of_rooms = obj.number_of_rooms if not request.POST.get('number_of_rooms', None) else obj.number_of_rooms
-        obj.bedrooms = obj.bedrooms if not request.POST.get('bedrooms', None) else obj.bedrooms
-        obj.kitchen = obj.kitchen if not request.POST.get('kitchen', None) else obj.kitchen
-        obj.bathrooms = obj.bathrooms if not request.POST.get('bathrooms', None) else obj.bathrooms
-        obj.balcony = obj.balcony if not request.POST.get('balcony', None) else obj.balcony
-        obj.garage = obj.garage if not request.POST.get('garage', None) else obj.garage
-        obj.building_type = obj.building_type if not request.POST.get('building_type', None) else obj.building_type
-        obj.building_construction_date = obj.building_construction_date if not request.POST.get('building_construction_date', None) else obj.building_construction_date
-        obj.basement = obj.basement if not request.POST.get('basement', None) else obj.basement
-        obj.potential_rent = obj.potential_rent if not request.POST.get('potential_rent', None) else obj.potential_rent
-        obj.description = obj.description if not request.POST.get('description', None) else obj.description
-        obj.save()
+        print(request.POST.get('property-balcony', None))
 
+        obj, _ = StageOpportunity.objects.get_or_create(properties=properties)
+        obj.owner = obj.owner if not request.POST.get('property-owner', None) else request.POST.get('property-owner')
+        obj.asking_price = obj.asking_price if not request.POST.get('property-asking-price', None) else request.POST.get('property-asking-price')
+        obj.city = obj.city if not request.POST.get('property-city', None) else request.POST.get('property-city')
+        obj.residence_complex = obj.residence_complex if not request.POST.get('property-residence-complex', None) else request.POST.get('property-residence-complex')
+        obj.address = obj.address if not request.POST.get('property-address', None) else request.POST.get('property-address')
+        obj.zipcode = obj.zipcode if not request.POST.get('property-zipcode', None) else request.POST.get('property-zipcode')
+        obj.building = obj.building if not request.POST.get('property-building', None) else request.POST.get('property-building')
+        obj.entrance = obj.entrance if not request.POST.get('property-entrance', None) else request.POST.get('property-entrance')
+        obj.floor = obj.floor if not request.POST.get('property-floor', None) else request.POST.get('property-floor')
+        obj.apartament_number = obj.apartament_number if not request.POST.get('property-apartament-number', None) else request.POST.get('property-apartament-number')
+        obj.reper = obj.reper if not request.POST.get('property-reper', None) else request.POST.get('property-reper')
+        obj.vecinatati = obj.vecinatati if not request.POST.get('property-vecinatati', None) else request.POST.get('property-vecinatati')
+        obj.usable_sqm = obj.usable_sqm if not request.POST.get('property-usable_sqm', None) else request.POST.get('property-usable_sqm')
+        obj.build_sqm = obj.build_sqm if not request.POST.get('property-build-sqm', None) else request.POST.get('property-build-sqm')
+        obj.destination = obj.destination if not request.POST.get('property-destination', None) else request.POST.get('property-destination')
+        obj.layout = obj.layout if not request.POST.get('property-layout', None) else request.POST.get('property-layout')
+        obj.comfort_type = obj.comfort_type if not request.POST.get('property-comfort-type', None) else request.POST.get('property-comfort-type')
+        obj.interior_state = obj.interior_state if not request.POST.get('property-interior-state', None) else request.POST.get('property-interior-state')
+        obj.number_of_rooms = obj.number_of_rooms if not request.POST.get('property-number-of-rooms', None) else request.POST.get('property-number-of-rooms')
+        obj.bedrooms = obj.bedrooms if not request.POST.get('property-bedrooms', None) else request.POST.get('property-bedrooms')
+        obj.kitchen = obj.kitchen if not request.POST.get('property-kitchen', None) else request.POST.get('property-kitchen')
+        obj.bathrooms = obj.bathrooms if not request.POST.get('property-bathrooms', None) else request.POST.get('property-bathrooms')
+        obj.balcony = False if not request.POST.get('property-balcony', None) else True
+        obj.garage = False if not request.POST.get('property-garage', None) else True
+        obj.basement = False if not request.POST.get('property-basement', None) else True
+        obj.building_type = obj.building_type if not request.POST.get('property-building-type', None) else request.POST.get('property-building-type')
+        obj.building_construction_date = obj.building_construction_date if not request.POST.get('property-building-construction-date', None) else datetime.strptime(request.POST.get('property-building-construction-date'), '%Y-%m-%d')
+        obj.potential_rent = obj.potential_rent if not request.POST.get('property-potential-rent', None) else request.POST.get('property-potential-rent')
+        obj.description = obj.description if not request.POST.get('property-opportunity-description', None) else request.POST.get('property-opportunity-description')
+        obj.save()
+        print(request.POST.get('property-building-construction-date', None))
+        print(request.POST.get('property-building-contraction-date', None))
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
     
 
@@ -103,13 +108,13 @@ class StageBuyingAPIView(APIView):
             raise exceptions.NotFound(e)
 
         obj, _ = StageBuying.objects.get_or_create(properties=properties)
-        obj.agent_costs = obj.agent_costs if not request.POST.get('agent_costs', None) else request.POST.get('agent_costs', None)
-        obj.notary_costs = obj.notary_costs if not request.POST.get('notary_costs', None) else request.POST.get('notary_costs', None)
-        obj.legal_costs = obj.legal_costs if not request.POST.get('legal_costs', None) else request.POST.get('legal_costs', None)
-        obj.accountant_costs = obj.accountant_costs if not request.POST.get('accountant_costs', None) else request.POST.get('accountant_costs', None)
-        obj.other_costs = obj.other_costs if not request.POST.get('other_costs', None) else request.POST.get('other_costs', None)
-        obj.buy_price = obj.buy_price if not request.POST.get('buy_price', None) else request.POST.get('buy_price', None)
-        obj.description = obj.description if not request.POST.get('description', None) else request.POST.get('description', None)
+        obj.agent_costs = obj.agent_costs if not request.POST.get('property-agent-costs', None) else request.POST.get('property-agent-costs', None)
+        obj.notary_costs = obj.notary_costs if not request.POST.get('property-notary-costs', None) else request.POST.get('property-notary-costs', None)
+        obj.legal_costs = obj.legal_costs if not request.POST.get('property-legal-costs', None) else request.POST.get('property-legal-costs', None)
+        obj.accountant_costs = obj.accountant_costs if not request.POST.get('property-accountant-costs', None) else request.POST.get('property-accountant-costs', None)
+        obj.other_costs = obj.other_costs if not request.POST.get('property-other-costs', None) else request.POST.get('property-other-costs', None)
+        obj.buy_price = obj.buy_price if not request.POST.get('property-buy-price', None) else request.POST.get('property-buy-price', None)
+        obj.description = obj.description if not request.POST.get('property-buying-description', None) else request.POST.get('property-buying-description', None)
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
@@ -145,7 +150,7 @@ class StageRentAPIView(APIView):
             raise exceptions.NotFound(e)
 
         obj, _ = StageForRent.objects.get_or_create(properties=properties)
-        obj.expected_rent = obj.expected_rent if not request.POST.get('expected_rent', None) else request.POST.get('expected_rent', None)
+        obj.expected_rent = obj.expected_rent if not request.POST.get('property-expected-rent', None) else request.POST.get('property-expected-rent', None)
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
@@ -182,8 +187,8 @@ class StageTenantAPIView(APIView):
             raise exceptions.NotFound(e)
 
         obj, _ = StageWithTenant.objects.get_or_create(properties=properties)
-        obj.actual_rent = obj.actual_rent if not request.POST.get('actual_rent', None) else request.POST.get('actual_rent', None)
-        obj.description = obj.description if not request.POST.get('description', None) else request.POST.get('description', None)
+        obj.actual_rent = obj.actual_rent if not request.POST.get('property-actual-rent', None) else request.POST.get('property-actual-rent', None)
+        obj.description = obj.description if not request.POST.get('property-tenant-description', None) else request.POST.get('property-tenant-description', None)
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
