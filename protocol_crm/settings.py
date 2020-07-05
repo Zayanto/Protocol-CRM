@@ -59,20 +59,20 @@ INSTALLED_APPS = [
 ]
 
 # django-allauth config
-SITE_ID = 1  
-ACCOUNT_SESSION_REMEMBER = True  
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  
-ACCOUNT_USERNAME_REQUIRED = False  
-ACCOUNT_AUTHENTICATION_METHOD = 'email'  
-ACCOUNT_EMAIL_REQUIRED = True  
-ACCOUNT_UNIQUE_EMAIL = True  
+SITE_ID = 1
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',  
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'  
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,12 +84,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bookstore_project.urls'
+ROOT_URLCONF = 'protocol_crm.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,7 +102,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bookstore_project.wsgi.application'
+WSGI_APPLICATION = 'protocol_crm.wsgi.application'
 
 
 # Database
@@ -169,7 +169,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -197,8 +197,8 @@ STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
 
 # TWILIO SETUP BEGIN
-TWILIO_ACCOUNT_SID='AC6c42431e52233421a2c7083c57781ec5'
-TWILIO_AUTH_TOKEN='1cea2c50661a7337d8091877e07549c4'
+TWILIO_ACCOUNT_SID = 'AC6c42431e52233421a2c7083c57781ec5'
+TWILIO_AUTH_TOKEN = '1cea2c50661a7337d8091877e07549c4'
 # TWILIO SETUP END
 
 # AWS S3 SETUP BEGIN
