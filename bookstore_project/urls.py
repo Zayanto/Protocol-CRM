@@ -15,7 +15,6 @@ urlpatterns = [
     # Local apps
     path('accounts/', include('users.urls')),
     path('', include('pages.urls')),
-    path('books/', include('books.urls')),
     path('orders/', include('orders.urls')),
     path('properties/', include('properties.urls')),
     path('tenants/', include('tenants.urls')),

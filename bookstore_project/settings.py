@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     # Local Apps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
-    'books.apps.BooksConfig',
     'orders.apps.OrdersConfig',
     'properties.apps.PropertiesConfig',
     'tenants.apps.TenantsConfig',
