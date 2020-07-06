@@ -4,134 +4,6 @@
 {% block title %}Properties{% endblock title %}
 
 {% block content %}
-<div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="content-wrapper">
-        <div class="content-header row">
-            <div class="content-header-left col-12 mb-2 mt-1">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h5 class="content-header-title float-left pr-1 mb-0">Basic Card</h5>
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb p-0 mb-0">
-                                <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#">Card</a>
-                                </li>
-                                <li class="breadcrumb-item active">Basic Card
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content-body">
-            <!-- Background variants section start -->
-            <section id="bg-variants">
-                
-                <div class="row">
-                    {% for property in property_list %}
-                    <div class="col-xl-4 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row no-gutters">
-                                    {% if property.first_photo %}
-                                    <div class="col-md-12 col-lg-4">
-                                        <img src="{{ property.first_photo.image.url }}" alt="element 01"
-                                            class="h-100 w-100 rounded-left">
-                                    </div>
-                                    {% endif %}
-
-                                    <div class="col-md-12 col-lg-8">
-                                        <div class="card-body">
-                                            
-                                            <p class="card-text text-ellipsis">
-                                                Tiramisu dessert gingerbread topping tiramisu tart bonbon. Powder
-                                                cotton candy sweet roll sugar plum donut jelly-o donut chocolate.
-                                            </p>
-                                            <span><i class="bx bx-heart font-size-large align-middle mr-50"></i> 1
-                                                ARTICLE</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-            </section>
-            <!-- Background variants section end -->
-        </div>
-    </div>
-</div>
-
-
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Widgets</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Widgets</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <section class="content">
-
-        <div class="card card-solid">
-            <div class="card-body pb-0">
-                <div class="row d-flex align-items-stretch">
-
-                    {% for property in property_list %}
-                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                {{ property.title }}
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="lead"><b>{{ property.address }} {{ property.street_number }}</b></h2>
-                                        <p class="text-muted text-sm"><b>No. Rooms: </b> {{ property.rooms }} </p>
-                                        <p class="text-muted text-sm"><b>Rent Price: </b> {{ property.rent }} </p>
-                                        <p class="text-muted text-sm"><b>Listing Date: </b> {{ property.list_date}} </p>
-
-                                    </div>
-                                    {% if property.first_photo %}
-                                    <div class="col-5 text-center">
-                                        <img src="{{ property.first_photo.image.url }}" alt="user-avatar"
-                                            class="img img-fluid">
-                                    </div>
-                                    {% endif %}
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm bg-teal">
-                                        <i class="fas fa-comments"></i>
-                                    </a>
-                                    <a href="{{ property.get_absolute_url }}" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i> View Details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -177,8 +49,10 @@
                                 </fieldset>
                             </div>
                             <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
-                                <button href="{% url 'property:add' %}" class="btn btn-primary btn-block glow  mb-0">Add
-                                    Property</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalScrollable">
+                                    Add New Property
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -231,9 +105,348 @@
                 </div>
             </section>
             <!-- users list ends -->
+
+            
+
+            <!--scrolling content Modal -->
+            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">Create a new property</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-8">
+                                    <div class="form-group">
+                                        <label for="property-address">Address </label>
+                                        <input type="text" class="form-control"
+                                            id="property-address" name="property-address"
+                                            value="{% if stage_opportunity.address %} {{stage_opportunity.address}} {% endif %}"
+                                            placeholder="Enter Your Address">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-city">City</label>
+                                        <input type="text" class="form-control" id="property-city"
+                                            name="property-city"
+                                            value="{% if stage_opportunity.city %} {{stage_opportunity.city}} {% endif %}"
+                                            placeholder="Enter Your City">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-zipcode">Zip Code</label>
+                                        <input type="text" class="form-control"
+                                            id="property-zipcode" name="property-zipcode"
+                                            value="{% if stage_opportunity.zipcode %} {{stage_opportunity.zipcode}} {% endif %}"
+                                            placeholder="Enter Your Zip Code">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-owner">Owner</label>
+                                        <input type="text" class="form-control" id="property-owner"
+                                            name="property-owner"
+                                            value="{% if stage_opportunity.owner %} {{stage_opportunity.owner}} {% endif %}"
+                                            placeholder="Enter Your Owner">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-asking-price">Asking price</label>
+                                        <input type="text" class="form-control"
+                                            id="property-asking-price" name="property-asking-price"
+                                            value="{% if stage_opportunity.asking_price %} {{stage_opportunity.asking_price}} {% endif %}"
+                                            placeholder="Enter Your Asking price">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-residence-complex">Residence
+                                            Complex</label>
+                                        <input type="text" class="form-control"
+                                            id="property-residence-complex"
+                                            name="property-residence-complex"
+                                            value="{% if stage_opportunity.residence_complex %} {{stage_opportunity.residence_complex}} {% endif %}"
+                                            placeholder="Enter Your Residence Complex">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-building">Building</label>
+                                        <input type="text" class="form-control"
+                                            id="property-building" name="property-building"
+                                            value="{% if stage_opportunity.building %} {{stage_opportunity.building}} {% endif %}"
+                                            placeholder="Enter Your Building">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-entrance">Entrance</label>
+                                        <input type="text" class="form-control"
+                                            id="property-entrance" name="property-entrance"
+                                            value="{% if stage_opportunity.entrance %} {{stage_opportunity.entrance}} {% endif %}"
+                                            placeholder="Enter Your Entrance">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-floor">Floor</label>
+                                        <input type="text" class="form-control" id="property-floor"
+                                            name="property-floor"
+                                            value="{% if stage_opportunity.floor %} {{stage_opportunity.floor}} {% endif %}"
+                                            placeholder="Enter Your Floor">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-apartment-number">Apartment
+                                            Number</label>
+                                        <input type="text" class="form-control"
+                                            id="property-apartment-number"
+                                            name="property-apartment-number"
+                                            value="{% if stage_opportunity.apartament_number %} {{stage_opportunity.apartament_number}} {% endif %}"
+                                            placeholder="Enter Your Apartment Number">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-reper">Reper</label>
+                                        <input type="text" class="form-control" id="property-reper"
+                                            name="property-reper"
+                                            value="{% if stage_opportunity.reper %} {{stage_opportunity.reper}} {% endif %}"
+                                            placeholder="Enter Your Reper">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-vecinatati">Vecinatati</label>
+                                        <input type="text" class="form-control"
+                                            id="property-vecinatati" name="property-vecinatati"
+                                            value="{% if stage_opportunity.vecinatati %} {{stage_opportunity.vecinatati}} {% endif %}"
+                                            placeholder="Enter Your Vecinatati">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-usable-sqm">Usable Sqm</label>
+                                        <input type="number" step="0.01" min="0"
+                                            class="form-control" id="property-usable-sqm"
+                                            name="property-usable-sqm"
+                                            value="{% if stage_opportunity.usable_sqm %} {{stage_opportunity.usable_sqm}} {% endif %}"
+                                            placeholder="Enter Your Usable Sqm">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-build-sqm">Build Sqm</label>
+                                        <input type="number" step="0.01" min="0"
+                                            class="form-control" id="property-build-sqm"
+                                            name="property-build-sqm"
+                                            value="{% if stage_opportunity.build_sqm %} {{stage_opportunity.build_sqm}} {% endif %}"
+                                            placeholder="Enter Your Build Sqm">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-destination">Destination</label>
+                                        <input type="text" class="form-control"
+                                            id="property-destination" name="property-destination"
+                                            value="{% if stage_opportunity.destination %} {{stage_opportunity.destination}} {% endif %}"
+                                            placeholder="Enter Your Destination">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-layout">Layout</label>
+                                        <input type="text" class="form-control" id="property-layout"
+                                            name="property-layout"
+                                            value="{% if stage_opportunity.layout %} {{stage_opportunity.layout}} {% endif %}"
+                                            placeholder="Enter Your Layout">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-comfort-type">Comfort Type</label>
+                                        <input type="text" class="form-control"
+                                            id="property-comfort-type" name="property-comfort-type"
+                                            value="{% if stage_opportunity.comfort_type %} {{stage_opportunity.comfort_type}} {% endif %}"
+                                            placeholder="Enter Your Comfort Type">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-interior-state">Interior State</label>
+                                        <input type="text" class="form-control"
+                                            id="property-interior-state"
+                                            name="property-interior-state"
+                                            value="{% if stage_opportunity.interior_state %} {{stage_opportunity.interior_state}} {% endif %}"
+                                            placeholder="Enter Your Interior State">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-no-of-rooms">Number of Rooms</label>
+                                        <input type="number" step="1" min="0" class="form-control"
+                                            id="property-no-of-rooms" name="property-no-of-rooms"
+                                            value="{% if stage_opportunity.number_of_rooms %} {{stage_opportunity.number_of_rooms}} {% endif %}"
+                                            placeholder="Enter Your Number of Rooms">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-no-of-beds">Bedrooms</label>
+                                        <input type="number" step="1" min="0" class="form-control"
+                                            id="property-no-of-beds" name="property-no-of-beds"
+                                            value="{% if stage_opportunity.bedrooms %} {{stage_opportunity.bedrooms}} {% endif %}"
+                                            placeholder="Enter Your Bedrooms">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-no-of-kitchen">Kitchen</label>
+                                        <input type="number" step="1" min="0" class="form-control"
+                                            id="property-no-of-kitchen"
+                                            name="property-no-of-kitchen"
+                                            value="{% if stage_opportunity.kitchen %} {{stage_opportunity.kitchen}} {% endif %}"
+                                            placeholder="Enter Your Kitchen">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-no-of-bathrooms">Bathrooms</label>
+                                        <input type="number" step="1" min="0" class="form-control"
+                                            id="property-no-of-bathrooms"
+                                            name="property-no-of-bathrooms"
+                                            value="{% if stage_opportunity.bathrooms %} {{stage_opportunity.bathrooms}} {% endif %}"
+                                            placeholder="Enter Your Bathrooms">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-building-type">Building Type</label>
+                                        <input type="text" class="form-control"
+                                            id="property-building-type"
+                                            name="property-building-type"
+                                            value="{% if stage_opportunity.building_type %} {{stage_opportunity.building_type}} {% endif %}"
+                                            placeholder="Enter Your Building Type">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-building-construction-date">Building
+                                            Construction Date</label>
+                                        <input type="date" class="form-control"
+                                            id="property-building-construction-date"
+                                            name="property-building-construction-date"
+                                            value="{% if stage_opportunity.get_building_construction_date %} {{stage_opportunity.get_building_construction_date}} {% endif %}"
+                                            placeholder="Enter Your Building Construction Date">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label
+                                            for="property-opportunity-description">Description</label>
+                                        <input type="text" class="form-control"
+                                            id="property-opportunity-description"
+                                            name="property-opportunity-description"
+                                            value="{% if stage_opportunity.description %} {{stage_opportunity.description}} {% endif %}"
+                                            placeholder="Enter Your Description">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="form-group">
+                                        <label for="property-potential-rent">Potential Rent</label>
+                                        <div class="input-group mb-0">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"
+                                                    id="basic-addon1">$</span>
+                                            </div>
+                                            <input type="number" step="0.01" min="0"
+                                                class="form-control" id="property-potential-rent"
+                                                name="property-potential-rent"
+                                                placeholder="Enter Your Potential Rent"
+                                                aria-label="Potential Rent"
+                                                aria-describedby="basic-addon1"
+                                                value="{% if stage_opportunity.potential_rent %} {{stage_opportunity.potential_rent}} {% endif %}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="mr-2">Others:</label>
+                                        <div class="c-inputs-stacked">
+                                            <div class="d-inline-block mr-2">
+                                                <fieldset>
+                                                    <div class="checkbox pb-1">
+                                                        <input type="checkbox"
+                                                            class="checkbox__input" id="balcony"
+                                                            name="property-balcony"
+                                                            {% if stage_opportunity.balcony %}
+                                                            checked {% endif %}>
+                                                        <label for="balcony">Balcony</label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="d-inline-block mr-2">
+                                                <fieldset>
+                                                    <div class="checkbox pb-1">
+                                                        <input type="checkbox"
+                                                            class="checkbox__input" id="garage"
+                                                            name="property-garage"
+                                                            {% if stage_opportunity.garage %}
+                                                            checked {% endif %}>
+                                                        <label for="garage">Garage</label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="d-inline-block mr-2">
+                                                <fieldset>
+                                                    <div class="checkbox pb-1">
+                                                        <input type="checkbox"
+                                                            class="checkbox__input" id="basement"
+                                                            name="property-basement"
+                                                            {% if stage_opportunity.basement %}
+                                                            checked {% endif %}>
+                                                        <label for="basement">Basement</label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                                <i class="bx bx-x d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Close</span>
+                            </button>
+                            <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Accept</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
         </div>
     </div>
 </div>
+</div>
 <!-- END: Content-->
+
+
 
 {% endblock content %}

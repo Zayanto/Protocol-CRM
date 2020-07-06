@@ -6,7 +6,7 @@ from datetime import datetime
 from django.urls import reverse
 from django.conf import settings
 from django.urls import reverse
-from django.contrib.auth import get_user_model  
+from django.contrib.auth import get_user_model
 
 
 class Owner(models.Model):
@@ -17,7 +17,13 @@ class Owner(models.Model):
         editable=False)
 
     title = models.CharField(max_length=2000, null=True)
-    
+
+    class Type(models.TextChoices):
+        INVESTOR = "investor", "Investor"
+        NORMAL = "normal", "Normal"
+
+    owner_type = models.CharField("Type", max_length=20,
+                               choices=Type.choices, default=Type.NORMAL)
 
     def __str__(self):
         return self.title

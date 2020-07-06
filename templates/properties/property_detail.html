@@ -23,7 +23,7 @@
             <section class="page-user-profile">
                 <div class="row">
                     <div class="col-12">
-                  
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tab-content">
@@ -363,7 +363,7 @@
                                             <!-- step 1 -->
                                             <h3>
                                                 <span class="fonticon-wrap mr-1">
-                                                    
+
                                                 </span>
                                                 <span class="icon-title">
                                                     <span class="d-block">Opportunity Stage</span>
@@ -378,175 +378,239 @@
                                                     <div class="col-sm-12 col-md-8">
                                                         <div class="form-group">
                                                             <label for="property-address">Address </label>
-                                                            <input type="text" class="form-control" id="property-address" name="property-address" value="{% if stage_opportunity.address %} {{stage_opportunity.address}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-address" name="property-address"
+                                                                value="{% if stage_opportunity.address %} {{stage_opportunity.address}} {% endif %}"
                                                                 placeholder="Enter Your Address">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-city">City</label>
-                                                            <input type="text" class="form-control" id="property-city" name="property-city" value="{% if stage_opportunity.city %} {{stage_opportunity.city}} {% endif %}"
+                                                            <input type="text" class="form-control" id="property-city"
+                                                                name="property-city"
+                                                                value="{% if stage_opportunity.city %} {{stage_opportunity.city}} {% endif %}"
                                                                 placeholder="Enter Your City">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-zipcode">Zip Code</label>
-                                                            <input type="text" class="form-control" id="property-zipcode" name="property-zipcode" value="{% if stage_opportunity.zipcode %} {{stage_opportunity.zipcode}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-zipcode" name="property-zipcode"
+                                                                value="{% if stage_opportunity.zipcode %} {{stage_opportunity.zipcode}} {% endif %}"
                                                                 placeholder="Enter Your Zip Code">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-owner">Owner</label>
-                                                            <input type="text" class="form-control" id="property-owner" name="property-owner" value="{% if stage_opportunity.owner %} {{stage_opportunity.owner}} {% endif %}"
+                                                            <input type="text" class="form-control" id="property-owner"
+                                                                name="property-owner"
+                                                                value="{% if stage_opportunity.owner %} {{stage_opportunity.owner}} {% endif %}"
                                                                 placeholder="Enter Your Owner">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-asking-price">Asking price</label>
-                                                            <input type="text" class="form-control" id="property-asking-price" name="property-asking-price" value="{% if stage_opportunity.asking_price %} {{stage_opportunity.asking_price}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-asking-price" name="property-asking-price"
+                                                                value="{% if stage_opportunity.asking_price %} {{stage_opportunity.asking_price}} {% endif %}"
                                                                 placeholder="Enter Your Asking price">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
-                                                            <label for="property-residence-complex">Residence Complex</label>
-                                                            <input type="text" class="form-control" id="property-residence-complex" name="property-residence-complex" value="{% if stage_opportunity.residence_complex %} {{stage_opportunity.residence_complex}} {% endif %}"
+                                                            <label for="property-residence-complex">Residence
+                                                                Complex</label>
+                                                            <input type="text" class="form-control"
+                                                                id="property-residence-complex"
+                                                                name="property-residence-complex"
+                                                                value="{% if stage_opportunity.residence_complex %} {{stage_opportunity.residence_complex}} {% endif %}"
                                                                 placeholder="Enter Your Residence Complex">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-building">Building</label>
-                                                            <input type="text" class="form-control" id="property-building" name="property-building" value="{% if stage_opportunity.building %} {{stage_opportunity.building}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-building" name="property-building"
+                                                                value="{% if stage_opportunity.building %} {{stage_opportunity.building}} {% endif %}"
                                                                 placeholder="Enter Your Building">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-entrance">Entrance</label>
-                                                            <input type="text" class="form-control" id="property-entrance" name="property-entrance" value="{% if stage_opportunity.entrance %} {{stage_opportunity.entrance}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-entrance" name="property-entrance"
+                                                                value="{% if stage_opportunity.entrance %} {{stage_opportunity.entrance}} {% endif %}"
                                                                 placeholder="Enter Your Entrance">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-floor">Floor</label>
-                                                            <input type="text" class="form-control" id="property-floor" name="property-floor" value="{% if stage_opportunity.floor %} {{stage_opportunity.floor}} {% endif %}"
+                                                            <input type="text" class="form-control" id="property-floor"
+                                                                name="property-floor"
+                                                                value="{% if stage_opportunity.floor %} {{stage_opportunity.floor}} {% endif %}"
                                                                 placeholder="Enter Your Floor">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
-                                                            <label for="property-apartment-number">Apartment Number</label>
-                                                            <input type="text" class="form-control" id="property-apartment-number" name="property-apartment-number" value="{% if stage_opportunity.apartament_number %} {{stage_opportunity.apartament_number}} {% endif %}"
+                                                            <label for="property-apartment-number">Apartment
+                                                                Number</label>
+                                                            <input type="text" class="form-control"
+                                                                id="property-apartment-number"
+                                                                name="property-apartment-number"
+                                                                value="{% if stage_opportunity.apartament_number %} {{stage_opportunity.apartament_number}} {% endif %}"
                                                                 placeholder="Enter Your Apartment Number">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-reper">Reper</label>
-                                                            <input type="text" class="form-control" id="property-reper" name="property-reper" value="{% if stage_opportunity.reper %} {{stage_opportunity.reper}} {% endif %}"
+                                                            <input type="text" class="form-control" id="property-reper"
+                                                                name="property-reper"
+                                                                value="{% if stage_opportunity.reper %} {{stage_opportunity.reper}} {% endif %}"
                                                                 placeholder="Enter Your Reper">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-vecinatati">Vecinatati</label>
-                                                            <input type="text" class="form-control" id="property-vecinatati" name="property-vecinatati" value="{% if stage_opportunity.vecinatati %} {{stage_opportunity.vecinatati}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-vecinatati" name="property-vecinatati"
+                                                                value="{% if stage_opportunity.vecinatati %} {{stage_opportunity.vecinatati}} {% endif %}"
                                                                 placeholder="Enter Your Vecinatati">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-usable-sqm">Usable Sqm</label>
-                                                            <input type="number" step="0.01" min="0" class="form-control" id="property-usable-sqm" name="property-usable-sqm" value="{% if stage_opportunity.usable_sqm %} {{stage_opportunity.usable_sqm}} {% endif %}"
+                                                            <input type="number" step="0.01" min="0"
+                                                                class="form-control" id="property-usable-sqm"
+                                                                name="property-usable-sqm"
+                                                                value="{% if stage_opportunity.usable_sqm %} {{stage_opportunity.usable_sqm}} {% endif %}"
                                                                 placeholder="Enter Your Usable Sqm">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-build-sqm">Build Sqm</label>
-                                                            <input type="number" step="0.01" min="0" class="form-control" id="property-build-sqm" name="property-build-sqm" value="{% if stage_opportunity.build_sqm %} {{stage_opportunity.build_sqm}} {% endif %}"
+                                                            <input type="number" step="0.01" min="0"
+                                                                class="form-control" id="property-build-sqm"
+                                                                name="property-build-sqm"
+                                                                value="{% if stage_opportunity.build_sqm %} {{stage_opportunity.build_sqm}} {% endif %}"
                                                                 placeholder="Enter Your Build Sqm">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-destination">Destination</label>
-                                                            <input type="text" class="form-control" id="property-destination" name="property-destination" value="{% if stage_opportunity.destination %} {{stage_opportunity.destination}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-destination" name="property-destination"
+                                                                value="{% if stage_opportunity.destination %} {{stage_opportunity.destination}} {% endif %}"
                                                                 placeholder="Enter Your Destination">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-layout">Layout</label>
-                                                            <input type="text" class="form-control" id="property-layout" name="property-layout" value="{% if stage_opportunity.layout %} {{stage_opportunity.layout}} {% endif %}"
+                                                            <input type="text" class="form-control" id="property-layout"
+                                                                name="property-layout"
+                                                                value="{% if stage_opportunity.layout %} {{stage_opportunity.layout}} {% endif %}"
                                                                 placeholder="Enter Your Layout">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-comfort-type">Comfort Type</label>
-                                                            <input type="text" class="form-control" id="property-comfort-type" name="property-comfort-type" value="{% if stage_opportunity.comfort_type %} {{stage_opportunity.comfort_type}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-comfort-type" name="property-comfort-type"
+                                                                value="{% if stage_opportunity.comfort_type %} {{stage_opportunity.comfort_type}} {% endif %}"
                                                                 placeholder="Enter Your Comfort Type">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-interior-state">Interior State</label>
-                                                            <input type="text" class="form-control" id="property-interior-state" name="property-interior-state" value="{% if stage_opportunity.interior_state %} {{stage_opportunity.interior_state}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-interior-state"
+                                                                name="property-interior-state"
+                                                                value="{% if stage_opportunity.interior_state %} {{stage_opportunity.interior_state}} {% endif %}"
                                                                 placeholder="Enter Your Interior State">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-no-of-rooms">Number of Rooms</label>
-                                                            <input type="number" step="1" min="0" class="form-control" id="property-no-of-rooms" name="property-no-of-rooms" value="{% if stage_opportunity.number_of_rooms %} {{stage_opportunity.number_of_rooms}} {% endif %}"
+                                                            <input type="number" step="1" min="0" class="form-control"
+                                                                id="property-no-of-rooms" name="property-no-of-rooms"
+                                                                value="{% if stage_opportunity.number_of_rooms %} {{stage_opportunity.number_of_rooms}} {% endif %}"
                                                                 placeholder="Enter Your Number of Rooms">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-no-of-beds">Bedrooms</label>
-                                                            <input type="number" step="1" min="0" class="form-control" id="property-no-of-beds" name="property-no-of-beds" value="{% if stage_opportunity.bedrooms %} {{stage_opportunity.bedrooms}} {% endif %}"
+                                                            <input type="number" step="1" min="0" class="form-control"
+                                                                id="property-no-of-beds" name="property-no-of-beds"
+                                                                value="{% if stage_opportunity.bedrooms %} {{stage_opportunity.bedrooms}} {% endif %}"
                                                                 placeholder="Enter Your Bedrooms">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-no-of-kitchen">Kitchen</label>
-                                                            <input type="number" step="1" min="0" class="form-control" id="property-no-of-kitchen" name="property-no-of-kitchen" value="{% if stage_opportunity.kitchen %} {{stage_opportunity.kitchen}} {% endif %}"
+                                                            <input type="number" step="1" min="0" class="form-control"
+                                                                id="property-no-of-kitchen"
+                                                                name="property-no-of-kitchen"
+                                                                value="{% if stage_opportunity.kitchen %} {{stage_opportunity.kitchen}} {% endif %}"
                                                                 placeholder="Enter Your Kitchen">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-no-of-bathrooms">Bathrooms</label>
-                                                            <input type="number" step="1" min="0" class="form-control" id="property-no-of-bathrooms" name="property-no-of-bathrooms" value="{% if stage_opportunity.bathrooms %} {{stage_opportunity.bathrooms}} {% endif %}"
+                                                            <input type="number" step="1" min="0" class="form-control"
+                                                                id="property-no-of-bathrooms"
+                                                                name="property-no-of-bathrooms"
+                                                                value="{% if stage_opportunity.bathrooms %} {{stage_opportunity.bathrooms}} {% endif %}"
                                                                 placeholder="Enter Your Bathrooms">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
                                                             <label for="property-building-type">Building Type</label>
-                                                            <input type="text" class="form-control" id="property-building-type" name="property-building-type" value="{% if stage_opportunity.building_type %} {{stage_opportunity.building_type}} {% endif %}"
+                                                            <input type="text" class="form-control"
+                                                                id="property-building-type"
+                                                                name="property-building-type"
+                                                                value="{% if stage_opportunity.building_type %} {{stage_opportunity.building_type}} {% endif %}"
                                                                 placeholder="Enter Your Building Type">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
-                                                            <label for="property-building-construction-date">Building Construction Date</label>
-                                                            <input type="date" class="form-control" id="property-building-construction-date" name="property-building-construction-date" value="{% if stage_opportunity.get_building_construction_date %} {{stage_opportunity.get_building_construction_date}} {% endif %}"
+                                                            <label for="property-building-construction-date">Building
+                                                                Construction Date</label>
+                                                            <input type="date" class="form-control"
+                                                                id="property-building-construction-date"
+                                                                name="property-building-construction-date"
+                                                                value="{% if stage_opportunity.get_building_construction_date %} {{stage_opportunity.get_building_construction_date}} {% endif %}"
                                                                 placeholder="Enter Your Building Construction Date">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
-                                                            <label for="property-opportunity-description">Description</label>
-                                                            <input type="text" class="form-control" id="property-opportunity-description" name="property-opportunity-description" value="{% if stage_opportunity.description %} {{stage_opportunity.description}} {% endif %}"
+                                                            <label
+                                                                for="property-opportunity-description">Description</label>
+                                                            <input type="text" class="form-control"
+                                                                id="property-opportunity-description"
+                                                                name="property-opportunity-description"
+                                                                value="{% if stage_opportunity.description %} {{stage_opportunity.description}} {% endif %}"
                                                                 placeholder="Enter Your Description">
                                                         </div>
                                                     </div>
@@ -555,14 +619,21 @@
                                                             <label for="property-potential-rent">Potential Rent</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="0.01" min="0" class="form-control" id="property-potential-rent" name="property-potential-rent" placeholder="Enter Your Potential Rent" aria-label="Potential Rent" aria-describedby="basic-addon1" value="{% if stage_opportunity.potential_rent %} {{stage_opportunity.potential_rent}} {% endif %}">
+                                                                <input type="number" step="0.01" min="0"
+                                                                    class="form-control" id="property-potential-rent"
+                                                                    name="property-potential-rent"
+                                                                    placeholder="Enter Your Potential Rent"
+                                                                    aria-label="Potential Rent"
+                                                                    aria-describedby="basic-addon1"
+                                                                    value="{% if stage_opportunity.potential_rent %} {{stage_opportunity.potential_rent}} {% endif %}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                   
+
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
@@ -572,12 +643,10 @@
                                                                     <fieldset>
                                                                         <div class="checkbox pb-1">
                                                                             <input type="checkbox"
-                                                                                class="checkbox__input"
-                                                                                id="balcony" name="property-balcony" 
+                                                                                class="checkbox__input" id="balcony"
+                                                                                name="property-balcony"
                                                                                 {% if stage_opportunity.balcony %}
-                                                                                    checked
-                                                                                {% endif %}
-                                                                                    >
+                                                                                checked {% endif %}>
                                                                             <label for="balcony">Balcony</label>
                                                                         </div>
                                                                     </fieldset>
@@ -586,11 +655,10 @@
                                                                     <fieldset>
                                                                         <div class="checkbox pb-1">
                                                                             <input type="checkbox"
-                                                                                class="checkbox__input" id="garage" name="property-garage" 
+                                                                                class="checkbox__input" id="garage"
+                                                                                name="property-garage"
                                                                                 {% if stage_opportunity.garage %}
-                                                                                    checked
-                                                                                {% endif %}
-                                                                                    >
+                                                                                checked {% endif %}>
                                                                             <label for="garage">Garage</label>
                                                                         </div>
                                                                     </fieldset>
@@ -599,11 +667,10 @@
                                                                     <fieldset>
                                                                         <div class="checkbox pb-1">
                                                                             <input type="checkbox"
-                                                                                class="checkbox__input" id="basement" name="property-basement" 
+                                                                                class="checkbox__input" id="basement"
+                                                                                name="property-basement"
                                                                                 {% if stage_opportunity.basement %}
-                                                                                    checked
-                                                                                {% endif %}
-                                                                                    >
+                                                                                checked {% endif %}>
                                                                             <label for="basement">Basement</label>
                                                                         </div>
                                                                     </fieldset>
@@ -617,7 +684,7 @@
                                             <!-- step 2 -->
                                             <h3>
                                                 <span class="fonticon-wrap mr-1">
-                                                    
+
                                                 </span>
                                                 <span class="icon-title">
                                                     <span class="d-block">Buying Stage</span>
@@ -634,9 +701,16 @@
                                                             <label for="property-agent-cost">Agent Costs</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="0.01" min="0" class="form-control" id="property-agent-cost" value="{{stage_buying.agent_cost}}" name="property-agent-cost" placeholder="Enter Your Agent Costs" aria-label="Potential Rent" aria-describedby="basic-addon1">
+                                                                <input type="number" step="0.01" min="0"
+                                                                    class="form-control" id="property-agent-cost"
+                                                                    value="{{stage_buying.agent_cost}}"
+                                                                    name="property-agent-cost"
+                                                                    placeholder="Enter Your Agent Costs"
+                                                                    aria-label="Potential Rent"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -645,9 +719,16 @@
                                                             <label for="property-notary-cost">Notary Costs</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="0.01" min="0" class="form-control" id="property-notary-cost" value="{{stage_buying.notary_cost}}" name="property-notary-cost" placeholder="Enter Your Notary Costs" aria-label="Potential Rent" aria-describedby="basic-addon1">
+                                                                <input type="number" step="0.01" min="0"
+                                                                    class="form-control" id="property-notary-cost"
+                                                                    value="{{stage_buying.notary_cost}}"
+                                                                    name="property-notary-cost"
+                                                                    placeholder="Enter Your Notary Costs"
+                                                                    aria-label="Potential Rent"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -656,20 +737,35 @@
                                                             <label for="property-legal-cost">Legal Costs</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="0.01" min="0" class="form-control" id="property-legal-cost" value="{{stage_buying.legal_cost}}" name="property-legal-cost" placeholder="Enter Your Legal Costs" aria-label="Potential Rent" aria-describedby="basic-addon1">
+                                                                <input type="number" step="0.01" min="0"
+                                                                    class="form-control" id="property-legal-cost"
+                                                                    value="{{stage_buying.legal_cost}}"
+                                                                    name="property-legal-cost"
+                                                                    placeholder="Enter Your Legal Costs"
+                                                                    aria-label="Potential Rent"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="form-group">
-                                                            <label for="property-accountant-cost">Accountant Costs</label>
+                                                            <label for="property-accountant-cost">Accountant
+                                                                Costs</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="0.01" min="0" class="form-control" id="property-accountant-cost" value="{{stage_buying.accountant_cost}}" name="property-accountant-cost" placeholder="Enter Your Accountant Costs" aria-label="Accountant Costs" aria-describedby="basic-addon1">
+                                                                <input type="number" step="0.01" min="0"
+                                                                    class="form-control" id="property-accountant-cost"
+                                                                    value="{{stage_buying.accountant_cost}}"
+                                                                    name="property-accountant-cost"
+                                                                    placeholder="Enter Your Accountant Costs"
+                                                                    aria-label="Accountant Costs"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -678,9 +774,16 @@
                                                             <label for="property-other-cost">Other Costs</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="0.01" min="0" class="form-control" id="property-other-cost" value="{{stage_buying.other_cost}}" name="property-other-cost" placeholder="Enter Your Other Costs" aria-label="Other Costs" aria-describedby="basic-addon1">
+                                                                <input type="number" step="0.01" min="0"
+                                                                    class="form-control" id="property-other-cost"
+                                                                    value="{{stage_buying.other_cost}}"
+                                                                    name="property-other-cost"
+                                                                    placeholder="Enter Your Other Costs"
+                                                                    aria-label="Other Costs"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -689,16 +792,27 @@
                                                             <label for="property-buy-price">Buy Price</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="0.01" min="0" class="form-control" id="property-buy-price" name="property-buy-price" value="{{stage_buying.buy_price}}" placeholder="Enter Your Buy Price" aria-label="Buy Price" aria-describedby="basic-addon1">
+                                                                <input type="number" step="0.01" min="0"
+                                                                    class="form-control" id="property-buy-price"
+                                                                    name="property-buy-price"
+                                                                    value="{{stage_buying.buy_price}}"
+                                                                    placeholder="Enter Your Buy Price"
+                                                                    aria-label="Buy Price"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
                                                             <label for="property-buying-description">Description</label>
-                                                            <textarea type="text" rows="3" class="form-control" id="property-buying-description" name="property-buying-description" value="{{stage_buying.description}}" placeholder="Enter Your Description"></textarea>
+                                                            <textarea type="text" rows="3" class="form-control"
+                                                                id="property-buying-description"
+                                                                name="property-buying-description"
+                                                                value="{{stage_buying.description}}"
+                                                                placeholder="Enter Your Description"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -707,7 +821,7 @@
                                             <!-- section 3 -->
                                             <h3>
                                                 <span class="fonticon-wrap mr-1">
-                                                   
+
                                                 </span>
                                                 <span class="icon-title">
                                                     <span class="d-block">Renovation Stage</span>
@@ -724,9 +838,12 @@
                                                             <label>Delivery Type</label>
                                                             <select name="delivery" class="form-control">
                                                                 <option value="">Select a Service Type Option</option>
-                                                                <option value="overnight" selected="">Overnight Delivery (within 48 hours)</option>
-                                                                <option value="express">Express Delivery (within 5 working days)</option>
-                                                                <option value="basic">Basic Delivery (within 5 - 10 working days)</option>
+                                                                <option value="overnight" selected="">Overnight Delivery
+                                                                    (within 48 hours)</option>
+                                                                <option value="express">Express Delivery (within 5
+                                                                    working days)</option>
+                                                                <option value="basic">Basic Delivery (within 5 - 10
+                                                                    working days)</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -791,11 +908,11 @@
                                             <!-- step 4 -->
                                             <h3>
                                                 <span class="fonticon-wrap mr-1">
-                                             
+
                                                 </span>
                                                 <span class="icon-title">
                                                     <span class="d-block">Stage for Rent & Tenant</span>
-                                                    
+
                                                 </span>
                                             </h3>
                                             <!-- step 4 end-->
@@ -808,9 +925,15 @@
                                                             <label for="property-expected-rent">Expected Rent</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="1" min="0" class="form-control" id="property-expected-rent" value="{{stage_rent.expected_rent}}" name="property-expected-rent" placeholder="Enter Your Rent" aria-label="Rent" aria-describedby="basic-addon1">
+                                                                <input type="number" step="1" min="0"
+                                                                    class="form-control" id="property-expected-rent"
+                                                                    value="{{stage_rent.expected_rent}}"
+                                                                    name="property-expected-rent"
+                                                                    placeholder="Enter Your Rent" aria-label="Rent"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -822,16 +945,27 @@
                                                             <label for="property-actual-rent">Actual Rent</label>
                                                             <div class="input-group mb-0">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">$</span>
                                                                 </div>
-                                                                <input type="number" step="1" min="0" class="form-control" id="property-actual-rent" value="{{stage_tenant.actual_rent}}" name="property-actual-rent" placeholder="Enter Your Actual Rent" aria-label="Actual Rent" aria-describedby="basic-addon1">
+                                                                <input type="number" step="1" min="0"
+                                                                    class="form-control" id="property-actual-rent"
+                                                                    value="{{stage_tenant.actual_rent}}"
+                                                                    name="property-actual-rent"
+                                                                    placeholder="Enter Your Actual Rent"
+                                                                    aria-label="Actual Rent"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="property-tenant-description">Description</label>
-                                                            <textarea type="text" rows="3" class="form-control" id="property-tenant-description" value="{{stage_tenant.description}}" name="property-tenant-description" placeholder="Enter Your Description"></textarea>
+                                                            <textarea type="text" rows="3" class="form-control"
+                                                                id="property-tenant-description"
+                                                                value="{{stage_tenant.description}}"
+                                                                name="property-tenant-description"
+                                                                placeholder="Enter Your Description"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -844,420 +978,240 @@
                         </section>
                         <!-- vertical Wizard end-->
 
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Occupied by Tenant</h5>
+                        <section id="basic-tabs-components">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h4>Property Stages</h4>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Agent Name</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Property Address</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Expected ROI</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>
-                                                            <td>$500</td>
-                                                            <td>7%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                     
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                                                    aria-controls="home" role="tab" aria-selected="true">
+                                                    <i class="bx bx-home align-middle"></i>
+                                                    <span class="align-middle">Buying Stage</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
+                                                    aria-controls="profile" role="tab" aria-selected="false">
+                                                    <i class="bx bx-user align-middle"></i>
+                                                    <span class="align-middle">Renovation Stage</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="about-tab" data-toggle="tab" href="#about"
+                                                    aria-controls="about" role="tab" aria-selected="false">
+                                                    <i class="bx bx-message-square align-middle"></i>
+                                                    <span class="align-middle">Up for Rent</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="about-tab" data-toggle="tab" href="#about"
+                                                    aria-controls="about" role="tab" aria-selected="false">
+                                                    <i class="bx bx-message-square align-middle"></i>
+                                                    <span class="align-middle">With Tenant</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="about-tab" data-toggle="tab" href="#about"
+                                                    aria-controls="about" role="tab" aria-selected="false">
+                                                    <i class="bx bx-message-square align-middle"></i>
+                                                    <span class="align-middle">Messages</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="home" aria-labelledby="home-tab"
+                                                role="tabpanel">
+                                                <fieldset class="pt-0">
+                                                    <h6 class="py-50">Setup Your Buying Stage Details</h6>
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-6 col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="property-agent-cost">Agent Costs</label>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"
+                                                                            id="basic-addon1">$</span>
+                                                                    </div>
+                                                                    <input type="number" step="0.01" min="0"
+                                                                        class="form-control" id="property-agent-cost"
+                                                                        value="{{stage_buying.agent_cost}}"
+                                                                        name="property-agent-cost"
+                                                                        placeholder="Enter Your Agent Costs"
+                                                                        aria-label="Potential Rent"
+                                                                        aria-describedby="basic-addon1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6 col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="property-notary-cost">Notary Costs</label>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"
+                                                                            id="basic-addon1">$</span>
+                                                                    </div>
+                                                                    <input type="number" step="0.01" min="0"
+                                                                        class="form-control" id="property-notary-cost"
+                                                                        value="{{stage_buying.notary_cost}}"
+                                                                        name="property-notary-cost"
+                                                                        placeholder="Enter Your Notary Costs"
+                                                                        aria-label="Potential Rent"
+                                                                        aria-describedby="basic-addon1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6 col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="property-legal-cost">Legal Costs</label>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"
+                                                                            id="basic-addon1">$</span>
+                                                                    </div>
+                                                                    <input type="number" step="0.01" min="0"
+                                                                        class="form-control" id="property-legal-cost"
+                                                                        value="{{stage_buying.legal_cost}}"
+                                                                        name="property-legal-cost"
+                                                                        placeholder="Enter Your Legal Costs"
+                                                                        aria-label="Potential Rent"
+                                                                        aria-describedby="basic-addon1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6 col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="property-accountant-cost">Accountant
+                                                                    Costs</label>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"
+                                                                            id="basic-addon1">$</span>
+                                                                    </div>
+                                                                    <input type="number" step="0.01" min="0"
+                                                                        class="form-control" id="property-accountant-cost"
+                                                                        value="{{stage_buying.accountant_cost}}"
+                                                                        name="property-accountant-cost"
+                                                                        placeholder="Enter Your Accountant Costs"
+                                                                        aria-label="Accountant Costs"
+                                                                        aria-describedby="basic-addon1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6 col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="property-other-cost">Other Costs</label>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"
+                                                                            id="basic-addon1">$</span>
+                                                                    </div>
+                                                                    <input type="number" step="0.01" min="0"
+                                                                        class="form-control" id="property-other-cost"
+                                                                        value="{{stage_buying.other_cost}}"
+                                                                        name="property-other-cost"
+                                                                        placeholder="Enter Your Other Costs"
+                                                                        aria-label="Other Costs"
+                                                                        aria-describedby="basic-addon1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6 col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="property-buy-price">Buy Price</label>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"
+                                                                            id="basic-addon1">$</span>
+                                                                    </div>
+                                                                    <input type="number" step="0.01" min="0"
+                                                                        class="form-control" id="property-buy-price"
+                                                                        name="property-buy-price"
+                                                                        value="{{stage_buying.buy_price}}"
+                                                                        placeholder="Enter Your Buy Price"
+                                                                        aria-label="Buy Price"
+                                                                        aria-describedby="basic-addon1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="property-buying-description">Description</label>
+                                                                <textarea type="text" rows="3" class="form-control"
+                                                                    id="property-buying-description"
+                                                                    name="property-buying-description"
+                                                                    value="{{stage_buying.description}}"
+                                                                    placeholder="Enter Your Description"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
                                             </div>
-
+                                            <div class="tab-pane" id="profile" aria-labelledby="profile-tab"
+                                                role="tabpanel">
+                                                <p>
+                                                    Pudding candy canes sugar plum cookie chocolate cake powder
+                                                    croissant. Carrot cake tiramisu danish
+                                                    candy cake muffin croissant tart dessert. Tiramisu caramels candy
+                                                    canes chocolate cake sweet roll
+                                                    liquorice icing cupcake.
+                                                </p>
+                                            </div>
+                                            <div class="tab-pane" id="about" aria-labelledby="about-tab"
+                                                role="tabpanel">
+                                                <p>
+                                                    Carrot cake dragée chocolate. Lemon drops ice cream wafer gummies
+                                                    dragée. Chocolate bar liquorice
+                                                    cheesecake cookie chupa chups marshmallow oat cake biscuit. Dessert
+                                                    toffee fruitcake ice cream
+                                                    powder
+                                                    tootsie roll cake.
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
+                            </div>
+                        </section>
 
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-header user-profile-header">
+                                    <div class="avatar mr-50 align-top">
+                                        <img src="../../../app-assets/images/portrait/small/avatar-s-18.jpg" alt="avtar images" width="32" height="32">
+                                        <span class="avatar-status-online"></span>
+                                    </div>
+                                    <div class="d-inline-block mt-25">
+                                        <h6 class="mb-0 text-bold-500">Petey Cruiser</h6>
+                                        <p class="text-muted"><small>21 hours ago</small></p>
+                                    </div>
+                                    <i class='cursor-pointer bx bx-dots-vertical-rounded float-right'></i>
+                                </div>
+                                <div class="card-body py-0">
+                                    <p>It's more efficient 🙌 to split each route's components into a separate chunk, and only load them when the route is visited. Frest comes with built-in light and dark layouts, select as per your preference.</p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between pt-1">
+                                    <div class="d-flex align-items-center">
+                                        <i class="cursor-pointer bx bx-heart user-profile-like font-medium-4"></i>
+                                        <p class="mb-0 ml-25">0</p>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="cursor-pointer bx bx-comment-dots font-medium-4"></i>
+                                        <span class="ml-25">0</span>
+                                        <i class="cursor-pointer bx bx-share-alt font-medium-4 ml-1"></i>
+                                        <span class="ml-25">2</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>For Rent</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Agent Name</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Property Address</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Expected ROI</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>
-                                                            <td>$500</td>
-                                                            <td>7%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Under Renovation</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Renovation Budget</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Date Receiving Money</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Date Receiving Key</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Date Renovation Starts</strong>
-                                                            </td>
-                                                            <td class="pb-0">
-                                                                <strong>Investor Name</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>
-                                                            <td>$65.000</td>
-                                                            <td>$500</td>
-                                                            <td>None...</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <span>Progress</span>
-                                            <div class="progress progress-bar-warning progress-sm mb-3">
-                                                <div class="progress-bar progress-label" role="progressbar"
-                                                    aria-valuenow="35" style="width:35%"></div>
-                                            </div>
-
-                                            <div class="table-responsive">
-                                                <table id="users-list-datatable" class="table">
-                                                    <span>Renovation Team 1, 2, 3, 4, 5</span>
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th>Title</th>
-                                                            <th>Amount Euro/RON</th>
-                                                            <th>Team</th>
-                                                            <th>Date</th>
-                                                            <th>Who Paid</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-
-
-                                                            <td>Renov. Team</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Team Ceva aici</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Investor/Galdan</td>
-
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="table-responsive">
-                                                <table id="users-list-datatable" class="table">
-                                                    <span>Renovation Expense Category 1</span>
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th>Title</th>
-                                                            <th>Amount Euro/RON</th>
-                                                            <th>Reason</th>
-                                                            <th>Date</th>
-                                                            <th>Who Paid</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-
-
-                                                            <td>Renov. Team</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Team Ceva aici</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Investor/Galdan</td>
-
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="table-responsive">
-                                                <table id="users-list-datatable" class="table">
-                                                    <span>Renovation Expense Category 2</span>
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th>Title</th>
-                                                            <th>Amount Euro/RON</th>
-                                                            <th>Reason</th>
-                                                            <th>Date</th>
-                                                            <th>Who Paid</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-
-
-                                                            <td>Renov. Team</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Team Ceva aici</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Investor/Galdan</td>
-
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="table-responsive">
-                                                <table id="users-list-datatable" class="table">
-                                                    <span>Renovation Expense Category 3</span>
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th>Title</th>
-                                                            <th>Amount Euro/RON</th>
-                                                            <th>Reason</th>
-                                                            <th>Date</th>
-                                                            <th>Who Paid</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-
-
-                                                            <td>Renov. Team</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Team Ceva aici</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Investor/Galdan</td>
-
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="table-responsive">
-                                                <table id="users-list-datatable" class="table">
-                                                    <span>And so on ... </span>
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th>Title</th>
-                                                            <th>Amount Euro/RON</th>
-                                                            <th>Reason</th>
-                                                            <th>Date</th>
-                                                            <th>Who Paid</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-
-
-                                                            <td>Renov. Team</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Team Ceva aici</td>
-                                                            <td>30/04/2019</td>
-                                                            <td>Investor/Galdan</td>
-
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Buying</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <span>Below will be a timeline with events that happened regarding this
-                                                property. (recent activities) </span>
-
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0 pl-0">
-                                                                <strong>Notary Costs</strong></td>
-                                                            <td class="pb-0 pl-0">
-                                                                <strong>Legal Costs</strong></td>
-
-                                                            <td class="pb-0 pl-0">
-                                                                <strong>Accountant Costs</strong></td>
-                                                            <td class="pb-0 pl-0">
-                                                                <strong>Other Costs</strong>
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong>
-                                                            </td>
-                                                            <td class="pb-0 pl-0">
-                                                                <strong>Expected ROI</strong></td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="pl-0">
-                                                                <div
-                                                                    class="badge badge-light-danger text-bold-500 py-50">
-                                                                    $3.500</div>
-                                                            </td>
-                                                            <td class="pl-0">
-                                                                <div
-                                                                    class="badge badge-light-danger text-bold-500 py-50">
-                                                                    $1.750</div>
-                                                            </td>
-                                                            <td class="pl-0">
-                                                                <div
-                                                                    class="badge badge-light-danger text-bold-500 py-50">
-                                                                    $500</div>
-                                                            </td>
-                                                            <td class="pl-0">
-                                                                <div
-                                                                    class="badge badge-light-danger text-bold-500 py-50">
-                                                                    $250</div>
-                                                            </td>
-                                                            <td>$500</td>
-                                                            <td class="pl-0">
-                                                                <div
-                                                                    class="badge badge-light-warning text-bold-500 py-50">
-                                                                    7%</div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title-details d-flex align-items-center">
-                                    <h5>Opportunity Stage</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pb-0">
-                                                                <strong>Owner Full Name</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Property Address</strong></td>
-
-                                                            <td class="pb-0">
-                                                                <strong>Asking For</strong></td>
-                                                            <td class="pb-0">
-                                                                <strong>Potential Rent</strong>
-                                                            </td>
-                                                            <td class="pb-0">
-                                                                <strong>Expected ROI</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Radu Gafita</td>
-                                                            <td>Str. Alexandru Beldiman Nr. 16</td>
-                                                            <td>$65.000</td>
-                                                            <td>$500</td>
-                                                            <td>7%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
+                       
 
 
                     </div>
@@ -1271,104 +1225,104 @@
 
 
 {% block javascript %}
-    <script>
-        $(".wizard-vertical").steps({
-            headerTag: "h3",
-            bodyTag: "fieldset",
-            transitionEffect: "fade",
-            enableAllSteps: true,
-            stepsOrientation: "vertical",
-            labels: {
-                finish: 'Save'
+<script>
+    $(".wizard-vertical").steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "fade",
+        enableAllSteps: true,
+        stepsOrientation: "vertical",
+        labels: {
+            finish: 'Save'
+        },
+        onFinished: function (event, currentIndex) {
+            $('#stage-form').submit();
+        }
+    });
+    $('#stage-form').submit(function (e) {
+        e.preventDefault();
+        var block_ele = $(this).closest('.card');
+        $(block_ele).block({
+            message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
+            fadeIn: 1000,
+            fadeOut: 1000,
+            // timeout: 2000, //unblock after 2 seconds
+            overlayCSS: {
+                backgroundColor: '#fff',
+                opacity: 0.8,
+                cursor: 'wait'
             },
-            onFinished: function (event, currentIndex) {
-                $('#stage-form').submit();
+            css: {
+                border: 0,
+                padding: '10px 15px',
+                color: '#fff',
+                width: 'auto',
+                backgroundColor: '#333'
             }
         });
-        $('#stage-form').submit(function(e) {
-            e.preventDefault();
-            var block_ele = $(this).closest('.card');
-            $(block_ele).block({
-                message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
-                fadeIn: 1000,
-                fadeOut: 1000,
-                // timeout: 2000, //unblock after 2 seconds
-                overlayCSS: {
-                    backgroundColor: '#fff',
-                    opacity: 0.8,
-                    cursor: 'wait'
+
+        let data = $(this).serialize();
+        data += `&property_id={{property.id}}`;
+        data += `&csrfmiddlewaretoken={{csrf_token}}`;
+
+        all_stages = [
+            {
+                name: 'Stage Opportunity',
+                api_url: `{% url 'property-api:stage-opportunity' %}`,
+            },
+
+            {
+                name: 'Stage Buying',
+                api_url: `{% url 'property-api:stage-buying' %}`,
+            },
+
+            {
+                name: 'Stage Rent',
+                api_url: `{% url 'property-api:stage-rent' %}`,
+            },
+
+            {
+                name: 'Stage Tenant',
+                api_url: `{% url 'property-api:stage-tenant' %}`,
+            },
+
+        ]
+        all_stages.forEach(obj => {
+            $.ajax({
+                url: obj['api_url'],
+                method: 'POST',
+                data: data,
+                success: function (response) {
+                    iziToast.success({
+                        title: 'Saved',
+                        message: `Successfully inserted ${obj['name']} data`,
+                    });
                 },
-                css: {
-                    border: 0,
-                    padding: '10px 15px',
-                    color: '#fff',
-                    width: 'auto',
-                    backgroundColor: '#333'
+                error: function (response) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: `Error occurred while inserting ${obj['name']} data`,
+                    });
+                    console.log(response);
+                },
+                complete: function (response) {
+                    $('#stage-card').unblock()
                 }
-            });
-
-            let data = $(this).serialize();
-            data += `&property_id={{property.id}}`;
-            data += `&csrfmiddlewaretoken={{csrf_token}}`;
-            
-            all_stages = [
-                {
-                    name: 'Stage Opportunity',
-                    api_url: `{% url 'property-api:stage-opportunity' %}`,
-                },
-                
-                {
-                    name: 'Stage Buying',
-                    api_url: `{% url 'property-api:stage-buying' %}`,
-                },
-                
-                {
-                    name: 'Stage Rent',
-                    api_url: `{% url 'property-api:stage-rent' %}`,
-                },
-                
-                {
-                    name: 'Stage Tenant',
-                    api_url: `{% url 'property-api:stage-tenant' %}`,
-                },
-                
-            ]
-            all_stages.forEach(obj => {    
-                $.ajax({
-                    url: obj['api_url'],
-                    method: 'POST',
-                    data: data,
-                    success: function(response) {
-                        iziToast.success({
-                            title: 'Saved',
-                            message: `Successfully inserted ${obj['name']} data`,
-                        });
-                    },
-                    error: function(response) {
-                        iziToast.error({
-                            title: 'Error',
-                            message: `Error occurred while inserting ${obj['name']} data`,
-                        });
-                        console.log(response);
-                    },
-                    complete: function(response) {
-                        $('#stage-card').unblock()
-                    }
-                })
-            });
+            })
         });
+    });
 
-        // Codes of wizard-steps.js
-        // live Icon color change on state change
-        $(document).ready(function () {
-            $(".current").find(".step-icon").addClass("bx bx-time-five");
-            $(".current").find(".fonticon-wrap .livicon-evo").updateLiviconEvo({
-                strokeColor: '#5A8DEE'
-            });
+    // Codes of wizard-steps.js
+    // live Icon color change on state change
+    $(document).ready(function () {
+        $(".current").find(".step-icon").addClass("bx bx-time-five");
+        $(".current").find(".fonticon-wrap .livicon-evo").updateLiviconEvo({
+            strokeColor: '#5A8DEE'
         });
-        // Icon change on state
-        // if click on next button icon change
-        $(".actions [href='#next']").click(function () {
+    });
+    // Icon change on state
+    // if click on next button icon change
+    $(".actions [href='#next']").click(function () {
         $(".done").find(".step-icon").removeClass("bx bx-time-five").addClass("bx bx-check-circle");
         $(".current").find(".step-icon").removeClass("bx bx-check-circle").addClass("bx bx-time-five");
         // live icon color change on next button's on click
@@ -1378,8 +1332,8 @@
         $(".current").prev("li").find(".fonticon-wrap .livicon-evo").updateLiviconEvo({
             strokeColor: '#39DA8A'
         });
-        });
-        $(".actions [href='#previous']").click(function () {
+    });
+    $(".actions [href='#previous']").click(function () {
         // live icon color change on next button's on click
         $(".current").find(".fonticon-wrap .livicon-evo").updateLiviconEvo({
             strokeColor: '#5A8DEE'
@@ -1387,19 +1341,18 @@
         $(".current").next("li").find(".fonticon-wrap .livicon-evo").updateLiviconEvo({
             strokeColor: '#adb5bd'
         });
+    });
+    // if click on  submit   button icon change
+    $(".actions [href='#finish']").click(function () {
+        $(".done").find(".step-icon").removeClass("bx-time-five").addClass("bx bx-check-circle");
+        $(".last.current.done").find(".fonticon-wrap .livicon-evo").updateLiviconEvo({
+            strokeColor: '#39DA8A'
         });
-        // if click on  submit   button icon change
-        $(".actions [href='#finish']").click(function () {
-            $(".done").find(".step-icon").removeClass("bx-time-five").addClass("bx bx-check-circle");
-            $(".last.current.done").find(".fonticon-wrap .livicon-evo").updateLiviconEvo({
-                strokeColor: '#39DA8A'
-            });
-        });
-        // add primary btn class
-        $('.actions a[role="menuitem"]').addClass("btn btn-primary");
-        $('.icon-tab [role="menuitem"]').addClass("glow ");
-        $('.wizard-vertical [role="menuitem"]').removeClass("btn-primary").addClass("btn-light-primary");
+    });
+    // add primary btn class
+    $('.actions a[role="menuitem"]').addClass("btn btn-primary");
+    $('.icon-tab [role="menuitem"]').addClass("glow ");
+    $('.wizard-vertical [role="menuitem"]').removeClass("btn-primary").addClass("btn-light-primary");
 
-    </script>
+</script>
 {% endblock javascript %}
-    
