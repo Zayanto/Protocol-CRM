@@ -1,4 +1,5 @@
 import datetime
+import json
 
 from rest_framework import generics
 from rest_framework.generics import ListAPIView
@@ -72,6 +73,21 @@ class StageOpportunityAPIView(APIView):
         
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    def delete(self, request):
+        property_id = request.headers['property-id']
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        obj = StageOpportunity.objects.get(properties=properties).delete()
+
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
     def post(self, request):
         property_id = request.POST.get('property_id', None)
         
@@ -82,8 +98,6 @@ class StageOpportunityAPIView(APIView):
             properties = Property.objects.get(id=property_id)
         except Exception as e:
             raise exceptions.NotFound(e)
-
-        print(request.POST.get('property-balcony', None))
 
         obj, _ = StageOpportunity.objects.get_or_create(properties=properties)
         obj.owner = obj.owner if not request.POST.get('property-owner', None) else request.POST.get('property-owner')
@@ -116,8 +130,7 @@ class StageOpportunityAPIView(APIView):
         obj.potential_rent = obj.potential_rent if not request.POST.get('property-potential-rent', None) else request.POST.get('property-potential-rent')
         obj.description = obj.description if not request.POST.get('property-opportunity-description', None) else request.POST.get('property-opportunity-description')
         obj.save()
-        print(request.POST.get('property-building-construction-date', None))
-        print(request.POST.get('property-building-contraction-date', None))
+
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
     
 
@@ -140,6 +153,21 @@ class StageBuyingAPIView(APIView):
         
         return Response(serializer.data, status=status.HTTP_200_OK)
     
+    def delete(self, request):
+        property_id = request.headers['property-id']
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        obj= StageBuying.objects.get(properties=properties).delete()
+        
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
     def post(self, request):
         property_id = request.POST.get('property_id', None)
 
@@ -159,7 +187,7 @@ class StageBuyingAPIView(APIView):
         obj.other_costs = obj.other_costs if not request.POST.get('property-other-costs', None) else request.POST.get('property-other-costs', None)
         obj.buy_price = obj.buy_price if not request.POST.get('property-buy-price', None) else request.POST.get('property-buy-price', None)
         obj.description = obj.description if not request.POST.get('property-buying-description', None) else request.POST.get('property-buying-description', None)
-        print(obj.__dict__)
+
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
@@ -183,6 +211,21 @@ class StageRentAPIView(APIView):
         
         return Response(serializer.data, status=status.HTTP_200_OK)
     
+    def delete(self, request):
+        property_id = request.headers['property-id']
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        obj = StageForRent.objects.get(properties=properties).delete()
+
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
     def post(self, request):
         property_id = request.POST.get('property_id', None)
 
@@ -220,6 +263,20 @@ class StageTenantAPIView(APIView):
         
         return Response(serializer.data, status=status.HTTP_200_OK)
     
+    def delete(self, request):
+        property_id = request.headers['property-id']
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        obj = StageWithTenant.objects.get(properties=properties).delete()
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        
     def post(self, request):
         property_id = request.POST.get('property_id', None)
 

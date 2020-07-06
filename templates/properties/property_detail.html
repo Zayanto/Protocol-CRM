@@ -1757,7 +1757,7 @@
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="buying-stage" aria-labelledby="buying-stage-tab"
                                                 role="tabpanel">
-                                                <form class="form-stage" data-api_url="{% url 'property-api:stage-buying' %}" data-name="Stage Buying" data-reload="true">
+                                                <form class="form-stage" data-api_url="{% url 'property-api:stage-buying' %}" data-name="Buying Stage" data-reload="true">
                                                     <fieldset class="pt-0">
                                                         <h5 class="py-50">Setup Your Buying Stage Details</h5>
                                                         <div class="row">
@@ -1900,7 +1900,7 @@
                                             </div>
                                             <div class="tab-pane" id="rent-stage" aria-labelledby="rent-stage-tab"
                                                 role="tabpanel">
-                                                <form class="form-stage" data-api_url="{% url 'property-api:stage-rent' %}" data-name="Stage Rent" data-reload="true">
+                                                <form class="form-stage" data-api_url="{% url 'property-api:stage-rent' %}" data-name="Rent Stage" data-reload="true">
                                                     <fieldset class="pt-0">
                                                         <h5 class="py-50">Enter your Rent Details</h5>
                                                         <div class="row">
@@ -1930,7 +1930,7 @@
                                             </div>
                                             <div class="tab-pane" id="tenant-stage" aria-labelledby="tenant-stage-tab"
                                                 role="tabpanel">
-                                                <form class="form-stage"  data-api_url="{% url 'property-api:stage-tenant' %}" data-name="Stage Tenant" data-reload="true">
+                                                <form class="form-stage"  data-api_url="{% url 'property-api:stage-tenant' %}" data-name="Tenant Stage" data-reload="true">
                                                     <fieldset class="pt-0">
                                                         <h5 class="py-50">Enter your Tenant Details</h5>
                                                         <div class="row">
@@ -1978,16 +1978,37 @@
 
                         <div class="card">
                             <div class="card-content">
-                                <form class="form-stage" data-api_url="{% url 'property-api:stage-opportunity' %}" data-name="Stage Opportunity">
+                                <form class="form-stage" data-api_url="{% url 'property-api:stage-opportunity' %}" data-name="Opportunity Stage">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">Opportunity Stage Example</h6>
                                         </div>
-                                        
-                                        <button class="btn btn-warning edit-button float-right">Edit</button>
-                                        <button class="btn btn-success save-button float-right" style="display: none;">Save</button>
+                                        <div class="float-right">
+                                            <button class="btn btn-warning edit-button">Edit</button>
+                                            <button class="btn btn-success save-button" style="display: none;">Save</button>
+                                            <button class="ml-1 btn btn-danger delete-button float-right" data-toggle="modal" data-target="#delete-1">Delete</button>
+                                        </div>
                                     </div>
                                     <div class="card-body py-0">
+                                        <div class="modal fade" id="delete-1" tabindex="-1" role="dialog" aria-labelledby="delete-1Label" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="delete-1Label">Are you sure? You are deleting Opprtunity Stage</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                  <button type="button" class="btn btn-primary delete-confirm-button" data-dismiss="modal">Yes</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                         <fieldset class="pt-0">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-8">
@@ -2303,16 +2324,38 @@
                         {% if stage_buying %}
                             <div class="card">
                                 <div class="card-content">
-                                    <form class="form-stage" data-api_url="{% url 'property-api:stage-buying' %}" data-name="Stage Buying">
+                                    <form class="form-stage" data-api_url="{% url 'property-api:stage-buying' %}" data-name="Buying Stage">
                                         <div class="card-header user-profile-header">
                                             <div class="d-inline-block mt-25">
                                                 <h6 class="mb-0 text-bold-500">Buying Stage</h6>
                                             </div>
-                                            
-                                            <button class="btn btn-warning edit-button float-right">Edit</button>
-                                            <button class="btn btn-success save-button float-right" style="display: none;">Save</button>
+                                            <div class="float-right">
+                                                <button class="btn btn-warning edit-button">Edit</button>
+                                                <button class="btn btn-success save-button" style="display: none;">Save</button>
+                                                
+                                                <button class="ml-1 btn btn-danger delete-button float-right"  data-toggle="modal" data-target="#delete-2">Delete</button>
+                                            </div>
                                         </div>
                                         <div class="card-body py-0">
+                                            <div class="modal fade" id="delete-2" tabindex="-1" role="dialog" aria-labelledby="delete-2Label" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="delete-2Label">Are you sure? You are deleting Buying Stage</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                      <button type="button" class="btn btn-primary delete-confirm-button" data-dismiss="modal">Yes</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
                                             <fieldset class="pt-0">
                                                 <h5 class="py-50">Setup Your Buying Stage Details</h5>
                                                 <div class="row">
@@ -2445,16 +2488,38 @@
                         {% if stage_rent %}
                             <div class="card">
                                 <div class="card-content">
-                                    <form class="form-stage" data-api_url="{% url 'property-api:stage-rent' %}" data-name="Stage Rent">
+                                    <form class="form-stage" data-api_url="{% url 'property-api:stage-rent' %}" data-name="Rent Stage">
                                         <div class="card-header user-profile-header">
                                             <div class="d-inline-block mt-25">
                                                 <h6 class="mb-0 text-bold-500">Rent Stage</h6>
                                             </div>
-                                            
-                                            <button class="btn btn-warning edit-button float-right">Edit</button>
-                                            <button class="btn btn-success save-button float-right" style="display: none;">Save</button>
+                                            <div class="float-right">
+                                                <button class="btn btn-warning edit-button">Edit</button>
+                                                <button class="btn btn-success save-button" style="display: none;">Save</button>
+                                                <button class="ml-1 btn btn-danger delete-button float-right" data-toggle="modal" data-target="#delete-3">Delete</button>
+                                            </div>
+
                                         </div>
                                         <div class="card-body py-0">
+                                            <div class="modal fade" id="delete-3" tabindex="-1" role="dialog" aria-labelledby="delete-3Label" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="delete-3Label">Are you sure? You are deleting Rent Stage</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                      <button type="button" class="btn btn-primary delete-confirm-button" data-dismiss="modal">Yes</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
                                             <fieldset class="pt-0">
                                                 <h5 class="py-50">Enter your Rent Details</h5>
                                                 <div class="row">
@@ -2488,16 +2553,37 @@
                         {% if stage_tenant %}
                             <div class="card">
                                 <div class="card-content">
-                                    <form class="form-stage"  data-api_url="{% url 'property-api:stage-tenant' %}" data-name="Stage Tenant">
+                                    <form class="form-stage"  data-api_url="{% url 'property-api:stage-tenant' %}" data-name="Tenant Stage">
                                         <div class="card-header user-profile-header">
                                             <div class="d-inline-block mt-25">
                                                 <h6 class="mb-0 text-bold-500">Tenant Stage</h6>
                                             </div>
-                                            
-                                            <button class="btn btn-warning edit-button float-right">Edit</button>
-                                            <button class="btn btn-success save-button float-right" style="display: none;">Save</button>
+                                            <div class="float-right">
+                                                <button class="btn btn-warning edit-button">Edit</button>
+                                                <button class="btn btn-success save-button" style="display: none;">Save</button>
+                                                <button class="ml-1 btn btn-danger delete-button float-right" data-toggle="modal" data-target="#delete-4">Delete</button>
+                                            </div>
                                         </div>
                                         <div class="card-body py-0">
+                                            <div class="modal fade" id="delete-4" tabindex="-1" role="dialog" aria-labelledby="delete-4Label" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="delete-4Label">Are you sure? You are deleting Tenant Stage</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                      <button type="button" class="btn btn-primary delete-confirm-button" data-dismiss="modal">Yes</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
                                             <fieldset class="pt-0">
                                                 <h5 class="py-50">Enter your Tenant Details</h5>
                                                 <div class="row">
@@ -2524,9 +2610,8 @@
                                                             <label for="property-tenant-description">Description</label>
                                                             <textarea type="text" rows="3" class="form-control"
                                                                 id="property-tenant-description"
-                                                                value="{{stage_tenant.description}}"
                                                                 name="property-tenant-description"
-                                                                placeholder="Enter Your Description"></textarea>
+                                                                placeholder="Enter Your Description">{{stage_tenant.description}}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2567,7 +2652,7 @@
     $('.edit-button').click(function(e) {
         e.preventDefault();
         $(this).hide();
-        $(this).siblings('button').show();
+        $(this).siblings('.save-button').show();
         let closest_form = $(this).closest('form');
         $(closest_form).find('input, textarea, select').attr('disabled', false)
     });
@@ -2575,15 +2660,15 @@
     $('.save-button').click(function(e) {
         e.preventDefault();
         $(this).hide();
-        $(this).siblings('button').show();
+        $(this).siblings('.edit-button').show();
         let closest_form = $(this).closest('form');
         $(closest_form).submit();
         $(closest_form).find('input, textarea, select').attr('disabled', 'disabled')
     });
 
-    function block_card(block_ele) {
+    function block_card(block_ele, message="Saving data ...") {
         $(block_ele).block({
-            message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
+            message: `<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; ${message}</div>`,
             fadeIn: 1000,
             fadeOut: 1000,
             // timeout: 2000, //unblock after 2 seconds
@@ -2605,6 +2690,51 @@
         e.preventDefault();
         ajax_save_data($(this));
     });
+    $('.delete-button').click(function(e) {
+        e.preventDefault();
+    });
+    $('.delete-confirm-button').click(function(e) {
+        let closest_form = $(this).closest('form');
+        ajax_delete_stage(closest_form);
+    });
+    function ajax_delete_stage(_this) {
+        var block_ele = $(_this).closest('.card');
+        
+        let api_url = $(_this).data('api_url');
+        let name = $(_this).data('name');
+        var reload = 'true';
+
+        block_card(block_ele, `Deleting ${name}....`);
+
+        $.ajax({
+            url: api_url,
+            method: 'DELETE',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-CSRFToken", `{{csrf_token}}`);
+                xhr.setRequestHeader('property-id', '{{property.id}}');
+                
+            },
+            success: function(response) {
+                iziToast.success({
+                    title: 'Saved',
+                    message: `Deleted ${name}`,
+                });
+                if(reload) {
+                    location.reload();
+                }
+            },
+            error: function (response) {
+                iziToast.error({
+                    title: 'Error',
+                    message: `Error occurred while deleting ${name}`,
+                });
+                console.log(response);
+            },
+            complete: function (response) {
+                $(block_ele).unblock();
+            }
+        })
+    }
 
     function ajax_save_data(_this) {
         var block_ele = $(_this).closest('.card');
