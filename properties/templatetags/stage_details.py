@@ -6,21 +6,32 @@ register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def stage_opportunity(context):
-    stage_opportunity, _ = StageOpportunity.objects.get_or_create(properties=context['property'])
-    print(stage_opportunity)
-    return stage_opportunity
+    try:
+        return StageOpportunity.objects.get(properties=context['property'])
+    except:
+        pass
+    return None
 
 @register.simple_tag(takes_context=True)
 def stage_buying(context):
-    stage_buying, _ = StageOpportunity.objects.get_or_create(properties=context['property'])
-    return stage_buying
+    try:
+        return StageBuying.objects.get(properties=context['property'])
+    except:
+        pass
+    return None
 
 @register.simple_tag(takes_context=True)
 def stage_rent(context):
-    stage_rent, _ = StageOpportunity.objects.get_or_create(properties=context['property'])
-    return stage_rent
+    try:
+        return StageForRent.objects.get(properties=context['property'])
+    except:
+        pass
+    return None
 
 @register.simple_tag(takes_context=True)
 def stage_tenant(context):
-    stage_tenant, _ = StageOpportunity.objects.get_or_create(properties=context['property'])
-    return stage_tenant
+    try:
+        return StageWithTenant.objects.get(properties=context['property'])
+    except:
+        pass
+    return None
