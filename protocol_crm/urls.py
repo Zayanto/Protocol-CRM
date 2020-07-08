@@ -20,6 +20,8 @@ urlpatterns = [
     path('tenants/', include('tenants.urls')),
     path('contracts/', include('contracts.urls')),
     path('owner/', include('owners.urls')),
+    path('payments/', include('payments.urls')),
+    path('emails/', include('emails.urls')),
 
     # API (v1)
     path('api/v1/', include('sms.api.urls')),

@@ -39,12 +39,14 @@ shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/themes/semi-dark-layout.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-todo.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-kanban.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-email.css' %}>
     
     <!-- BEGIN: Assets CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/plugins/forms/wizard.css' %}">
     
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
+    
 
      <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/vendors.min.css' %}">
@@ -352,7 +354,7 @@ shrink-to-fit=no">
                             data-i18n="Email">Contracts</span></a>
                 <li class=" nav-item"><a href="{% url 'owner_list' %}"><span class="menu-title"
                             data-i18n="Email">Owners</span></a>
-                <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">Payments</span></a>
+                <li class=" nav-item"><a href="{% url 'payment_list' %}"><span class="menu-title" data-i18n="Email">Payments</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">SMS Notification</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">Email</span></a>
 
@@ -419,9 +421,10 @@ shrink-to-fit=no">
     <script src="{% static 'js/vendors/js/charts/apexcharts.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/extensions/swiper.min.js' %}"></script>
     <script src="{% static 'js/js/scripts/modal/components-modal.js' %}"></script>
+    <script src="{% static 'js/js/scripts/pages/app-email.js' %}"></script>
     
 
-    {% block javascript %}
+    {% block javascript %}    
     {% endblock javascript %}
 
 </body>
