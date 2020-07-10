@@ -35,6 +35,7 @@ class Property(models.Model):
         ]
 
 class StageOpportunity(models.Model):
+    
     class Destination(models.TextChoices):
         BIROURI = "birouri", "Birouri"
         REZIDENTIAL = "rezidentaial", "Rezidential"

@@ -16,7 +16,7 @@ class CreatePropertyStageOpportunityAPIView(APIView):
         title = request.POST.get('property-title', None)
 
         if not title:
-            return Response({'status': 'error', 'message': 'Property title is not provided'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'status': 'error', 'message': 'Please provide a title for the property!'}, status=status.HTTP_400_BAD_REQUEST)
         
         properties = Property.objects.create(title=title, description=request.POST.get('property-destination', ''))
     

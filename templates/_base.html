@@ -39,13 +39,15 @@ shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/themes/semi-dark-layout.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-todo.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-kanban.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-email.css' %}>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-email.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/plugins/calendars/app-calendar.css' %}">
     
     <!-- BEGIN: Assets CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/plugins/forms/wizard.css' %}">
     
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
+    
     
 
      <!-- BEGIN: Vendor CSS-->
@@ -328,9 +330,9 @@ shrink-to-fit=no">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="#">
                         <div class="brand-logo"><img class="logo"
-                                src="{% static 'css/app-assets/images/logo/logo.png' %}" />
+                                src="{% static 'css/app-assets/images/logo/logo-protocol.png' %}" />
                         </div>
-                        <h2 class="brand-text mb-0">Frest</h2>
+                        
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="bx bx-x d-block d-xl-none font-medium-4 primary"></i><i
@@ -426,6 +428,10 @@ shrink-to-fit=no">
     <script src="{% static 'js/js/tables/datatable/datatables.min.js' %}"></script>
     <script src="{% static 'js/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
     <script src="{% static 'js/js/scripts/pages/app-todo.js' %}"></script>
+    
+    <script src="{% static 'js/js/scripts/extensions/calendar/calendars-data.js' %}"></script>
+    <script src="{% static 'js/js/scripts/extensions/calendar/schedules.js' %}"></script>
+    <script src="{% static 'js/js/scripts/extensions/calendar/app-calendar.js' %}"></script>
     
 
     {% block javascript %}    
