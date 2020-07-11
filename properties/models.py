@@ -132,11 +132,13 @@ class RenovationTeamExpenses(models.Model):
     description = models.TextField(blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
     currency = models.CharField(max_length=200, null=True)
+    account = models.CharField(max_length=200, null=True)
     date = models.DateTimeField(blank=True)
     store = models.CharField(max_length=200, null=True)
     order_date = models.DateTimeField(blank=True)
     delivery_date = models.DateTimeField(blank=True)
     company = models.CharField(max_length=200, null=True)
+    renovation_files = 
         
 
 class StageForRent(models.Model):
@@ -156,4 +158,8 @@ class MonthlyMaintenance(models.Model):
     title = models.CharField(max_length=200, null=True)
     description = models.TextField(blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    currency = models.CharField(max_length=200, null=True)
+    account = models.CharField(max_length=200, null=True)
+    date = models.DateTimeField(blank=True)
+    maintenance_files = 
      
