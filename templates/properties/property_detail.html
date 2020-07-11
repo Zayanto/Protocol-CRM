@@ -56,8 +56,6 @@
 
                                             </div>
 
-
-
                                             <!-- Current tenant & owner-->
                                             <div class="col-lg-8">
                                                 <!-- Current tenant -->
@@ -178,230 +176,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Current Owner -->
-                                            <section id="basic-pills">
-                                                <div class="row match-height">
-                                                    <div class=" col-lg-12">
-                                                        <div class="card bg-transparent shadow-none border-none">
+                                            
 
-                                                            <div class="card-content">
-                                                                <div class="card-body">
-
-                                                                    <ul class="nav nav-pills">
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link" id="home-tab"
-                                                                                data-toggle="pill" href="#home1"
-                                                                                aria-expanded="true">Create Table</a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link" id="home-tab"
-                                                                                data-toggle="pill" href="#home"
-                                                                                aria-expanded="true">Rent</a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link active" id="profile-tab"
-                                                                                data-toggle="pill" href="#profile"
-                                                                                aria-expanded="false">Profile
-                                                                            </a>
-                                                                        </li>
-
-                                                                    </ul>
-                                                                    <div class="tab-content">
-                                                                        <div role="tabpanel" class="tab-pane" id="home1"
-                                                                            aria-labelledby="home-tab"
-                                                                            aria-expanded="true">
-                                                                            <p>
-                                                                                Table creation form will contain: title
-                                                                                (which will also become the pill name),
-                                                                                Number of columns, and data types.
-                                                                            </p>
-                                                                            <p>
-                                                                                Data Types: DateField, CharField,
-                                                                                FileFiled and AmountField.
-                                                                            </p>
-                                                                            <div class="col-12 col-sm-6 col-md-4">
-                                                                                <div class="form-group">
-                                                                                    <label
-                                                                                        for="property-notary-costs">Amount
-                                                                                        Field</label>
-                                                                                    <div class="input-group mb-0">
-                                                                                        <div
-                                                                                            class="input-group-prepend">
-                                                                                            <span
-                                                                                                class="input-group-text"
-                                                                                                id="basic-addon1">$/€</span>
-                                                                                        </div>
-                                                                                        <input type="number" step="0.01"
-                                                                                            min="0" class="form-control"
-                                                                                            id="property-notary-costs"
-                                                                                            value=""
-                                                                                            name="property-notary-costs"
-                                                                                            placeholder="Enter Your Notary Costs"
-                                                                                            aria-label="Potential Rent"
-                                                                                            aria-describedby="basic-addon1">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <p>
-                                                                                The created table will be displayed in
-                                                                                the new pill tab.
-
-                                                                                Wallet system. User can havve multiple
-                                                                                wallets of money that they can manage.
-                                                                                So every amount field showld have a way
-                                                                                to differentiate income from expense.
-                                                                            </p>
-
-
-                                                                        </div>
-                                                                        <div role="tabpanel" class="tab-pane" id="home"
-                                                                            aria-labelledby="home-tab"
-                                                                            aria-expanded="true">
-                                                                            <p>
-                                                                                Display the datatable here with scroll
-                                                                                bar (some of these tables become very
-                                                                                long in time). Here will also be a
-                                                                                button with a pop up form to add to this
-                                                                                table.
-                                                                            </p>
-                                                                            <!-- datatable start -->
-                                                                            <div class="table-responsive">
-                                                                                <table id="table-extended-transactions"
-                                                                                    class="table mb-0">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Month Paid</th>
-                                                                                            <th>Amount</th>
-                                                                                            <th>Date of Payment</th>
-                                                                                            <th>Account that Paid</th>
-                                                                                            <th>Type of Payment</th>
-                                                                                            <th>Document Uploaded</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr>
-                                                                                            <td><i
-                                                                                                    class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                                            </td>
-                                                                                            <td class="text-bold-600">
-                                                                                                Mike Brennan</td>
-                                                                                            <td><img src="../../../app-assets/images/cards/amer-express.png"
-                                                                                                    class="mr-50"
-                                                                                                    alt="card"
-                                                                                                    height="25"
-                                                                                                    width="35"> ****
-                                                                                                7617</td>
-                                                                                            <td>10.09.17</td>
-                                                                                            <td class="text-bold-600">
-                                                                                                $1,934</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td><i
-                                                                                                    class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
-                                                                                            </td>
-                                                                                            <td class="text-bold-600">
-                                                                                                Devin Payne</td>
-                                                                                            <td><img src="../../../app-assets/images/cards/discover.png"
-                                                                                                    class="mr-50"
-                                                                                                    alt="card"
-                                                                                                    height="25"
-                                                                                                    width="35"> ****
-                                                                                                7617</td>
-                                                                                            <td>11.08.18</td>
-                                                                                            <td class="text-bold-600">
-                                                                                                $232</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td><i
-                                                                                                    class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
-                                                                                            </td>
-                                                                                            <td class="text-bold-600">
-                                                                                                Michael Pena</td>
-                                                                                            <td><img src="../../../app-assets/images/cards/mastercard.png"
-                                                                                                    class="mr-50"
-                                                                                                    alt="card"
-                                                                                                    height="25"
-                                                                                                    width="35"> ****
-                                                                                                7617</td>
-                                                                                            <td>11.08.18</td>
-                                                                                            <td class="text-bold-600">
-                                                                                                $564</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td><i
-                                                                                                    class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                                            </td>
-                                                                                            <td class="text-bold-600">
-                                                                                                Devin Payne</td>
-                                                                                            <td><img src="../../../app-assets/images/cards/visa.png"
-                                                                                                    class="mr-50"
-                                                                                                    alt="card"
-                                                                                                    height="25"
-                                                                                                    width="35">
-                                                                                                **** 7617</td>
-                                                                                            <td>11.08.18</td>
-                                                                                            <td class="text-bold-600">
-                                                                                                $232</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td><i
-                                                                                                    class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                                            </td>
-                                                                                            <td class="text-bold-600">
-                                                                                                Michael Pena</td>
-                                                                                            <td><img src="../../../app-assets/images/cards/discover.png"
-                                                                                                    class="mr-50"
-                                                                                                    alt="card"
-                                                                                                    height="25"
-                                                                                                    width="35"> ****
-                                                                                                7617</td>
-                                                                                            <td>11.08.18</td>
-                                                                                            <td class="text-bold-600">
-                                                                                                $564</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td><i
-                                                                                                    class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                                            </td>
-                                                                                            <td class="text-bold-600">
-                                                                                                Michael Pena</td>
-                                                                                            <td><img src="../../../app-assets/images/cards/discover.png"
-                                                                                                    class="mr-50"
-                                                                                                    alt="card"
-                                                                                                    height="25"
-                                                                                                    width="35"> ****
-                                                                                                7617</td>
-                                                                                            <td>11.08.18</td>
-                                                                                            <td class="text-bold-600">
-                                                                                                $564</td>
-                                                                                            <td>link to download doc.
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
-                                                                            <!-- datatable ends -->
-                                                                        </div>
-                                                                        <div class="tab-pane active" id="profile"
-                                                                            role="tabpanel"
-                                                                            aria-labelledby="profile-tab"
-                                                                            aria-expanded="false">
-                                                                            <p>
-                                                                                In the payments Tab I need to see the
-                                                                                following lists: All Income EUR + RON
-                                                                                from all Apartments
-                                                                            </p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </section>
-                                            <!-- Basic Pills end -->
+                                           
 
                                         </div>
                                     </div>
@@ -409,6 +186,192 @@
                             </div>
                         </div>
 
+                        <!-- Current Owner -->
+                        <section id="basic-pills">
+                            <div class="row match-height" >
+                                <div class=" col-lg-12">
+                                    <div class="card bg-transparent shadow-none border">
+
+                                        <div class="card-content">
+                                            <div class="card-body">
+
+                                                <ul class="nav nav-pills">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="home-tab"
+                                                            data-toggle="pill" href="#home1"
+                                                            aria-expanded="true">Create Table</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="home-tab"
+                                                            data-toggle="pill" href="#home"
+                                                            aria-expanded="true">Table Title</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="profile-tab"
+                                                            data-toggle="pill" href="#profile"
+                                                            aria-expanded="false">Table Title
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div role="tabpanel" class="tab-pane" id="home1"
+                                                        aria-labelledby="home-tab"
+                                                        aria-expanded="true">
+                                                        <p>
+                                                            Form to create table here. 
+                                                        </p>
+
+
+                                                    </div>
+                                                    <div role="tabpanel" class="tab-pane" id="home"
+                                                        aria-labelledby="home-tab"
+                                                        aria-expanded="true">
+                                                        <p>
+                                                            Display the datatable here with scroll
+                                                            bar (some of these tables become very
+                                                            long in time). Here will also be a
+                                                            button with a pop up form to add to this
+                                                            table.
+                                                        </p>
+                                                        <!-- datatable start -->
+                                                        <div class="table-responsive">
+                                                            <table id="table-extended-transactions"
+                                                                class="table mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Month Paid</th>
+                                                                        <th>Amount</th>
+                                                                        <th>Date of Payment</th>
+                                                                        <th>Account that Paid</th>
+                                                                        <th>Type of Payment</th>
+                                                                        <th>Document Uploaded</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><i
+                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                        </td>
+                                                                        <td class="text-bold-600">
+                                                                            Mike Brennan</td>
+                                                                        <td><img src="../../../app-assets/images/cards/amer-express.png"
+                                                                                class="mr-50"
+                                                                                alt="card"
+                                                                                height="25"
+                                                                                width="35"> ****
+                                                                            7617</td>
+                                                                        <td>10.09.17</td>
+                                                                        <td class="text-bold-600">
+                                                                            $1,934</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><i
+                                                                                class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
+                                                                        </td>
+                                                                        <td class="text-bold-600">
+                                                                            Devin Payne</td>
+                                                                        <td><img src="../../../app-assets/images/cards/discover.png"
+                                                                                class="mr-50"
+                                                                                alt="card"
+                                                                                height="25"
+                                                                                width="35"> ****
+                                                                            7617</td>
+                                                                        <td>11.08.18</td>
+                                                                        <td class="text-bold-600">
+                                                                            $232</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><i
+                                                                                class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
+                                                                        </td>
+                                                                        <td class="text-bold-600">
+                                                                            Michael Pena</td>
+                                                                        <td><img src="../../../app-assets/images/cards/mastercard.png"
+                                                                                class="mr-50"
+                                                                                alt="card"
+                                                                                height="25"
+                                                                                width="35"> ****
+                                                                            7617</td>
+                                                                        <td>11.08.18</td>
+                                                                        <td class="text-bold-600">
+                                                                            $564</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><i
+                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                        </td>
+                                                                        <td class="text-bold-600">
+                                                                            Devin Payne</td>
+                                                                        <td><img src="../../../app-assets/images/cards/visa.png"
+                                                                                class="mr-50"
+                                                                                alt="card"
+                                                                                height="25"
+                                                                                width="35">
+                                                                            **** 7617</td>
+                                                                        <td>11.08.18</td>
+                                                                        <td class="text-bold-600">
+                                                                            $232</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><i
+                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                        </td>
+                                                                        <td class="text-bold-600">
+                                                                            Michael Pena</td>
+                                                                        <td><img src="../../../app-assets/images/cards/discover.png"
+                                                                                class="mr-50"
+                                                                                alt="card"
+                                                                                height="25"
+                                                                                width="35"> ****
+                                                                            7617</td>
+                                                                        <td>11.08.18</td>
+                                                                        <td class="text-bold-600">
+                                                                            $564</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><i
+                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                        </td>
+                                                                        <td class="text-bold-600">
+                                                                            Michael Pena</td>
+                                                                        <td><img src="../../../app-assets/images/cards/discover.png"
+                                                                                class="mr-50"
+                                                                                alt="card"
+                                                                                height="25"
+                                                                                width="35"> ****
+                                                                            7617</td>
+                                                                        <td>11.08.18</td>
+                                                                        <td class="text-bold-600">
+                                                                            $564</td>
+                                                                        <td>link to download doc.
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!-- datatable ends -->
+                                                    </div>
+                                                    <div class="tab-pane active" id="profile"
+                                                        role="tabpanel"
+                                                        aria-labelledby="profile-tab"
+                                                        aria-expanded="false">
+                                                        <p>
+                                                            In the payments Tab I need to see the
+                                                            following lists: All Income EUR + RON
+                                                            from all Apartments
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                        <!-- Basic Pills end -->
 
                         <section id="basic-tabs-components">
                             <div class="card pb-2">
@@ -597,7 +560,7 @@
                                             </div>
                                             <div class="tab-pane" id="renovation-stage"
                                                 aria-labelledby="renovation-stage-tab" role="tabpanel">
-                                                <!-- Form wizard with step validation section start -->
+
 
                                                 <div class="card-content">
                                                     <div class="card-body">
@@ -605,17 +568,19 @@
                                                         <fieldset class="pt-0">
                                                             <h5 class="py-50">Setup Your Renovation Stage Details</h5>
                                                             <div class="row">
-                                                                
+
                                                                 <div class="col-12 col-sm-6 ">
                                                                     <div class="form-group">
-                                                                        <label for="property-legal-costs">Renovation Budget</label>
+                                                                        <label for="property-legal-costs">Renovation
+                                                                            Budget</label>
                                                                         <div class="input-group mb-0">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text"
                                                                                     id="basic-addon1">$</span>
                                                                             </div>
-                                                                            <input disabled type="number" step="0.01" min="0"
-                                                                                class="form-control" id="property-legal-costs"
+                                                                            <input disabled type="number" step="0.01"
+                                                                                min="0" class="form-control"
+                                                                                id="property-legal-costs"
                                                                                 value="{{stage_buying.legal_costs}}"
                                                                                 name="property-legal-costs"
                                                                                 placeholder="Enter Your Legal Costs"
@@ -626,14 +591,16 @@
                                                                 </div>
                                                                 <div class="col-12 col-sm-6 ">
                                                                     <div class="form-group">
-                                                                        <label for="property-accountant-costs">Date Receiving Money</label>
+                                                                        <label for="property-accountant-costs">Date
+                                                                            Receiving Money</label>
                                                                         <div class="input-group mb-0">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text"
                                                                                     id="basic-addon1">$</span>
                                                                             </div>
-                                                                            <input disabled type="number" step="0.01" min="0"
-                                                                                class="form-control" id="property-accountant-costs"
+                                                                            <input disabled type="number" step="0.01"
+                                                                                min="0" class="form-control"
+                                                                                id="property-accountant-costs"
                                                                                 value="{{stage_buying.accountant_costs}}"
                                                                                 name="property-accountant-costs"
                                                                                 placeholder="Enter Your Accountant Costs"
@@ -644,14 +611,16 @@
                                                                 </div>
                                                                 <div class="col-12 col-sm-6 ">
                                                                     <div class="form-group">
-                                                                        <label for="property-other-costs">Investor</label>
+                                                                        <label
+                                                                            for="property-other-costs">Investor</label>
                                                                         <div class="input-group mb-0">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text"
                                                                                     id="basic-addon1">$</span>
                                                                             </div>
-                                                                            <input disabled type="number" step="0.01" min="0"
-                                                                                class="form-control" id="property-other-costs"
+                                                                            <input disabled type="number" step="0.01"
+                                                                                min="0" class="form-control"
+                                                                                id="property-other-costs"
                                                                                 value="{{stage_buying.other_costs}}"
                                                                                 name="property-other-costs"
                                                                                 placeholder="Enter Your Other Costs"
@@ -662,25 +631,30 @@
                                                                 </div>
                                                                 <div class="col-12 col-sm-6 ">
                                                                     <div class="form-group">
-                                                                        <label for="property-buy-price">Date Receiving Key</label>
+                                                                        <label for="property-buy-price">Date Receiving
+                                                                            Key</label>
                                                                         <div class="input-group mb-0">
                                                                             <div class="input-group-prepend">
                                                                                 <span class="input-group-text"
                                                                                     id="basic-addon1">$</span>
                                                                             </div>
-                                                                            <input disabled type="number" step="0.01" min="0"
-                                                                                class="form-control" id="property-buy-price"
+                                                                            <input disabled type="number" step="0.01"
+                                                                                min="0" class="form-control"
+                                                                                id="property-buy-price"
                                                                                 name="property-buy-price"
                                                                                 value="{{stage_buying.buy_price}}"
                                                                                 placeholder="Enter Your Buy Price"
-                                                                                aria-label="Buy Price" aria-describedby="basic-addon1">
+                                                                                aria-label="Buy Price"
+                                                                                aria-describedby="basic-addon1">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
-                                                                        <label for="property-buying-description">Description</label>
-                                                                        <textarea disabled type="text" rows="3" class="form-control"
+                                                                        <label
+                                                                            for="property-buying-description">Description</label>
+                                                                        <textarea disabled type="text" rows="3"
+                                                                            class="form-control"
                                                                             id="property-buying-description"
                                                                             name="property-buying-description"
                                                                             placeholder="Enter Your Description">#</textarea>
@@ -692,7 +666,7 @@
                                                         <section id="collapsible">
 
                                                             <div class="collapsible">
-                                                                
+
                                                                 <div class="card collapse-header">
                                                                     <div id="headingCollapse3" class="card-header"
                                                                         data-toggle="collapse" role="button"
@@ -701,12 +675,14 @@
                                                                         <span class="collapse-title">
                                                                             Renovation Team
                                                                             <div class="float-right">
-                                                                                <button class="btn btn-icon btn-success edit-button">Create Renovation Team</button>
+                                                                                <button
+                                                                                    class="btn btn-icon btn-success edit-button">Create
+                                                                                    Renovation Team</button>
                                                                             </div>
                                                                         </span>
                                                                     </div>
-                                                                    
-                                                                    
+
+
 
                                                                     <div id="collapse3" role="tabpanel"
                                                                         aria-labelledby="headingCollapse3"
@@ -714,12 +690,20 @@
                                                                         <div class="card-content">
                                                                             <div class="card-body">
 
-                                                                            Form to create table here.
-                                                                            The collapse card with form to create renovation team will always appear at the bottom of all other collapse cards. 
-                                                                            If a renovation team is created, the expenses below will be associated with only that renovation team. 
-                                                                            If a new renovation team is made, the user will create table only for the new renovation team. 
-                                                                            When Create Renovation Team, show Create Renovation Expense collapse card, otherwise don't show
-                                                                                
+                                                                                Form to create table here.
+                                                                                The collapse card with form to create
+                                                                                renovation team will always appear at
+                                                                                the bottom of all other collapse cards.
+                                                                                If a renovation team is created, the
+                                                                                expenses below will be associated with
+                                                                                only that renovation team.
+                                                                                If a new renovation team is made, the
+                                                                                user will create table only for the new
+                                                                                renovation team.
+                                                                                When Create Renovation Team, show Create
+                                                                                Renovation Expense collapse card,
+                                                                                otherwise don't show
+
 
                                                                             </div>
                                                                         </div>
@@ -733,23 +717,27 @@
                                                                         <span class="collapse-title">
                                                                             Renovation Team Expense Table
                                                                             <div class="float-right">
-                                                                                <button class="btn btn-icon btn-success edit-button">Create Expense Table</button>
+                                                                                <button
+                                                                                    class="btn btn-icon btn-success edit-button">Create
+                                                                                    Expense Table</button>
                                                                             </div>
                                                                         </span>
                                                                     </div>
-                                                                    
-                                                                    
+
+
 
                                                                     <div id="collapse3" role="tabpanel"
                                                                         aria-labelledby="headingCollapse3"
                                                                         class="collapse">
                                                                         <div class="card-content">
                                                                             <div class="card-body">
-                                                                                
+
                                                                                 Form to create table here.
-                                                                                After a table was create, create a new collapseblae tab with that table, edit and delete ofc. 
-                                                                                Exmaple below. 
-                                                                                
+                                                                                After a table was create, create a new
+                                                                                collapseblae tab with that table, edit
+                                                                                and delete ofc.
+                                                                                Exmaple below.
+
 
                                                                             </div>
                                                                         </div>
@@ -763,113 +751,185 @@
                                                                         <span class="collapse-title">
                                                                             Table of Expense 1
                                                                             <div class="float-right">
-                                                                                <button class="btn btn-icon btn-warning edit-button">Edit</button>
-                                                                                
-                                                                                <button class="ml-1 btn btn-icon btn-danger delete-button float-right"
-                                                                                    data-toggle="modal" data-target="#delete-1">Delete</button>
+                                                                                <button
+                                                                                    class="btn btn-icon btn-warning edit-button">Edit</button>
+
+                                                                                <button
+                                                                                    class="ml-1 btn btn-icon btn-danger delete-button float-right"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#delete-1">Delete</button>
                                                                             </div>
                                                                         </span>
                                                                     </div>
-                                                                    
-                                                                    
+
+
 
                                                                     <div id="collapse1" role="tabpanel"
                                                                         aria-labelledby="headingCollapse1"
                                                                         class="collapse">
                                                                         <div class="card-content">
                                                                             <div class="card-body">
-                                                                                
-                                                                                        <!-- table Marketing campaigns start -->
-                                                                                        <section id="table-Marketing">
-                                                                                            <div class="card">
-                                                                                    
-                                                                                
-                                                                                                <div class="table-responsive">
-                                                                                                    <!-- table start -->
-                                                                                                    <table id="table-marketing-campaigns" class="table mb-0">
-                                                                                                        <thead>
-                                                                                                            <tr>
-                                                                                                                <th>Title</th>
-                                                                                                                <th>Description</th>
-                                                                                                                <th>Amount +/-</th>
-                                                                                                                <th>Currency</th>
-                                                                                                                <th>Wallet Account</th>
-                                                                                                                <th>Date</th>
-                                                                                                              
-                                                                                                            </tr>
-                                                                                                        </thead>
-                                                                                                        <tbody>
-                                                                                                           
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                    <!-- table ends -->
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </section>
-                                                                                        <!-- table Marketing campaigns ends -->
+
+                                                                                <!-- table Marketing campaigns start -->
+                                                                                <section id="table-Marketing">
+                                                                                    <div class="card">
+
+
+                                                                                        <div class="table-responsive">
+                                                                                            <!-- table start -->
+                                                                                            <table
+                                                                                                id="table-marketing-campaigns"
+                                                                                                class="table mb-0">
+                                                                                                <thead>
+                                                                                                    <tr>
+                                                                                                        <th>Title</th>
+                                                                                                        <th>Description
+                                                                                                        </th>
+                                                                                                        <th>Amount +/-
+                                                                                                        </th>
+                                                                                                        <th>Currency
+                                                                                                        </th>
+                                                                                                        <th>Wallet
+                                                                                                            Account</th>
+                                                                                                        <th>Date</th>
+
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                            <!-- table ends -->
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </section>
+                                                                                <!-- table Marketing campaigns ends -->
 
                                                                             </div>
                                                                         </div>
@@ -883,125 +943,197 @@
                                                                         <span class="collapse-title">
                                                                             Table of Expense 1
                                                                             <div class="float-right">
-                                                                                <button class="btn btn-icon btn-warning edit-button">Edit</button>
-                                                                                
-                                                                                <button class="ml-1 btn btn-icon btn-danger delete-button float-right"
-                                                                                    data-toggle="modal" data-target="#delete-1">Delete</button>
+                                                                                <button
+                                                                                    class="btn btn-icon btn-warning edit-button">Edit</button>
+
+                                                                                <button
+                                                                                    class="ml-1 btn btn-icon btn-danger delete-button float-right"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#delete-1">Delete</button>
                                                                             </div>
                                                                         </span>
                                                                     </div>
-                                                                    
-                                                                    
+
+
 
                                                                     <div id="collapse2" role="tabpanel"
                                                                         aria-labelledby="headingCollapse2"
                                                                         class="collapse">
                                                                         <div class="card-content">
                                                                             <div class="card-body">
-                                                                                
-                                                                                        <!-- table Marketing campaigns start -->
-                                                                                        <section id="table-Marketing">
-                                                                                            <div class="card">
-                                                                                    
-                                                                                
-                                                                                                <div class="table-responsive">
-                                                                                                    <!-- table start -->
-                                                                                                    <table id="table-marketing-campaigns" class="table mb-0">
-                                                                                                        <thead>
-                                                                                                            <tr>
-                                                                                                                <th>Title</th>
-                                                                                                                <th>Description</th>
-                                                                                                                <th>Amount +/-</th>
-                                                                                                                <th>Currency</th>
-                                                                                                                <th>Wallet Account</th>
-                                                                                                                <th>Date</th>
-                                                                                                              
-                                                                                                            </tr>
-                                                                                                        </thead>
-                                                                                                        <tbody>
-                                                                                                           
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td>Title of Payment</td>
-                                                                                                                <td>Some description here about the payment</td>
-                                                                                                                <td>500</td>
-                                                                                                                <td>EUR</td>
-                                                                                                                <td>Wallet Account title here</td>
-                                                                                                                <td>Date Field</td>
-                                                                                                           
-                                                                                                            </tr>
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                    <!-- table ends -->
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </section>
-                                                                                        <!-- table Marketing campaigns ends -->
+
+                                                                                <!-- table Marketing campaigns start -->
+                                                                                <section id="table-Marketing">
+                                                                                    <div class="card">
+
+
+                                                                                        <div class="table-responsive">
+                                                                                            <!-- table start -->
+                                                                                            <table
+                                                                                                id="table-marketing-campaigns"
+                                                                                                class="table mb-0">
+                                                                                                <thead>
+                                                                                                    <tr>
+                                                                                                        <th>Title</th>
+                                                                                                        <th>Description
+                                                                                                        </th>
+                                                                                                        <th>Amount +/-
+                                                                                                        </th>
+                                                                                                        <th>Currency
+                                                                                                        </th>
+                                                                                                        <th>Wallet
+                                                                                                            Account</th>
+                                                                                                        <th>Date</th>
+
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>Title of
+                                                                                                            Payment</td>
+                                                                                                        <td>Some
+                                                                                                            description
+                                                                                                            here about
+                                                                                                            the payment
+                                                                                                        </td>
+                                                                                                        <td>500</td>
+                                                                                                        <td>EUR</td>
+                                                                                                        <td>Wallet
+                                                                                                            Account
+                                                                                                            title here
+                                                                                                        </td>
+                                                                                                        <td>Date Field
+                                                                                                        </td>
+
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                            <!-- table ends -->
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </section>
+                                                                                <!-- table Marketing campaigns ends -->
 
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                               
-                                                               
-                                                                
+
+
+
                                                             </div>
 
-                                                            
-                                                            
+
+
                                                         </section>
                                                         <!-- Collapse end -->
                                                     </div>
