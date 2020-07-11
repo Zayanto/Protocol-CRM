@@ -113,7 +113,7 @@ class StageBuying(models.Model):
     buy_price = models.DecimalField(max_digits=10, decimal_places=1, null=True)
     description = models.TextField(blank=True)
 
-    # User needs to add other costs in the future. So this needs to be dynamic I think.
+
 
 class StageRenovation(models.Model):
 
@@ -122,6 +122,22 @@ class StageRenovation(models.Model):
     date_receiving_money = models.DateTimeField(blank=True)
     date_receiving_key = models.DateTimeField(blank=True)
     description = models.TextField(blank=True)
+
+class RenovationTeam(models.Model):
+    company_name = models.CharField(max_length=200, null=True)
+
+class RenovationTeamExpenses(models.Model):
+    #Expense Table Content
+    title = models.CharField(max_length=200, null=True)
+    description = models.TextField(blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    currency = models.CharField(max_length=200, null=True)
+    date = models.DateTimeField(blank=True)
+    store = models.CharField(max_length=200, null=True)
+    order_date = models.DateTimeField(blank=True)
+    delivery_date = models.DateTimeField(blank=True)
+    company = models.CharField(max_length=200, null=True)
+        
 
 class StageForRent(models.Model):
     properties = models.OneToOneField(Property, on_delete=models.CASCADE, related_name='stage_rent', null=True, blank=True)
@@ -135,3 +151,9 @@ class StageWithTenant(models.Model):
 class PropertyImage(models.Model):
     image = models.ImageField(upload_to='properties/', blank=True)
     _property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
+
+class MonthlyMaintenance(models.Model):
+    title = models.CharField(max_length=200, null=True)
+    description = models.TextField(blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+     
