@@ -138,7 +138,7 @@ class RenovationTeamExpenses(models.Model):
     order_date = models.DateTimeField(blank=True)
     delivery_date = models.DateTimeField(blank=True)
     company = models.CharField(max_length=200, null=True)
-    renovation_files = 
+
         
 
 class StageForRent(models.Model):
@@ -161,5 +161,5 @@ class MonthlyMaintenance(models.Model):
     currency = models.CharField(max_length=200, null=True)
     account = models.CharField(max_length=200, null=True)
     date = models.DateTimeField(blank=True)
-    maintenance_files = 
+ 
      

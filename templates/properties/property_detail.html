@@ -186,192 +186,286 @@
                             </div>
                         </div>
 
-                        <!-- Current Owner -->
-                        <section id="basic-pills">
-                            <div class="row match-height" >
-                                <div class=" col-lg-12">
-                                    <div class="card bg-transparent shadow-none border">
+                        <section id="basic-tabs-components">
+                            <div class="card pb-2">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h4>Monthly Meintenance</h4>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
 
-                                        <div class="card-content">
-                                            <div class="card-body">
-
-                                                <ul class="nav nav-pills">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="home-tab"
-                                                            data-toggle="pill" href="#home1"
-                                                            aria-expanded="true">Create Table</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="home-tab"
-                                                            data-toggle="pill" href="#home"
-                                                            aria-expanded="true">Table Title</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="profile-tab"
-                                                            data-toggle="pill" href="#profile"
-                                                            aria-expanded="false">Table Title
-                                                        </a>
-                                                    </li>
-
-                                                </ul>
-                                                <div class="tab-content">
-                                                    <div role="tabpanel" class="tab-pane" id="home1"
-                                                        aria-labelledby="home-tab"
-                                                        aria-expanded="true">
-                                                        <p>
-                                                            Form to create table here. 
-                                                        </p>
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link {% if stage_buying %} disabled {% else %} active {% endif %}"
+                                                    id="buying-stage-tab" data-toggle="tab" href="#tab1"
+                                                    aria-controls="buying-stage" role="tab" aria-selected="true">
+                                                    <i class="bx bx-home align-middle"></i>
+                                                    <span class="align-middle">Monthly Meintenance Empty</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="renovation-stage-tab" data-toggle="tab"
+                                                    href="#tab2" aria-controls="renovation-stage" role="tab"
+                                                    aria-selected="false">
+                                                    <i class="bx bx-user align-middle"></i>
+                                                    <span class="align-middle">Monthly Meintenance With Tenant 1</span>
+                                                </a>
+                                            </li>
+                                            
+                                           
 
 
-                                                    </div>
-                                                    <div role="tabpanel" class="tab-pane" id="home"
-                                                        aria-labelledby="home-tab"
-                                                        aria-expanded="true">
-                                                        <p>
-                                                            Display the datatable here with scroll
-                                                            bar (some of these tables become very
-                                                            long in time). Here will also be a
-                                                            button with a pop up form to add to this
-                                                            table.
-                                                        </p>
-                                                        <!-- datatable start -->
-                                                        <div class="table-responsive">
-                                                            <table id="table-extended-transactions"
-                                                                class="table mb-0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Month Paid</th>
-                                                                        <th>Amount</th>
-                                                                        <th>Date of Payment</th>
-                                                                        <th>Account that Paid</th>
-                                                                        <th>Type of Payment</th>
-                                                                        <th>Document Uploaded</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td><i
-                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                        </td>
-                                                                        <td class="text-bold-600">
-                                                                            Mike Brennan</td>
-                                                                        <td><img src="../../../app-assets/images/cards/amer-express.png"
-                                                                                class="mr-50"
-                                                                                alt="card"
-                                                                                height="25"
-                                                                                width="35"> ****
-                                                                            7617</td>
-                                                                        <td>10.09.17</td>
-                                                                        <td class="text-bold-600">
-                                                                            $1,934</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><i
-                                                                                class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
-                                                                        </td>
-                                                                        <td class="text-bold-600">
-                                                                            Devin Payne</td>
-                                                                        <td><img src="../../../app-assets/images/cards/discover.png"
-                                                                                class="mr-50"
-                                                                                alt="card"
-                                                                                height="25"
-                                                                                width="35"> ****
-                                                                            7617</td>
-                                                                        <td>11.08.18</td>
-                                                                        <td class="text-bold-600">
-                                                                            $232</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><i
-                                                                                class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
-                                                                        </td>
-                                                                        <td class="text-bold-600">
-                                                                            Michael Pena</td>
-                                                                        <td><img src="../../../app-assets/images/cards/mastercard.png"
-                                                                                class="mr-50"
-                                                                                alt="card"
-                                                                                height="25"
-                                                                                width="35"> ****
-                                                                            7617</td>
-                                                                        <td>11.08.18</td>
-                                                                        <td class="text-bold-600">
-                                                                            $564</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><i
-                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                        </td>
-                                                                        <td class="text-bold-600">
-                                                                            Devin Payne</td>
-                                                                        <td><img src="../../../app-assets/images/cards/visa.png"
-                                                                                class="mr-50"
-                                                                                alt="card"
-                                                                                height="25"
-                                                                                width="35">
-                                                                            **** 7617</td>
-                                                                        <td>11.08.18</td>
-                                                                        <td class="text-bold-600">
-                                                                            $232</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><i
-                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                        </td>
-                                                                        <td class="text-bold-600">
-                                                                            Michael Pena</td>
-                                                                        <td><img src="../../../app-assets/images/cards/discover.png"
-                                                                                class="mr-50"
-                                                                                alt="card"
-                                                                                height="25"
-                                                                                width="35"> ****
-                                                                            7617</td>
-                                                                        <td>11.08.18</td>
-                                                                        <td class="text-bold-600">
-                                                                            $564</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><i
-                                                                                class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
-                                                                        </td>
-                                                                        <td class="text-bold-600">
-                                                                            Michael Pena</td>
-                                                                        <td><img src="../../../app-assets/images/cards/discover.png"
-                                                                                class="mr-50"
-                                                                                alt="card"
-                                                                                height="25"
-                                                                                width="35"> ****
-                                                                            7617</td>
-                                                                        <td>11.08.18</td>
-                                                                        <td class="text-bold-600">
-                                                                            $564</td>
-                                                                        <td>link to download doc.
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab1"
+                                                aria-labelledby="buying-stage-tab" role="tabpanel">
+                                                
+                                                <!-- Monthly Meintenance -->
+                                                <section id="basic-pills">
+                                                    <div class="row match-height" >
+                                                        <div class=" col-lg-12">
+                                                            <div class="card bg-transparent shadow-none border-none">
+
+                                                                <div class="card-content">
+                                                                    <div class="card-body">
+
+                                                                        <ul class="nav nav-pills">
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" id="home-tab"
+                                                                                    data-toggle="pill" href="#home1"
+                                                                                    aria-expanded="true">Create Table</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" id="home-tab"
+                                                                                    data-toggle="pill" href="#home"
+                                                                                    aria-expanded="true">Table Title</a>
+                                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link active" id="profile-tab"
+                                                                                    data-toggle="pill" href="#profile"
+                                                                                    aria-expanded="false">Table Title
+                                                                                </a>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                        <div class="tab-content">
+                                                                            <div role="tabpanel" class="tab-pane" id="home1"
+                                                                                aria-labelledby="home-tab"
+                                                                                aria-expanded="true">
+                                                                                <p>
+                                                                                    Form to create table here. 
+                                                                                </p>
+
+
+                                                                            </div>
+                                                                            <div role="tabpanel" class="tab-pane" id="home"
+                                                                                aria-labelledby="home-tab"
+                                                                                aria-expanded="true">
+                                                                                <p>
+                                                                                    Display the datatable here with scroll
+                                                                                    bar (some of these tables become very
+                                                                                    long in time). Here will also be a
+                                                                                    button with a pop up form to add to this
+                                                                                    table.
+                                                                                </p>
+                                                                                <!-- datatable start -->
+                                                                                <div class="table-responsive">
+                                                                                    <table id="table-extended-transactions"
+                                                                                        class="table mb-0">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th>Title</th>
+                                                                                                <th>Description</th>
+                                                                                                <th>Amount +/-</th>
+                                                                                                <th>Currency</th>
+                                                                                                <th>Wallet Account</th>
+                                                                                                <th>Date</th>
+                                                                                                <th>Document Uploaded</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td><i
+                                                                                                        class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                                                </td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    Mike Brennan</td>
+                                                                                                <td><img src="../../../app-assets/images/cards/amer-express.png"
+                                                                                                        class="mr-50"
+                                                                                                        alt="card"
+                                                                                                        height="25"
+                                                                                                        width="35"> ****
+                                                                                                    7617</td>
+                                                                                                <td>10.09.17</td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    $1,934</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td><i
+                                                                                                        class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
+                                                                                                </td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    Devin Payne</td>
+                                                                                                <td><img src="../../../app-assets/images/cards/discover.png"
+                                                                                                        class="mr-50"
+                                                                                                        alt="card"
+                                                                                                        height="25"
+                                                                                                        width="35"> ****
+                                                                                                    7617</td>
+                                                                                                <td>11.08.18</td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    $232</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td><i
+                                                                                                        class="bx bxs-circle danger font-small-1 mr-50"></i><span>Expired</span>
+                                                                                                </td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    Michael Pena</td>
+                                                                                                <td><img src="../../../app-assets/images/cards/mastercard.png"
+                                                                                                        class="mr-50"
+                                                                                                        alt="card"
+                                                                                                        height="25"
+                                                                                                        width="35"> ****
+                                                                                                    7617</td>
+                                                                                                <td>11.08.18</td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    $564</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td><i
+                                                                                                        class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                                                </td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    Devin Payne</td>
+                                                                                                <td><img src="../../../app-assets/images/cards/visa.png"
+                                                                                                        class="mr-50"
+                                                                                                        alt="card"
+                                                                                                        height="25"
+                                                                                                        width="35">
+                                                                                                    **** 7617</td>
+                                                                                                <td>11.08.18</td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    $232</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td><i
+                                                                                                        class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                                                </td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    Michael Pena</td>
+                                                                                                <td><img src="../../../app-assets/images/cards/discover.png"
+                                                                                                        class="mr-50"
+                                                                                                        alt="card"
+                                                                                                        height="25"
+                                                                                                        width="35"> ****
+                                                                                                    7617</td>
+                                                                                                <td>11.08.18</td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    $564</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td><i
+                                                                                                        class="bx bxs-circle success font-small-1 mr-50"></i><span>Paid</span>
+                                                                                                </td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    Michael Pena</td>
+                                                                                                <td><img src="../../../app-assets/images/cards/discover.png"
+                                                                                                        class="mr-50"
+                                                                                                        alt="card"
+                                                                                                        height="25"
+                                                                                                        width="35"> ****
+                                                                                                    7617</td>
+                                                                                                <td>11.08.18</td>
+                                                                                                <td class="text-bold-600">
+                                                                                                    $564</td>
+                                                                                                <td>link to download doc.
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                                <!-- datatable ends -->
+                                                                            </div>
+                                                                            <div class="tab-pane active" id="profile"
+                                                                                role="tabpanel"
+                                                                                aria-labelledby="profile-tab"
+                                                                                aria-expanded="false">
+                                                                                <p>
+                                                                                    In the payments Tab I need to see the
+                                                                                    following lists: All Income EUR + RON
+                                                                                    from all Apartments
+                                                                                </p>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <!-- datatable ends -->
-                                                    </div>
-                                                    <div class="tab-pane active" id="profile"
-                                                        role="tabpanel"
-                                                        aria-labelledby="profile-tab"
-                                                        aria-expanded="false">
-                                                        <p>
-                                                            In the payments Tab I need to see the
-                                                            following lists: All Income EUR + RON
-                                                            from all Apartments
-                                                        </p>
-                                                    </div>
 
-                                                </div>
+                                                    </div>
+                                                </section>
+                                                <!-- Monthly Meintenanceend -->
+
                                             </div>
+                                            <div class="tab-pane" id="tab2"
+                                                aria-labelledby="renovation-stage-tab" role="tabpanel">
+
+                                                <p>Choose Tenant Field</p>
+                                                <!-- Monthly Meintenance -->
+                                                <section id="basic-pills">
+                                                    <div class="row match-height" >
+                                                        <div class=" col-lg-12">
+                                                            <div class="card bg-transparent shadow-none border-none">
+
+                                                                <div class="card-content">
+                                                                    <div class="card-body">
+
+                                                                        <ul class="nav nav-pills">
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link" id="home-tab"
+                                                                                    data-toggle="pill" href="#home2"
+                                                                                    aria-expanded="true">Create Table</a>
+                                                                            </li>
+                                                                            
+
+                                                                        </ul>
+                                                                        <div class="tab-content">
+                                                                            <div role="tabpanel" class="tab-pane" id="home2"
+                                                                                aria-labelledby="home-tab"
+                                                                                aria-expanded="true">
+                                                                                <p>
+                                                                                    Form to create table here. 
+                                                                                </p>
+
+
+                                                                            </div>
+                                                                            
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </section>
+                                                <!-- Monthly Meintenanceend -->
+
+                                            </div>
+
+
+                                                
+                                            
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                         </section>
-                        <!-- Basic Pills end -->
 
                         <section id="basic-tabs-components">
                             <div class="card pb-2">
@@ -418,6 +512,7 @@
                                             </li>
 
                                         </ul>
+
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="buying-stage"
                                                 aria-labelledby="buying-stage-tab" role="tabpanel">
@@ -709,6 +804,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="card collapse-header">
                                                                     <div id="headingCollapse3" class="card-header"
                                                                         data-toggle="collapse" role="button"
@@ -743,6 +839,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="card collapse-header">
                                                                     <div id="headingCollapse1" class="card-header"
                                                                         data-toggle="collapse" role="button"
@@ -757,7 +854,7 @@
                                                                                 <button
                                                                                     class="ml-1 btn btn-icon btn-danger delete-button float-right"
                                                                                     data-toggle="modal"
-                                                                                    data-target="#delete-1">Delete</button>
+                                                                                    data-target="#delete-1 ">Delete</button>
                                                                             </div>
                                                                         </span>
                                                                     </div>
@@ -935,6 +1032,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="card collapse-header">
                                                                     <div id="headingCollapse2" class="card-header"
                                                                         data-toggle="collapse" role="button"
@@ -1128,18 +1226,13 @@
                                                                     </div>
                                                                 </div>
 
-
-
                                                             </div>
-
-
 
                                                         </section>
                                                         <!-- Collapse end -->
                                                     </div>
                                                 </div>
-
-                                                <!-- Form wizard with step validation section end -->
+                                                
                                             </div>
                                             <div class="tab-pane" id="rent-stage" aria-labelledby="rent-stage-tab"
                                                 role="tabpanel">
