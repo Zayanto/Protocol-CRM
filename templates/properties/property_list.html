@@ -58,6 +58,7 @@
                     </form>
                 </div>
 
+                
                 <div class="users-list-table">
                     <div class="card">
                         <div class="card-content">
@@ -67,28 +68,29 @@
                                     <table id="users-list-datatable" class="table">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
-                                                <th>username</th>
+                                                <th>Photo</th>
+                                                <th>Title</th>
+                                                <th>Address</th>
                                                 <th>name</th>
                                                 <th>last activity</th>
                                                 <th>verified</th>
-                                                <th>role</th>
-                                                <th>status</th>
+                                                <th>Stage</th>
                                                 <th>edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for property in property_list %}
                                             <tr>
-                                                <td>{{ property.title }}</td>
+                                                <td>Photo Link</td>
                                                 <td><a
-                                                        href="../../../html/ltr/vertical-menu-template/page-users-view.html">wesley0508</a>
-                                                </td>
+                                                    href="{{ property.get_absolute_url }}">{{ property.title }}</a>
+                                            </td>
+                                                <td>{{ property.title }}</td>
                                                 <td>Here some data</td>
                                                 <td>05/08/2020</td>
                                                 <td>No</td>
-                                                <td>Staff</td>
-                                                <td><span class="badge badge-light-danger">Banned</span></td>
+                                               
+                                                <td><span class="badge badge-light-danger">Renovation Stage</span></td>
                                                 <td><a href="{{ property.get_absolute_url }}"><i
                                                             class="bx bx-edit-alt"></i></a></td>
                                             </tr>
@@ -103,6 +105,9 @@
                         </div>
                     </div>
                 </div>
+
+                
+                
             </section>
             <!-- users list ends -->
 
@@ -487,7 +492,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <!-- END: Content-->
 
 

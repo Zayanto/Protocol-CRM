@@ -31,7 +31,7 @@
 
                                         <div class="row">
 
-                                            <!-- Property Information Card -->
+                                            <!-- Property Gallery -->
                                             <div class="col-lg-4">
                                                 <div class="card">
                                                     <div class="card-content">
@@ -64,9 +64,8 @@
                                                         <div class="card-title-details d-flex align-items-center">
 
                                                             <div>
-                                                                <h5>Current Tenant</h5>
-                                                                <div class="card-subtitle">Sub information
-                                                                    here</div>
+                                                                <h5>Tenant - {{ tenant.full_name }}</h5>
+                                                                
                                                             </div>
                                                         </div>
                                                         <div class="heading-elements">
@@ -120,65 +119,78 @@
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-                                                            <span>Progress</span>
-                                                            <div class="progress progress-bar-primary progress-sm mb-3">
-                                                                <div class="progress-bar progress-label"
-                                                                    role="progressbar" aria-valuenow="78"
-                                                                    style="width:78%"></div>
+       
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Current owner -->
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <div class="card-title-details d-flex align-items-center">
+
+                                                            <div>
+                                                                <h5>Owner</h5>
                                                             </div>
-
+                                                        </div>
+                                                        <div class="heading-elements">
+                                                            <i
+                                                                class="bx bx-dots-vertical-rounded font-medium-3 align-middle"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body">
                                                             <div class="table-responsive">
-                                                                <table id="users-list-datatable" class="table">
-                                                                    <thead>
-                                                                        <tr>
-
-                                                                            <th>full name</th>
-                                                                            <th>left on</th>
-                                                                            <th>contract</th>
-                                                                            <th>role</th>
-                                                                            <th>status</th>
-
-                                                                        </tr>
-                                                                    </thead>
+                                                                <table class="table table-borderless">
                                                                     <tbody>
                                                                         <tr>
+                                                                            <td class="pb-0 pl-0">
+                                                                                <strong>Contract Start
+                                                                                    Date</strong></td>
+                                                                            <td class="pb-0 pl-0">
+                                                                                <strong>Contract End
+                                                                                    Date</strong></td>
 
-
-                                                                            <td>Dean Stanley</td>
-                                                                            <td>30/04/2019</td>
-                                                                            <td>No. 150</td>
-                                                                            <td>Staff</td>
-                                                                            <td><span
-                                                                                    class="badge badge-light-secondary">Left
-                                                                                    Property</span>
+                                                                            <td class="pb-0">
+                                                                                <strong>Rent</strong></td>
+                                                                            <td class="pb-0">
+                                                                                <strong>Status</strong>
                                                                             </td>
-
+                                                                            <td class="pb-0">
+                                                                                <strong>Upcoming Rent
+                                                                                    Date</strong></td>
                                                                         </tr>
                                                                         <tr>
-
-
-                                                                            <td>Zena Buckley</td>
-                                                                            <td>06/04/2020</td>
-                                                                            <td>No. 135</td>
-                                                                            <td>User </td>
-                                                                            <td><span
-                                                                                    class="badge badge-light-secondary">Left
-                                                                                    Property</span>
+                                                                            <td class="pl-0">
+                                                                                <div
+                                                                                    class="badge badge-light-primary text-bold-500 py-50">
+                                                                                    02 Apr 2019</div>
+                                                                            </td>
+                                                                            <td class="pl-0">
+                                                                                <div
+                                                                                    class="badge badge-light-warning text-bold-500 py-50">
+                                                                                    06 May 2019</div>
                                                                             </td>
 
+                                                                            <td><span
+                                                                                    class="badge badge-success">500</span>
+                                                                            </td>
+                                                                            <td><span
+                                                                                    class="badge badge-light-success">Under
+                                                                                    Contract</span>
+                                                                            </td>
+                                                                            <td>01.01.2020</td>
                                                                         </tr>
-
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-
+       
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
 
-                                           
+                                          
+                                            
 
                                         </div>
                                     </div>

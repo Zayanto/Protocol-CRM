@@ -34,6 +34,7 @@ class PropertyDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView
         return context
 
 
+
 class PropertyCreateView(LoginRequiredMixin, CreateView):
     model = Property
     fields = [
