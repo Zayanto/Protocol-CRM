@@ -4,6 +4,7 @@
 {% block title %}Properties{% endblock title %}
 
 {% block content %}
+{% load stage_details %}
 
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -68,29 +69,49 @@
                                     <table id="users-list-datatable" class="table">
                                         <thead>
                                             <tr>
-                                                <th>Photo</th>
+
                                                 <th>Title</th>
-                                                <th>Address</th>
-                                                <th>name</th>
-                                                <th>last activity</th>
-                                                <th>verified</th>
+                                                <th>Tenant</th>
+                                                <th>Contact</th>
                                                 <th>Stage</th>
+                                          
                                                 <th>edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for property in property_list %}
                                             <tr>
-                                                <td>Photo Link</td>
+
                                                 <td><a
                                                     href="{{ property.get_absolute_url }}">{{ property.title }}</a>
                                             </td>
-                                                <td>{{ property.title }}</td>
-                                                <td>Here some data</td>
-                                                <td>05/08/2020</td>
-                                                <td>No</td>
-                                               
-                                                <td><span class="badge badge-light-danger">Renovation Stage</span></td>
+                                                <td>{{property.reviews.all.0.full_name}}</td>
+
+                                                <td>
+                                                    {% if property.reviews.all.0.contract_set.all.count > 0 %}
+                                                    <a href="{% url 'contract:contract_detail' property.reviews.all.0.contract_set.all.0.pk %}">{{property.reviews.all.0.contract_set.all.0.title}}</a>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    
+                                                    {% stage_opportunity_list property as stage_opportunity %}
+                                                    {% stage_buying_list property as stage_buying %}
+                                                    {% stage_rent_list property as stage_rent %}
+                                                    {% stage_tenant_list property as stage_tenant %}
+
+
+                                                    {% if stage_tenant %}
+                                                        Tenant Stage
+                                                    {% elif stage_rent %}
+                                                        Rent Stage
+                                                    {% elif stage_buying %}
+                                                        Buying Stage
+                                                    {% else %}
+                                                        Opportunity Stage
+                                                    {% endif %}
+                                                    
+
+                                                </td>
                                                 <td><a href="{{ property.get_absolute_url }}"><i
                                                             class="bx bx-edit-alt"></i></a></td>
                                             </tr>

@@ -38,18 +38,42 @@
                                                         <div class="card-body">
                                                             <h5 class="card-title mb-1">Gallery
                                                                 <i
-                                                                    class="cursor-pointer bx bx-dots-vertical-rounded float-right"></i>
+                                                                    data-toggle="modal" data-target="#uploadModal" class="cursor-pointer bx bx-dots-vertical-rounded float-right"></i>
                                                             </h5>
-                                                            <div class="row">
+                                                            <div class="row" style="height: 182px;overflow-x: auto;">
                                                                 {% for property_image in property_images %}
                                                                 <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img src="{{ property_image.image.url }}"
+                                                                    <img style="height: 57px;" src="{{ property_image.image.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div id="uploadModal" class="modal fade" role="dialog">
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Image upload form</h4>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        <form method='post' action='' enctype="multipart/form-data" id="ajax_image_upload">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="property_id" value="{{property.pk}}">
+                                                          Select Image : <input type='file' name='image_upload' id='file image_upload' class='form-control' onchange="preview_Timage(this);" required="required"><br>
+                                                          
+                                                          <button type="submit" class='btn btn-info'>Upload</button>
+                                                        </form>
+                                                        <div id='preview' style="text-align: center;">
+                                                            <img style="height: 100px;width: 100px;" id="Timage" src="" alt="">
+                                                        </div>
+                                                      </div>
+                                                 
+                                                    </div>
+
+                                                  </div>
                                                 </div>
 
 
@@ -64,7 +88,7 @@
                                                         <div class="card-title-details d-flex align-items-center">
 
                                                             <div>
-                                                                <h5>Tenant - {{ tenant.full_name }}</h5>
+                                                                <h5>Tenant - {{ property.reviews.all.0.full_name }}</h5>
                                                                 
                                                             </div>
                                                         </div>
@@ -91,30 +115,26 @@
                                                                             <td class="pb-0">
                                                                                 <strong>Status</strong>
                                                                             </td>
-                                                                            <td class="pb-0">
-                                                                                <strong>Upcoming Rent
-                                                                                    Date</strong></td>
+
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="pl-0">
                                                                                 <div
                                                                                     class="badge badge-light-primary text-bold-500 py-50">
-                                                                                    02 Apr 2019</div>
+                                                                                    {{property.reviews.all.0.contract_set.all.0.start_date}}</div>
                                                                             </td>
                                                                             <td class="pl-0">
                                                                                 <div
                                                                                     class="badge badge-light-warning text-bold-500 py-50">
-                                                                                    06 May 2019</div>
+                                                                                    {{property.reviews.all.0.contract_set.all.0.end_date}}</div>
                                                                             </td>
 
                                                                             <td><span
-                                                                                    class="badge badge-success">500</span>
+                                                                                    class="badge badge-success">{{property.reviews.all.0.contract_set.all.0.rent_tenant}}</span>
                                                                             </td>
                                                                             <td><span
-                                                                                    class="badge badge-light-success">Under
-                                                                                    Contract</span>
+                                                                                    class="badge badge-light-success">{{property.reviews.all.0.contract_set.all.0.contract_status}}</span>
                                                                             </td>
-                                                                            <td>01.01.2020</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -2043,6 +2063,67 @@
 
 
 {% block javascript %}
+<script type="text/javascript">
+        function preview_Timage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#Timage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function block_card(block_ele) {
+            $(block_ele).block({
+                message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
+                fadeIn: 1000,
+                fadeOut: 1000,
+                // timeout: 2000, //unblock after 2 seconds
+                overlayCSS: {
+                    backgroundColor: '#fff',
+                    opacity: 0.8,
+                    cursor: 'wait'
+                },
+                css: {
+                    border: 0,
+                    padding: '10px 15px',
+                    color: '#fff',
+                    width: 'auto',
+                    backgroundColor: '#333'
+                }
+            });
+        }
+    csrfMiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+    $(document).ready(function() {
+        $('#ajax_image_upload').submit(function(e) {
+            e.preventDefault(); 
+            var block_ele = $(this).closest('body');
+            block_card(block_ele);
+            var data = new FormData($('#ajax_image_upload').get(0));
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRFToken': csrfMiddlewaretoken
+                    }
+                });
+                $.ajax({
+                url: '/properties/image_upload/',
+                type: 'POST',
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    window.location.reload(true);
+                },
+                error:function(data){
+                    alert("ERROR");
+                },
+            });
+
+        });
+    });
+        
+</script>
 <script>
     $(".wizard-vertical").steps({
         headerTag: "h3",

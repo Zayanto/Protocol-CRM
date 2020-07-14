@@ -35,3 +35,36 @@ def stage_tenant(context):
     except:
         pass
     return None
+
+@register.simple_tag()
+def stage_opportunity_list(property_):
+    try:
+        return StageOpportunity.objects.get(properties=property_)
+    except:
+        pass
+    return None
+
+@register.simple_tag()
+def stage_buying_list(property_):
+    try:
+        return StageBuying.objects.get(properties=property_)
+    except:
+        pass
+    return None
+
+
+@register.simple_tag()
+def stage_rent_list(property_):
+    try:
+        return StageForRent.objects.get(properties=property_)
+    except:
+        pass
+    return None
+
+@register.simple_tag()
+def stage_tenant_list(property_):
+    try:
+        return StageWithTenant.objects.get(properties=property_)
+    except:
+        pass
+    return None
