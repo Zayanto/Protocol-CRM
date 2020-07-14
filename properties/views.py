@@ -1,8 +1,9 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin  # new
-from .models import Property
+from .models import Property, PropertyImage
 from django.shortcuts import render
 from django.db.models import Q
+from django.http import HttpResponseRedirect,HttpResponse
 
 
 class PropertyListView(LoginRequiredMixin, ListView):
@@ -135,3 +136,10 @@ class SearchResultsListView(ListView):
         return Property.objects.filter(
             Q(title__icontains=query) | Q(description__icontains=query)
         )
+
+def PropertyImageUpload(request):
+    print("ok")
+    print(request.POST.get('property_id'))
+    property_=Property.objects.get(id=request.POST.get('property_id'))
+    PropertyImage.objects.create(image=request.FILES.get('image_upload'), _property=property_)
+    return HttpResponse("ok")

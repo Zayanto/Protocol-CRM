@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PropertyListView, PropertyDetailView, PropertyUpdateView, PropertyCreateView, SearchResultsListView
+from .views import PropertyListView, PropertyDetailView, PropertyUpdateView, PropertyCreateView, SearchResultsListView, PropertyImageUpload
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,4 +26,7 @@ urlpatterns = [
     ),
 
     path('search/', SearchResultsListView.as_view(), name='search_results'), # new
+
+
+    path('image_upload/', PropertyImageUpload, name='image_upload'), # new
 ]
