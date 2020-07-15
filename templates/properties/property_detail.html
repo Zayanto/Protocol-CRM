@@ -40,10 +40,10 @@
                                                                 <i
                                                                     data-toggle="modal" data-target="#uploadModal" class="cursor-pointer bx bx-dots-vertical-rounded float-right"></i>
                                                             </h5>
-                                                            <div class="row" style="height: 182px;overflow-x: auto;">
+                                                            <div class="row" style="height: 330px;overflow-x: auto;">
                                                                 {% for property_image in property_images %}
-                                                                <div class="col-md-4 col-6 pl-25 pr-0 pb-25">
-                                                                    <img style="height: 57px;" src="{{ property_image.image.url }}"
+                                                                <div class="col-md-6 col-6 pl-25 pr-0 pb-25">
+                                                                    <img style="height: 79px;width: 125px;" src="{{ property_image.image.url }}"
                                                                         class="img-fluid" alt="gallery avtar img">
                                                                 </div>
                                                                 {% endfor %}
