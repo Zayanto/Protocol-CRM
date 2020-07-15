@@ -59,16 +59,17 @@
                                                         <h4 class="modal-title">Image upload form</h4>
                                                       </div>
                                                       <div class="modal-body">
+                                                        <div id='preview' style="margin-bottom: 0px;display: none;">
+
+                                                        </div>
                                                         <form method='post' action='' enctype="multipart/form-data" id="ajax_image_upload">
                                                             {% csrf_token %}
                                                             <input type="hidden" name="property_id" value="{{property.pk}}">
-                                                          Select Image : <input type='file' name='image_upload' id='file image_upload' class='form-control' onchange="preview_Timage(this);" required="required"><br>
+
+                                                          Select Image : <input type='file' name='image_upload' id='image_upload' class='form-control' onchange="preview_Timage();" required="required" accept="image/*" multiple><br>
                                                           
                                                           <button type="submit" class='btn btn-info'>Upload</button>
                                                         </form>
-                                                        <div id='preview' style="text-align: center;">
-                                                            <img style="height: 100px;width: 100px;" id="Timage" src="" alt="">
-                                                        </div>
                                                       </div>
                                                  
                                                     </div>
@@ -118,22 +119,23 @@
 
                                                                         </tr>
                                                                         <tr>
+                                                                            {% property_tenant_contract property as PRContact %}
                                                                             <td class="pl-0">
                                                                                 <div
                                                                                     class="badge badge-light-primary text-bold-500 py-50">
-                                                                                    {{property.reviews.all.0.contract_set.all.0.start_date}}</div>
+                                                                                    {{PRContact.start_date}}</div>
                                                                             </td>
                                                                             <td class="pl-0">
                                                                                 <div
                                                                                     class="badge badge-light-warning text-bold-500 py-50">
-                                                                                    {{property.reviews.all.0.contract_set.all.0.end_date}}</div>
+                                                                                    {{PRContact.end_date}}</div>
                                                                             </td>
 
                                                                             <td><span
-                                                                                    class="badge badge-success">{{property.reviews.all.0.contract_set.all.0.rent_tenant}}</span>
+                                                                                    class="badge badge-success">{{PRContact.rent_tenant}}</span>
                                                                             </td>
                                                                             <td><span
-                                                                                    class="badge badge-light-success">{{property.reviews.all.0.contract_set.all.0.contract_status}}</span>
+                                                                                    class="badge badge-light-success">{{PRContact.contract_status}}</span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -2064,15 +2066,16 @@
 
 {% block javascript %}
 <script type="text/javascript">
-        function preview_Timage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#Timage').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
+        function preview_Timage() {
+             var total_image=document.getElementById("image_upload").files.length;
+             var html_prev=`<div style="width:452px; background-color:white; height:183px; overflow:auto;">
+            <div style="width: 2000px; height: 90px;">`;
+             for(var i=0;i<total_image;i++){
+                html_prev+=`<img style="margin-right: 5px" src="${URL.createObjectURL(event.target.files[i])}" width="100" height="100" alt="" />`;
+             }
+             html_prev+=`</div></div>`;
+             $('#preview').html(html_prev);
+             $('#preview').css('display', 'block');
         }
         function block_card(block_ele) {
             $(block_ele).block({
@@ -2094,34 +2097,43 @@
                 }
             });
         }
-    csrfMiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
-    $(document).ready(function() {
-        $('#ajax_image_upload').submit(function(e) {
-            e.preventDefault(); 
-            var block_ele = $(this).closest('body');
-            block_card(block_ele);
-            var data = new FormData($('#ajax_image_upload').get(0));
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRFToken': csrfMiddlewaretoken
-                    }
+        csrfMiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+        $(document).ready(function() {
+            $('#ajax_image_upload').submit(function(e) {
+                e.preventDefault(); 
+                var block_ele = $(this).closest('body');
+                block_card(block_ele);
+                var data = new FormData($('#ajax_image_upload').get(0));
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRFToken': csrfMiddlewaretoken
+                        }
+                    });
+                    $.ajax({
+                    url: '/properties/image_upload/',
+                    type: 'POST',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        window.location.reload(true);
+                    },
+                    error:function(data){
+                        alert("ERROR");
+                    },
                 });
-                $.ajax({
-                url: '/properties/image_upload/',
-                type: 'POST',
-                data: data,
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    window.location.reload(true);
-                },
-                error:function(data){
-                    alert("ERROR");
-                },
-            });
 
+            });
         });
-    });
+
+        $('body').click(function(evt){    
+            if(!$(evt.target).is('.modal')) {
+            }
+            else{
+                $('#image_upload').val('');
+                $('#preview').html('');
+            }
+        });
         
 </script>
 <script>

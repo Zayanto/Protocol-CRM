@@ -138,8 +138,11 @@ class SearchResultsListView(ListView):
         )
 
 def PropertyImageUpload(request):
-    print("ok")
-    print(request.POST.get('property_id'))
-    property_=Property.objects.get(id=request.POST.get('property_id'))
-    PropertyImage.objects.create(image=request.FILES.get('image_upload'), _property=property_)
+    images = request.FILES.getlist('image_upload')
+    property_id = request.POST.get('property_id')
+    property_=Property.objects.get(id=property_id)
+    if images:
+        for image in images:
+            PropertyImage.objects.create(image=image, _property=property_)
     return HttpResponse("ok")
+

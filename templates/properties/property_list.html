@@ -82,43 +82,37 @@
                                         </thead>
                                         <tbody>
                                             {% for property in property_list %}
+                                            {% property_tenant property as review %}
                                             <tr>
 
-                                                <td><a href="{{ property.get_absolute_url }}">{{ property.title }}</a>
-                                                </td>
-                                                <td>{{property.reviews.all.0.full_name}}</td>
+                                                <td><a href="{{ property.get_absolute_url }}">{{ property.title }}</a> </td>
+                                                <td>{{review.full_name}}</td>
 
                                                 <td>
-                                                    {% if property.reviews.all.0.contract_set.all.count > 0 %}
-                                                    <a
-                                                        href="{% url 'contract:contract_detail' property.reviews.all.0.contract_set.all.0.pk %}">{{property.reviews.all.0.contract_set.all.0.title}}</a>
+                                                    {% if review.contract_set.all.count > 0 %}
+                                                    <a href="{% url 'contract:contract_detail' review.contract_set.all.0.pk %}">{{review.contract_set.all.0.title}}</a>
                                                     {% endif %}
                                                 </td>
+
                                                 <td>
 
-                                                    {% stage_opportunity_list property as stage_opportunity %}
-                                                    {% stage_buying_list property as stage_buying %}
-                                                    {% stage_rent_list property as stage_rent %}
                                                     {% stage_tenant_list property as stage_tenant %}
 
-
                                                     {% if stage_tenant %}
-                                                    <div class="badge badge-light-success text-bold-500 py-50">
-                                                        Tenant Stage</div>
-
-                                                    {% elif stage_rent %}
-                                                    <div class="badge badge-light-warning text-bold-500 py-50">
-                                                        Rent Stage</div>
-                                                    {% elif stage_buying %}
-                                                    <div class="badge badge-light-danger text-bold-500 py-50">
-                                                        Buying Stage</div>
-                                                    
+                                                        Tenant Stage
                                                     {% else %}
-                                                    <div class="badge badge-light-primary text-bold-500 py-50">
-                                                        Opportunity Stage</div>
-                                                    
+                                                        {% stage_rent_list property as stage_rent %}
+                                                        {% if stage_rent %}
+                                                            Rent Stage
+                                                        {% else %}
+                                                            {% stage_buying_list property as stage_buying %}
+                                                            {% if stage_buying %}
+                                                                Buying Stage
+                                                            {% else %}
+                                                                Opportunity Stage
+                                                            {% endif %}
+                                                        {% endif %}
                                                     {% endif %}
-
 
                                                 </td>
                                                 <td><a href="{{ property.get_absolute_url }}"><i

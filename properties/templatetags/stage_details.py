@@ -68,3 +68,19 @@ def stage_tenant_list(property_):
     except:
         pass
     return None
+
+@register.simple_tag()
+def property_tenant(property_):
+    try:
+        return property_.reviews.all()[0]
+    except:
+        pass
+    return None
+
+@register.simple_tag()
+def property_tenant_contract(property_):
+    try:
+        return property_.reviews.all()[0].contract_set.all()[0]
+    except:
+        pass
+    return None
