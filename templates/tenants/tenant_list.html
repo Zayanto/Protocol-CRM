@@ -14,6 +14,7 @@
         <div class="content-body">
             <!-- users list start -->
             <section class="users-list-wrapper">
+
                 <div class="users-list-filter px-1">
                     <form>
                         <div class="row border rounded py-2 mb-2">
@@ -48,9 +49,14 @@
                                     </select>
                                 </fieldset>
                             </div>
+
                             <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
-                                <button type="reset" class="btn btn-primary btn-block glow users-list-clear mb-0">Clear</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalScrollable">
+                                    Add New Tenant
+                                </button>
                             </div>
+
                         </div>
                     </form>
                 </div>
@@ -99,6 +105,123 @@
                 </div>
             </section>
             <!-- users list ends -->
+
+            <!--scrolling content Modal -->
+            <div class="modal fade " id="exampleModalScrollable" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <form id="property-create-form" data-reload="true">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalScrollableTitle">Create a new tenant</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="bx bx-x"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="full_name">Title</label>
+                                            <input type="text" class="form-control" id="full_name"
+                                                name="full_name" placeholder="Enter Property Title">
+                                        </div>
+                                        <div class="divider divider-primary">
+                                            <div class="divider-text">Add Property Address</div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <div class="form-group">
+                                            <label for="property-city">City</label>
+                                            <input type="text" class="form-control" id="property-city"
+                                                name="property-city" placeholder="Enter Your City">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-8">
+                                        <div class="form-group">
+                                            <label for="property-address">Address </label>
+                                            <input type="text" class="form-control" id="property-address"
+                                                name="property-address" placeholder="Enter Your Address">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <div class="form-group">
+                                            <label for="property-zipcode">Zip Code</label>
+                                            <input type="text" class="form-control" id="property-zipcode"
+                                                name="property-zipcode" placeholder="Enter Your Zip Code">
+                                        </div>
+                                    </div>
+
+                                    
+
+
+                                    <div class="col-sm-12">
+                                        <div class="divider divider-primary">
+                                            <div class="divider-text">Ownership Details</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-8">
+                                        <div class="form-group">
+                                            <label for="property-owner">Owner</label>
+                                            <input type="text" class="form-control" id="property-owner"
+                                                name="property-owner" placeholder="Enter Your Owner">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <div class="form-group">
+                                            <label for="property-asking-price">Asking price</label>
+                                            <input type="text" class="form-control" id="property-asking-price"
+                                                name="property-asking-price" placeholder="Enter Your Asking price">
+                                        </div>
+                                    </div>
+
+                                   
+
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="property-potential-rent">Potential Rent</label>
+                                            <div class="input-group mb-0">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                </div>
+                                                <input type="number" step="0.01" min="0" class="form-control"
+                                                    id="property-potential-rent" name="property-potential-rent"
+                                                    placeholder="Enter Your Potential Rent" aria-label="Potential Rent"
+                                                    aria-describedby="basic-addon1">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="property-opportunity-description">Description</label>
+                                            <textarea type="text" class="form-control"
+                                                id="property-opportunity-description"
+                                                name="property-opportunity-description"
+                                                placeholder="Enter Your Description" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Close</span>
+                                </button>
+                                <button type="button" class="btn btn-primary ml-1" data-dismiss="modal"
+                                    id="create-form-submit-btn">
+                                    <span class="d-sm-block">Accept</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

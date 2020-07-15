@@ -49,17 +49,19 @@
                                     </select>
                                 </fieldset>
                             </div>
+
                             <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#exampleModalScrollable">
                                     Add New Property
                                 </button>
                             </div>
+                            
                         </div>
                     </form>
                 </div>
 
-                
+
                 <div class="users-list-table">
                     <div class="card">
                         <div class="card-content">
@@ -74,7 +76,7 @@
                                                 <th>Tenant</th>
                                                 <th>Contact</th>
                                                 <th>Stage</th>
-                                          
+
                                                 <th>edit</th>
                                             </tr>
                                         </thead>
@@ -82,18 +84,18 @@
                                             {% for property in property_list %}
                                             <tr>
 
-                                                <td><a
-                                                    href="{{ property.get_absolute_url }}">{{ property.title }}</a>
-                                            </td>
+                                                <td><a href="{{ property.get_absolute_url }}">{{ property.title }}</a>
+                                                </td>
                                                 <td>{{property.reviews.all.0.full_name}}</td>
 
                                                 <td>
                                                     {% if property.reviews.all.0.contract_set.all.count > 0 %}
-                                                    <a href="{% url 'contract:contract_detail' property.reviews.all.0.contract_set.all.0.pk %}">{{property.reviews.all.0.contract_set.all.0.title}}</a>
+                                                    <a
+                                                        href="{% url 'contract:contract_detail' property.reviews.all.0.contract_set.all.0.pk %}">{{property.reviews.all.0.contract_set.all.0.title}}</a>
                                                     {% endif %}
                                                 </td>
                                                 <td>
-                                                    
+
                                                     {% stage_opportunity_list property as stage_opportunity %}
                                                     {% stage_buying_list property as stage_buying %}
                                                     {% stage_rent_list property as stage_rent %}
@@ -101,15 +103,22 @@
 
 
                                                     {% if stage_tenant %}
-                                                        Tenant Stage
+                                                    <div class="badge badge-light-success text-bold-500 py-50">
+                                                        Tenant Stage</div>
+
                                                     {% elif stage_rent %}
-                                                        Rent Stage
+                                                    <div class="badge badge-light-warning text-bold-500 py-50">
+                                                        Rent Stage</div>
                                                     {% elif stage_buying %}
-                                                        Buying Stage
-                                                    {% else %}
-                                                        Opportunity Stage
-                                                    {% endif %}
+                                                    <div class="badge badge-light-danger text-bold-500 py-50">
+                                                        Buying Stage</div>
                                                     
+                                                    {% else %}
+                                                    <div class="badge badge-light-primary text-bold-500 py-50">
+                                                        Opportunity Stage</div>
+                                                    
+                                                    {% endif %}
+
 
                                                 </td>
                                                 <td><a href="{{ property.get_absolute_url }}"><i
@@ -127,12 +136,10 @@
                     </div>
                 </div>
 
-                
-                
             </section>
             <!-- users list ends -->
 
-            
+
 
             <!--scrolling content Modal -->
             <div class="modal fade " id="exampleModalScrollable" tabindex="-1" role="dialog"
@@ -152,10 +159,8 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="property-title">Title</label>
-                                            <input type="text" class="form-control"
-                                                id="property-title" name="property-title"
-                                                
-                                                placeholder="Enter Property Title">
+                                            <input type="text" class="form-control" id="property-title"
+                                                name="property-title" placeholder="Enter Property Title">
                                         </div>
                                         <div class="divider divider-primary">
                                             <div class="divider-text">Add Property Address</div>
@@ -166,27 +171,21 @@
                                         <div class="form-group">
                                             <label for="property-city">City</label>
                                             <input type="text" class="form-control" id="property-city"
-                                                name="property-city"
-                                                
-                                                placeholder="Enter Your City">
+                                                name="property-city" placeholder="Enter Your City">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-8">
                                         <div class="form-group">
                                             <label for="property-address">Address </label>
-                                            <input type="text" class="form-control"
-                                                id="property-address" name="property-address"
-                                                
-                                                placeholder="Enter Your Address">
+                                            <input type="text" class="form-control" id="property-address"
+                                                name="property-address" placeholder="Enter Your Address">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-zipcode">Zip Code</label>
-                                            <input type="text" class="form-control"
-                                                id="property-zipcode" name="property-zipcode"
-                                                
-                                                placeholder="Enter Your Zip Code">
+                                            <input type="text" class="form-control" id="property-zipcode"
+                                                name="property-zipcode" placeholder="Enter Your Zip Code">
                                         </div>
                                     </div>
 
@@ -194,10 +193,8 @@
                                         <div class="form-group">
                                             <label for="property-residence-complex">Residence
                                                 Complex</label>
-                                            <input type="text" class="form-control"
-                                                id="property-residence-complex"
+                                            <input type="text" class="form-control" id="property-residence-complex"
                                                 name="property-residence-complex"
-                                                
                                                 placeholder="Enter Your Residence Complex">
                                         </div>
                                     </div>
@@ -205,9 +202,7 @@
                                         <div class="form-group">
                                             <label for="property-reper">Reper</label>
                                             <input type="text" class="form-control" id="property-reper"
-                                                name="property-reper"
-                                                
-                                                placeholder="Enter Your Reper">
+                                                name="property-reper" placeholder="Enter Your Reper">
                                         </div>
                                     </div>
 
@@ -222,7 +217,6 @@
                                             <label for="property-no-of-rooms">Number of Rooms</label>
                                             <input type="number" step="1" min="0" class="form-control"
                                                 id="property-no-of-rooms" name="property-no-of-rooms"
-                                                
                                                 placeholder="Enter Your Number of Rooms">
                                         </div>
                                     </div>
@@ -232,7 +226,6 @@
                                             <label for="property-no-of-beds">Bedrooms</label>
                                             <input type="number" step="1" min="0" class="form-control"
                                                 id="property-no-of-beds" name="property-no-of-beds"
-                                                
                                                 placeholder="Enter Your Bedrooms">
                                         </div>
                                     </div>
@@ -241,9 +234,7 @@
                                         <div class="form-group">
                                             <label for="property-no-of-bathrooms">Bathrooms</label>
                                             <input type="number" step="1" min="0" class="form-control"
-                                                id="property-no-of-bathrooms"
-                                                name="property-no-of-bathrooms"
-                                                
+                                                id="property-no-of-bathrooms" name="property-no-of-bathrooms"
                                                 placeholder="Enter Your Bathrooms">
                                         </div>
                                     </div>
@@ -251,29 +242,23 @@
                                         <div class="form-group">
                                             <label for="property-no-of-kitchen">Kitchen</label>
                                             <input type="number" step="1" min="0" class="form-control"
-                                                id="property-no-of-kitchen"
-                                                name="property-no-of-kitchen"
-                                                
+                                                id="property-no-of-kitchen" name="property-no-of-kitchen"
                                                 placeholder="Enter Your Kitchen">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-usable-sqm">Usable Sqm</label>
-                                            <input type="number" step="0.01" min="0"
-                                                class="form-control" id="property-usable-sqm"
-                                                name="property-usable-sqm"
-                                                
+                                            <input type="number" step="0.01" min="0" class="form-control"
+                                                id="property-usable-sqm" name="property-usable-sqm"
                                                 placeholder="Enter Your Usable Sqm">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-build-sqm">Build Sqm</label>
-                                            <input type="number" step="0.01" min="0"
-                                                class="form-control" id="property-build-sqm"
-                                                name="property-build-sqm"
-                                                
+                                            <input type="number" step="0.01" min="0" class="form-control"
+                                                id="property-build-sqm" name="property-build-sqm"
                                                 placeholder="Enter Your Build Sqm">
                                         </div>
                                     </div>
@@ -281,117 +266,99 @@
                                         <div class="form-group">
                                             <label for="property-floor">Floor</label>
                                             <input type="text" class="form-control" id="property-floor"
-                                                name="property-floor"
-                                                
-                                                placeholder="Enter Your Floor">
+                                                name="property-floor" placeholder="Enter Your Floor">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-destination">Destination</label>
-                                            <input type="text" class="form-control"
-                                                id="property-destination" name="property-destination"
-                                                
-                                                placeholder="Enter Your Destination">
+                                            <input type="text" class="form-control" id="property-destination"
+                                                name="property-destination" placeholder="Enter Your Destination">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-layout">Layout</label>
                                             <input type="text" class="form-control" id="property-layout"
-                                                name="property-layout"
-                                                
-                                                placeholder="Enter Your Layout">
+                                                name="property-layout" placeholder="Enter Your Layout">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-comfort-type">Comfort Type</label>
-                                            <input type="text" class="form-control"
-                                                id="property-comfort-type" name="property-comfort-type"
-                                                
-                                                placeholder="Enter Your Comfort Type">
+                                            <input type="text" class="form-control" id="property-comfort-type"
+                                                name="property-comfort-type" placeholder="Enter Your Comfort Type">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-interior-state">Interior State</label>
-                                            <input type="text" class="form-control"
-                                                id="property-interior-state"
-                                                name="property-interior-state"
-                                                
-                                                placeholder="Enter Your Interior State">
+                                            <input type="text" class="form-control" id="property-interior-state"
+                                                name="property-interior-state" placeholder="Enter Your Interior State">
                                         </div>
-                                        
+
                                     </div>
                                     <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="mr-2">Others:</label>
-                                                <div class="c-inputs-stacked">
-                                                    <div class="d-inline-block mr-2">
-                                                        <fieldset>
-                                                            <div class="checkbox pb-1">
-                                                                <input type="checkbox"
-                                                                    class="checkbox__input" id="balcony"
-                                                                    name="property-balcony">
-                                                                <label for="balcony">Balcony</label>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                    <div class="d-inline-block mr-2">
-                                                        <fieldset>
-                                                            <div class="checkbox pb-1">
-                                                                <input type="checkbox"
-                                                                    class="checkbox__input" id="garage"
-                                                                    name="property-garage">
-                                                                <label for="garage">Garage</label>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                    <div class="d-inline-block mr-2">
-                                                        <fieldset>
-                                                            <div class="checkbox pb-1">
-                                                                <input type="checkbox"
-                                                                    class="checkbox__input" id="basement"
-                                                                    name="property-basement">
-                                                                <label for="basement">Basement</label>
-                                                            </div>
-                                                        </fieldset>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="mr-2">Others:</label>
+                                                    <div class="c-inputs-stacked">
+                                                        <div class="d-inline-block mr-2">
+                                                            <fieldset>
+                                                                <div class="checkbox pb-1">
+                                                                    <input type="checkbox" class="checkbox__input"
+                                                                        id="balcony" name="property-balcony">
+                                                                    <label for="balcony">Balcony</label>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="d-inline-block mr-2">
+                                                            <fieldset>
+                                                                <div class="checkbox pb-1">
+                                                                    <input type="checkbox" class="checkbox__input"
+                                                                        id="garage" name="property-garage">
+                                                                    <label for="garage">Garage</label>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="d-inline-block mr-2">
+                                                            <fieldset>
+                                                                <div class="checkbox pb-1">
+                                                                    <input type="checkbox" class="checkbox__input"
+                                                                        id="basement" name="property-basement">
+                                                                    <label for="basement">Basement</label>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </div>
-                                    
+
 
                                     <div class="col-sm-12">
                                         <div class="divider divider-primary">
                                             <div class="divider-text">Ownership Details</div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-sm-12 col-md-8">
                                         <div class="form-group">
                                             <label for="property-owner">Owner</label>
                                             <input type="text" class="form-control" id="property-owner"
-                                                name="property-owner"
-                                                
-                                                placeholder="Enter Your Owner">
+                                                name="property-owner" placeholder="Enter Your Owner">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-asking-price">Asking price</label>
-                                            <input type="text" class="form-control"
-                                                id="property-asking-price" name="property-asking-price"
-                                                
-                                                placeholder="Enter Your Asking price">
+                                            <input type="text" class="form-control" id="property-asking-price"
+                                                name="property-asking-price" placeholder="Enter Your Asking price">
                                         </div>
                                     </div>
-                                    
+
                                     <!-- <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-building">Building</label>
@@ -412,7 +379,7 @@
                                         </div>
                                     </div> -->
 
-                                    
+
                                     <!-- <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-apartment-number">Apartment
@@ -424,7 +391,7 @@
                                                 placeholder="Enter Your Apartment Number">
                                         </div>
                                     </div> -->
-                                    
+
                                     <!-- <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-vecinatati">Vecinatati</label>
@@ -435,12 +402,12 @@
                                         </div>
                                     </div> -->
 
-                                    
-                                    
-                                   
-                                    
-                                    
-                                   
+
+
+
+
+
+
                                     <!-- <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-building-type">Building Type</label>
@@ -468,14 +435,11 @@
                                             <label for="property-potential-rent">Potential Rent</label>
                                             <div class="input-group mb-0">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"
-                                                        id="basic-addon1">$</span>
+                                                    <span class="input-group-text" id="basic-addon1">$</span>
                                                 </div>
-                                                <input type="number" step="0.01" min="0"
-                                                    class="form-control" id="property-potential-rent"
-                                                    name="property-potential-rent"
-                                                    placeholder="Enter Your Potential Rent"
-                                                    aria-label="Potential Rent"
+                                                <input type="number" step="0.01" min="0" class="form-control"
+                                                    id="property-potential-rent" name="property-potential-rent"
+                                                    placeholder="Enter Your Potential Rent" aria-label="Potential Rent"
                                                     aria-describedby="basic-addon1">
 
                                             </div>
@@ -483,8 +447,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label
-                                                for="property-opportunity-description">Description</label>
+                                            <label for="property-opportunity-description">Description</label>
                                             <textarea type="text" class="form-control"
                                                 id="property-opportunity-description"
                                                 name="property-opportunity-description"
@@ -493,14 +456,15 @@
                                     </div>
                                 </div>
 
-                                
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
                                     <i class="bx bx-x d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Close</span>
                                 </button>
-                                <button type="button" class="btn btn-primary ml-1" data-dismiss="modal" id="create-form-submit-btn">
+                                <button type="button" class="btn btn-primary ml-1" data-dismiss="modal"
+                                    id="create-form-submit-btn">
                                     <span class="d-sm-block">Accept</span>
                                 </button>
                             </div>
@@ -508,7 +472,7 @@
                     </form>
                 </div>
             </div>
-            
+
 
         </div>
     </div>
@@ -522,71 +486,71 @@
 
 
 {% block javascript %}
-    <script>
-        function block_card(block_ele) {
-            $(block_ele).block({
-                message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
-                fadeIn: 1000,
-                fadeOut: 1000,
-                // timeout: 2000, //unblock after 2 seconds
-                overlayCSS: {
-                    backgroundColor: '#fff',
-                    opacity: 0.8,
-                    cursor: 'wait'
-                },
-                css: {
-                    border: 0,
-                    padding: '10px 15px',
-                    color: '#fff',
-                    width: 'auto',
-                    backgroundColor: '#333'
-                }
-            });
-        }
-        $('#create-form-submit-btn').click(function(e) {
-            e.preventDefault();
-            $('#property-create-form').submit();    
+<script>
+    function block_card(block_ele) {
+        $(block_ele).block({
+            message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
+            fadeIn: 1000,
+            fadeOut: 1000,
+            // timeout: 2000, //unblock after 2 seconds
+            overlayCSS: {
+                backgroundColor: '#fff',
+                opacity: 0.8,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                padding: '10px 15px',
+                color: '#fff',
+                width: 'auto',
+                backgroundColor: '#333'
+            }
         });
-        $('#property-create-form').submit(function(e) {
-            e.preventDefault();
-            var api_url = `{% url 'property-api:create-property-stage-opportunity' %}`;
-            var block_ele = $(this).closest('body');
-        
-            block_card(block_ele);
+    }
+    $('#create-form-submit-btn').click(function (e) {
+        e.preventDefault();
+        $('#property-create-form').submit();
+    });
+    $('#property-create-form').submit(function (e) {
+        e.preventDefault();
+        var api_url = `{% url 'property-api:create-property-stage-opportunity' %}`;
+        var block_ele = $(this).closest('body');
 
-            let data = $(this).serialize();
-            data += `&csrfmiddlewaretoken={{csrf_token}}`;
+        block_card(block_ele);
 
-            let name = 'Property';
-            var reload = $(this).data('reload');
+        let data = $(this).serialize();
+        data += `&csrfmiddlewaretoken={{csrf_token}}`;
 
-            $.ajax({
-                url: api_url,
-                method: 'POST',
-                data: data,
-                success: function (response) {
-                    iziToast.success({
-                        title: 'Saved',
-                        message: `Successfully inserted ${name} data`,
-                    });
-                    if(reload) {
-                        location.reload();
-                    }
-                },
-                error: function (response) {
-                    response = JSON.parse(response['responseText']);
-                    iziToast.error({
-                        title: 'Error',
-                        timeout: 10000,
-                        message: `Error occurred while inserting ${name} data. ${response['message']}`,
-                    });
-                    console.log(response);
-                },
-                complete: function (response) {
-                    $(block_ele).unblock();
+        let name = 'Property';
+        var reload = $(this).data('reload');
+
+        $.ajax({
+            url: api_url,
+            method: 'POST',
+            data: data,
+            success: function (response) {
+                iziToast.success({
+                    title: 'Saved',
+                    message: `Successfully inserted ${name} data`,
+                });
+                if (reload)
+                {
+                    location.reload();
                 }
-            });
+            },
+            error: function (response) {
+                response = JSON.parse(response['responseText']);
+                iziToast.error({
+                    title: 'Error',
+                    timeout: 10000,
+                    message: `Error occurred while inserting ${name} data. ${response['message']}`,
+                });
+                console.log(response);
+            },
+            complete: function (response) {
+                $(block_ele).unblock();
+            }
         });
-    </script>
+    });
+</script>
 {% endblock javascript %}
-    
