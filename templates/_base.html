@@ -27,7 +27,7 @@ shrink-to-fit=no">
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
         href="{% static 'css/app-assets/css/core/menu/menu-types/vertical-menu.css' %}">
-    
+
 
 
     <!-- BEGIN: App-Assets CSS-->
@@ -41,20 +41,22 @@ shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-kanban.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/app-email.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/plugins/calendars/app-calendar.css' %}">
-    
+
     <!-- BEGIN: Assets CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/plugins/forms/wizard.css' %}">
-    
-    <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
-    
-    
 
-     <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/assets/css/style.css' %}">
+
+
+
+    <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/vendors.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/jkanban/jkanban.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/editors/quill/quill.snow.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/pickers/pickadate/pickadate.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'css/app-assets/vendors/css/editors/quill/quill.snow.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'css/app-assets/vendors/css/pickers/pickadate/pickadate.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/charts/apexcharts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/extensions/swiper.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/iziToast.min.css' %}">
@@ -62,6 +64,8 @@ shrink-to-fit=no">
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/plugins/extensions/toastr.min.css' %}"> -->
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/pages/dashboard-ecommerce.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'css/app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
     <!-- BEGIN: Vendor CSS-->
     {% endblock %}
 
@@ -332,7 +336,7 @@ shrink-to-fit=no">
                         <div class="brand-logo"><img class="logo"
                                 src="{% static 'css/app-assets/images/logo/logo-protocol.png' %}" />
                         </div>
-                        
+
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
                             class="bx bx-x d-block d-xl-none font-medium-4 primary"></i><i
@@ -356,7 +360,8 @@ shrink-to-fit=no">
                             data-i18n="Email">Contracts</span></a>
                 <li class=" nav-item"><a href="{% url 'owner_list' %}"><span class="menu-title"
                             data-i18n="Email">Owners</span></a>
-                <li class=" nav-item"><a href="{% url 'payment_list' %}"><span class="menu-title" data-i18n="Email">Payments</span></a>
+                <li class=" nav-item"><a href="{% url 'payment_list' %}"><span class="menu-title"
+                            data-i18n="Email">Payments</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">SMS Notification</span></a>
                 <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="Email">Email</span></a>
 
@@ -400,14 +405,14 @@ shrink-to-fit=no">
     <script src="{% static 'js/vendors/js/editors/quill/quill.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/extensions/dragula.min.js' %}"></script>
     <!-- END: Page Vendor JS-->
-    
+
     <script src="{% static 'js/vendors/js/pickers/pickadate/picker.js' %}"></script>
     <script src="{% static 'js/vendors/js/pickers/pickadate/picker.date.js' %}"></script>
 
     <!-- BEGIN: Theme JS-->
     <script src="{% static 'js/js/scripts/configs/vertical-menu-light.js' %}"></script>
     <script src="{% static 'js/js/core/app-menu.js' %}"></script>
-    <script src="{% static 'js/js/core/app.js' %}"></script>    
+    <script src="{% static 'js/js/core/app.js' %}"></script>
     <script src="{% static 'js/js/scripts/components.js' %}"></script>
     <script src="{% static 'js/js/scripts/footer.js' %}"></script>
     <!-- END: Theme JS-->
@@ -425,16 +430,27 @@ shrink-to-fit=no">
     <script src="{% static 'js/js/scripts/modal/components-modal.js' %}"></script>
     <script src="{% static 'js/js/scripts/pages/app-email.js' %}"></script>
     <script src="{% static 'js/js/scripts/pages/table-extended.js' %}"></script>
-    <script src="{% static 'js/js/tables/datatable/datatables.min.js' %}"></script>
+    <!-- <script src="{% static 'js/js/tables/datatable/datatables.min.js' %}"></script> -->
     <script src="{% static 'js/js/tables/datatable/datatables.checkboxes.min.js' %}"></script>
     <script src="{% static 'js/js/scripts/pages/app-todo.js' %}"></script>
-    
+
     <script src="{% static 'js/js/scripts/extensions/calendar/calendars-data.js' %}"></script>
     <script src="{% static 'js/js/scripts/extensions/calendar/schedules.js' %}"></script>
     <script src="{% static 'js/js/scripts/extensions/calendar/app-calendar.js' %}"></script>
-    
 
-    {% block javascript %}    
+    <script src="{% static 'js/js/scripts/datatables/datatable.js' %}"></script>
+    <script src="{% static 'js/vendors/js/ui/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/datatables.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/buttons.print.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/pdfmake.min.js' %}"></script>
+    <script src="{% static 'js/vendors/js/tables/datatable/vfs_fonts.js' %}"></script>
+
+
+    {% block javascript %}
     {% endblock javascript %}
 
 </body>

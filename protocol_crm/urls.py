@@ -26,6 +26,7 @@ urlpatterns = [
     # API (v1)
     path('api/v1/', include('sms.api.urls')),
     path('api/v1/', include('properties.api.urls')),
+    path('api/v1/', include('tenants.api.urls')),
 
 
 
