@@ -8,8 +8,10 @@
 
 {% stage_opportunity as stage_opportunity %}
 {% stage_buying as stage_buying %}
+{% stage_renovation as stage_renovation %}
 {% stage_rent as stage_rent %}
 {% stage_tenant as stage_tenant %}
+{% renovation_teams as renovation_teams %}
 
 
 <!-- BEGIN: Content-->
@@ -234,7 +236,7 @@
                             <div class="card pb-2">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <h4>Monthly Meintenance</h4>
+                                        <h4>Monthly Maintenance</h4>
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -246,7 +248,7 @@
                                                     id="buying-stage-tab" data-toggle="tab" href="#tab1"
                                                     aria-controls="buying-stage" role="tab" aria-selected="true">
                                                     <i class="bx bx-home align-middle"></i>
-                                                    <span class="align-middle">Monthly Meintenance Empty</span>
+                                                    <span class="align-middle">Monthly Maintenance Empty</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -254,7 +256,7 @@
                                                     href="#tab2" aria-controls="renovation-stage" role="tab"
                                                     aria-selected="false">
                                                     <i class="bx bx-user align-middle"></i>
-                                                    <span class="align-middle">Monthly Meintenance With Tenant 1</span>
+                                                    <span class="align-middle">Monthly Maintenance With Tenant 1</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -271,10 +273,10 @@
 
                                         </ul>
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="tab1" aria-labelledby="buying-stage-tab"
-                                                role="tabpanel">
-
-                                                <!-- Monthly Meintenance -->
+                                            <div class="tab-pane active" id="tab1"
+                                                aria-labelledby="buying-stage-tab" role="tabpanel">
+                                                
+                                                <!-- Monthly Maintenance -->
                                                 <section id="basic-pills">
                                                     <div class="row match-height">
                                                         <div class=" col-lg-12">
@@ -482,15 +484,15 @@
 
                                                     </div>
                                                 </section>
-                                                <!-- Monthly Meintenanceend -->
+                                                <!-- Monthly Maintenanceend -->
 
                                             </div>
                                             <div class="tab-pane" id="tab2" aria-labelledby="renovation-stage-tab"
                                                 role="tabpanel">
 
                                                 <p>Choose Tenant Field</p>
-
-                                                <!-- Monthly Meintenance -->
+                                              
+                                                <!-- Monthly Maintenance -->
                                                 <section id="basic-pills">
                                                     <div class="row match-height">
                                                         <div class=" col-lg-12">
@@ -529,7 +531,7 @@
 
                                                     </div>
                                                 </section>
-                                                <!-- Monthly Meintenanceend -->
+                                                <!-- Monthly Maintenanceend -->
 
                                             </div>
 
@@ -563,7 +565,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="renovation-stage-tab" data-toggle="tab"
+                                                <a class="nav-link {% if stage_buying %} active {% endif %}" id="renovation-stage-tab" data-toggle="tab"
                                                     href="#renovation-stage" aria-controls="renovation-stage" role="tab"
                                                     aria-selected="false">
                                                     <i class="bx bx-user align-middle"></i>
@@ -571,7 +573,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link {% if stage_rent %} disabled {% elif stage_buying %} active {% endif %}"
+                                                <a class="nav-link {% if stage_rent %} disabled {% endif %}"
                                                     id="rent-stage-tab" data-toggle="tab" href="#rent-stage"
                                                     aria-controls="rent-stage" role="tab" aria-selected="false">
                                                     <i class="bx bx-message-square align-middle"></i>
@@ -579,7 +581,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link {% if stage_tenant %} disabled {% elif stage_buying and stage_rent %} active {% endif %}"
+                                                <a class="nav-link {% if stage_tenant %} disabled {% endif %}"
                                                     id="tenant-stage-tab" data-toggle="tab" href="#tenant-stage"
                                                     aria-controls="tenant-stage" role="tab" aria-selected="false">
                                                     <i class="bx bx-message-square align-middle"></i>
@@ -590,7 +592,7 @@
                                         </ul>
 
                                         <div class="tab-content">
-                                            <div class="tab-pane active" id="buying-stage"
+                                            <div class="tab-pane {% if stage_buying %} disabled {% else %} active {% endif %}" id="buying-stage"
                                                 aria-labelledby="buying-stage-tab" role="tabpanel">
                                                 <form class="form-stage"
                                                     data-api_url="{% url 'property-api:stage-buying' %}"
@@ -710,6 +712,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            
                                                             <div class="col-sm-12">
                                                                 <div class="form-group">
                                                                     <label
@@ -729,122 +732,177 @@
                                                     </span>
                                                 </form>
                                             </div>
-                                            <div class="tab-pane" id="renovation-stage"
+                                            <div class="tab-pane {% if stage_buying %} active {% endif %}" id="renovation-stage"
                                                 aria-labelledby="renovation-stage-tab" role="tabpanel">
-
-
-                                                <div class="card-content">
+                                                <div class="card">
                                                     <div class="card-body">
                                                         <!-- Collapse start -->
-                                                        <fieldset class="pt-0">
-                                                            <h5 class="py-50">Setup Your Renovation Stage Details</h5>
-                                                            <div class="row">
-
-                                                                <div class="col-12 col-sm-6 ">
-                                                                    <div class="form-group">
-                                                                        <label for="property-legal-costs">Renovation
-                                                                            Budget</label>
-                                                                        <div class="input-group mb-0">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"
-                                                                                    id="basic-addon1">$</span>
+                                                        <form class="form-stage" data-api_url="{% url 'property-api:stage-renovation' %}" data-reload="false">
+                                                            <fieldset class="pt-0">
+                                                                <h5 class="py-50">Setup Your Renovation Stage Details
+                                                                    <button class="btn btn-icon btn-warning edit-button float-right">Edit</button>
+                                                                    <button class="btn btn-icon btn-success save-button float-right" style="display: none;">Save</button>
+                                                                </h5>
+                                                                <div class="row">
+                                                                    <div class="col-12 col-sm-6 ">
+                                                                        <div class="form-group">
+                                                                            <label for="property-renovation-budget">Renovation Budget</label>
+                                                                            <div class="input-group mb-0">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                                                                </div>
+                                                                                <input disabled value="{{stage_renovation.renovation_budget}}" type="number" step="0.01" min="0" class="form-control" id="property-renovation-budget" value="{{stage_buying.legal_costs}}" name="property-renovation-budget" placeholder="Enter Your Renovation Budget" aria-label="Renovation Budget" aria-describedby="basic-addon1">
                                                                             </div>
-                                                                            <input disabled type="number" step="0.01"
-                                                                                min="0" class="form-control"
-                                                                                id="property-legal-costs"
-                                                                                value="{{stage_buying.legal_costs}}"
-                                                                                name="property-legal-costs"
-                                                                                placeholder="Enter Your Legal Costs"
-                                                                                aria-label="Potential Rent"
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-6 ">
+                                                                        <div class="form-group">
+                                                                            <label for="property-renovation-date-receiving-money">Date Receiving Money</label>
+                                                                            <input disabled  value="{{stage_renovation.get_date_receiving_money}}" type="date" class="form-control" id="property--date-receiving-money" name="property-renovation-date-receiving-money" placeholder="Enter Date Receiving Money" aria-label="Date Receiving Money" aria-describedby="basic-addon1">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="property-renovation-investor">Investor</label>
+                                                                            <input disabled type="text"
+                                                                                class="form-control"
+                                                                                value="{{stage_renovation.investor}}"
+                                                                                id="property-renovation-investor"
+                                                                                name="property-renovation-investor"
+                                                                                placeholder="Enter Name of Investor">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-6 ">
+                                                                        <div class="form-group">
+                                                                            <label for="property-renovation-date-receiving-key">Date Receiving Key</label>
+                                                                            <input disabled type="date" class="form-control"
+                                                                                id="property-renovation-date-receiving-key"
+                                                                                name="property-renovation-date-receiving-key"
+                                                                                value="{{stage_renovation.get_date_receiving_key}}"
+                                                                                placeholder="Enter Receiving Date"
+                                                                                aria-label="Receiving Date"
                                                                                 aria-describedby="basic-addon1">
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-12 col-sm-6 ">
-                                                                    <div class="form-group">
-                                                                        <label for="property-accountant-costs">Date
-                                                                            Receiving Money</label>
-                                                                        <div class="input-group mb-0">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"
-                                                                                    id="basic-addon1">$</span>
-                                                                            </div>
-                                                                            <input disabled type="number" step="0.01"
-                                                                                min="0" class="form-control"
-                                                                                id="property-accountant-costs"
-                                                                                value="{{stage_buying.accountant_costs}}"
-                                                                                name="property-accountant-costs"
-                                                                                placeholder="Enter Your Accountant Costs"
-                                                                                aria-label="Accountant Costs"
-                                                                                aria-describedby="basic-addon1">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="property-renovation-description">Description</label>
+                                                                            <textarea disabled type="text" rows="3"
+                                                                                class="form-control"
+                                                                                id="property-renovation-description"
+                                                                                name="property-renovation-description"
+                                                                                placeholder="Enter Your Description">{{ stage_renovation.description }}</textarea>
                                                                         </div>
                                                                     </div>
+                                                                    
                                                                 </div>
-                                                                <div class="col-12 col-sm-6 ">
-                                                                    <div class="form-group">
-                                                                        <label
-                                                                            for="property-other-costs">Investor</label>
-                                                                        <div class="input-group mb-0">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"
-                                                                                    id="basic-addon1">$</span>
-                                                                            </div>
-                                                                            <input disabled type="number" step="0.01"
-                                                                                min="0" class="form-control"
-                                                                                id="property-other-costs"
-                                                                                value="{{stage_buying.other_costs}}"
-                                                                                name="property-other-costs"
-                                                                                placeholder="Enter Your Other Costs"
-                                                                                aria-label="Other Costs"
-                                                                                aria-describedby="basic-addon1">
+                                                            </fieldset>
+                                                        </form>
+                                                        <div class="text-center">
+                                                            <button data-toggle="modal"
+                                                                data-target="#create-renovation-team"
+                                                                class="btn btn-icon btn-primary">Create
+                                                                Renovation Team</button>
+                                                            <button data-toggle="modal"
+                                                                data-target="#create-expense-table"
+                                                                class="btn btn-icon btn-info">Create
+                                                                Expense Table</button>
+                                                        </div>
+                
+                                                        <div class="modal fade" id="create-renovation-team" tabindex="-1" role="dialog"
+                                                            aria-labelledby="create-renovation-team" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <form class="form-stage" data-name="Renovation Team" data-api_url="{% url 'property-api:renovation-team-create' %}" data-reload="true">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="create-renovation-team">Create Renovation Team</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                                aria-label="Cancel">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-sm-6 ">
-                                                                    <div class="form-group">
-                                                                        <label for="property-buy-price">Date Receiving
-                                                                            Key</label>
-                                                                        <div class="input-group mb-0">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text"
-                                                                                    id="basic-addon1">$</span>
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="company-name">Company Name</label>
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    value=""
+                                                                                    id="company-name"
+                                                                                    name="company-name"
+                                                                                    placeholder="Enter Name of Company" autocomplete="off">
                                                                             </div>
-                                                                            <input disabled type="number" step="0.01"
-                                                                                min="0" class="form-control"
-                                                                                id="property-buy-price"
-                                                                                name="property-buy-price"
-                                                                                value="{{stage_buying.buy_price}}"
-                                                                                placeholder="Enter Your Buy Price"
-                                                                                aria-label="Buy Price"
-                                                                                aria-describedby="basic-addon1">
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <div class="form-group">
-                                                                        <label
-                                                                            for="property-buying-description">Description</label>
-                                                                        <textarea disabled type="text" rows="3"
-                                                                            class="form-control"
-                                                                            id="property-buying-description"
-                                                                            name="property-buying-description"
-                                                                            placeholder="Enter Your Description">#</textarea>
-                                                                    </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                            <button type="button"
+                                                                            class="btn btn-primary modal-submit-button"
+                                                                            data-dismiss="modal">Create</button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
-                                                        </fieldset>
-
+                                                        </div>
+                
+                                                        <div class="modal fade" id="create-expense-table" tabindex="-1" role="dialog"
+                                                            aria-labelledby="create-expense-tableLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <form class="form-stage"  data-name="Expense Table" data-api_url="{% url 'property-api:expense-table-create' %}" data-reload="true">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="create-expense-tableLabel">Create Expense Table</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                                aria-label="Cancel">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="expense-table-name">Renovation Team</label>
+                                                                                <select class="form-control" id="renovation-team" name="renovation-team">
+                                                                                    
+                                                                                    {% for renovation_team in renovation_teams %}
+                                                                                        <option value="{{ renovation_team.id }}">{{ renovation_team.company_name }}</option>
+                                                                                    {% endfor %}
+                                                                                        
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="expense-table-name">Name</label>
+                                                                                <input type="text"
+                                                                                    class="form-control"
+                                                                                    value=""
+                                                                                    id="expense-table-name"
+                                                                                    name="expense-table-name"
+                                                                                    placeholder="Enter Name of Expense table" autocomplete="off">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                            <button type="button"
+                                                                            class="btn btn-primary modal-submit-button"
+                                                                            data-dismiss="modal">Create</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
                                                         <section id="collapsible">
-
                                                             <div class="collapsible">
-
                                                                 <div class="card collapse-header">
-                                                                    <div id="headingCollapse3" class="card-header"
+                                                                    <div id="renovation-team-list-div" class="card-header"
                                                                         data-toggle="collapse" role="button"
-                                                                        data-target="#collapse3" aria-expanded="false"
-                                                                        aria-controls="collapse3">
+                                                                        data-target="#renovation-team-list-card" aria-expanded="false"
+                                                                        aria-controls="renovation-team-list-card">
                                                                         <span class="collapse-title">
-                                                                            Renovation Team
+                                                                            Renovation Team List
                                                                             <div class="float-right">
                                                                                 <button
                                                                                     class="btn btn-icon btn-success edit-button">Create
@@ -853,28 +911,22 @@
                                                                         </span>
                                                                     </div>
 
-
-
-                                                                    <div id="collapse3" role="tabpanel"
-                                                                        aria-labelledby="headingCollapse3"
+                                                                    <div id="renovation-team-list-card" role="tabpanel"
+                                                                        aria-labelledby="renovation-team-list-div"
                                                                         class="collapse">
                                                                         <div class="card-content">
                                                                             <div class="card-body">
-
-                                                                                Form to create table here.
-                                                                                The collapse card with form to create
-                                                                                renovation team will always appear at
-                                                                                the bottom of all other collapse cards.
-                                                                                If a renovation team is created, the
-                                                                                expenses below will be associated with
-                                                                                only that renovation team.
-                                                                                If a new renovation team is made, the
-                                                                                user will create table only for the new
-                                                                                renovation team.
-                                                                                When Create Renovation Team, show Create
-                                                                                Renovation Expense collapse card,
-                                                                                otherwise don't show
-
+                                                                                <table class="table table-hover text-center" id="renovation-team-list"  style="width: 100%;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th class="text-center">Company Name</th>
+                                                                                            <th class="text-center">Date Joined</th>
+                                                                                            <th class="text-center">Action</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody class="text-center">
+                                                                                    </tbody>
+                                                                                </table>
 
                                                                             </div>
                                                                         </div>
@@ -3179,6 +3231,13 @@
             $('#stage-form').submit();
         }
     });
+    $('.modal-form').submit(function(e) {
+
+    });
+    $('.modal-submit-button').click(function(e) {
+        var form = $(this).closest('.form-stage');
+        $(form).submit();
+    });
 
     $('.edit-button').click(function (e) {
         e.preventDefault();
@@ -3365,6 +3424,121 @@
                 }
             })
         });
+    });
+
+    renovationTeamListTable = $("#renovation-team-list").DataTable({
+        "processing": true,
+        "serverSide": true,
+        "autoWidth": true,
+        "ajax": {
+            url: "{% url 'property-api:renovation-team-list' %}",
+            type: 'GET',
+            data: function (d) {
+                d.page_num = getPageNumber();
+                d.property_id = `{{property.id}}`;
+            }
+        },
+        "order": [],
+        "columnDefs": [
+            {
+                "render": function (data, type, row) {
+                    return row['company_name'];
+                },
+                "targets": 0
+            },
+            {
+                "render": function (data, type, row) {
+                    return row['created_date'];
+                },
+                "targets": 1
+            },
+            {
+                "orderable": false,
+                "render": function (data, type, row) {
+
+                    action = `
+                        <div class="text-center">
+                            <a class="text-dark text-decoration-none" href="#" data-toggle="modal" data-target="#renovationTeamEditModal-${row['id']}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle mr-2" data-toggle="tooltip" data-original-title="Edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </a>
+                            <div class="modal fade text-left" id="renovationTeamEditModal-${row['id']}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form class="form-stage" data-name="Renovation Team" data-api_url="{% url 'property-api:renovation-team-update' %}" data-reload="false">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="create-renovation-team">Create Renovation Team</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Cancel">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['id']}"
+                                                        name="renovation-team-id"
+                                                        placeholder="Renovation Team ID" style="display:none;">
+                                                    <label
+                                                        for="company-name">Company Name</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['company_name']}"
+                                                        id="company-name"
+                                                        name="company-name"
+                                                        placeholder="Enter Name of Company" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Cancel</button>
+                                                <button type="button"
+                                                class="btn btn-primary modal-submit-button"
+                                                data-dismiss="modal">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+                    return action;
+                },
+                "targets": 2
+            },
+        ],
+
+        "createdRow": function (row, data, dataIndex) {
+        },
+
+        "initComplete": function (settings, json) {
+            // load_listeners();
+            renovationTeamListTable.page(getPageNumber() - 1).draw('page');
+        }
+    });
+    // xp = renovationTeamListTable;
+
+    renovationTeamListTable.on('draw', function () {
+        renovationTeamListTable.columns.adjust();
+    });
+
+    $('.sidebar-toggle').click(function () {
+        renovationTeamListTable.columns.adjust();
+    });
+
+    $('#renovation-team-list').on('page.dt', function () {
+        const info = renovationTeamListTable.page.info();
+        const page_number = info.page + 1;
+        const queryString = getQueryString([{'key': 'page', 'value': page_number}]);
+        history.replaceState(page_number, queryString, `./${queryString}`);
+    });
+    $('#renovation-team-list').on('length.dt', function (e, settings, len) {
+        const queryString = getQueryString([{'key': 'page', 'value': 1}]);
+        history.replaceState({id: null}, queryString, `./${queryString}`);
+    });
+    $('#renovation-team-list').on('search.dt', function (e, settings, len) {
+        const queryString = getQueryString([{'key': 'page', 'value': 1}]);
+        history.replaceState({id: null}, queryString, `./${queryString}`);
     });
 
     // Codes of wizard-steps.js

@@ -121,6 +121,7 @@ WSGI_APPLICATION = 'protocol_crm.wsgi.application'
 # }
 
 # AWS RDS Configuration
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

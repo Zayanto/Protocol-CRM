@@ -21,6 +21,14 @@ def stage_buying(context):
     return None
 
 @register.simple_tag(takes_context=True)
+def stage_renovation(context):
+    try:
+        return StageRenovation.objects.get(properties=context['property'])
+    except:
+        pass
+    return None
+
+@register.simple_tag(takes_context=True)
 def stage_rent(context):
     try:
         return StageForRent.objects.get(properties=context['property'])
@@ -40,6 +48,15 @@ def stage_tenant(context):
 def stage_opportunity_list(property_):
     try:
         return StageOpportunity.objects.get(properties=property_)
+    except:
+        pass
+    return None
+
+@register.simple_tag(takes_context=True)
+def renovation_teams(context):
+    try:
+        propert = context['property']
+        return propert.stagerenovation.renovationteam_set.all()
     except:
         pass
     return None

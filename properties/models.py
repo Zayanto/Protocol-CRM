@@ -8,6 +8,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.contrib.auth import get_user_model  
 
+
 class Property(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -97,12 +98,14 @@ class StageOpportunity(models.Model):
     potential_rent = models.DecimalField(max_digits=10, decimal_places=1, null=True, blank=True)
     description = models.TextField(blank=True)
 
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
     def get_building_construction_date(self):
         if self.building_construction_date:
             return datetime.strftime(self.building_construction_date, '%Y-%m-%d')
 
 class StageBuying(models.Model):
-
     properties = models.OneToOneField(Property, on_delete=models.CASCADE, related_name='stage_buying', null=True, blank=True)
     # Expenses
     agent_costs = models.DecimalField(max_digits=10, decimal_places=1, null=True)
@@ -113,21 +116,42 @@ class StageBuying(models.Model):
     buy_price = models.DecimalField(max_digits=10, decimal_places=1, null=True)
     description = models.TextField(blank=True)
 
-
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
 class StageRenovation(models.Model):
-
+    properties = models.OneToOneField(Property, on_delete=models.CASCADE, null=True)
     investor = models.CharField(max_length=200, null=True)
     renovation_budget = models.DecimalField(max_digits=10, decimal_places=1, null=True)
-    date_receiving_money = models.DateTimeField(blank=True)
-    date_receiving_key = models.DateTimeField(blank=True)
-    description = models.TextField(blank=True)
+    date_receiving_money = models.DateTimeField(null=True)
+    date_receiving_key = models.DateTimeField(null=True)
+    description = models.TextField(null=True)
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+    def get_date_receiving_money(self):
+        if self.date_receiving_money:
+            return datetime.strftime(self.date_receiving_money, '%Y-%m-%d')
+    
+    def get_date_receiving_key(self):
+        if self.date_receiving_key:
+            return datetime.strftime(self.date_receiving_key, '%Y-%m-%d')
 
 class RenovationTeam(models.Model):
+    renovation_stage = models.ForeignKey(StageRenovation, on_delete=models.CASCADE, null=True)
     company_name = models.CharField(max_length=200, null=True)
 
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+class ExpenseTable(models.Model):
+    renovation_team = models.ForeignKey(RenovationTeam, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=200, null=True)
+    
 class RenovationTeamExpenses(models.Model):
     #Expense Table Content
+    expense_table = models.ForeignKey(ExpenseTable, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200, null=True)
     description = models.TextField(blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
@@ -139,27 +163,53 @@ class RenovationTeamExpenses(models.Model):
     delivery_date = models.DateTimeField(blank=True)
     company = models.CharField(max_length=200, null=True)
 
-        
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
 class StageForRent(models.Model):
     properties = models.OneToOneField(Property, on_delete=models.CASCADE, related_name='stage_rent', null=True, blank=True)
     expected_rent = models.IntegerField(null=True)
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
 class StageWithTenant(models.Model):
     properties = models.OneToOneField(Property, on_delete=models.CASCADE, related_name='stage_tenant', null=True, blank=True)
     actual_rent = models.DecimalField(max_digits=10, decimal_places=1, null=True)
     description = models.TextField(blank=True)
 
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
 class PropertyImage(models.Model):
+    properties = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='properties/', blank=True)
-    _property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
 class MonthlyMaintenance(models.Model):
+    properties = models.ForeignKey(Property, on_delete=models.CASCADE, null=True, related_name='monthly_expenses')
+    title = models.CharField(max_length=200, null=True)
+    description = models.TextField(blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
+    currency = models.CharField(max_length=200, null=True)
+    account = models.CharField(max_length=200, null=True)
+    date = models.DateTimeField(null=True, blank=True)
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+ 
+
+class TenantMonthlyMaintenance(models.Model):
+    from tenants.models import Tenant
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, related_name='tenant_monthly_expenses')
     title = models.CharField(max_length=200, null=True)
     description = models.TextField(blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
     currency = models.CharField(max_length=200, null=True)
     account = models.CharField(max_length=200, null=True)
     date = models.DateTimeField(blank=True)
- 
-     
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
