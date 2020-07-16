@@ -143,6 +143,6 @@ def PropertyImageUpload(request):
     property_=Property.objects.get(id=property_id)
     if images:
         for image in images:
-            PropertyImage.objects.create(image=image, _property=property_)
+            PropertyImage.objects.create(image=image, properties=property_)
     return HttpResponse("ok")
 
