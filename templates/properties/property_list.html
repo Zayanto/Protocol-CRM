@@ -13,125 +13,106 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
-            <!-- users list start -->
-            <section class="users-list-wrapper">
-                <div class="users-list-filter px-1">
-                    <form>
-                        <div class="row border rounded py-2 mb-2">
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-verified">Verified</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-verified">
-                                        <option value="">Any</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </fieldset>
+
+            <!-- Zero configuration table -->
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Zero configuration</h4>
                             </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-role">Role</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-role">
-                                        <option value="">Any</option>
-                                        <option value="User">User</option>
-                                        <option value="Staff">Staff</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-status">Status</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-status">
-                                        <option value="">Any</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Close">Close</option>
-                                        <option value="Banned">Banned</option>
-                                    </select>
-                                </fieldset>
-                            </div>
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
 
-                            <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#exampleModalScrollable">
-                                    Add New Property
-                                </button>
-                            </div>
-                            
-                        </div>
-                    </form>
-                </div>
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Tenant</th>
+                                                    <th>Contact</th>
+                                                    <th>Stage</th>
+                                                    <th>edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for property in property_list %}
+                                                {% property_tenant property as review %}
+                                                <tr>
 
+                                                    <td><a
+                                                            href="{{ property.get_absolute_url }}">{{ property.title }}</a>
+                                                    </td>
+                                                    <td>{{review.full_name}}</td>
 
-                <div class="users-list-table">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <!-- datatable start -->
-                                <div class="table-responsive">
-                                    <table id="users-list-datatable" class="table">
-                                        <thead>
-                                            <tr>
+                                                    <td>
+                                                        {% if review.contract_set.all.count > 0 %}
+                                                        <a
+                                                            href="{% url 'contract:contract_detail' review.contract_set.all.0.pk %}">{{review.contract_set.all.0.title}}</a>
+                                                        {% endif %}
+                                                    </td>
 
-                                                <th>Title</th>
-                                                <th>Tenant</th>
-                                                <th>Contact</th>
-                                                <th>Stage</th>
+                                                    <td>
 
-                                                <th>edit</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for property in property_list %}
-                                            {% property_tenant property as review %}
-                                            <tr>
+                                                        {% stage_tenant_list property as stage_tenant %}
 
-                                                <td><a href="{{ property.get_absolute_url }}">{{ property.title }}</a> </td>
-                                                <td>{{review.full_name}}</td>
-
-                                                <td>
-                                                    {% if review.contract_set.all.count > 0 %}
-                                                    <a href="{% url 'contract:contract_detail' review.contract_set.all.0.pk %}">{{review.contract_set.all.0.title}}</a>
-                                                    {% endif %}
-                                                </td>
-
-                                                <td>
-
-                                                    {% stage_tenant_list property as stage_tenant %}
-
-                                                    {% if stage_tenant %}
-                                                        Tenant Stage
-                                                    {% else %}
+                                                        {% if stage_tenant %}
+                                                        <div class="badge badge-light-success text-bold-500 py-50">
+                                                            Tenant Stage
+                                                        </div>
+                                                        {% else %}
                                                         {% stage_rent_list property as stage_rent %}
                                                         {% if stage_rent %}
+                                                        <div class="badge badge-light-danger text-bold-500 py-50">
                                                             Rent Stage
+                                                        </div>
                                                         {% else %}
-                                                            {% stage_buying_list property as stage_buying %}
-                                                            {% if stage_buying %}
-                                                                Buying Stage
-                                                            {% else %}
-                                                                Opportunity Stage
-                                                            {% endif %}
+                                                        {% stage_buying_list property as stage_buying %}
+                                                        {% if stage_buying %}
+                                                        <div class="badge badge-light-warning text-bold-500 py-50">
+                                                            Buying Stage
+                                                        </div>
+                                                        {% else %}
+                                                        <div class="badge badge-light-primary text-bold-500 py-50">
+                                                            Opportunity Stage
+                                                        </div>
                                                         {% endif %}
-                                                    {% endif %}
+                                                        {% endif %}
+                                                        {% endif %}
 
-                                                </td>
-                                                <td><a href="{{ property.get_absolute_url }}"><i
-                                                            class="bx bx-edit-alt"></i></a></td>
-                                            </tr>
-                                            {% endfor %}
+                                                    </td>
+
+                                                    <td><a href="{{ property.get_absolute_url }}"><button type="button" class="btn btn-outline-primary mr-1 mb-1"><i
+                                                        class="bx bx-search" ></i><span
+                                                        class="align-middle ml-25">View</span></button></a>
+                                                                
+                                                            
+                                                            </td>
+                                                    
+                                                </tr>
+                                                {% endfor %}
 
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Tenant</th>
+                                                    <th>Contact</th>
+                                                    <th>Stage</th>
+                                                    <th>edit</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
-                                <!-- datatable ends -->
                             </div>
                         </div>
                     </div>
                 </div>
-
             </section>
-            <!-- users list ends -->
+            <!--/ Zero configuration table -->
 
 
 
