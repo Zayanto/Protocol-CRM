@@ -1,5 +1,8 @@
 import datetime
 import json
+import time
+
+from django.db.models import Q
 
 from rest_framework import generics
 from rest_framework.generics import ListAPIView
@@ -8,7 +11,7 @@ from rest_framework import exceptions, status
 from rest_framework.views import APIView
 
 from properties.models import *
-from properties.api.serializers import StageOpportunitySerializer, StageBuyingSerializer, StageRentSerializer, StageTenantSerializer
+from properties.api.serializers import *
 
 class CreatePropertyStageOpportunityAPIView(APIView):
 
@@ -53,7 +56,6 @@ class CreatePropertyStageOpportunityAPIView(APIView):
         obj.save()
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
     
-
 class StageOpportunityAPIView(APIView):
     serializer_class = StageOpportunitySerializer
     
@@ -132,8 +134,6 @@ class StageOpportunityAPIView(APIView):
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
-    
-
 class StageBuyingAPIView(APIView):
     serializer_class = StageBuyingSerializer
     
@@ -192,6 +192,62 @@ class StageBuyingAPIView(APIView):
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
 
+class StageRenovationAPIView(APIView):
+    serializer_class = StageRenovationSerializer
+    
+    def get(self, request):
+        property_id = request.GET.get('property_id', None)
+
+        if not property_id: 
+            raise exceptions.NotFound('property_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        stage_renovation, _ = StageRenovation.objects.get_or_create(properties=properties)
+        serializer = self.serializer_class(stage_renovation, many=False)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def delete(self, request):
+        property_id = request.headers['property-id']
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        obj = StageRenovation.objects.get(properties=properties).delete()
+
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        property_id = request.POST.get('property_id', None)
+
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        obj, _ = StageRenovation.objects.get_or_create(properties=properties)
+
+        obj.investor = obj.investor if not request.POST.get('property-renovation-investor', None) else request.POST.get('property-renovation-investor', None)
+        obj.renovation_budget = obj.renovation_budget if not request.POST.get('property-renovation-budget', None) else request.POST.get('property-renovation-budget', None)
+        obj.date_receiving_money = obj.date_receiving_money if not request.POST.get('property-renovation-date-receiving-money', None) else datetime.strptime(request.POST.get('property-renovation-date-receiving-money'), '%Y-%m-%d')
+        obj.date_receiving_key = obj.date_receiving_key if not request.POST.get('property-renovation-date-receiving-key', None) else datetime.strptime(request.POST.get('property-renovation-date-receiving-key'), '%Y-%m-%d')
+        obj.description = obj.description if not request.POST.get('property-renovation-description', None) else request.POST.get('property-renovation-description', None)
+        obj.save()
+
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+    
 class StageRentAPIView(APIView):
     serializer_class = StageRentSerializer
     
@@ -242,7 +298,6 @@ class StageRentAPIView(APIView):
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
-    
 
 class StageTenantAPIView(APIView):
     serializer_class = StageTenantSerializer
@@ -294,4 +349,324 @@ class StageTenantAPIView(APIView):
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
-    
+
+class RenovationTeamCreateView(APIView):
+    def post(self, request):
+        property_id = request.POST.get('property_id', None)
+        company_name = request.POST.get('company-name', None)
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+
+        if not company_name:
+            raise exceptions.NotFound('company_name is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        created = RenovationTeam.objects.create(renovation_stage=properties.stagerenovation, company_name=company_name)
+
+        if created:
+            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status': 'Error'}, status=status.HTTP_404_NOT_FOUND)
+
+class RenovationTeamUpdateView(APIView):
+    def post(self, request):
+        property_id = request.POST.get('property_id', None)
+        company_name = request.POST.get('company-name', None)
+        renovation_team_id = request.POST.get('renovation-team-id', None)
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+
+        if not company_name:
+            raise exceptions.NotFound('company_name is not given')
+
+        if not renovation_team_id:
+            raise exceptions.NotFound('renovation_team_id is not given')
+        
+        try:
+            properties = Property.objects.get(id=property_id)
+            renovation_team = RenovationTeam.objects.get(id=renovation_team_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        renovation_team.company_name = company_name
+        renovation_team.save()
+
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
+class RenovationTeamExpenseCreateView(APIView):
+    def post(self, request):
+        expense_table_id = request.POST.get('expense_table_id', None)
+        title = request.POST.get('title', None)
+        description = request.POST.get('description', None)
+        amount = request.POST.get('amount', None)
+        currency = request.POST.get('currency', None)
+        account = request.POST.get('account', None)
+        date = request.POST.get('date', None)
+        store = request.POST.get('store', None)
+        order_date = request.POST.get('order_date', None)
+        delivery_date = request.POST.get('delivery_date', None)
+        company = request.POST.get('company', None)
+        
+        if not expense_table_id:
+            raise exceptions.NotFound('expense_table_id is not given')
+
+        if not title:
+            raise exceptions.NotFound('title is not given')
+
+        if not description:
+            raise exceptions.NotFound('description is not given')
+
+        if not amount:
+            raise exceptions.NotFound('amount is not given')
+
+        if not currency:
+            raise exceptions.NotFound('currency is not given')
+
+        if not account:
+            raise exceptions.NotFound('account is not given')
+
+        if not date:
+            raise exceptions.NotFound('date is not given')
+
+        if not store:
+            raise exceptions.NotFound('store is not given')
+
+        if not order_date:
+            raise exceptions.NotFound('order_date is not given')
+
+        if not delivery_date:
+            raise exceptions.NotFound('delivery_date is not given')
+
+        if not company:
+            raise exceptions.NotFound('company is not given')
+
+        try:
+            expense_table = ExpenseTable.objects.get(id=expense_table_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        data = {
+            'expense_table': expense_table,
+            'title': title,
+            'description': description,
+            'amount': amount,
+            'currency': currency,
+            'account': account,
+            'date': datetime.strptime(date, '%Y-%m-%d'),
+            'store': store,
+            'order_date': datetime.strptime(order_date, '%Y-%m-%d'),
+            'delivery_date': datetime.strptime(delivery_date, '%Y-%m-%d'),
+            'company': company,
+        }
+        print(data)
+        try:
+            created = RenovationTeamExpenses.objects.create(**data)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        if created:
+            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
+class ExpenseTableCreateView(APIView):
+    def post(self, request):
+        property_id = request.POST.get('property_id', None)
+        renovation_team = request.POST.get('renovation-team', None)
+        expense_table_name = request.POST.get('expense-table-name', None)
+        
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+
+        if not expense_table_name:
+            raise exceptions.NotFound('expense_table_name is not given')
+
+        if not renovation_team:
+            raise exceptions.NotFound('Renovation Team id is not given')
+
+        try:
+            properties = Property.objects.get(id=property_id)
+            renovation_team = RenovationTeam.objects.get(id=renovation_team)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        created = ExpenseTable.objects.create(renovation_team=renovation_team, name=expense_table_name)
+
+        if created:
+            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
+class RenovationTeamListDatatableAPIView(ListAPIView):
+    serializer_class = RenovationTeamSerializer
+
+    def get_queryset(self):
+        property_id = self.request.GET.get('property_id', None)
+        if not property_id:
+            raise exceptions.NotFound('Property id is not given')
+        try:
+            properties = Property.objects.get(id=property_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+
+        queryset = properties.stagerenovation.renovationteam_set.all().order_by('-created_date')
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+
+        draw = request.GET.get('draw')
+        qs = self.get_queryset()
+        renovation_team_qs_range = qs
+
+        draw = request.GET.get('draw')
+        records_total = qs.count()
+        records_filtered = qs.count()
+
+        length = int(request.GET.get('length'))
+        start = int(request.GET.get('start'))
+        order_column = request.GET.get('order[0][column]')
+        order_dir = request.GET.get('order[0][dir]')
+        search_str = request.GET.get('search[value]')
+
+        page_num = int(request.GET.get('page_num', 1))
+
+        column_names = [
+            'company_name',
+            'created_date',
+            ''
+        ]
+
+        if search_str:
+            renovation_team_qs_range = renovation_team_qs_range.filter(
+                Q(company_name__icontains=search_str)
+            )
+            records_filtered = renovation_team_qs_range.count()
+
+        if order_column:
+            order_str = column_names[int(order_column)]
+
+            if order_dir == 'desc':
+                order_str = f'-{column_names[int(order_column)]}'
+
+            renovation_team_qs_range = renovation_team_qs_range.order_by(order_str)
+        # else:
+        new_start = (page_num - 1) * length
+        start = new_start if new_start <= records_filtered else start
+
+        renovation_team_qs_range = renovation_team_qs_range[start:(start + length)]
+
+        data_array = []
+
+        for q in renovation_team_qs_range:
+            
+            data_array.append({
+                'id': q.id,
+                'company_name': q.company_name,
+                'created_date': q.created_date.strftime("%b %d, %Y %H:%M:%S"),
+            })
+
+        response = {
+            'draw': draw,
+            'recordsTotal': records_total,
+            'recordsFiltered': records_filtered,
+            'data': data_array
+        }
+
+        return Response(response, status=status.HTTP_200_OK)
+
+class RenovationTeamExpensesDatatableAPIView(ListAPIView):
+    serializer_class = RenovationTeamExpensesSerializer
+
+    def get_queryset(self):
+        expense_table_id = self.request.GET.get('expense_table_id', None)
+        
+        if not expense_table_id:
+            raise exceptions.NotFound('expense_table_id is not given')
+        
+        expense_table = ExpenseTable.objects.get(id=expense_table_id)
+        queryset = RenovationTeamExpenses.objects.filter(expense_table=expense_table).order_by('-created_date')
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+
+        draw = request.GET.get('draw')
+        qs = self.get_queryset()
+        renovation_team_qs_range = qs
+
+        draw = request.GET.get('draw')
+        records_total = qs.count()
+        records_filtered = qs.count()
+
+        length = int(request.GET.get('length'))
+        start = int(request.GET.get('start'))
+        order_column = request.GET.get('order[0][column]')
+        order_dir = request.GET.get('order[0][dir]')
+        search_str = request.GET.get('search[value]')
+
+        page_num = int(request.GET.get('page_num', 1))
+
+        column_names = [
+            'title', 'description', 'amount', 'currency', 'account', 'date', 'store', 'order_date', 'delivery_date', 'company'
+        ]
+
+        if search_str:
+            renovation_team_expense_qs_range = renovation_team_expense_qs_range.filter(
+                Q(title__icontains=search_str) |
+                Q(description__icontains=search_str) |
+                Q(amount__icontains=search_str) |
+                Q(currency__icontains=search_str) |
+                Q(account__icontains=search_str) |
+                Q(date__icontains=search_str) |
+                Q(store__icontains=search_str) |
+                Q(order_date__icontains=search_str) |
+                Q(delivery_date__icontains=search_str) |
+                Q(company__icontains=search_str)
+            )
+            records_filtered = renovation_team_expense_qs_range.count()
+
+        if order_column:
+            order_str = column_names[int(order_column)]
+
+            if order_dir == 'desc':
+                order_str = f'-{column_names[int(order_column)]}'
+
+            renovation_team_expense_qs_range = renovation_team_expense_qs_range.order_by(order_str)
+        # else:
+        new_start = (page_num - 1) * length
+        start = new_start if new_start <= records_filtered else start
+
+        renovation_team_expense_qs_range = renovation_team_expense_qs_range[start:(start + length)]
+
+        data_array = []
+
+        for q in renovation_team_expense_qs_range:
+            
+            data_array.append({
+                'id': q.id,
+                'title': q.title,
+                'description': q.description,
+                'amount': q.amount,
+                'currency': q.currency,
+                'account': q.account,
+                'date': q.date,
+                'store': q.store,
+                'order_date': q.order_date,
+                'delivery_date': q.delivery_date,
+                'company': q.company,
+                'created_date': q.created_date.strftime("%b %d, %Y %H:%M:%S"),
+            })
+
+        response = {
+            'draw': draw,
+            'recordsTotal': records_total,
+            'recordsFiltered': records_filtered,
+            'data': data_array
+        }
+
+        return Response(response, status=status.HTTP_200_OK)

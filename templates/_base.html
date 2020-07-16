@@ -60,6 +60,7 @@ shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/charts/apexcharts.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/extensions/swiper.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/iziToast.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/iziModal.min.css' %}">
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/vendors/css/extensions/toastr.min.css' %}"> -->
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/app-assets/css/plugins/extensions/toastr.min.css' %}"> -->
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> -->
@@ -418,6 +419,7 @@ shrink-to-fit=no">
     <!-- END: Theme JS-->
     <script src="{% static 'js/vendors/js/extensions/jquery.steps.min.js' %}"></script>
     <script src="{% static 'js/iziToast.min.js' %}"></script>
+    <script src="{% static 'js/iziModal.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/forms/validation/jquery.validate.min.js' %}"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
     <script src="{% static 'js/vendors/js/jkanban/jkanban.min.js' %}"></script>
@@ -448,7 +450,53 @@ shrink-to-fit=no">
     <script src="{% static 'js/vendors/js/tables/datatable/buttons.bootstrap.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/tables/datatable/pdfmake.min.js' %}"></script>
     <script src="{% static 'js/vendors/js/tables/datatable/vfs_fonts.js' %}"></script>
+    
+    <script>
+        $('[data-toggle="tooltip"]').tooltip();
+        feather.replace();
+        function getPageNumber() {
+            let page_num = 1;
+            const queryDict = getQueryParameters();
+            const value = parseInt(queryDict["page"]);
+            if (!isNaN(value)) page_num = value;
 
+            return page_num;
+        }
+        function getQueryString(new_value_list = []) {
+            let queryDict = getQueryParameters();
+            let queryString = '';
+            new_value_list.forEach(function (obj) {
+                queryDict[obj['key']] = obj['value'].toString();
+            });
+
+            for (const key in queryDict) {
+                if (queryDict.hasOwnProperty(key)) {
+                    if (queryString) queryString += '&';
+                    queryString += `${key}=${queryDict[key]}`;
+                }
+            }
+            return queryString ? `?${queryString}` : '';
+        }
+        function getQueryParameters() {
+            let queryDict = {};
+
+            const q = location.search.substr(1).split("&");
+            q.forEach(function (value, index) {
+                if (!value) return;
+                const s_array = value.split("=");
+                queryDict[s_array[0]] = s_array[1] ? s_array[1] : "";
+            });
+
+            return queryDict;
+        }
+        function getUserID(listRef) {
+            let user_id = listRef.data("user-id");
+            const queryDict = getQueryParameters();
+            if (queryDict["user_id"] != null) user_id = queryDict["user_id"];
+
+            return user_id + "";
+        }
+	</script>
 
     {% block javascript %}
     {% endblock javascript %}

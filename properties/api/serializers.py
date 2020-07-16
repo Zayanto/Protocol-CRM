@@ -17,6 +17,11 @@ class StageBuyingSerializer(serializers.ModelSerializer):
         model = StageBuying
         fields = '__all__' 
     
+class StageRenovationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StageRenovation
+        fields = '__all__' 
+        
 class StageRentSerializer(serializers.ModelSerializer):
     class Meta:
         model = StageForRent
@@ -25,5 +30,15 @@ class StageRentSerializer(serializers.ModelSerializer):
 class StageTenantSerializer(serializers.ModelSerializer):
     class Meta:
         model = StageWithTenant
+        fields = '__all__' 
+
+class RenovationTeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RenovationTeam
+        fields = '__all__'
+
+class RenovationTeamExpensesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RenovationTeamExpenses
         fields = '__all__' 
     
