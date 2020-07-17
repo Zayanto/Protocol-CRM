@@ -453,7 +453,7 @@ shrink-to-fit=no">
     
     <script>
         $('[data-toggle="tooltip"]').tooltip();
-        feather.replace();
+        // feather.replace();
         function getPageNumber() {
             let page_num = 1;
             const queryDict = getQueryParameters();
@@ -464,6 +464,7 @@ shrink-to-fit=no">
         }
         function getQueryString(new_value_list = []) {
             let queryDict = getQueryParameters();
+            console.log(queryDict)
             let queryString = '';
             new_value_list.forEach(function (obj) {
                 queryDict[obj['key']] = obj['value'].toString();
@@ -475,6 +476,7 @@ shrink-to-fit=no">
                     queryString += `${key}=${queryDict[key]}`;
                 }
             }
+            console.log(queryString)
             return queryString ? `?${queryString}` : '';
         }
         function getQueryParameters() {
