@@ -14,12 +14,12 @@
         </div>
         <div class="content-body">
 
-             <!-- users list start -->
-             <section class="users-list-wrapper">
+            <!-- users list start -->
+            <section class="users-list-wrapper">
                 <div class="users-list-filter px-1">
                     <form>
                         <div class="row border rounded py-2 mb-2">
-                            
+
                             <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#exampleModalScrollable">
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            
+
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
 
@@ -98,13 +98,14 @@
 
                                                     </td>
 
-                                                    <td><a href="{{ property.get_absolute_url }}"><button type="button" class="btn btn-outline-primary"><i
-                                                        class="bx bx-search" ></i><span
-                                                        class="align-middle ml-25">View</span></button></a>
-                                                                
-                                                            
-                                                            </td>
-                                                    
+                                                    <td><a href="{{ property.get_absolute_url }}"><button type="button"
+                                                                class="btn btn-outline-primary"><i
+                                                                    class="bx bx-search"></i><span
+                                                                    class="align-middle ml-25">View</span></button></a>
+
+
+                                                    </td>
+
                                                 </tr>
                                                 {% endfor %}
 
@@ -128,7 +129,7 @@
                 </div>
             </section>
             <!--/ Zero configuration table -->
-           
+
 
 
 
@@ -473,11 +474,14 @@
 
 
 
+
 {% endblock content %}
 
 
 {% block javascript %}
 <script>
+
+
     function block_card(block_ele) {
         $(block_ele).block({
             message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
