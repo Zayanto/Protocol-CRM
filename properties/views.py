@@ -1,16 +1,24 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin  # new
-from .models import Property, PropertyImage
 from django.shortcuts import render
 from django.db.models import Q
 from django.http import HttpResponseRedirect,HttpResponse
 
+from .models import Property, PropertyImage, StageOpportunity
 
 class PropertyListView(LoginRequiredMixin, ListView):
     model = Property
     context_object_name = 'property_list'
     template_name = 'properties/property_list.html'
     login_url = 'account_login'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'StageOpportunity': StageOpportunity,
+        })
+        # print(context)
+        return context
 
 
 class PropertyDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):

@@ -264,8 +264,15 @@
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-destination">Destination</label>
-                                            <input type="text" class="form-control" id="property-destination"
-                                                name="property-destination" placeholder="Enter Your Destination">
+                                            <!-- <input type="text" class="form-control" id="property-destination"
+                                                name="property-destination" placeholder="Enter Your Destination"> -->
+                                                
+                                            <select class="form-control" name="property-destination" id="property-destination">
+                                                {% for choices in StageOpportunity.Destination.choices %}
+                                                    <option class="form-control" value="{{choices.0}}">{{choices.1}}</option>
+                                                {% endfor %}
+                                                    
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
