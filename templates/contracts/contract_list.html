@@ -16,37 +16,7 @@
                 <div class="users-list-filter px-1">
                     <form>
                         <div class="row border rounded py-2 mb-2">
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-verified">Verified</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-verified">
-                                        <option value="">Any</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-role">Role</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-role">
-                                        <option value="">Any</option>
-                                        <option value="User">User</option>
-                                        <option value="Staff">Staff</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-status">Status</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-status">
-                                        <option value="">Any</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Close">Close</option>
-                                        <option value="Banned">Banned</option>
-                                    </select>
-                                </fieldset>
-                            </div>
+                            
                             <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
                                 <button href="{% url 'property:add' %}" class="btn btn-primary btn-block glow  mb-0">Add
                                     Property</button>
@@ -54,28 +24,31 @@
                         </div>
                     </form>
                 </div>
+            </section>
+            <!-- users list ends -->
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
 
-                <div class="users-list-table">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <!-- datatable start -->
-                                <div class="table-responsive">
-                                    <table id="users-list-datatable" class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Amount</th>
-                                                <th>Start Date</th>
-                                                <th>End Date</th>
-                                                <th>Property</th>
-                                                <th>Tenant</th>
-                                                <th>Edit</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for contract in contract_list %}
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Amount</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Property</th>
+                                                    <th>Tenant</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for contract in contract_list %}
                                             <tr>
                                                 <td>{{ contract.title }}</td>
                                                 <td>
@@ -99,16 +72,27 @@
                                             {% endfor %}
 
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Amount</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Property</th>
+                                                    <th>Tenant</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
-                                <!-- datatable ends -->
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- users list ends -->
+            <!--/ Zero configuration table -->
         </div>
     </div>
 </div>

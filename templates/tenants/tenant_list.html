@@ -18,37 +18,7 @@
                 <div class="users-list-filter px-1">
                     <form>
                         <div class="row border rounded py-2 mb-2">
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-verified">Verified</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-verified">
-                                        <option value="">Any</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-role">Role</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-role">
-                                        <option value="">Any</option>
-                                        <option value="User">User</option>
-                                        <option value="Staff">Staff</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <label for="users-list-status">Status</label>
-                                <fieldset class="form-group">
-                                    <select class="form-control" id="users-list-status">
-                                        <option value="">Any</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Close">Close</option>
-                                        <option value="Banned">Banned</option>
-                                    </select>
-                                </fieldset>
-                            </div>
+                            
 
                             <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -61,44 +31,61 @@
                     </form>
                 </div>
                 
-                <div class="users-list-table">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <!-- datatable start -->
-                                <div class="table-responsive">
-                                    <table id="users-list-datatable" class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Full Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Creator</th>
-                                                <th>First Appereance</th>
-                                                <th>Contract</th>
-                                                <th>status</th>
-                                                <th>edit</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for tenant in tenant_list %} 
+               
+            </section>
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration">
+                                            <thead>
+                                                <tr>
+                                                    <th>Full Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Creator</th>
+                                                    <th>First Appereance</th>
+                                                    <th>Contract</th>
+                                                    <th>status</th>
+                                                    <th>edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for tenant in tenant_list %} 
                                             <tr>
                                                 <td>{{ tenant.full_name }}</td>
                                                 <td>{{ tenant.email }}</td>
                                                 <td>{{ tenant.phone }}</td>
                                                 <td>{{ tenant.creator }}</td>
-                                                <td>{{ tenant.created_on }}</td>
+                                                <td><span class="badge badge-light-primary">{{ tenant.created_on }}</span></td>
                                                 <td>No. 150 Beldiman</td>
                                                 <td><span class="badge badge-light-danger">{{ tenant.is_active }}</span></td>
                                                 <td><a href="{{ tenant.get_absolute_url }}"><i class="bx bx-edit-alt"></i></a></td>
                                             </tr>
                                             {% endfor %}
-                                            
-                                            
-                                        </tbody>
-                                    </table>
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Full Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Creator</th>
+                                                    <th>First Appereance</th>
+                                                    <th>Contract</th>
+                                                    <th>status</th>
+                                                    <th>edit</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
-                                <!-- datatable ends -->
                             </div>
                         </div>
                     </div>

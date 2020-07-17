@@ -14,14 +14,29 @@
         </div>
         <div class="content-body">
 
+             <!-- users list start -->
+             <section class="users-list-wrapper">
+                <div class="users-list-filter px-1">
+                    <form>
+                        <div class="row border rounded py-2 mb-2">
+                            
+                            <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalScrollable">
+                                    Add Property
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- users list ends -->
             <!-- Zero configuration table -->
             <section id="basic-datatable">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Zero configuration</h4>
-                            </div>
+                            
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
 
@@ -83,7 +98,7 @@
 
                                                     </td>
 
-                                                    <td><a href="{{ property.get_absolute_url }}"><button type="button" class="btn btn-outline-primary mr-1 mb-1"><i
+                                                    <td><a href="{{ property.get_absolute_url }}"><button type="button" class="btn btn-outline-primary"><i
                                                         class="bx bx-search" ></i><span
                                                         class="align-middle ml-25">View</span></button></a>
                                                                 
@@ -113,6 +128,7 @@
                 </div>
             </section>
             <!--/ Zero configuration table -->
+           
 
 
 
