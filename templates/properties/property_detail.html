@@ -1117,7 +1117,7 @@
                                                                                                 <div class="card">
                                                                                                     <div class="card-content">
                                                                                                         <div class="card-body card-dashboard">
-                                                                                                            <table class="table table-hover text-center table-responsive" id="expense-table-{{expense_table.id}}"  data-expense-table-id="{{expense_table.id}}" style="width: 100%;">
+                                                                                                            <table class="table table-hover text-center table-responsive" id="expense-table-{{forloop.counter}}"  data-expense-table-id="{{expense_table.id}}" style="width: 100%;">
                                                                                                                 <thead>
                                                                                                                     <tr>
                                                                                                                         <th class="text-center">Title</th>
@@ -2539,6 +2539,8 @@
     for( let i=1; i<=expense_tables_count; i++ ) {
 
         var expense_table = `#expense-table-${i}`;
+        console.log(expense_table);
+        console.log($(expense_table).data('expense-table-id'));
         let ExpenseTableListTable = $(expense_table).DataTable({
             "processing": true,
             "serverSide": true,
