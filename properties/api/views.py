@@ -514,8 +514,10 @@ class RenovationTeamListDatatableAPIView(ListAPIView):
             properties = Property.objects.get(id=property_id)
         except Exception as e:
             raise exceptions.NotFound(e)
-
-        queryset = properties.stagerenovation.renovationteam_set.all().order_by('-created_date')
+        try:
+            queryset = properties.stagerenovation.renovationteam_set.all().order_by('-created_date')
+        except:
+            queryset = RenovationTeam.objects.none()
         return queryset
 
     def get(self, request, *args, **kwargs):
@@ -597,7 +599,7 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
 
         draw = request.GET.get('draw')
         qs = self.get_queryset()
-        renovation_team_qs_range = qs
+        renovation_team_expense_qs_range = qs
 
         draw = request.GET.get('draw')
         records_total = qs.count()

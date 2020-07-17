@@ -61,6 +61,26 @@ def renovation_teams(context):
         pass
     return None
 
+@register.simple_tag(takes_context=True)
+def expense_tables(context):
+    try:
+        propert = context['property']
+        renovation_teams = propert.stagerenovation.renovationteam_set.all()
+        return ExpenseTable.objects.filter(renovation_team__in=renovation_teams)
+    except:
+        pass
+    return None
+
+@register.simple_tag(takes_context=True)
+def expense_tables_count(context):
+    try:
+        propert = context['property']
+        renovation_teams = propert.stagerenovation.renovationteam_set.all()
+        return ExpenseTable.objects.filter(renovation_team__in=renovation_teams).count()
+    except:
+        pass
+    return None
+
 @register.simple_tag()
 def stage_buying_list(property_):
     try:
