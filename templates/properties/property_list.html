@@ -278,22 +278,40 @@
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-layout">Layout</label>
-                                            <input type="text" class="form-control" id="property-layout"
-                                                name="property-layout" placeholder="Enter Your Layout">
+                                            <!-- <input type="text" class="form-control" id="property-layout"
+                                                name="property-layout" placeholder="Enter Your Layout"> -->
+                                                <select class="form-control" name="property-layout" id="property-layout">
+                                                    {% for choices in StageOpportunity.Layout.choices %}
+                                                        <option class="form-control" value="{{choices.0}}">{{choices.1}}</option>
+                                                    {% endfor %}
+                                                        
+                                                </select>    
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-comfort-type">Comfort Type</label>
-                                            <input type="text" class="form-control" id="property-comfort-type"
-                                                name="property-comfort-type" placeholder="Enter Your Comfort Type">
+                                            <!-- <input type="text" class="form-control" id="property-comfort-type"
+                                                name="property-comfort-type" placeholder="Enter Your Comfort Type"> -->
+                                                <select class="form-control" name="property-comfort-type" id="property-comfort-type">
+                                                    {% for choices in StageOpportunity.ComfortType.choices %}
+                                                        <option class="form-control" value="{{choices.0}}">{{choices.1}}</option>
+                                                    {% endfor %}
+                                                        
+                                                </select> 
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="form-group">
                                             <label for="property-interior-state">Interior State</label>
-                                            <input type="text" class="form-control" id="property-interior-state"
-                                                name="property-interior-state" placeholder="Enter Your Interior State">
+                                            <!-- <input type="text" class="form-control" id="property-interior-state"
+                                                name="property-interior-state" placeholder="Enter Your Interior State"> -->
+                                                <select class="form-control" name="property-interior-state" id="property-interior-state">
+                                                    {% for choices in StageOpportunity.InteriorState.choices %}
+                                                        <option class="form-control" value="{{choices.0}}">{{choices.1}}</option>
+                                                    {% endfor %}
+                                                        
+                                                </select> 
                                         </div>
 
                                     </div>
