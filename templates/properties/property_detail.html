@@ -1551,7 +1551,7 @@
                                     data-name="Opportunity Stage">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
-                                            <h6 class="mb-0 text-bold-500">Opportunity Stage</h6>
+                                            <h6 class="mb-0 text-bold-500">General Information</h6>
                                         </div>
                                         <div class="float-right">
                                             <button class="btn btn-warning edit-button">Edit</button>
@@ -1575,7 +1575,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ...
+                                                        Plese remember that all deleted informtion will be permanently lost!
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
@@ -1589,15 +1589,6 @@
                                         </div>
                                         <fieldset class="pt-0">
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-8">
-                                                    <div class="form-group">
-                                                        <label for="property-address">Address </label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-address" name="property-address"
-                                                            value="{% if stage_opportunity.address %}{{stage_opportunity.address}}{% endif %}"
-                                                            placeholder="Enter Your Address">
-                                                    </div>
-                                                </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
                                                         <label for="property-city">City</label>
@@ -1607,6 +1598,16 @@
                                                             placeholder="Enter Your City">
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-12 col-md-8">
+                                                    <div class="form-group">
+                                                        <label for="property-address">Address </label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-address" name="property-address"
+                                                            value="{% if stage_opportunity.address %}{{stage_opportunity.address}}{% endif %}"
+                                                            placeholder="Enter Your Address">
+                                                    </div>
+                                                </div>
+                                               
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
                                                         <label for="property-zipcode">Zip Code</label>
@@ -1616,25 +1617,7 @@
                                                             placeholder="Enter Your Zip Code">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="property-owner">Owner</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-owner" name="property-owner"
-                                                            value="{% if stage_opportunity.owner %}{{stage_opportunity.owner}}{% endif %}"
-                                                            placeholder="Enter Your Owner">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-6 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="property-asking-price">Asking price</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-asking-price" name="property-asking-price"
-                                                            value="{% if stage_opportunity.asking_price %}{{stage_opportunity.asking_price}}{% endif %}"
-                                                            placeholder="Enter Your Asking price">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-6 col-md-4">
+                                                <div class="col-sm-12 col-md-8">
                                                     <div class="form-group">
                                                         <label for="property-residence-complex">Residence
                                                             Complex</label>
@@ -1645,60 +1628,49 @@
                                                             placeholder="Enter Your Residence Complex">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="property-building">Building</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-building" name="property-building"
-                                                            value="{% if stage_opportunity.building %}{{stage_opportunity.building}}{% endif %}"
-                                                            placeholder="Enter Your Building">
+                                                <div class="col-sm-12">
+                                                    <div class="divider divider-primary">
+                                                        <div class="divider-text">Property Details</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="property-entrance">Entrance</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-entrance" name="property-entrance"
-                                                            value="{% if stage_opportunity.entrance %}{{stage_opportunity.entrance}}{% endif %}"
-                                                            placeholder="Enter Your Entrance">
+                                                        <label for="property-no-of-rooms">Number of Rooms</label>
+                                                        <input disabled type="number" step="1" min="0"
+                                                            class="form-control" id="property-no-of-rooms"
+                                                            name="property-no-of-rooms"
+                                                            value="{% if stage_opportunity.number_of_rooms %}{{stage_opportunity.number_of_rooms}}{% endif %}"
+                                                            placeholder="Enter Your Number of Rooms">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="property-floor">Floor</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-floor" name="property-floor"
-                                                            value="{% if stage_opportunity.floor %}{{stage_opportunity.floor}}{% endif %}"
-                                                            placeholder="Enter Your Floor">
+                                                        <label for="property-no-of-beds">Bedrooms</label>
+                                                        <input disabled type="number" step="1" min="0"
+                                                            class="form-control" id="property-no-of-beds"
+                                                            name="property-no-of-beds"
+                                                            value="{% if stage_opportunity.bedrooms %}{{stage_opportunity.bedrooms}}{% endif %}"
+                                                            placeholder="Enter Your Bedrooms">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="property-apartment-number">Apartment
-                                                            Number</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-apartment-number"
-                                                            name="property-apartment-number"
-                                                            value="{% if stage_opportunity.apartament_number %}{{stage_opportunity.apartament_number}}{% endif %}"
-                                                            placeholder="Enter Your Apartment Number">
+                                                        <label for="property-no-of-bathrooms">Bathrooms</label>
+                                                        <input disabled type="number" step="1" min="0"
+                                                            class="form-control" id="property-no-of-bathrooms"
+                                                            name="property-no-of-bathrooms"
+                                                            value="{% if stage_opportunity.bathrooms %}{{stage_opportunity.bathrooms}}{% endif %}"
+                                                            placeholder="Enter Your Bathrooms">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="property-reper">Reper</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-reper" name="property-reper"
-                                                            value="{% if stage_opportunity.reper %}{{stage_opportunity.reper}}{% endif %}"
-                                                            placeholder="Enter Your Reper">
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-6 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="property-vecinatati">Vecinatati</label>
-                                                        <input disabled type="text" class="form-control"
-                                                            id="property-vecinatati" name="property-vecinatati"
-                                                            value="{% if stage_opportunity.vecinatati %}{{stage_opportunity.vecinatati}}{% endif %}"
-                                                            placeholder="Enter Your Vecinatati">
+                                                        <label for="property-no-of-kitchen">Kitchen</label>
+                                                        <input disabled type="number" step="1" min="0"
+                                                            class="form-control" id="property-no-of-kitchen"
+                                                            name="property-no-of-kitchen"
+                                                            value="{% if stage_opportunity.kitchen %}{{stage_opportunity.kitchen}}{% endif %}"
+                                                            placeholder="Enter Your Kitchen">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
@@ -1723,11 +1695,22 @@
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
+                                                        <label for="property-floor">Floor</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-floor" name="property-floor"
+                                                            value="{% if stage_opportunity.floor %}{{stage_opportunity.floor}}{% endif %}"
+                                                            placeholder="Enter Your Floor">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-4">
+                                                    <div class="form-group">
                                                         <label for="property-destination">Destination</label>
+
                                                         <input disabled type="text" class="form-control"
                                                             id="property-destination" name="property-destination"
                                                             value="{% if stage_opportunity.destination %}{{stage_opportunity.destination}}{% endif %}"
                                                             placeholder="Enter Your Destination">
+
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
@@ -1757,46 +1740,83 @@
                                                             placeholder="Enter Your Interior State">
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="property-no-of-rooms">Number of Rooms</label>
-                                                        <input disabled type="number" step="1" min="0"
-                                                            class="form-control" id="property-no-of-rooms"
-                                                            name="property-no-of-rooms"
-                                                            value="{% if stage_opportunity.number_of_rooms %}{{stage_opportunity.number_of_rooms}}{% endif %}"
-                                                            placeholder="Enter Your Number of Rooms">
+                                                <div class="col-sm-12">
+                                                    <div class="divider divider-primary">
+                                                        <div class="divider-text">Ownership Details</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="property-no-of-beds">Bedrooms</label>
-                                                        <input disabled type="number" step="1" min="0"
-                                                            class="form-control" id="property-no-of-beds"
-                                                            name="property-no-of-beds"
-                                                            value="{% if stage_opportunity.bedrooms %}{{stage_opportunity.bedrooms}}{% endif %}"
-                                                            placeholder="Enter Your Bedrooms">
+                                                        <label for="property-owner">Owner</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-owner" name="property-owner"
+                                                            value="{% if stage_opportunity.owner %}{{stage_opportunity.owner}}{% endif %}"
+                                                            placeholder="Enter Your Owner">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="property-no-of-kitchen">Kitchen</label>
-                                                        <input disabled type="number" step="1" min="0"
-                                                            class="form-control" id="property-no-of-kitchen"
-                                                            name="property-no-of-kitchen"
-                                                            value="{% if stage_opportunity.kitchen %}{{stage_opportunity.kitchen}}{% endif %}"
-                                                            placeholder="Enter Your Kitchen">
+                                                        <label for="property-asking-price">Asking price</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-asking-price" name="property-asking-price"
+                                                            value="{% if stage_opportunity.asking_price %}{{stage_opportunity.asking_price}}{% endif %}"
+                                                            placeholder="Enter Your Asking price">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-12 col-sm-6 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="property-building">Building</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-building" name="property-building"
+                                                            value="{% if stage_opportunity.building %}{{stage_opportunity.building}}{% endif %}"
+                                                            placeholder="Enter Your Building">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="property-no-of-bathrooms">Bathrooms</label>
-                                                        <input disabled type="number" step="1" min="0"
-                                                            class="form-control" id="property-no-of-bathrooms"
-                                                            name="property-no-of-bathrooms"
-                                                            value="{% if stage_opportunity.bathrooms %}{{stage_opportunity.bathrooms}}{% endif %}"
-                                                            placeholder="Enter Your Bathrooms">
+                                                        <label for="property-entrance">Entrance</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-entrance" name="property-entrance"
+                                                            value="{% if stage_opportunity.entrance %}{{stage_opportunity.entrance}}{% endif %}"
+                                                            placeholder="Enter Your Entrance">
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-12 col-sm-6 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="property-apartment-number">Apartment
+                                                            Number</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-apartment-number"
+                                                            name="property-apartment-number"
+                                                            value="{% if stage_opportunity.apartament_number %}{{stage_opportunity.apartament_number}}{% endif %}"
+                                                            placeholder="Enter Your Apartment Number">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="property-reper">Reper</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-reper" name="property-reper"
+                                                            value="{% if stage_opportunity.reper %}{{stage_opportunity.reper}}{% endif %}"
+                                                            placeholder="Enter Your Reper">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="property-vecinatati">Vecinatati</label>
+                                                        <input disabled type="text" class="form-control"
+                                                            id="property-vecinatati" name="property-vecinatati"
+                                                            value="{% if stage_opportunity.vecinatati %}{{stage_opportunity.vecinatati}}{% endif %}"
+                                                            placeholder="Enter Your Vecinatati">
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                
+                                                
+                                                
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="form-group">
                                                         <label for="property-building-type">Building Type</label>
