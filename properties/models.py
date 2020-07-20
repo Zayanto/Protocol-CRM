@@ -158,10 +158,10 @@ class RenovationTeamExpenses(models.Model):
     currency = models.CharField(max_length=200, null=True)
     account = models.CharField(max_length=200, null=True)
     date = models.DateTimeField(blank=True)
-    store = models.CharField(max_length=200, null=True)
+    store = models.CharField(max_length=200, null=True, blank=True)
     order_date = models.DateTimeField(blank=True)
     delivery_date = models.DateTimeField(blank=True)
-    company = models.CharField(max_length=200, null=True)
+    company = models.CharField(max_length=200, null=True, blank=True)
 
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
