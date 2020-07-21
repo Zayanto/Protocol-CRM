@@ -42,3 +42,9 @@ class RenovationTeamExpensesSerializer(serializers.ModelSerializer):
         model = RenovationTeamExpenses
         fields = '__all__' 
     
+
+class MonthlyMaintenanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MonthlyMaintenance
+        fields = '__all__' 
+    

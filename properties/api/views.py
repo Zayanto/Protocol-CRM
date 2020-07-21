@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 
 from properties.models import *
 from properties.api.serializers import *
+from contracts.models import *
 
 class CreatePropertyStageOpportunityAPIView(APIView):
 
@@ -504,6 +505,61 @@ class ExpenseTableCreateView(APIView):
         else:
             return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
 
+class AddContractInMonthlyExpense(APIView):
+    def post(self, request):
+        contract = request.POST.get('contract', None)
+        
+        if not contract:
+            raise exceptions.NotFound('contract is not given')
+        
+        contract = Contract.objects.get(id=contract)
+        contract.monthly_property_expense_track = True
+        contract.save()
+        
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
+class CreateTenantMonthlyMaintenanceModel(APIView):
+    def post(self, request):
+        contract = request.POST.get('contract', None)
+        name = request.POST.get('name', None)
+
+        if not contract:
+            raise exceptions.NotFound('contract is not given')
+
+        if not name:
+            raise exceptions.NotFound('name is not given')
+
+        created = TenantMonthlyMaintenanceModel.objects.create(
+            contract = Contract.objects.get(id=contract),
+            name = name
+        )
+
+        if created:
+            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
+class CreateMonthlyMaintenanceModel(APIView):
+    def post(self, request):
+        property_id = request.POST.get('property_id', None)
+        name = request.POST.get('name', None)
+
+        if not property_id:
+            raise exceptions.NotFound('property_id is not given')
+
+        if not name:
+            raise exceptions.NotFound('name is not given')
+
+        created = MonthlyMaintenanceModel.objects.create(
+            properties = Property.objects.get(id=property_id),
+            name = name
+        )
+
+        if created:
+            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
 class RenovationTeamListDatatableAPIView(ListAPIView):
     serializer_class = RenovationTeamSerializer
 
@@ -583,6 +639,86 @@ class RenovationTeamListDatatableAPIView(ListAPIView):
 
         return Response(response, status=status.HTTP_200_OK)
 
+class MonthlyMaintenanceDatatableAPIView(ListAPIView):
+    serializer_class = MonthlyMaintenanceSerializer
+
+    def get_queryset(self):
+        monthly_maintenance_model_id = self.request.GET.get('monthly_maintenance_model_id', None)
+        print(' <<<<sad')
+        if not monthly_maintenance_model_id:
+            raise exceptions.NotFound('monthly_maintenance_model_id is not given')
+        
+        queryset = MonthlyMaintenance.objects.filter(monthly_maintenance_model__id=monthly_maintenance_model_id).order_by('-created_date')
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+
+        draw = request.GET.get('draw')
+        qs = self.get_queryset()
+        monthly_maintenance_qs_range = qs
+
+        draw = request.GET.get('draw')
+        records_total = qs.count()
+        records_filtered = qs.count()
+
+        length = int(request.GET.get('length'))
+        start = int(request.GET.get('start'))
+        order_column = request.GET.get('order[0][column]')
+        order_dir = request.GET.get('order[0][dir]')
+        search_str = request.GET.get('search[value]')
+
+        page_num = int(request.GET.get('page_num', 1))
+
+        column_names = [
+            'title', 'description', 'amount', 'currency', 'account', 'date',
+        ]
+
+        if search_str:
+            monthly_maintenance_qs_range = monthly_maintenance_qs_range.filter(
+                Q(title__icontains=search_str) |
+                Q(description__icontains=search_str) |
+                Q(amount__icontains=search_str) |
+                Q(currency__icontains=search_str) |
+                Q(account__icontains=search_str)
+            )
+            records_filtered = monthly_maintenance_qs_range.count()
+
+        if order_column:
+            order_str = column_names[int(order_column)]
+
+            if order_dir == 'desc':
+                order_str = f'-{column_names[int(order_column)]}'
+
+            monthly_maintenance_qs_range = monthly_maintenance_qs_range.order_by(order_str)
+        # else:
+        new_start = (page_num - 1) * length
+        start = new_start if new_start <= records_filtered else start
+
+        monthly_maintenance_qs_range = monthly_maintenance_qs_range[start:(start + length)]
+
+        data_array = []
+
+        for q in monthly_maintenance_qs_range:
+            
+            data_array.append({
+                'id': q.id,
+                'title': q.title,
+                'description': q.description,
+                'amount': q.amount,
+                'currency': q.currency,
+                'account': q.account,
+                'date': q.date.strftime("%b %d, %Y %H:%M:%S"),
+            })
+
+        response = {
+            'draw': draw,
+            'recordsTotal': records_total,
+            'recordsFiltered': records_filtered,
+            'data': data_array
+        }
+
+        return Response(response, status=status.HTTP_200_OK)
+        
 class RenovationTeamExpensesDatatableAPIView(ListAPIView):
     serializer_class = RenovationTeamExpensesSerializer
 
@@ -592,8 +728,7 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
         if not expense_table_id:
             raise exceptions.NotFound('expense_table_id is not given')
         
-        expense_table = ExpenseTable.objects.get(id=expense_table_id)
-        queryset = RenovationTeamExpenses.objects.filter(expense_table=expense_table).order_by('-created_date')
+        queryset = RenovationTeamExpenses.objects.filter(expense_table__id=expense_table_id).order_by('-created_date')
         return queryset
 
     def get(self, request, *args, **kwargs):
@@ -625,10 +760,7 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
                 Q(amount__icontains=search_str) |
                 Q(currency__icontains=search_str) |
                 Q(account__icontains=search_str) |
-                Q(date__icontains=search_str) |
                 Q(store__icontains=search_str) |
-                Q(order_date__icontains=search_str) |
-                Q(delivery_date__icontains=search_str) |
                 Q(company__icontains=search_str)
             )
             records_filtered = renovation_team_expense_qs_range.count()
@@ -657,7 +789,7 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-                'date': q.date,
+                'date': q.date.strftime("%b %d, %Y %H:%M:%S"),
                 'store': q.store,
                 'order_date': q.order_date,
                 'delivery_date': q.delivery_date,

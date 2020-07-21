@@ -13,6 +13,9 @@
 {% stage_tenant as stage_tenant %}
 {% renovation_teams as renovation_teams %}
 {% expense_tables as expense_tables %}
+{% all_contracts_modal as all_contracts_modal %}
+{% all_contracts_tab as all_contracts_tab %}
+{% monthly_maintenance_model_list as monthly_maintenance_model_list %}
 
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -29,14 +32,11 @@
                 <h1>{{ property.title }}</h1>  
                 <div class="row">
                     <div class="col-12">
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="feed" aria-labelledby="feed-tab" role="tabpanel">
-
                                         <div class="row">
-
                                             <!-- Property Gallery -->
                                             <div class="col-lg-4">
                                                 <div class="card">
@@ -64,9 +64,9 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
+                                                                <h4 class="modal-title">Image upload form</h4>
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal">&times;</button>
-                                                                <h4 class="modal-title">Image upload form</h4>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div id='preview'
@@ -90,14 +90,9 @@
                                                                         class='btn btn-info'>Upload</button>
                                                                 </form>
                                                             </div>
-
                                                         </div>
-
                                                     </div>
                                                 </div>
-
-
-
                                             </div>
 
                                             <!-- Current tenant & owner-->
@@ -224,13 +219,10 @@
                                                                     </tbody>
                                                                 </table>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -246,15 +238,52 @@
                                     <div class="d-inline-block mt-25">
                                         <h6 class="mb-0 text-bold-500">Monthly Maintenance</h6>
                                     </div>
-
                                     <div class="float-right">
                                         <button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                            data-target="#primary">
+                                            data-target="#choose-contract-modal">
                                             Add Tenant
                                         </button>
-
                                     </div>
                                 </div>
+                                <div class="modal fade text-left" id="choose-contract-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <form class="form-stage" data-api_url="{% url 'property-api:add-contract-in-monthly-expense' %}" data-reload="true">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-primary">
+                                                    <h5 class="modal-title white" id="myModalLabel160">Primary Modal</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <i class="bx bx-x"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="choose-contract">Choose Contract</label>
+                                                            <select name="contract" id="choose-contract" class="form-control">
+                                                                <option class="form-control" value="">Choose Contract</option>
+                                                                {% for contract in all_contracts_modal %}
+                                                                    <option class="form-control" value="{{ contract.id }}">{{ contract.tenant.full_name }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                                        <span class="d-none d-sm-block">Close</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-success ml-1 modal-submit-button" data-dismiss="modal">
+                                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                                        <span class="d-none d-sm-block">Accept</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
 
                                 <div class="card-content">
                                     <div class="card-body">
@@ -262,87 +291,205 @@
                                         <ul class="nav nav-tabs" role="tablist">
 
                                             <li class="nav-item">
-                                                <a class="nav-link" id="renovation-stage-tab" data-toggle="tab"
-                                                    href="#tab2" aria-controls="renovation-stage" role="tab"
+                                                <a class="nav-link" id="without-tenant" data-toggle="tab"
+                                                    href="#without-tenant-tab" aria-controls="renovation-stage" role="tab"
                                                     aria-selected="false">
                                                     <i class="bx bx-user align-middle"></i>
-                                                    <span class="align-middle">Without Tenant</span>
+                                                    <span class="align-middle">Without Tenant {{all_contracts_tab|length}}</span>
                                                 </a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="renovation-stage-tab" data-toggle="tab"
-                                                    href="#tab2" aria-controls="renovation-stage" role="tab"
-                                                    aria-selected="false">
-                                                    <i class="bx bx-user align-middle"></i>
-                                                    <span class="align-middle">With Tenant</span>
-                                                </a>
-                                            </li>
-
+                                            {% for contract in all_contracts_tab %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="tenant-contract-{{forloop.counter}}" data-toggle="tab"
+                                                        href="#tenant-contract-{{forloop.counter}}-tab" aria-controls="tenant-contract-{{forloop.counter}}" role="tab"
+                                                        aria-selected="false">
+                                                        <i class="bx bx-user align-middle"></i>
+                                                        <span class="align-middle">{{ contract.tenant.full_name }}</span>
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
                                         </ul>
                                         <div class="tab-content">
-
-
-                                            <div class="tab-pane" id="tab2" aria-labelledby="renovation-stage-tab"
+                                            <div class="tab-pane" id="without-tenant-tab" aria-labelledby="renovation-stage-tab"
                                                 role="tabpanel">
-
                                                 <!-- Monthly Maintenance -->
                                                 <section id="basic-pills">
                                                     <div class="row match-height">
                                                         <div class=" col-lg-12">
                                                             <div class="card bg-transparent shadow-none border-none">
-
                                                                 <div class="card-content">
                                                                     <div class="card-body">
-
                                                                         <ul class="nav nav-pills">
                                                                             <li class="nav-item">
-                                                                                <a class="nav-link" id="home-tab"
-                                                                                    data-toggle="pill" href="#home1"
+                                                                                <a class="nav-link active" id="create_monthly_maintenance_model-tab"
+                                                                                    data-toggle="pill" href="#create_monthly_maintenance_model_{{forloop.counter}}"
                                                                                     aria-expanded="true">Create
                                                                                     Table</a>
                                                                             </li>
-                                                                            <li class="nav-item">
+                                                                            <li class="nav-item d-none">
                                                                                 <a class="nav-link" id="home-tab"
                                                                                     data-toggle="pill" href="#home"
                                                                                     aria-expanded="true">Table Title</a>
                                                                             </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link active"
-                                                                                    id="profile-tab" data-toggle="pill"
-                                                                                    href="#profile"
-                                                                                    aria-expanded="false">Table Title
-                                                                                </a>
-                                                                            </li>
+                                                                            
+                                                                            {% for monthly_maintenance_model in monthly_maintenance_model_list %}
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link"
+                                                                                        id="monthly_maintenance_model_{{forloop.counter}}-tab" data-toggle="pill"
+                                                                                        href="#monthly_maintenance_model_{{forloop.counter}}"
+                                                                                        aria-expanded="false">{{monthly_maintenance_model.name}}
+                                                                                    </a>
+                                                                                </li>
+                                                                            {% endfor %}
+                                                                                
 
                                                                         </ul>
                                                                         <div class="tab-content">
-                                                                            <div role="tabpanel" class="tab-pane"
-                                                                                id="home1" aria-labelledby="home-tab"
+                                                                            <div role="tabpanel" class="tab-pane active"
+                                                                                id="create_monthly_maintenance_model_{{forloop.counter}}" aria-labelledby="create_monthly_maintenance_model_{{forloop.counter}}-tab"
                                                                                 aria-expanded="true">
-                                                                                <button type="submit"
-                                                                                    class="btn btn-primary float-right">Create</button>
-                                                                                <div class="col-12 col-sm-6">
+                                                                                <form class="form-stage" data-api_url="{% url 'property-api:create-monthly-maintenance-model' %}" data-name="Monthly Maintenance" data-reload="true">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-primary float-right modal-submit-button">Create</button>
+                                                                                    <div class="col-12 col-sm-6">
 
-                                                                                    <div class="form-group">
-                                                                                        <label
-                                                                                            for="property-renovation-investor">Table
-                                                                                            Name</label>
-                                                                                        <input disabled type="text"
-                                                                                            class="form-control"
-                                                                                            value="{{stage_renovation.investor}}"
-                                                                                            id="property-renovation-investor"
-                                                                                            name="property-renovation-investor"
-                                                                                            placeholder="Enter Name of Investor">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                for="property-renovation-investor">Table
+                                                                                                Name</label>
+                                                                                            <input type="text"
+                                                                                                class="form-control"
+                                                                                                value=""
+                                                                                                id="monthly-maintenance-model-name"
+                                                                                                name="name"
+                                                                                                placeholder="Enter Name of Monthly Expense Model Name">
 
-
+                                                                                        </div>
                                                                                     </div>
+                                                                                </form>
+                                                                            </div>
+<<<<<<< Updated upstream
+                                                                          
+=======
+                                                                            <div role="tabpanel" class="tab-pane"
+                                                                                id="home" aria-labelledby="home-tab"
+                                                                                aria-expanded="true">
+                                                                                <p>
+                                                                                    Display the datatable here with
+                                                                                    scroll
+                                                                                    bar (some of these tables become
+                                                                                    very
+                                                                                    long in time). Here will also be a
+                                                                                    button with a pop up form to add to
+                                                                                    this
+                                                                                    table.
+                                                                                </p>
 
-                                                                                </div>
+                                                                                <!-- Zero configuration table -->
+                                                                                <section id="basic-datatable">
+                                                                                    <div class="row">
+                                                                                        <div class="col-12">
+                                                                                            <div class="card">
 
+                                                                                                <div
+                                                                                                    class="card-content">
+                                                                                                    <div
+                                                                                                        class="card-body card-dashboard">
 
+                                                                                                        <div
+                                                                                                            class="table-responsive">
+                                                                                                            <table
+                                                                                                                class="table zero-configuration">
+                                                                                                                <thead>
+                                                                                                                    <tr>
+                                                                                                                        <th>Title
+                                                                                                                        </th>
+                                                                                                                        <th>Amount
+                                                                                                                        </th>
+                                                                                                                        <th>Currency
+                                                                                                                        </th>
+                                                                                                                        <th>Account
+                                                                                                                        </th>
+                                                                                                                        <th>Description
+                                                                                                                        </th>
+                                                                                                                        <th>date
+                                                                                                                        </th>
+                                                                                                                    </tr>
+                                                                                                                </thead>
+                                                                                                                <tbody>
+                                                                                                                    <tr>
+                                                                                                                        <td>Tiger
+                                                                                                                            Nixon
+                                                                                                                        </td>
+                                                                                                                        <td>System
+                                                                                                                            Architect
+                                                                                                                        </td>
+                                                                                                                        <td>Edinburgh
+                                                                                                                        </td>
+                                                                                                                        <td>61
+                                                                                                                        </td>
+                                                                                                                        <td>2011/04/25
+                                                                                                                        </td>
+                                                                                                                        <td>$320,800
+                                                                                                                        </td>
+                                                                                                                    </tr>
+
+                                                                                                                </tbody>
+                                                                                                                <tfoot>
+                                                                                                                    <tr>
+                                                                                                                        <th>Name
+                                                                                                                        </th>
+                                                                                                                        <th>Position
+                                                                                                                        </th>
+                                                                                                                        <th>Office
+                                                                                                                        </th>
+                                                                                                                        <th>Age
+                                                                                                                        </th>
+                                                                                                                        <th>Start
+                                                                                                                            date
+                                                                                                                        </th>
+                                                                                                                        <th>Salary
+                                                                                                                        </th>
+                                                                                                                    </tr>
+                                                                                                                </tfoot>
+                                                                                                            </table>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </section>
+                                                                                <!--/ Zero configuration table -->
 
                                                                             </div>
-                                                                          
+                                                                            
+                                                                            {% for monthly_maintenance_model in monthly_maintenance_model_list %}
+                                                                                <div class="tab-pane" id="monthly_maintenance_model_{{forloop.counter}}"
+                                                                                    role="tabpanel"
+                                                                                    aria-labelledby="monthly_maintenance_model_{{forloop.counter}}-tab"
+                                                                                    aria-expanded="false">
+                                                                                    <table
+                                                                                        class="table table-hover text-center"
+                                                                                        id="monthly_maintenance_model-datatable-{{forloop.counter}}"
+                                                                                        style="width: 100%;"
+                                                                                        data-monthly_maintenance_model_id={{monthly_maintenance_model.id}}>
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th class="text-center">Title</th>
+                                                                                                <th class="text-center">Description</th>
+                                                                                                <th class="text-center">Amount</th>
+                                                                                                <th class="text-center">Account</th>
+                                                                                                <th class="text-center">Date</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody class="text-center">
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                                
+                                                                            {% endfor %}
+>>>>>>> Stashed changes
 
                                                                         </div>
                                                                     </div>
@@ -355,10 +502,190 @@
                                                 <!-- Monthly Maintenanceend -->
 
                                             </div>
+                                            
+                                            {% for contract in all_contracts_tab %}
+                                                {% tenant_monthly_maintenance_model_list contract as tenant_monthly_maintenance_models %}
+                                                <div class="tab-pane" id="tenant-contract-{{forloop.counter}}-tab" aria-labelledby="renovation-stage-tab"
+                                                    role="tabpanel">
+                                                    <!-- Monthly Maintenance -->
+                                                    <section id="basic-pills">
+                                                        <div class="row match-height">
+                                                            <div class=" col-lg-12">
+                                                                <div class="card bg-transparent shadow-none border-none">
 
+                                                                    <div class="card-content">
+                                                                        <div class="card-body">
 
+                                                                            <ul class="nav nav-pills">
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link active" id="create-table-{{forloop.counter}}-tab"
+                                                                                        data-toggle="pill" href="#create-table-{{forloop.counter}}"
+                                                                                        aria-expanded="true">Create
+                                                                                        Table</a>
+                                                                                </li>
+                                                                                <li class="nav-item d-none">
+                                                                                    <a class="nav-link" id="home-tab"
+                                                                                        data-toggle="pill" href="#home"
+                                                                                        aria-expanded="true">Table Title</a>
+                                                                                </li>
+                                                                                {% for tenant_monthly_maintenance_model in tenant_monthly_maintenance_models %}
+                                                                                    
+                                                                                    <li class="nav-item">
+                                                                                        <a class="nav-link"
+                                                                                            id="tenant_monthly_maintenance_model-{{forloop.counter}}-tab" data-toggle="pill"
+                                                                                            href="#tenant_monthly_maintenance_model-{{forloop.counter}}"
+                                                                                            aria-expanded="false">{{tenant_monthly_maintenance_model.name}}
+                                                                                        </a>
+                                                                                    </li>
+                                                                                {% endfor %}
+                                                                                    
 
+                                                                            </ul>
+                                                                            <div class="tab-content">
+                                                                                <div role="tabpanel" class="tab-pane active"
+                                                                                id="create-table-{{forloop.counter}}" aria-labelledby="create-table-{{forloop.counter}}-tab"
+                                                                                aria-expanded="true">
+                                                                                    <form class="form-stage" data-api_url="{% url 'property-api:create-tenant-monthly-maintenance-model' %}" data-name="Tenant Monthly Maintenance Model">
+                                                                                        <button type="button" class="btn btn-primary modal-submit-button float-right">Create</button>    
+                                                                                        <div class="col-12 col-sm-6">
+                                                                                            <input type="text"
+                                                                                                    class="d-none"
+                                                                                                    value="{{contract.id}}"
+                                                                                                    name="contract">
 
+                                                                                            <div class="form-group">
+                                                                                                <label
+                                                                                                    for="create-tenant-monthly-maintenance-model-btn">Table
+                                                                                                    Name</label>
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    value=""
+                                                                                                    id="create-tenant-monthly-maintenance-model-btn"
+                                                                                                    name="name"
+                                                                                                    placeholder="Enter Name of Tenant Monthly Expense Model `Table">
+                                                                                                
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                                <div role="tabpanel" class="tab-pane d-none"
+                                                                                    id="home" aria-labelledby="home-tab"
+                                                                                    aria-expanded="true">
+                                                                                    <p>
+                                                                                        Display the datatable here with
+                                                                                        scroll
+                                                                                        bar (some of these tables become
+                                                                                        very
+                                                                                        long in time). Here will also be a
+                                                                                        button with a pop up form to add to
+                                                                                        this
+                                                                                        table.
+                                                                                    </p>
+
+                                                                                    <!-- Zero configuration table -->
+                                                                                    <section id="basic-datatable">
+                                                                                        <div class="row">
+                                                                                            <div class="col-12">
+                                                                                                <div class="card">
+
+                                                                                                    <div
+                                                                                                        class="card-content">
+                                                                                                        <div
+                                                                                                            class="card-body card-dashboard">
+
+                                                                                                            <div
+                                                                                                                class="table-responsive">
+                                                                                                                <table
+                                                                                                                    class="table zero-configuration">
+                                                                                                                    <thead>
+                                                                                                                        <tr>
+                                                                                                                            <th>Title
+                                                                                                                            </th>
+                                                                                                                            <th>Amount
+                                                                                                                            </th>
+                                                                                                                            <th>Currency
+                                                                                                                            </th>
+                                                                                                                            <th>Account
+                                                                                                                            </th>
+                                                                                                                            <th>Description
+                                                                                                                            </th>
+                                                                                                                            <th>date
+                                                                                                                            </th>
+                                                                                                                        </tr>
+                                                                                                                    </thead>
+                                                                                                                    <tbody>
+                                                                                                                        <tr>
+                                                                                                                            <td>Tiger
+                                                                                                                                Nixon
+                                                                                                                            </td>
+                                                                                                                            <td>System
+                                                                                                                                Architect
+                                                                                                                            </td>
+                                                                                                                            <td>Edinburgh
+                                                                                                                            </td>
+                                                                                                                            <td>61
+                                                                                                                            </td>
+                                                                                                                            <td>2011/04/25
+                                                                                                                            </td>
+                                                                                                                            <td>$320,800
+                                                                                                                            </td>
+                                                                                                                        </tr>
+
+                                                                                                                    </tbody>
+                                                                                                                    <tfoot>
+                                                                                                                        <tr>
+                                                                                                                            <th>Name
+                                                                                                                            </th>
+                                                                                                                            <th>Position
+                                                                                                                            </th>
+                                                                                                                            <th>Office
+                                                                                                                            </th>
+                                                                                                                            <th>Age
+                                                                                                                            </th>
+                                                                                                                            <th>Start
+                                                                                                                                date
+                                                                                                                            </th>
+                                                                                                                            <th>Salary
+                                                                                                                            </th>
+                                                                                                                        </tr>
+                                                                                                                    </tfoot>
+                                                                                                                </table>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </section>
+                                                                                    <!--/ Zero configuration table -->
+
+                                                                                </div>
+                                                                                
+                                                                                {% for tenant_monthly_maintenance_model in tenant_monthly_maintenance_models %}        
+                                                                                    <div class="tab-pane" id="tenant_monthly_maintenance_model-{{forloop.counter}}"
+                                                                                        role="tabpanel"
+                                                                                        aria-labelledby="tenant_monthly_maintenance_model-{{forloop.counter}}-tab"
+                                                                                        aria-expanded="false">
+                                                                                        <p>
+                                                                                            {{ tenant_monthly_maintenance_model.name }} tab
+                                                                                        </p>
+                                                                                    </div>
+                                                                                {% endfor %}
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </section>
+                                                    <!-- Monthly Maintenanceend -->
+
+                                                </div>
+                                            {% endfor %}
+                                                
                                         </div>
                                     </div>
                                 </div>
@@ -713,6 +1040,7 @@
                                                                 <div class="modal-content">
                                                                     <form class="form-stage" data-name="Expense Table"
                                                                         data-api_url="{% url 'property-api:expense-table-create' %}"
+                                                                        data-name="Expense Table"
                                                                         data-reload="true">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
@@ -849,6 +1177,7 @@
                                                                                 <form class="form-stage"
                                                                                     data-name="Renovation Team"
                                                                                     data-api_url="{% url 'property-api:renovation-team-expenses-create' %}"
+                                                                                    data-name="Renovation Team Expense"
                                                                                     data-reload="true">
                                                                                     <div class="modal-header">
                                                                                         <h5 class="modal-title"
@@ -2078,46 +2407,6 @@
 </div>
 
 <!--primary theme Modal -->
-<div class="modal fade text-left" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title white" id="myModalLabel160">Primary Modal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="bx bx-x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="form-group">
-                        <label for="property-notary-costs">Choose Contract</label>
-                        <div class="input-group mb-0">
-                            <div class="input-group-prepend">
-
-                            </div>
-                            <input type="number" step="0.01" min="0" class="form-control" id="property-notary-costs"
-                                value="" name="property-notary-costs" placeholder="Enter Your Notary Costs"
-                                aria-label="Potential Rent" aria-describedby="basic-addon1">
-                        </div>
-                    </div>
-                </div>
-                <p>Link to contract list</p>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    <i class="bx bx-x d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Close</span>
-                </button>
-                <button type="button" class="btn btn-success ml-1" data-dismiss="modal">
-                    <i class="bx bx-check d-block d-sm-none"></i>
-                    <span class="d-none d-sm-block">Accept</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 {% endblock content %}
@@ -2125,6 +2414,7 @@
 {% block javascript %}
 
 {% expense_tables_count as expense_tables_count %}
+{% monthly_maintenance_model_count as monthly_maintenance_model_count %}
 
 <script type="text/javascript">
     function preview_Timage() {
@@ -2142,8 +2432,8 @@
     function block_card(block_ele) {
         $(block_ele).block({
             message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
-            fadeIn: 1000,
-            fadeOut: 1000,
+            fadeIn: 500,
+            fadeOut: 500,
             // timeout: 2000, //unblock after 2 seconds
             overlayCSS: {
                 backgroundColor: '#fff',
@@ -2219,6 +2509,7 @@
         $(this).hide();
         $(this).siblings('.edit-button').show();
         let closest_form = $(this).closest('form');
+        
         $(closest_form).submit();
         $(closest_form).find('input, textarea, select').attr('disabled', 'disabled')
     });
@@ -2520,11 +2811,8 @@
     // Dynamic Expense tables
     var expense_tables_count = parseInt('{{ expense_tables_count }}');
 
-
-
     for (let i = 1; i <= expense_tables_count; i++)
     {
-
         var expense_table = `#expense-table-${i}`;
         console.log(expense_table);
         console.log($(expense_table).data('expense-table-id'));
@@ -2633,8 +2921,109 @@
             const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
             // history.replaceState({id: null}, queryString, `./${queryString}`);
         });
-        ExpenseTableListTable.ajax.reload();
+        // ExpenseTableListTable.ajax.reload();
     }
+
+    // Dynamic Monthly Maintenance Model tables
+    var monthly_maintenance_model_count = parseInt('{{ monthly_maintenance_model_count }}');
+    console.log(monthly_maintenance_model_count + ' <<<<<<<<<<<<<<<<<<< sadsad')
+    for (let i = 1; i <= monthly_maintenance_model_count; i++)
+    {
+        var monthly_maintenance_model = `#monthly_maintenance_model-datatable-${i}`;
+        console.log(monthly_maintenance_model);
+        console.log($(monthly_maintenance_model).data('monthly_maintenance_model_id'));
+        let MonthlyMaintenanceListTable = $(monthly_maintenance_model).DataTable({
+            "processing": true,
+            "serverSide": true,
+            "autoWidth": true,
+            "ajax": {
+                url: "{% url 'property-api:monthly-maintenance-list' %}",
+                type: 'GET',
+                data: function (d) {
+                    d.page_num = getPageNumber();
+                    d.monthly_maintenance_model_id = $(monthly_maintenance_model).data('monthly_maintenance_model_id');
+                }
+            },
+            "order": [],
+            "columnDefs": [
+                // {
+                //     "render": function (data, type, row) {
+                //         console.log(row + " <<<<<<<<<<<<<<>< sadasd")
+                //         return row['title'];
+                //     },
+                //     "targets": 0
+                // },
+                // {
+                //     "render": function (data, type, row) {
+                //         return row['description'];
+                //     },
+                //     "targets": 1
+                // },
+                // {
+                //     "render": function (data, type, row) {
+                //         return row['amount'];
+                //     },
+                //     "targets": 2
+                // },
+                // {
+                //     "render": function (data, type, row) {
+                //         return row['currency'];
+                //     },
+                //     "targets": 3
+                // },
+                // {
+                //     "render": function (data, type, row) {
+                //         return row['account'];
+                //     },
+                //     "targets": 4
+                // },
+                // {
+                //     "render": function (data, type, row) {
+                //         return row['date'];
+                //     },
+                //     "targets": 5
+                // },
+            ],
+
+            "createdRow": function (row, data, dataIndex) {
+            },
+
+            "initComplete": function (settings, json) {
+                MonthlyMaintenanceListTable.page(getPageNumber() - 1).draw('page');
+            }
+        });
+        console.log('finish 1' + i)
+        MonthlyMaintenanceListTable.on('draw', function () {
+            MonthlyMaintenanceListTable.columns.adjust();
+        });
+        console.log('finish 2' + i)
+
+        $('.sidebar-toggle').click(function () {
+            MonthlyMaintenanceListTable.columns.adjust();
+        });
+        console.log('finish 3' + i)
+        $(monthly_maintenance_model).on('page.dt', function () {
+            const info = MonthlyMaintenanceListTable.page.info();
+            const page_number = info.page + 1;
+            const queryString = getQueryString([{ 'key': 'page', 'value': page_number }]);
+            // history.replaceState(page_number, queryString, `./${queryString}`);
+        });
+        console.log('finish 4' + i)
+        $(monthly_maintenance_model).on('length.dt', function (e, settings, len) {
+            const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
+            // history.replaceState({id: null}, queryString, `./${queryString}`);
+        });
+        console.log('finish 5' + i)
+        $(monthly_maintenance_model).on('search.dt', function (e, settings, len) {
+            const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
+            // history.replaceState({id: null}, queryString, `./${queryString}`);
+        });
+        console.log('finish 6' + i)
+        MonthlyMaintenanceListTable.ajax.reload();
+        
+        console.log('finish ' + i)
+    }
+
 </script>
 
 

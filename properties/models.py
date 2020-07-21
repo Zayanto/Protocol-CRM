@@ -148,6 +148,9 @@ class RenovationTeam(models.Model):
 class ExpenseTable(models.Model):
     renovation_team = models.ForeignKey(RenovationTeam, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=200, null=True)
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
     
 class RenovationTeamExpenses(models.Model):
     #Expense Table Content
@@ -188,8 +191,16 @@ class PropertyImage(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
+class MonthlyMaintenanceModel(models.Model):
+    properties = models.ForeignKey(Property, on_delete=models.CASCADE, null=True, related_name='monthly_maintenance_model')
+    name = models.CharField(max_length=200, null=True)
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
 class MonthlyMaintenance(models.Model):
-    properties = models.ForeignKey(Property, on_delete=models.CASCADE, null=True, related_name='monthly_expenses')
+    monthly_maintenance_model = models.ForeignKey(MonthlyMaintenanceModel, on_delete=models.CASCADE, null=True, related_name='monthly_maintenance')
+
     title = models.CharField(max_length=200, null=True)
     description = models.TextField(blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
@@ -201,9 +212,17 @@ class MonthlyMaintenance(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
  
 
+class TenantMonthlyMaintenanceModel(models.Model):
+    from contracts.models import Contract
+    contract = models.ForeignKey(Contract, on_delete=models.CASCADE, null=True, related_name='tenant_monthly_maintenance_model')
+    name = models.CharField(max_length=200, null=True)
+
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+
 class TenantMonthlyMaintenance(models.Model):
-    from tenants.models import Tenant
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True, related_name='tenant_monthly_expenses')
+    tenant_monthly_maintenance_model = models.ForeignKey(TenantMonthlyMaintenanceModel, on_delete=models.CASCADE, null=True, related_name='tenant_monthly_maintenance')
     title = models.CharField(max_length=200, null=True)
     description = models.TextField(blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)

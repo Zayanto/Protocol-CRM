@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # Third-party
+    'debug_toolbar',
     'crispy_forms',
     'allauth',
     'allauth.account',
@@ -83,6 +84,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
 ]
 
 ROOT_URLCONF = 'protocol_crm.urls'

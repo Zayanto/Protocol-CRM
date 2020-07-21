@@ -10,7 +10,6 @@ from django.contrib.auth import get_user_model  # new
 from tenants.models import Tenant
 from properties.models import Property
 
-
 class Contract(models.Model):
 
     id = models.UUIDField(  # new
@@ -30,7 +29,7 @@ class Contract(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
-
+    monthly_property_expense_track = models.BooleanField(default=False)
     rent_tenant = models.CharField(
         "Rent he/she pays", max_length=10, blank=True)
 
