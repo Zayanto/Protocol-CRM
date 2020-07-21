@@ -10,6 +10,26 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
+            <section class="users-list-wrapper">
+
+                <div class="users-list-filter px-1">
+                    <form>
+                        <div class="row border rounded py-2 mb-2">
+                            
+
+                            <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalScrollable">
+                                    Add New Owner
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                
+               
+            </section>
 
 
             <div class="row">
@@ -85,12 +105,11 @@
                                                 <table class="table zero-configuration">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
+                                                            <th>Title</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Property</th>
+                                                            <th>View</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -99,18 +118,16 @@
                                                             <td>System Architect</td>
                                                             <td>Edinburgh</td>
                                                             <td>61</td>
-                                                            <td>2011/04/25</td>
-                                                            <td>$320,800</td>
+                                                            <td>View Button</td>
                                                         </tr>
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
+                                                            <th>Title</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Property</th>
+                                                            <th>View</th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -684,372 +701,10 @@
                                         <!-- Basic Tag Input end -->
                                     </div>
 
-                                    <div class="tab-pane" id="friends" aria-labelledby="friends-tab" role="tabpanel">
-                                        <!-- user profile nav tabs friends start -->
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <div class="card-body">
-                                                    <h5>Friends</h5>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-2.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-online"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Petey
-                                                                                Cruiser</a></h6>
-                                                                        <small class="text-muted">Flask</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-3.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-offline"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Anna
-                                                                                Sthesia</a></h6>
-                                                                        <small class="text-muted">Devloper</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-4.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-busy"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Paul
-                                                                                Molive</a></h6>
-                                                                        <small class="text-muted">Designer</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-5.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-busy"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Anna Mull</a>
-                                                                        </h6>
-                                                                        <small class="text-muted">Worker</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-5.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-away"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Gail
-                                                                                Forcewind</a></h6>
-                                                                        <small class="text-muted">Lawyer</small>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-16.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-offline"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Paige
-                                                                                Turner</a></h6>
-                                                                        <small class="text-muted">Student</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-7.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-busy"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Bob
-                                                                                Frapples</a></h6>
-                                                                        <small class="text-muted">Professor</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-8.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-online"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Mario
-                                                                                super</a></h6>
-                                                                        <small class="text-muted">Scientist</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-2.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-online"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Petey
-                                                                                Cruiser</a></h6>
-                                                                        <small class="text-muted">Flask</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-3.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-offline"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Anna
-                                                                                Sthesia</a></h6>
-                                                                        <small class="text-muted">Devloper</small>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <h5 class="mt-2">Mutual Friends</h5>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-26.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-online"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">jackeu
-                                                                                decoy</a></h6>
-                                                                        <small class="text-muted">Network</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-25.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-offline"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Sthesia
-                                                                                Anna</a></h6>
-                                                                        <small class="text-muted">Devloper</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-24.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-busy"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Molive
-                                                                                Paul</a></h6>
-                                                                        <small class="text-muted">Designer</small>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-23.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-busy"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Mull Anna</a>
-                                                                        </h6>
-                                                                        <small class="text-muted">Worker</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-22.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-away"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Forcewind
-                                                                                Gail</a></h6>
-                                                                        <small class="text-muted">Lawyer</small>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="media my-50">
-                                                                    <a href="JavaScript:void(0);">
-                                                                        <div class="avatar mr-1">
-                                                                            <img src="../../../app-assets/images/portrait/small/avatar-s-21.jpg"
-                                                                                alt="avtar images" width="32"
-                                                                                height="32">
-                                                                            <span class="avatar-status-offline"></span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="media-heading mb-0"><a
-                                                                                href="javaScript:void(0);">Paige
-                                                                                Turner</a></h6>
-                                                                        <small class="text-muted">Student</small>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- user profile nav tabs friends ends -->
-                                    </div>
+                                   
                                     <div class="tab-pane" id="profile" aria-labelledby="profile-tab" role="tabpanel">
-                                        <!-- user profile nav tabs profile start -->
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="row">
-                                                                <div class="col-12 col-sm-3 text-center mb-1 mb-sm-0">
-                                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-16.jpg"
-                                                                        class="rounded" alt="group image" height="120"
-                                                                        width="120" />
-                                                                </div>
-                                                                <div class="col-12 col-sm-9">
-                                                                    <div class="row">
-                                                                        <div class="col-12 text-center text-sm-left">
-                                                                            <h6 class="media-heading mb-0">
-                                                                                valintini_007<i
-                                                                                    class="cursor-pointer bx bxs-star text-warning ml-50 align-middle"></i>
-                                                                            </h6>
-                                                                            <small class="text-muted align-top">Martina
-                                                                                Ash</small>
-                                                                        </div>
-                                                                        <div class="col-12 text-center text-sm-left">
-                                                                            <div class="mb-1">
-                                                                                <span class="mr-1">122
-                                                                                    <small>Posts</small></span>
-                                                                                <span class="mr-1">4.7k
-                                                                                    <small>Followers</small></span>
-                                                                                <span class="mr-1">652
-                                                                                    <small>Following</small></span>
-                                                                            </div>
-                                                                            <p>Algolia helps businesses across
-                                                                                industries quickly create relevant😎,
-                                                                                scalable😀, and
-                                                                                lightning😍
-                                                                                fast search and discovery experiences.
-                                                                            </p>
-                                                                            <div>
-                                                                                <div class="badge badge-light-primary badge-round mr-1 mb-1"
-                                                                                    data-toggle="tooltip"
-                                                                                    data-placement="bottom"
-                                                                                    title="with 7% growth @valintini_007 is on top 5k">
-                                                                                    <i
-                                                                                        class="cursor-pointer bx bx-check-shield"></i>
-                                                                                </div>
-                                                                                <div class="badge badge-light-warning badge-round mr-1 mb-1"
-                                                                                    data-toggle="tooltip"
-                                                                                    data-placement="bottom"
-                                                                                    title="last 55% growth @valintini_007 is on weedday">
-                                                                                    <i
-                                                                                        class="cursor-pointer bx bx-badge-check"></i>
-                                                                                </div>
-                                                                                <div class="badge badge-light-success badge-round mb-1"
-                                                                                    data-toggle="tooltip"
-                                                                                    data-placement="bottom"
-                                                                                    title="got premium profile here"><i
-                                                                                        class="cursor-pointer bx bx-award"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <button
-                                                                                class="btn btn-sm d-none d-sm-block float-right btn-light-primary">
-                                                                                <i
-                                                                                    class="cursor-pointer bx bx-edit font-small-3 mr-50"></i><span>Edit</span>
-                                                                            </button>
-                                                                            <button
-                                                                                class="btn btn-sm d-block d-sm-none btn-block text-center btn-light-primary">
-                                                                                <i
-                                                                                    class="cursor-pointer bx bx-edit font-small-3 mr-25"></i><span>Edit</span></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      
+
                                         <div class="card">
                                             <div class="card-content">
                                                 <div class="card-body">

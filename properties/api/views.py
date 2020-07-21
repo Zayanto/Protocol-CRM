@@ -134,6 +134,7 @@ class StageOpportunityAPIView(APIView):
         obj.save()
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        
 class StageBuyingAPIView(APIView):
     serializer_class = StageBuyingSerializer
     
