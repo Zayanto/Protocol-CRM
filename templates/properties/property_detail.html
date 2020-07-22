@@ -295,7 +295,7 @@
                                                     href="#without-tenant-tab" aria-controls="renovation-stage" role="tab"
                                                     aria-selected="false">
                                                     <i class="bx bx-user align-middle"></i>
-                                                    <span class="align-middle">Without Tenant {{all_contracts_tab|length}}</span>
+                                                    <span class="align-middle">Without Tenant</span>
                                                 </a>
                                             </li>
                                             {% for contract in all_contracts_tab %}
@@ -539,8 +539,8 @@
 
                                                                             <ul class="nav nav-pills">
                                                                                 <li class="nav-item">
-                                                                                    <a class="nav-link active" id="create-table-{{forloop.counter}}-tab"
-                                                                                        data-toggle="pill" href="#create-table-{{forloop.counter}}"
+                                                                                    <a class="nav-link active" id="create-tenant-maintenance-table-{{contract.id}}-tab"
+                                                                                        data-toggle="pill" href="#create-tenant-maintenance-table-{{contract.id}}"
                                                                                         aria-expanded="true">Create
                                                                                         Table</a>
                                                                                 </li>
@@ -564,7 +564,7 @@
                                                                             </ul>
                                                                             <div class="tab-content">
                                                                                 <div role="tabpanel" class="tab-pane active"
-                                                                                id="create-table-{{contract.id}}" aria-labelledby="create-table-{{contract.id}}-tab"
+                                                                                id="create-tenant-maintenance-table-{{contract.id}}" aria-labelledby="create-tenant-maintenance-table-{{contract.id}}-tab"
                                                                                 aria-expanded="true">
                                                                                     <form class="form-stage" data-api_url="{% url 'property-api:create-tenant-monthly-maintenance-model' %}" data-name="Tenant Monthly Maintenance Model">
                                                                                         <button type="button" class="btn btn-primary modal-submit-button float-right">Create</button>    
@@ -2962,10 +2962,10 @@
 
     // Dynamic Expense tables
     var expense_tables_count = parseInt('{{ expense_tables_count }}');
-
+    
     for (let i = 1; i <= expense_tables_count; i++)
     {
-        var expense_table = `#expense-table-${i}`;
+        let expense_table = `#expense-table-${i}`;
         
         let ExpenseTableListTable = $(expense_table).DataTable({
             "processing": true,
@@ -2976,6 +2976,7 @@
                 type: 'GET',
                 data: function (d) {
                     d.page_num = getPageNumber();
+                    console.log(expense_table)
                     d.expense_table_id = $(expense_table).data('expense-table-id');
                 }
             },
@@ -3080,7 +3081,7 @@
     
     for (let i = 1; i <= monthly_maintenance_model_count; i++)
     {
-        var monthly_maintenance_model = `#monthly_maintenance_model-datatable-${i}`;
+        let monthly_maintenance_model = `#monthly_maintenance_model-datatable-${i}`;
     
         let MonthlyMaintenanceListTable = $(monthly_maintenance_model).DataTable({
             "processing": true,
@@ -3176,7 +3177,7 @@
     var tenant_monthly_maintenance_model_count = JSON.parse(`{{tenant_monthly_maintenance_model_count}}`);
     
     tenant_monthly_maintenance_model_count.forEach(function(i) {
-        var tenant_monthly_maintenance_model = `#tenant_monthly_maintenance_model-datatable-${i}`;
+        let tenant_monthly_maintenance_model = `#tenant_monthly_maintenance_model-datatable-${i}`;
         
         let TenantMonthlyMaintenanceListTable = $(tenant_monthly_maintenance_model).DataTable({
             "processing": true,

@@ -918,7 +918,7 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
         
         if not expense_table_id:
             raise exceptions.NotFound('expense_table_id is not given')
-        
+        print(expense_table_id, ' <<<<<<<<<<<<<<<<<<<<< sad')
         queryset = RenovationTeamExpenses.objects.filter(expense_table__id=expense_table_id).order_by('-created_date')
         return queryset
 
