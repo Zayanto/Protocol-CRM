@@ -23,4 +23,7 @@ urlpatterns = [
     path('properties/create-tenant-monthly-maintenance-model/', CreateTenantMonthlyMaintenanceModel.as_view(), name='create-tenant-monthly-maintenance-model'),
     path('properties/create-monthly-maintenance-model/', CreateMonthlyMaintenanceModel.as_view(), name='create-monthly-maintenance-model'),
     path('properties/monthly-maintenance-list/', MonthlyMaintenanceDatatableAPIView.as_view(), name='monthly-maintenance-list'),
+    path('properties/tenant-monthly-maintenance-list/', TenantMonthlyMaintenanceDatatableAPIView.as_view(), name='tenant-monthly-maintenance-list'),
+    path('properties/monthly-maintenance-create/', MonthlyMaintenanceCreateView.as_view(), name='monthly-maintenance-create'),
+    path('properties/tenant-monthly-maintenance-create/', TenantMonthlyMaintenanceCreateView.as_view(), name='tenant-monthly-maintenance-create'),
 ]

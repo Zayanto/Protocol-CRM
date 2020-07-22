@@ -48,3 +48,8 @@ class MonthlyMaintenanceSerializer(serializers.ModelSerializer):
         model = MonthlyMaintenance
         fields = '__all__' 
     
+class TenantMonthlyMaintenanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TenantMonthlyMaintenance
+        fields = '__all__' 
+    

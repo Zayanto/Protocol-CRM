@@ -368,107 +368,128 @@
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
-<<<<<<< Updated upstream
-                                                                          
-=======
-                                                                            <div role="tabpanel" class="tab-pane"
-                                                                                id="home" aria-labelledby="home-tab"
-                                                                                aria-expanded="true">
-                                                                                <p>
-                                                                                    Display the datatable here with
-                                                                                    scroll
-                                                                                    bar (some of these tables become
-                                                                                    very
-                                                                                    long in time). Here will also be a
-                                                                                    button with a pop up form to add to
-                                                                                    this
-                                                                                    table.
-                                                                                </p>
-
-                                                                                <!-- Zero configuration table -->
-                                                                                <section id="basic-datatable">
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="card">
-
-                                                                                                <div
-                                                                                                    class="card-content">
-                                                                                                    <div
-                                                                                                        class="card-body card-dashboard">
-
-                                                                                                        <div
-                                                                                                            class="table-responsive">
-                                                                                                            <table
-                                                                                                                class="table zero-configuration">
-                                                                                                                <thead>
-                                                                                                                    <tr>
-                                                                                                                        <th>Title
-                                                                                                                        </th>
-                                                                                                                        <th>Amount
-                                                                                                                        </th>
-                                                                                                                        <th>Currency
-                                                                                                                        </th>
-                                                                                                                        <th>Account
-                                                                                                                        </th>
-                                                                                                                        <th>Description
-                                                                                                                        </th>
-                                                                                                                        <th>date
-                                                                                                                        </th>
-                                                                                                                    </tr>
-                                                                                                                </thead>
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td>Tiger
-                                                                                                                            Nixon
-                                                                                                                        </td>
-                                                                                                                        <td>System
-                                                                                                                            Architect
-                                                                                                                        </td>
-                                                                                                                        <td>Edinburgh
-                                                                                                                        </td>
-                                                                                                                        <td>61
-                                                                                                                        </td>
-                                                                                                                        <td>2011/04/25
-                                                                                                                        </td>
-                                                                                                                        <td>$320,800
-                                                                                                                        </td>
-                                                                                                                    </tr>
-
-                                                                                                                </tbody>
-                                                                                                                <tfoot>
-                                                                                                                    <tr>
-                                                                                                                        <th>Name
-                                                                                                                        </th>
-                                                                                                                        <th>Position
-                                                                                                                        </th>
-                                                                                                                        <th>Office
-                                                                                                                        </th>
-                                                                                                                        <th>Age
-                                                                                                                        </th>
-                                                                                                                        <th>Start
-                                                                                                                            date
-                                                                                                                        </th>
-                                                                                                                        <th>Salary
-                                                                                                                        </th>
-                                                                                                                    </tr>
-                                                                                                                </tfoot>
-                                                                                                            </table>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </section>
-                                                                                <!--/ Zero configuration table -->
-
-                                                                            </div>
                                                                             
                                                                             {% for monthly_maintenance_model in monthly_maintenance_model_list %}
                                                                                 <div class="tab-pane" id="monthly_maintenance_model_{{forloop.counter}}"
                                                                                     role="tabpanel"
                                                                                     aria-labelledby="monthly_maintenance_model_{{forloop.counter}}-tab"
                                                                                     aria-expanded="false">
+                                                                                    <div class="float-right">
+                                                                                        <button data-toggle="modal"
+                                                                                            data-target="#create-monthly-maintenance-{{forloop.counter}}"
+                                                                                            class="btn btn-icon btn-success add-expense-tenant-monthly-main">Add Monthly Maintenance</button>
+                                                                                    </div>
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <div class="modal fade"
+                                                                                        id="create-monthly-maintenance-{{forloop.counter}}"
+                                                                                        tabindex="-1" role="dialog"
+                                                                                        aria-labelledby="create-monthly-maintenance-{{forloop.counter}}"
+                                                                                        aria-hidden="true">
+                                                                                        <div class="modal-dialog" role="document">
+                                                                                            <div class="modal-content">
+                                                                                                <form class="form-stage"
+                                                                                                    data-name="Monthly Expense"
+                                                                                                    data-api_url="{% url 'property-api:monthly-maintenance-create' %}"
+                                                                                                    data-name="Renovation Team Expense"
+                                                                                                    data-reload="true">
+                                                                                                    <div class="modal-header">
+                                                                                                        <h5 class="modal-title">
+                                                                                                            Add Monthly Maintenance Expense
+                                                                                                        </h5>
+                                                                                                        <button type="button"
+                                                                                                            class="close"
+                                                                                                            data-dismiss="modal"
+                                                                                                            aria-label="Cancel">
+                                                                                                            <span
+                                                                                                                aria-hidden="true">&times;</span>
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                    
+
+                                                                                                    <div class="modal-body">
+                                                                                                        <input type="text" name="monthly_maintenance_model_id" value="{{monthly_maintenance_model.id}}" class="d-none">
+                                                                                                        
+                                                                                                        <div class="form-group">
+                                                                                                            <input type="text"
+                                                                                                                value=""
+                                                                                                                style="display: none;"
+                                                                                                                name="expense_table_id">
+                                                                                                            <label
+                                                                                                                for="title">Title</label>
+                                                                                                            <input type="text"
+                                                                                                                class="form-control"
+                                                                                                                value="" id="title"
+                                                                                                                name="title"
+                                                                                                                placeholder="Enter Title"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="description">Description</label>
+                                                                                                            <input type="text"
+                                                                                                                class="form-control"
+                                                                                                                value=""
+                                                                                                                id="description"
+                                                                                                                name="description"
+                                                                                                                placeholder="Enter Description"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="amount">Amount</label>
+                                                                                                            <input type="number"
+                                                                                                                class="form-control"
+                                                                                                                value="" step="0.1"
+                                                                                                                id="amount"
+                                                                                                                name="amount"
+                                                                                                                placeholder="Enter Amount"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="currency">Currency</label>
+                                                                                                            <input type="text"
+                                                                                                                class="form-control"
+                                                                                                                value="" step="0.1"
+                                                                                                                id="currency"
+                                                                                                                name="currency"
+                                                                                                                placeholder="Enter Currency"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="account">Account</label>
+                                                                                                            <input type="text"
+                                                                                                                class="form-control"
+                                                                                                                value="" id="account"
+                                                                                                                name="account"
+                                                                                                                placeholder="Enter Account"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="date">Date</label>
+                                                                                                            <input type="date"
+                                                                                                                class="form-control"
+                                                                                                                value="" id="date"
+                                                                                                                name="date"
+                                                                                                                placeholder="Enter Date"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="modal-footer">
+                                                                                                        <button type="button"
+                                                                                                            class="btn btn-secondary"
+                                                                                                            data-dismiss="modal">Cancel</button>
+                                                                                                        <button type="button"
+                                                                                                            class="btn btn-primary modal-submit-button"
+                                                                                                            data-dismiss="modal">Create</button>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                     <table
                                                                                         class="table table-hover text-center"
                                                                                         id="monthly_maintenance_model-datatable-{{forloop.counter}}"
@@ -479,6 +500,7 @@
                                                                                                 <th class="text-center">Title</th>
                                                                                                 <th class="text-center">Description</th>
                                                                                                 <th class="text-center">Amount</th>
+                                                                                                <th class="text-center">Currency</th>
                                                                                                 <th class="text-center">Account</th>
                                                                                                 <th class="text-center">Date</th>
                                                                                             </tr>
@@ -489,7 +511,6 @@
                                                                                 </div>
                                                                                 
                                                                             {% endfor %}
->>>>>>> Stashed changes
 
                                                                         </div>
                                                                     </div>
@@ -532,8 +553,8 @@
                                                                                     
                                                                                     <li class="nav-item">
                                                                                         <a class="nav-link"
-                                                                                            id="tenant_monthly_maintenance_model-{{forloop.counter}}-tab" data-toggle="pill"
-                                                                                            href="#tenant_monthly_maintenance_model-{{forloop.counter}}"
+                                                                                            id="tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}-tab" data-toggle="pill"
+                                                                                            href="#tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}"
                                                                                             aria-expanded="false">{{tenant_monthly_maintenance_model.name}}
                                                                                         </a>
                                                                                     </li>
@@ -543,7 +564,7 @@
                                                                             </ul>
                                                                             <div class="tab-content">
                                                                                 <div role="tabpanel" class="tab-pane active"
-                                                                                id="create-table-{{forloop.counter}}" aria-labelledby="create-table-{{forloop.counter}}-tab"
+                                                                                id="create-table-{{contract.id}}" aria-labelledby="create-table-{{contract.id}}-tab"
                                                                                 aria-expanded="true">
                                                                                     <form class="form-stage" data-api_url="{% url 'property-api:create-tenant-monthly-maintenance-model' %}" data-name="Tenant Monthly Maintenance Model">
                                                                                         <button type="button" class="btn btn-primary modal-submit-button float-right">Create</button>    
@@ -663,13 +684,143 @@
                                                                                 </div>
                                                                                 
                                                                                 {% for tenant_monthly_maintenance_model in tenant_monthly_maintenance_models %}        
-                                                                                    <div class="tab-pane" id="tenant_monthly_maintenance_model-{{forloop.counter}}"
+                                                                                    <div class="tab-pane" id="tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}"
                                                                                         role="tabpanel"
-                                                                                        aria-labelledby="tenant_monthly_maintenance_model-{{forloop.counter}}-tab"
+                                                                                        aria-labelledby="tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}-tab"
                                                                                         aria-expanded="false">
-                                                                                        <p>
-                                                                                            {{ tenant_monthly_maintenance_model.name }} tab
-                                                                                        </p>
+                                                                                        <div class="float-right">
+                                                                                            <button data-toggle="modal"
+                                                                                                data-target="#create-tenant-monthly-maintenance-{{tenant_monthly_maintenance_model.id}}"
+                                                                                                class="btn btn-icon btn-success add-tenant-monthly-maintenance-button">Add Tenant Monthly Maintenance</button>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <br>
+                                                                                        <div class="modal fade"
+                                                                                            id="create-tenant-monthly-maintenance-{{tenant_monthly_maintenance_model.id}}"
+                                                                                            tabindex="-1" role="dialog"
+                                                                                            aria-labelledby="create-tenant-monthly-maintenance-{{tenant_monthly_maintenance_model.id}}"
+                                                                                            aria-hidden="true">
+                                                                                            <div class="modal-dialog" role="document">
+                                                                                                <div class="modal-content">
+                                                                                                    <form class="form-stage"
+                                                                                                        data-name="Tenant Monthly Expense"
+                                                                                                        data-api_url="{% url 'property-api:tenant-monthly-maintenance-create' %}"
+                                                                                                        data-reload="true">
+                                                                                                        <div class="modal-header">
+                                                                                                            <h5 class="modal-title">
+                                                                                                                Add Tenant Monthly Maintenance Expense
+                                                                                                            </h5>
+                                                                                                            <button type="button"
+                                                                                                                class="close"
+                                                                                                                data-dismiss="modal"
+                                                                                                                aria-label="Cancel">
+                                                                                                                <span
+                                                                                                                    aria-hidden="true">&times;</span>
+                                                                                                            </button>
+                                                                                                        </div>
+                                                                                                        
+    
+                                                                                                        <div class="modal-body">
+                                                                                                            <input type="text" name="tenant_monthly_maintenance_model_id" value="{{tenant_monthly_maintenance_model.id}}" class="d-none">
+                                                                                                            
+                                                                                                            <div class="form-group">
+                                                                                                                <input type="text"
+                                                                                                                    value=""
+                                                                                                                    style="display: none;"
+                                                                                                                    name="expense_table_id">
+                                                                                                                <label
+                                                                                                                    for="title">Title</label>
+                                                                                                                <input type="text"
+                                                                                                                    class="form-control"
+                                                                                                                    value="" id="title"
+                                                                                                                    name="title"
+                                                                                                                    placeholder="Enter Title"
+                                                                                                                    autocomplete="off">
+                                                                                                            </div>
+                                                                                                            <div class="form-group">
+                                                                                                                <label
+                                                                                                                    for="description">Description</label>
+                                                                                                            <input type="text"
+                                                                                                                class="form-control"
+                                                                                                                value=""
+                                                                                                                id="description"
+                                                                                                                name="description"
+                                                                                                                placeholder="Enter Description"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="amount">Amount</label>
+                                                                                                            <input type="number"
+                                                                                                                class="form-control"
+                                                                                                                value="" step="0.1"
+                                                                                                                id="amount"
+                                                                                                                name="amount"
+                                                                                                                placeholder="Enter Amount"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="currency">Currency</label>
+                                                                                                            <input type="text"
+                                                                                                                class="form-control"
+                                                                                                                value="" step="0.1"
+                                                                                                                id="currency"
+                                                                                                                name="currency"
+                                                                                                                placeholder="Enter Currency"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="account">Account</label>
+                                                                                                            <input type="text"
+                                                                                                                class="form-control"
+                                                                                                                value="" id="account"
+                                                                                                                name="account"
+                                                                                                                placeholder="Enter Account"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="date">Date</label>
+                                                                                                            <input type="date"
+                                                                                                                class="form-control"
+                                                                                                                value="" id="date"
+                                                                                                                name="date"
+                                                                                                                placeholder="Enter Date"
+                                                                                                                autocomplete="off">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="modal-footer">
+                                                                                                        <button type="button"
+                                                                                                            class="btn btn-secondary"
+                                                                                                            data-dismiss="modal">Cancel</button>
+                                                                                                        <button type="button"
+                                                                                                            class="btn btn-primary modal-submit-button"
+                                                                                                            data-dismiss="modal">Create</button>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        </div>
+                                                                                        <table
+                                                                                            class="table table-hover text-center"
+                                                                                            id="tenant_monthly_maintenance_model-datatable-{{tenant_monthly_maintenance_model.id}}"
+                                                                                            style="width: 100%;"
+                                                                                            data-tenant_monthly_maintenance_model_id={{tenant_monthly_maintenance_model.id}}>
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th class="text-center">Title</th>
+                                                                                                    <th class="text-center">Description</th>
+                                                                                                    <th class="text-center">Amount</th>
+                                                                                                    <th class="text-center">Currency</th>
+                                                                                                    <th class="text-center">Account</th>
+                                                                                                    <th class="text-center">Date</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody class="text-center">
+                                                                                            </tbody>
+                                                                                        </table>
                                                                                     </div>
                                                                                 {% endfor %}
 
@@ -1161,7 +1312,7 @@
                                                                             <div class="float-right">
                                                                                 <button data-toggle="modal"
                                                                                     data-target="#create-renovation-team-expense-{{forloop.counter}}"
-                                                                                    class="btn btn-icon btn-primary add-expense-button">Add
+                                                                                    class="btn btn-icon btn-primary add-expense-tenant-monthly-main">Add
                                                                                     Expense</button>
                                                                             </div>
                                                                         </span>
@@ -2415,6 +2566,7 @@
 
 {% expense_tables_count as expense_tables_count %}
 {% monthly_maintenance_model_count as monthly_maintenance_model_count %}
+{% tenant_monthly_maintenance_model_count as tenant_monthly_maintenance_model_count %}
 
 <script type="text/javascript">
     function preview_Timage() {
@@ -2814,8 +2966,7 @@
     for (let i = 1; i <= expense_tables_count; i++)
     {
         var expense_table = `#expense-table-${i}`;
-        console.log(expense_table);
-        console.log($(expense_table).data('expense-table-id'));
+        
         let ExpenseTableListTable = $(expense_table).DataTable({
             "processing": true,
             "serverSide": true,
@@ -2926,12 +3077,11 @@
 
     // Dynamic Monthly Maintenance Model tables
     var monthly_maintenance_model_count = parseInt('{{ monthly_maintenance_model_count }}');
-    console.log(monthly_maintenance_model_count + ' <<<<<<<<<<<<<<<<<<< sadsad')
+    
     for (let i = 1; i <= monthly_maintenance_model_count; i++)
     {
         var monthly_maintenance_model = `#monthly_maintenance_model-datatable-${i}`;
-        console.log(monthly_maintenance_model);
-        console.log($(monthly_maintenance_model).data('monthly_maintenance_model_id'));
+    
         let MonthlyMaintenanceListTable = $(monthly_maintenance_model).DataTable({
             "processing": true,
             "serverSide": true,
@@ -2946,43 +3096,43 @@
             },
             "order": [],
             "columnDefs": [
-                // {
-                //     "render": function (data, type, row) {
-                //         console.log(row + " <<<<<<<<<<<<<<>< sadasd")
-                //         return row['title'];
-                //     },
-                //     "targets": 0
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['description'];
-                //     },
-                //     "targets": 1
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['amount'];
-                //     },
-                //     "targets": 2
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['currency'];
-                //     },
-                //     "targets": 3
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['account'];
-                //     },
-                //     "targets": 4
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['date'];
-                //     },
-                //     "targets": 5
-                // },
+                {
+                    "render": function (data, type, row) {
+                        
+                        return row['title'];
+                    },
+                    "targets": 0
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['description'];
+                    },
+                    "targets": 1
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['amount'];
+                    },
+                    "targets": 2
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['currency'];
+                    },
+                    "targets": 3
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['account'];
+                    },
+                    "targets": 4
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['date'];
+                    },
+                    "targets": 5
+                },
             ],
 
             "createdRow": function (row, data, dataIndex) {
@@ -2992,38 +3142,131 @@
                 MonthlyMaintenanceListTable.page(getPageNumber() - 1).draw('page');
             }
         });
-        console.log('finish 1' + i)
+        
         MonthlyMaintenanceListTable.on('draw', function () {
             MonthlyMaintenanceListTable.columns.adjust();
         });
-        console.log('finish 2' + i)
+        
 
         $('.sidebar-toggle').click(function () {
             MonthlyMaintenanceListTable.columns.adjust();
         });
-        console.log('finish 3' + i)
+        
         $(monthly_maintenance_model).on('page.dt', function () {
             const info = MonthlyMaintenanceListTable.page.info();
             const page_number = info.page + 1;
             const queryString = getQueryString([{ 'key': 'page', 'value': page_number }]);
             // history.replaceState(page_number, queryString, `./${queryString}`);
         });
-        console.log('finish 4' + i)
+        
         $(monthly_maintenance_model).on('length.dt', function (e, settings, len) {
             const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
             // history.replaceState({id: null}, queryString, `./${queryString}`);
         });
-        console.log('finish 5' + i)
+        
         $(monthly_maintenance_model).on('search.dt', function (e, settings, len) {
             const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
             // history.replaceState({id: null}, queryString, `./${queryString}`);
         });
-        console.log('finish 6' + i)
-        MonthlyMaintenanceListTable.ajax.reload();
         
-        console.log('finish ' + i)
+        // MonthlyMaintenanceListTable.ajax.reload();
     }
 
+    // Dynamic Tenant Monthly Maintenance Model tables
+    var tenant_monthly_maintenance_model_count = JSON.parse(`{{tenant_monthly_maintenance_model_count}}`);
+    
+    tenant_monthly_maintenance_model_count.forEach(function(i) {
+        var tenant_monthly_maintenance_model = `#tenant_monthly_maintenance_model-datatable-${i}`;
+        
+        let TenantMonthlyMaintenanceListTable = $(tenant_monthly_maintenance_model).DataTable({
+            "processing": true,
+            "serverSide": true,
+            "autoWidth": true,
+            "ajax": {
+                url: "{% url 'property-api:tenant-monthly-maintenance-list' %}",
+                type: 'GET',
+                data: function (d) {
+                    d.page_num = getPageNumber();
+                    d.tenant_monthly_maintenance_model_id = $(tenant_monthly_maintenance_model).data('tenant_monthly_maintenance_model_id');
+                }
+            },
+            "order": [],
+            "columnDefs": [
+                {
+                    "render": function (data, type, row) {
+                        
+                        return row['title'];
+                    },
+                    "targets": 0
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['description'];
+                    },
+                    "targets": 1
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['amount'];
+                    },
+                    "targets": 2
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['currency'];
+                    },
+                    "targets": 3
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['account'];
+                    },
+                    "targets": 4
+                },
+                {
+                    "render": function (data, type, row) {
+                        return row['date'];
+                    },
+                    "targets": 5
+                },
+            ],
+
+            "createdRow": function (row, data, dataIndex) {
+            },
+
+            "initComplete": function (settings, json) {
+                TenantMonthlyMaintenanceListTable.page(getPageNumber() - 1).draw('page');
+            }
+        });
+        
+        TenantMonthlyMaintenanceListTable.on('draw', function () {
+            TenantMonthlyMaintenanceListTable.columns.adjust();
+        });
+        
+
+        $('.sidebar-toggle').click(function () {
+            TenantMonthlyMaintenanceListTable.columns.adjust();
+        });
+        
+        $(monthly_maintenance_model).on('page.dt', function () {
+            const info = TenantMonthlyMaintenanceListTable.page.info();
+            const page_number = info.page + 1;
+            const queryString = getQueryString([{ 'key': 'page', 'value': page_number }]);
+            // history.replaceState(page_number, queryString, `./${queryString}`);
+        });
+        
+        $(monthly_maintenance_model).on('length.dt', function (e, settings, len) {
+            const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
+            // history.replaceState({id: null}, queryString, `./${queryString}`);
+        });
+        
+        $(monthly_maintenance_model).on('search.dt', function (e, settings, len) {
+            const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
+            // history.replaceState({id: null}, queryString, `./${queryString}`);
+        });
+        
+        // TenantMonthlyMaintenanceListTable.ajax.reload();
+    })
 </script>
 
 

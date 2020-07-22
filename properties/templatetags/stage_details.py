@@ -97,6 +97,15 @@ def monthly_maintenance_model_count(context):
         pass
     return None
 
+@register.simple_tag(takes_context=True)
+def tenant_monthly_maintenance_model_count(context):
+    try:
+        propert = context['property']
+        return list(TenantMonthlyMaintenanceModel.objects.filter(contract__apartment=propert).values_list('id', flat=True))
+    except:
+        pass
+    return None
+
 @register.simple_tag
 def tenant_monthly_maintenance_model_list(contract):
     try:

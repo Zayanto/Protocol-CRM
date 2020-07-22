@@ -401,6 +401,116 @@ class RenovationTeamUpdateView(APIView):
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
 
+class MonthlyMaintenanceCreateView(APIView):
+    def post(self, request):
+        monthly_maintenance_model_id = request.POST.get('monthly_maintenance_model_id', None)
+        title = request.POST.get('title', None)
+        description = request.POST.get('description', None)
+        amount = request.POST.get('amount', None)
+        currency = request.POST.get('currency', None)
+        account = request.POST.get('account', None)
+        date = request.POST.get('date', None)
+        
+        if not monthly_maintenance_model_id:
+            raise exceptions.NotFound('monthly_maintenance_model_id is not given')
+
+        if not title:
+            raise exceptions.NotFound('title is not given')
+
+        if not description:
+            raise exceptions.NotFound('description is not given')
+
+        if not amount:
+            raise exceptions.NotFound('amount is not given')
+
+        if not currency:
+            raise exceptions.NotFound('currency is not given')
+
+        if not account:
+            raise exceptions.NotFound('account is not given')
+
+        if not date:
+            raise exceptions.NotFound('date is not given')
+
+        try:
+            monthly_maintenance_model = MonthlyMaintenanceModel.objects.get(id=monthly_maintenance_model_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        data = {
+            'monthly_maintenance_model': monthly_maintenance_model,
+            'title': title,
+            'description': description,
+            'amount': amount,
+            'currency': currency,
+            'account': account,
+            'date': datetime.strptime(date, '%Y-%m-%d'),
+        }
+        try:
+            created = MonthlyMaintenance.objects.create(**data)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        if created:
+            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
+class TenantMonthlyMaintenanceCreateView(APIView):
+    def post(self, request):
+        tenant_monthly_maintenance_model_id = request.POST.get('tenant_monthly_maintenance_model_id', None)
+        title = request.POST.get('title', None)
+        description = request.POST.get('description', None)
+        amount = request.POST.get('amount', None)
+        currency = request.POST.get('currency', None)
+        account = request.POST.get('account', None)
+        date = request.POST.get('date', None)
+        
+        if not tenant_monthly_maintenance_model_id:
+            raise exceptions.NotFound('tenant_monthly_maintenance_model_id is not given')
+
+        if not title:
+            raise exceptions.NotFound('title is not given')
+
+        if not description:
+            raise exceptions.NotFound('description is not given')
+
+        if not amount:
+            raise exceptions.NotFound('amount is not given')
+
+        if not currency:
+            raise exceptions.NotFound('currency is not given')
+
+        if not account:
+            raise exceptions.NotFound('account is not given')
+
+        if not date:
+            raise exceptions.NotFound('date is not given')
+
+        try:
+            tenant_monthly_maintenance_model = TenantMonthlyMaintenanceModel.objects.get(id=tenant_monthly_maintenance_model_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        data = {
+            'tenant_monthly_maintenance_model': tenant_monthly_maintenance_model,
+            'title': title,
+            'description': description,
+            'amount': amount,
+            'currency': currency,
+            'account': account,
+            'date': datetime.strptime(date, '%Y-%m-%d'),
+        }
+        try:
+            created = TenantMonthlyMaintenance.objects.create(**data)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        if created:
+            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
 class RenovationTeamExpenseCreateView(APIView):
     def post(self, request):
         expense_table_id = request.POST.get('expense_table_id', None)
@@ -627,7 +737,7 @@ class RenovationTeamListDatatableAPIView(ListAPIView):
             data_array.append({
                 'id': q.id,
                 'company_name': q.company_name,
-                'created_date': q.created_date.strftime("%b %d, %Y %H:%M:%S"),
+                'created_date': q.created_date.strftime("%b %d, %Y"),
             })
 
         response = {
@@ -707,7 +817,88 @@ class MonthlyMaintenanceDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-                'date': q.date.strftime("%b %d, %Y %H:%M:%S"),
+                'date': q.date.strftime("%b %d, %Y"),
+            })
+
+        response = {
+            'draw': draw,
+            'recordsTotal': records_total,
+            'recordsFiltered': records_filtered,
+            'data': data_array
+        }
+
+        return Response(response, status=status.HTTP_200_OK)
+        
+
+class TenantMonthlyMaintenanceDatatableAPIView(ListAPIView):
+    serializer_class = TenantMonthlyMaintenanceSerializer
+
+    def get_queryset(self):
+        tenant_monthly_maintenance_model_id = self.request.GET.get('tenant_monthly_maintenance_model_id', None)
+
+        if not tenant_monthly_maintenance_model_id:
+            raise exceptions.NotFound('tenant_monthly_maintenance_model_id is not given')
+        
+        queryset = TenantMonthlyMaintenance.objects.filter(tenant_monthly_maintenance_model__id=tenant_monthly_maintenance_model_id).order_by('-created_date')
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+
+        draw = request.GET.get('draw')
+        qs = self.get_queryset()
+        tenant_monthly_maintenance_qs_range = qs
+
+        draw = request.GET.get('draw')
+        records_total = qs.count()
+        records_filtered = qs.count()
+
+        length = int(request.GET.get('length'))
+        start = int(request.GET.get('start'))
+        order_column = request.GET.get('order[0][column]')
+        order_dir = request.GET.get('order[0][dir]')
+        search_str = request.GET.get('search[value]')
+
+        page_num = int(request.GET.get('page_num', 1))
+
+        column_names = [
+            'title', 'description', 'amount', 'currency', 'account', 'date',
+        ]
+
+        if search_str:
+            tenant_monthly_maintenance_qs_range = tenant_monthly_maintenance_qs_range.filter(
+                Q(title__icontains=search_str) |
+                Q(description__icontains=search_str) |
+                Q(amount__icontains=search_str) |
+                Q(currency__icontains=search_str) |
+                Q(account__icontains=search_str)
+            )
+            records_filtered = tenant_monthly_maintenance_qs_range.count()
+
+        if order_column:
+            order_str = column_names[int(order_column)]
+
+            if order_dir == 'desc':
+                order_str = f'-{column_names[int(order_column)]}'
+
+            tenant_monthly_maintenance_qs_range = tenant_monthly_maintenance_qs_range.order_by(order_str)
+        # else:
+        new_start = (page_num - 1) * length
+        start = new_start if new_start <= records_filtered else start
+
+        tenant_monthly_maintenance_qs_range = tenant_monthly_maintenance_qs_range[start:(start + length)]
+
+        data_array = []
+
+        for q in tenant_monthly_maintenance_qs_range:
+            
+            data_array.append({
+                'id': q.id,
+                'title': q.title,
+                'description': q.description,
+                'amount': q.amount,
+                'currency': q.currency,
+                'account': q.account,
+                'date': q.date.strftime("%b %d, %Y"),
             })
 
         response = {
@@ -789,12 +980,12 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-                'date': q.date.strftime("%b %d, %Y %H:%M:%S"),
+                'date': q.date.strftime("%b %d, %Y"),
                 'store': q.store,
                 'order_date': q.order_date,
                 'delivery_date': q.delivery_date,
                 'company': q.company,
-                'created_date': q.created_date.strftime("%b %d, %Y %H:%M:%S"),
+                'created_date': q.created_date.strftime("%b %d, %Y"),
             })
 
         response = {
