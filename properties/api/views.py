@@ -375,7 +375,7 @@ class RenovationTeamCreateView(APIView):
         else:
             return Response({'status': 'Error'}, status=status.HTTP_404_NOT_FOUND)
 
-class RenovationTeamUpdateView(APIView):
+class RenovationTeamUpdateDeleteView(APIView):
     def post(self, request):
         property_id = request.POST.get('property_id', None)
         company_name = request.POST.get('company-name', None)
@@ -399,6 +399,16 @@ class RenovationTeamUpdateView(APIView):
         renovation_team.company_name = company_name
         renovation_team.save()
 
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
+    def delete(self, request):
+        renovation_team_id = request.headers['renovation-team-id']
+
+        if not renovation_team_id:
+            raise exceptions.NotFound('renovation_team_id is not given')
+        
+        renovation_team = RenovationTeam.objects.get(id=renovation_team_id).delete()
+        
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
 
 class MonthlyMaintenanceCreateView(APIView):
@@ -455,6 +465,124 @@ class MonthlyMaintenanceCreateView(APIView):
             return Response({'status': 'success'}, status=status.HTTP_200_OK)
         else:
             return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
+class MonthlyMaintenanceUpdateDeleteView(APIView):
+    def post(self, request):
+        monthly_maintenance_id = request.POST.get('monthly_maintenance_id', None)
+        title = request.POST.get('title', None)
+        description = request.POST.get('description', None)
+        amount = request.POST.get('amount', None)
+        currency = request.POST.get('currency', None)
+        account = request.POST.get('account', None)
+        date = request.POST.get('date', None)
+        
+        if not monthly_maintenance_id:
+            raise exceptions.NotFound('monthly_maintenance_id is not given')
+
+        if not title:
+            raise exceptions.NotFound('title is not given')
+
+        if not description:
+            raise exceptions.NotFound('description is not given')
+
+        if not amount:
+            raise exceptions.NotFound('amount is not given')
+
+        if not currency:
+            raise exceptions.NotFound('currency is not given')
+
+        if not account:
+            raise exceptions.NotFound('account is not given')
+
+        if not date:
+            raise exceptions.NotFound('date is not given')
+
+        try:
+            monthly_maintenance = MonthlyMaintenance.objects.get(id=monthly_maintenance_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+    
+        monthly_maintenance.title = title
+        monthly_maintenance.description = description
+        monthly_maintenance.amount = amount
+        monthly_maintenance.currency = currency
+        monthly_maintenance.account = account
+        monthly_maintenance.date = datetime.strptime(date, '%Y-%m-%d')
+        monthly_maintenance.save()
+    
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
+    def delete(self, request):
+        monthly_maintenance_id = request.headers['monthly-maintenance-id']
+
+        if not monthly_maintenance_id:
+            raise exceptions.NotFound('monthly_maintenance_id is not given')
+        
+        try:
+            deleted = MonthlyMaintenance.objects.get(id=monthly_maintenance_id).delete()
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
+class TenantMonthlyMaintenanceUpdateDeleteView(APIView):
+    def post(self, request):
+        tenant_monthly_maintenance_id = request.POST.get('tenant_monthly_maintenance_id', None)
+        title = request.POST.get('title', None)
+        description = request.POST.get('description', None)
+        amount = request.POST.get('amount', None)
+        currency = request.POST.get('currency', None)
+        account = request.POST.get('account', None)
+        date = request.POST.get('date', None)
+        
+        if not tenant_monthly_maintenance_id:
+            raise exceptions.NotFound('tenant_monthly_maintenance_id is not given')
+
+        if not title:
+            raise exceptions.NotFound('title is not given')
+
+        if not description:
+            raise exceptions.NotFound('description is not given')
+
+        if not amount:
+            raise exceptions.NotFound('amount is not given')
+
+        if not currency:
+            raise exceptions.NotFound('currency is not given')
+
+        if not account:
+            raise exceptions.NotFound('account is not given')
+
+        if not date:
+            raise exceptions.NotFound('date is not given')
+
+        try:
+            tenant_monthly_maintenance = TenantMonthlyMaintenance.objects.get(id=tenant_monthly_maintenance_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+    
+        tenant_monthly_maintenance.title = title
+        tenant_monthly_maintenance.description = description
+        tenant_monthly_maintenance.amount = amount
+        tenant_monthly_maintenance.currency = currency
+        tenant_monthly_maintenance.account = account
+        tenant_monthly_maintenance.date = datetime.strptime(date, '%Y-%m-%d')
+        tenant_monthly_maintenance.save()
+    
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+
+    def delete(self, request):
+        tenant_monthly_maintenance_id = request.headers['tenant-monthly-maintenance-id']
+
+        if not tenant_monthly_maintenance_id:
+            raise exceptions.NotFound('tenant_monthly_maintenance_id is not given')
+        
+        try:
+            deleted = TenantMonthlyMaintenance.objects.get(id=tenant_monthly_maintenance_id).delete()
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
 
 class TenantMonthlyMaintenanceCreateView(APIView):
     def post(self, request):
@@ -576,7 +704,6 @@ class RenovationTeamExpenseCreateView(APIView):
             'delivery_date': datetime.strptime(delivery_date, '%Y-%m-%d'),
             'company': company,
         }
-        print(data)
         try:
             created = RenovationTeamExpenses.objects.create(**data)
         except Exception as e:
@@ -586,6 +713,86 @@ class RenovationTeamExpenseCreateView(APIView):
             return Response({'status': 'success'}, status=status.HTTP_200_OK)
         else:
             return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
+
+class RenovationTeamExpenseUpdateDeleteView(APIView):
+
+    def post(self, request):
+        renovation_team_expense_id = request.POST.get('renovation_team_expense_id', None)
+        title = request.POST.get('title', None)
+        description = request.POST.get('description', None)
+        amount = request.POST.get('amount', None)
+        currency = request.POST.get('currency', None)
+        account = request.POST.get('account', None)
+        date = request.POST.get('date', None)
+        store = request.POST.get('store', None)
+        order_date = request.POST.get('order_date', None)
+        delivery_date = request.POST.get('delivery_date', None)
+        company = request.POST.get('company', None)
+        
+        if not renovation_team_expense_id:
+            raise exceptions.NotFound('renovation_team_expense_id is not given')
+
+        if not title:
+            raise exceptions.NotFound('title is not given')
+
+        if not description:
+            raise exceptions.NotFound('description is not given')
+
+        if not amount:
+            raise exceptions.NotFound('amount is not given')
+
+        if not currency:
+            raise exceptions.NotFound('currency is not given')
+
+        if not account:
+            raise exceptions.NotFound('account is not given')
+
+        if not date:
+            raise exceptions.NotFound('date is not given')
+
+        if not store:
+            raise exceptions.NotFound('store is not given')
+
+        if not order_date:
+            raise exceptions.NotFound('order_date is not given')
+
+        if not delivery_date:
+            raise exceptions.NotFound('delivery_date is not given')
+
+        if not company:
+            raise exceptions.NotFound('company is not given')
+
+        try:
+            renovation_team_expense = RenovationTeamExpenses.objects.get(id=renovation_team_expense_id)
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        renovation_team_expense.title = title
+        renovation_team_expense.description = description
+        renovation_team_expense.amount = amount
+        renovation_team_expense.currency = currency
+        renovation_team_expense.account = account
+        renovation_team_expense.date = datetime.strptime(date, '%Y-%m-%d')
+        renovation_team_expense.store = store
+        renovation_team_expense.order_date = datetime.strptime(order_date, '%Y-%m-%d')
+        renovation_team_expense.delivery_date = datetime.strptime(delivery_date, '%Y-%m-%d')
+        renovation_team_expense.company = company
+        renovation_team_expense.save()
+    
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
+        
+    def delete(self, request):
+        renovation_team_expense_id = request.headers['renovation-team-expense-id']
+
+        if not renovation_team_expense_id:
+            raise exceptions.NotFound('renovation_team_expense_id is not given')
+        
+        try:
+            deleted = RenovationTeamExpenses.objects.get(id=renovation_team_expense_id).delete()
+        except Exception as e:
+            raise exceptions.NotFound(e)
+        
+        return Response({'status': 'success'}, status=status.HTTP_200_OK)
 
 class ExpenseTableCreateView(APIView):
     def post(self, request):
@@ -817,7 +1024,7 @@ class MonthlyMaintenanceDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-                'date': q.date.strftime("%b %d, %Y"),
+                'date': q.date.strftime("%Y-%m-%d"),
             })
 
         response = {
@@ -898,7 +1105,7 @@ class TenantMonthlyMaintenanceDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-                'date': q.date.strftime("%b %d, %Y"),
+                'date': q.date.strftime("%Y-%m-%d"),
             })
 
         response = {
@@ -918,7 +1125,7 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
         
         if not expense_table_id:
             raise exceptions.NotFound('expense_table_id is not given')
-        print(expense_table_id, ' <<<<<<<<<<<<<<<<<<<<< sad')
+        
         queryset = RenovationTeamExpenses.objects.filter(expense_table__id=expense_table_id).order_by('-created_date')
         return queryset
 
@@ -980,10 +1187,10 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-                'date': q.date.strftime("%b %d, %Y"),
+                'date': q.date.strftime("%Y-%m-%d"),
                 'store': q.store,
-                'order_date': q.order_date,
-                'delivery_date': q.delivery_date,
+                'order_date': q.order_date.strftime("%Y-%m-%d"),
+                'delivery_date': q.delivery_date.strftime("%Y-%m-%d"),
                 'company': q.company,
                 'created_date': q.created_date.strftime("%b %d, %Y"),
             })

@@ -503,6 +503,7 @@
                                                                                                 <th class="text-center">Currency</th>
                                                                                                 <th class="text-center">Account</th>
                                                                                                 <th class="text-center">Date</th>
+                                                                                                <th class="text-center">Action</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody class="text-center">
@@ -816,6 +817,7 @@
                                                                                                     <th class="text-center">Currency</th>
                                                                                                     <th class="text-center">Account</th>
                                                                                                     <th class="text-center">Date</th>
+                                                                                                    <th class="text-center">Action</th>
                                                                                                 </tr>
                                                                                             </thead>
                                                                                             <tbody class="text-center">
@@ -1533,6 +1535,10 @@
                                                                                                                         class="text-center">
                                                                                                                         Company
                                                                                                                     </th>
+                                                                                                                    <th
+                                                                                                                        class="text-center">
+                                                                                                                        Action
+                                                                                                                    </th>
                                                                                                                 </tr>
                                                                                                             </thead>
                                                                                                             <tbody
@@ -1850,7 +1856,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-opportunity' %}"
-                                    data-name="Opportunity Stage">
+                                    data-name="Opportunity Stage" data-key="property-id" data-value="{{property.id}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">General Information</h6>
@@ -1870,14 +1876,14 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="delete-1Label">Are you sure? You are
-                                                            deleting Opprtunity Stage</h5>
+                                                            deleting Opportunity Stage</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Plese remember that all deleted informtion will be permanently
+                                                        Please remember that all deleted information will be permanently
                                                         lost!
                                                     </div>
                                                     <div class="modal-footer">
@@ -2226,7 +2232,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-buying' %}"
-                                    data-name="Buying Stage">
+                                    data-name="Buying Stage" data-key="property-id" data-value="{{property.id}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">Buying Stage</h6>
@@ -2398,7 +2404,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-rent' %}"
-                                    data-name="Rent Stage">
+                                    data-name="Rent Stage" data-key="property-id" data-value="{{property.id}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">Rent Stage</h6>
@@ -2472,7 +2478,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-tenant' %}"
-                                    data-name="Tenant Stage">
+                                    data-name="Tenant Stage" data-key="property-id" data-value="{{property.id}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">Tenant Stage</h6>
@@ -2693,16 +2699,18 @@
     $('.delete-button').click(function (e) {
         e.preventDefault();
     });
-    $('.delete-confirm-button').click(function (e) {
+    $(document).on('click', '.delete-confirm-button', function(e) {
         let closest_form = $(this).closest('form');
         ajax_delete_stage(closest_form);
     });
     function ajax_delete_stage(_this) {
-        var block_ele = $(_this).closest('.card');
+        let block_ele = $(_this).closest('.card');
 
         let api_url = $(_this).data('api_url');
         let name = $(_this).data('name');
-        var reload = 'true';
+        let reload = $(_this).data('reload');
+        let key = $(_this).data('key');
+        let value = $(_this).data('value');
 
         block_card(block_ele, `Deleting ${name}....`);
 
@@ -2711,8 +2719,7 @@
             method: 'DELETE',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("X-CSRFToken", `{{csrf_token}}`);
-                xhr.setRequestHeader('property-id', '{{property.id}}');
-
+                xhr.setRequestHeader(key, value);
             },
             success: function (response) {
                 iziToast.success({
@@ -2869,6 +2876,9 @@
                             <a class="text-dark text-decoration-none" href="#" data-toggle="modal" data-target="#renovationTeamEditModal-${row['id']}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle mr-2" data-toggle="tooltip" data-original-title="Edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                             </a>
+                            <a class="text-danger text-decoration-none" href="#" data-toggle="modal" data-target="#renovationTeamDeleteModal-${row['id']}">
+                                <svg viewBox="0 0 24 24" data-toggle="tooltip" data-original-title="Delete" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                            </a>
                             <div class="modal fade text-left" id="renovationTeamEditModal-${row['id']}" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -2908,6 +2918,34 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal fade" id="renovationTeamDeleteModal-${row['id']}" tabindex="-1" role="dialog"
+                                aria-labelledby="renovationTeamDeleteModal-${row['id']}-label" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form data-key="renovation-team-id" data-value="${row['id']}" data-name="Renovation Team" data-api_url="{% url 'property-api:renovation-team-delete' %}" data-reload="false">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="renovationTeamDeleteModal-${row['id']}-label">Are you sure? You are
+                                                    deleting Opportunity Stage</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Please remember that all deleted information will be permanently
+                                                lost!
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">No</button>
+                                                <button type="button"
+                                                    class="btn btn-success delete-confirm-button"
+                                                    data-dismiss="modal">Yes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>`;
 
                     return action;
@@ -2927,6 +2965,7 @@
     // xp = renovationTeamListTable;
 
     renovationTeamListTable.on('draw', function () {
+        $('[data-toggle="tooltip"]').tooltip();
         renovationTeamListTable.columns.adjust();
     });
 
@@ -3042,6 +3081,185 @@
                     },
                     "targets": 9
                 },
+                {
+                    "render": function (data, type, row) {
+                        
+                        action = `
+                            <div class="text-center">
+                                <a class="text-dark text-decoration-none mb-1" href="#" data-toggle="modal" data-target="#renovationTeamExpenseEditModal-${row['id']}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle" data-toggle="tooltip" data-original-title="Edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                </a>
+                                <a class="text-danger text-decoration-none" href="#" data-toggle="modal" data-target="#renovationTeamExpenseDeleteModal-${row['id']}">
+                                    <svg viewBox="0 0 24 24" data-toggle="tooltip" data-original-title="Delete" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                                </a>
+                                <div class="modal fade text-left" id="renovationTeamExpenseEditModal-${row['id']}" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <form class="form-team-update" data-name="Renovation Team Expense" data-api_url="{% url 'property-api:renovation-team-expenses-update' %}" data-reload="false">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="update-renovation-team-expense">Update Renovation Team Expense</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Cancel">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <input type="text"
+                                                            value="${row['id']}"
+                                                            style="display: none;"
+                                                            name="renovation_team_expense_id">
+                                                        <label
+                                                            for="title">Title</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['title']}" id="title"
+                                                            name="title"
+                                                            placeholder="Enter Title"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="description">Description</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['description']}"
+                                                            id="description"
+                                                            name="description"
+                                                            placeholder="Enter Description"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="amount">Amount</label>
+                                                        <input type="number"
+                                                            class="form-control"
+                                                            value="${row['amount']}" step="0.1"
+                                                            id="amount"
+                                                            name="amount"
+                                                            placeholder="Enter Amount"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="currency">Currency</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['currency']}" step="0.1"
+                                                            id="currency"
+                                                            name="currency"
+                                                            placeholder="Enter Currency"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="account">Account</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['account']}" id="account"
+                                                            name="account"
+                                                            placeholder="Enter Account"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="date">Date</label>
+                                                        <input type="date"
+                                                            class="form-control"
+                                                            value="${row['date']}" id="date"
+                                                            name="date"
+                                                            placeholder="Enter Date"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="store">Store</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['store']}" id="store"
+                                                            name="store"
+                                                            placeholder="Enter Name of Store"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="order_date">Order
+                                                            date</label>
+                                                        <input type="date"
+                                                            class="form-control"
+                                                            value="${row['order_date']}" id="order_date"
+                                                            name="order_date"
+                                                            placeholder="Enter Order date"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="delivery_date">Delivery
+                                                            date</label>
+                                                        <input type="date"
+                                                            class="form-control"
+                                                            value="${row['delivery_date']}"
+                                                            id="delivery_date"
+                                                            name="delivery_date"
+                                                            placeholder="Enter Delivery date"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="company">Company
+                                                            Name</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['company']}" id="company"
+                                                            name="company"
+                                                            placeholder="Enter Name of Company"
+                                                            autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">Cancel</button>
+                                                    <button type="button"
+                                                    class="btn btn-success team-update-button"
+                                                    data-dismiss="modal">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="renovationTeamExpenseDeleteModal-${row['id']}" tabindex="-1" role="dialog"
+                                    aria-labelledby="renovationTeamExpenseDeleteModal-${row['id']}-label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form data-key="renovation-team-expense-id" data-value="${row['id']}" data-name="Renovation Team Expense" data-api_url="{% url 'property-api:renovation-team-expenses-delete' %}" data-reload="false">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="renovationTeamExpenseDeleteModal-${row['id']}-label">Are you sure? You are
+                                                        deleting Renovation Team Expenses</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Please remember that all deleted information will be permanently
+                                                    lost!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">No</button>
+                                                    <button type="button"
+                                                        class="btn btn-success delete-confirm-button"
+                                                        data-dismiss="modal">Yes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                        return action;
+                    },
+                    "targets": 10
+                },
             ],
 
             "createdRow": function (row, data, dataIndex) {
@@ -3052,6 +3270,7 @@
             }
         });
         ExpenseTableListTable.on('draw', function () {
+            $('[data-toggle="tooltip"]').tooltip();
             ExpenseTableListTable.columns.adjust();
         });
 
@@ -3134,6 +3353,142 @@
                     },
                     "targets": 5
                 },
+                {
+                    "render": function (data, type, row) {
+                        
+                        action = `
+                            <div class="text-center">
+                                <a class="text-dark text-decoration-none mb-1" href="#" data-toggle="modal" data-target="#MonthlyMaintenanceEditModal-${row['id']}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle" data-toggle="tooltip" data-original-title="Edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                </a>
+                                <a class="text-danger text-decoration-none" href="#" data-toggle="modal" data-target="#MonthlyMaintenanceDeleteModal-${row['id']}">
+                                    <svg viewBox="0 0 24 24" data-toggle="tooltip" data-original-title="Delete" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                                </a>
+                                <div class="modal fade text-left" id="MonthlyMaintenanceEditModal-${row['id']}" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <form class="form-team-update" data-name="Monthly Maintenance" data-api_url="{% url 'property-api:monthly-maintenance-update' %}" data-reload="false">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="update-renovation-team-expense">Update Monthly Maintenance</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Cancel">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">                                                    
+                                                    <div class="form-group">
+                                                        <input type="text"
+                                                            value="${row['id']}"
+                                                            style="display: none;"
+                                                            name="monthly_maintenance_id">
+                                                        <label
+                                                            for="title">Title</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['title']}" id="title"
+                                                            name="title"
+                                                            placeholder="Enter Title"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="description">Description</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['description']}"
+                                                        id="description"
+                                                        name="description"
+                                                        placeholder="Enter Description"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="amount">Amount</label>
+                                                    <input type="number"
+                                                        class="form-control"
+                                                        value="${row['amount']}" step="0.1"
+                                                        id="amount"
+                                                        name="amount"
+                                                        placeholder="Enter Amount"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="currency">Currency</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['currency']}" step="0.1"
+                                                        id="currency"
+                                                        name="currency"
+                                                        placeholder="Enter Currency"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="account">Account</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['account']}" id="account"
+                                                        name="account"
+                                                        placeholder="Enter Account"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="date">Date</label>
+                                                    <input type="date"
+                                                        class="form-control"
+                                                        value="${row['date']}" id="date"
+                                                        name="date"
+                                                        placeholder="Enter Date"
+                                                        autocomplete="off">
+                                                </div>
+                                            </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">Cancel</button>
+                                                    <button type="button"
+                                                    class="btn btn-success team-update-button"
+                                                    data-dismiss="modal">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="MonthlyMaintenanceDeleteModal-${row['id']}" tabindex="-1" role="dialog"
+                                    aria-labelledby="MonthlyMaintenanceDeleteModal-${row['id']}-label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form data-key="monthly-maintenance-id" data-value="${row['id']}" data-name="Monthly Maintenance" data-api_url="{% url 'property-api:monthly-maintenance-delete' %}" data-reload="false">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="MonthlyMaintenanceDeleteModal-${row['id']}-label">Are you sure? You are
+                                                        deleting Monthly Maintenance</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Please remember that all deleted information will be permanently
+                                                    lost!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">No</button>
+                                                    <button type="button"
+                                                        class="btn btn-success delete-confirm-button"
+                                                        data-dismiss="modal">Yes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                        return action;
+                    },
+                    "targets": 6
+                },
             ],
 
             "createdRow": function (row, data, dataIndex) {
@@ -3145,6 +3500,7 @@
         });
         
         MonthlyMaintenanceListTable.on('draw', function () {
+            $('[data-toggle="tooltip"]').tooltip();
             MonthlyMaintenanceListTable.columns.adjust();
         });
         
@@ -3230,6 +3586,142 @@
                     },
                     "targets": 5
                 },
+                {
+                    "render": function (data, type, row) {
+                        
+                        action = `
+                            <div class="text-center">
+                                <a class="text-dark text-decoration-none mb-1" href="#" data-toggle="modal" data-target="#TenantMonthlyMaintenanceEditModal-${row['id']}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle" data-toggle="tooltip" data-original-title="Edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                </a>
+                                <a class="text-danger text-decoration-none" href="#" data-toggle="modal" data-target="#TenantMonthlyMaintenanceDeleteModal-${row['id']}">
+                                    <svg viewBox="0 0 24 24" data-toggle="tooltip" data-original-title="Delete" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                                </a>
+                                <div class="modal fade text-left" id="TenantMonthlyMaintenanceEditModal-${row['id']}" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <form class="form-team-update" data-name="Tenant Monthly Maintenance" data-api_url="{% url 'property-api:tenant-monthly-maintenance-update' %}" data-reload="false">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="update-renovation-team-expense">Update Tenant Monthly Maintenance</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Cancel">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <input type="text"
+                                                            value="${row['id']}"
+                                                            style="display: none;"
+                                                            name="tenant_monthly_maintenance_id">
+                                                        <label
+                                                            for="title">Title</label>
+                                                        <input type="text"
+                                                            class="form-control"
+                                                            value="${row['title']}" id="title"
+                                                            name="title"
+                                                            placeholder="Enter Title"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="description">Description</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['description']}"
+                                                        id="description"
+                                                        name="description"
+                                                        placeholder="Enter Description"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="amount">Amount</label>
+                                                    <input type="number"
+                                                        class="form-control"
+                                                        value="${row['amount']}" step="0.1"
+                                                        id="amount"
+                                                        name="amount"
+                                                        placeholder="Enter Amount"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="currency">Currency</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['currency']}" step="0.1"
+                                                        id="currency"
+                                                        name="currency"
+                                                        placeholder="Enter Currency"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="account">Account</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        value="${row['account']}" id="account"
+                                                        name="account"
+                                                        placeholder="Enter Account"
+                                                        autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="date">Date</label>
+                                                    <input type="date"
+                                                        class="form-control"
+                                                        value="${row['date']}" id="date"
+                                                        name="date"
+                                                        placeholder="Enter Date"
+                                                        autocomplete="off">
+                                                </div>
+                                            </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">Cancel</button>
+                                                    <button type="button"
+                                                    class="btn btn-success team-update-button"
+                                                    data-dismiss="modal">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="TenantMonthlyMaintenanceDeleteModal-${row['id']}" tabindex="-1" role="dialog"
+                                    aria-labelledby="TenantMonthlyMaintenanceDeleteModal-${row['id']}-label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form data-key="tenant-monthly-maintenance-id" data-value="${row['id']}" data-name="Tenant Monthly Maintenance" data-api_url="{% url 'property-api:tenant-monthly-maintenance-delete' %}" data-reload="false">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="TenantMonthlyMaintenanceDeleteModal-${row['id']}-label">Are you sure? You are
+                                                        deleting Tenant Monthly Maintenance</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Please remember that all deleted information will be permanently
+                                                    lost!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">No</button>
+                                                    <button type="button"
+                                                        class="btn btn-success delete-confirm-button"
+                                                        data-dismiss="modal">Yes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                        return action;
+                    },
+                    "targets": 6
+                },
             ],
 
             "createdRow": function (row, data, dataIndex) {
@@ -3241,6 +3733,7 @@
         });
         
         TenantMonthlyMaintenanceListTable.on('draw', function () {
+            $('[data-toggle="tooltip"]').tooltip();
             TenantMonthlyMaintenanceListTable.columns.adjust();
         });
         
@@ -3249,19 +3742,19 @@
             TenantMonthlyMaintenanceListTable.columns.adjust();
         });
         
-        $(monthly_maintenance_model).on('page.dt', function () {
+        $(tenant_monthly_maintenance_model).on('page.dt', function () {
             const info = TenantMonthlyMaintenanceListTable.page.info();
             const page_number = info.page + 1;
             const queryString = getQueryString([{ 'key': 'page', 'value': page_number }]);
             // history.replaceState(page_number, queryString, `./${queryString}`);
         });
         
-        $(monthly_maintenance_model).on('length.dt', function (e, settings, len) {
+        $(tenant_monthly_maintenance_model).on('length.dt', function (e, settings, len) {
             const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
             // history.replaceState({id: null}, queryString, `./${queryString}`);
         });
         
-        $(monthly_maintenance_model).on('search.dt', function (e, settings, len) {
+        $(tenant_monthly_maintenance_model).on('search.dt', function (e, settings, len) {
             const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
             // history.replaceState({id: null}, queryString, `./${queryString}`);
         });
