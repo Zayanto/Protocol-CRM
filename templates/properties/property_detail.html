@@ -2577,11 +2577,11 @@
 <script type="text/javascript">
     function preview_Timage() {
         var total_image = document.getElementById("image_upload").files.length;
-        var html_prev = `<div style="width:452px; background-color:white; height:183px; overflow:auto;">
-            <div style="width: 2000px; height: 90px;">`;
+        var html_prev = `<div style="min-width:452px; background-color:white; height:183px; overflow:auto;">
+            <div style="height: 90px;">`;
         for (var i = 0; i < total_image; i++)
         {
-            html_prev += `<img style="margin-right: 5px" src="${URL.createObjectURL(event.target.files[i])}" width="100" height="100" alt="" />`;
+            html_prev += `<img style="margin: 15px; border:1px solid;" src="${URL.createObjectURL(event.target.files[i])}" width="100" height="100" alt="" />`;
         }
         html_prev += `</div></div>`;
         $('#preview').html(html_prev);
