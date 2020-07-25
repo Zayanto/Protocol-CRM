@@ -1,4 +1,5 @@
 <!-- templates/registration/login.html -->
+<<<<<<< HEAD
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}Log In{% endblock title %}
@@ -7,6 +8,12 @@
 <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
+=======
+{% extends '_base.html' %} {% load crispy_forms_tags %} {% block title %}Log In{% endblock title %} {% block content %}
+<h2>Log In</h2>
+<form method="post">
+    {% csrf_token %} {{ form|crispy }}
+>>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
     <button class="btn btn-success" type="submit">Log In</button>
 </form>
 
@@ -43,6 +50,7 @@
                                                 </div>
                                                 <div class="divider">
                                                     <div class="divider-text text-uppercase text-muted"><small>or login with
+<<<<<<< HEAD
                                                             email</small>
                                                     </div>
                                                 </div>
@@ -53,6 +61,23 @@
                                                     <div class="form-group">
                                                         <label class="text-bold-600" for="exampleInputPassword1">Password</label>
                                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+=======
+                                                            credentials</small>
+                                                    </div>
+                                                </div>
+                                                <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+                                                    <div class="form-group mb-50">
+                                                        <!--
+                                                        <label class="text-bold-600" for="exampleInputEmail1">Email address</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email address">
+                                                        -->
+                                                        <label class="text-bold-600" for="username">Username</label>
+                                                        <input type="text" class="form-control" id="username1" name="username" placeholder="Username">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="text-bold-600" for="exampleInputPassword1">Password</label>
+                                                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+>>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                     </div>
                                                     <div class="form-group d-flex flex-md-row flex-column justify-content-between align-items-center">
                                                         <div class="text-left">
@@ -67,7 +92,11 @@
                                                     <button type="submit" class="btn btn-primary glow w-100 position-relative">Login<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
                                                 </form>
                                                 <hr>
+<<<<<<< HEAD
                                                 <div class="text-center"><small class="mr-25">Don't have an account?</small><a href="auth-register.html"><small>Sign up</small></a></div>
+=======
+                                                <div class="text-center"><small class="mr-25">Don't have an account?</small><a href="{% url 'signup' %}"><small>Sign up</small></a></div>
+>>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                             </div>
                                         </div>
                                     </div>

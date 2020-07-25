@@ -22,6 +22,8 @@ urlpatterns = [
     path('owner/', include('owners.urls')),
     path('payments/', include('payments.urls')),
     path('emails/', include('emails.urls')),
+    path('account/',include('accounts.urls')),
+    path('creating_user/',include('creating_user.urls')),
 
     # API (v1)
     path('api/v1/', include('sms.api.urls')),

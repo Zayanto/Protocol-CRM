@@ -97,6 +97,7 @@ def monthly_maintenance_model_count(context):
         pass
     return None
 
+<<<<<<< HEAD
 @register.simple_tag(takes_context=True)
 def tenant_monthly_maintenance_model_count(context):
     try:
@@ -106,6 +107,8 @@ def tenant_monthly_maintenance_model_count(context):
         pass
     return None
 
+=======
+>>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
 @register.simple_tag
 def tenant_monthly_maintenance_model_list(contract):
     try:

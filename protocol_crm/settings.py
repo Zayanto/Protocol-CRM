@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'emails.apps.EmailsConfig',
     'drive.apps.DriveConfig',
     'todo.apps.TodoConfig'
+    'accounts',
+    'creating_user'
 ]
 
 # django-allauth config

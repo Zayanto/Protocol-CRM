@@ -14,6 +14,7 @@ urlpatterns = [
     path('properties/stage-rent/', StageRentAPIView.as_view(), name='stage-rent'),
     path('properties/stage-tenant/', StageTenantAPIView.as_view(), name='stage-tenant'),
     path('properties/renovation-team-create/', RenovationTeamCreateView.as_view(), name='renovation-team-create'),
+<<<<<<< HEAD
     path('properties/renovation-team-update/', RenovationTeamUpdateDeleteView.as_view(), name='renovation-team-update'),
     path('properties/renovation-team-delete/', RenovationTeamUpdateDeleteView.as_view(), name='renovation-team-delete'),
     path('properties/expense-table-create/', ExpenseTableCreateView.as_view(), name='expense-table-create'),
@@ -21,11 +22,18 @@ urlpatterns = [
     path('properties/renovation-team-expenses-create/', RenovationTeamExpenseCreateView.as_view(), name='renovation-team-expenses-create'),
     path('properties/renovation-team-expenses-update/', RenovationTeamExpenseUpdateDeleteView.as_view(), name='renovation-team-expenses-update'),
     path('properties/renovation-team-expenses-delete/', RenovationTeamExpenseUpdateDeleteView.as_view(), name='renovation-team-expenses-delete'),
+=======
+    path('properties/renovation-team-update/', RenovationTeamUpdateView.as_view(), name='renovation-team-update'),
+    path('properties/expense-table-create/', ExpenseTableCreateView.as_view(), name='expense-table-create'),
+    path('properties/renovation-team-list/', RenovationTeamListDatatableAPIView.as_view(), name='renovation-team-list'),
+    path('properties/renovation-team-expenses-create/', RenovationTeamExpenseCreateView.as_view(), name='renovation-team-expenses-create'),
+>>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
     path('properties/renovation-team-expenses-list/', RenovationTeamExpensesDatatableAPIView.as_view(), name='renovation-team-expenses-list'),
     path('properties/add-contract-in-monthly-expense/', AddContractInMonthlyExpense.as_view(), name='add-contract-in-monthly-expense'),
     path('properties/create-tenant-monthly-maintenance-model/', CreateTenantMonthlyMaintenanceModel.as_view(), name='create-tenant-monthly-maintenance-model'),
     path('properties/create-monthly-maintenance-model/', CreateMonthlyMaintenanceModel.as_view(), name='create-monthly-maintenance-model'),
     path('properties/monthly-maintenance-list/', MonthlyMaintenanceDatatableAPIView.as_view(), name='monthly-maintenance-list'),
+<<<<<<< HEAD
     path('properties/tenant-monthly-maintenance-list/', TenantMonthlyMaintenanceDatatableAPIView.as_view(), name='tenant-monthly-maintenance-list'),
     path('properties/monthly-maintenance-create/', MonthlyMaintenanceCreateView.as_view(), name='monthly-maintenance-create'),
     path('properties/monthly-maintenance-update/', MonthlyMaintenanceUpdateDeleteView.as_view(), name='monthly-maintenance-update'),
@@ -33,4 +41,6 @@ urlpatterns = [
     path('properties/tenant-monthly-maintenance-create/', TenantMonthlyMaintenanceCreateView.as_view(), name='tenant-monthly-maintenance-create'),
     path('properties/tenant-monthly-maintenance-update/', TenantMonthlyMaintenanceUpdateDeleteView.as_view(), name='tenant-monthly-maintenance-update'),
     path('properties/tenant-monthly-maintenance-delete/', TenantMonthlyMaintenanceUpdateDeleteView.as_view(), name='tenant-monthly-maintenance-delete'),
+=======
+>>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
 ]
