@@ -1,0 +1,235 @@
+<!-- templates/books/book_list.html -->
+{% extends '_base.html' %}
+
+{% block title %}Properties{% endblock title %}
+
+{% block content %}
+
+<!-- BEGIN: Content-->
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users list start -->
+            <section class="users-list-wrapper">
+                <div class="users-list-filter px-1">
+                    <form>
+                        <div class="row border rounded py-2 mb-2">
+                        
+                            <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalScrollable">
+                                    Add New Tenant
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration">
+                                            <thead>
+                                                <tr>
+                                                    <th>Full Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Creator</th>
+                                                    <th>First Appereance</th>
+                                                    <th>Contract</th>
+                                                    <th>status</th>
+                                                    <th>edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for tenant in tenant_list %} 
+                                            <tr>
+                                                <td>{{ tenant.full_name }}</td>
+                                                <td>{{ tenant.email }}</td>
+                                                <td>{{ tenant.phone }}</td>
+                                                <td>{{ tenant.creator }}</td>
+                                                <td><span class="badge badge-light-primary">{{ tenant.created_on }}</span></td>
+                                                <td>No. 150 Beldiman</td>
+                                                <td><span class="badge badge-light-danger">{{ tenant.is_active }}</span></td>
+                                                <td><a href="{{ tenant.get_absolute_url }}"><i class="bx bx-edit-alt"></i></a></td>
+                                            </tr>
+                                            {% endfor %}
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Full Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Creator</th>
+                                                    <th>First Appereance</th>
+                                                    <th>Contract</th>
+                                                    <th>status</th>
+                                                    <th>edit</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- users list ends -->
+
+            <!--scrolling content Modal -->
+            <div class="modal fade " id="exampleModalScrollable" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <form id="tenant-create-form" data-reload="true">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalScrollableTitle">Create a new tenant</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="bx bx-x"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="full_name">Full Name</label>
+                                            <input type="text" class="form-control" id="full_name"
+                                                name="full_name" placeholder="Enter Property Title">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" id="email"
+                                                name="email" placeholder="Enter tenant email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" class="form-control" id="phone"
+                                                name="phone" placeholder="Enter tenant phone">
+                                        </div>
+                                        
+
+                                    </div>
+                                    <br>
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <div class="form-group">
+                                            <label for="property-layout">Layout</label>
+                                            <!-- <input type="text" class="form-control" id="property-layout"
+                                                name="property-layout" placeholder="Enter Your Layout"> -->
+                                                <select class="form-control" name="property-layout" id="property-layout">
+                                                    {% for choices in StageOpportunity.Layout.choices %}
+                                                        <option class="form-control" value="{{choices.0}}">{{choices.1}}</option>
+                                                    {% endfor %}
+                                                        
+                                                </select>    
+                                        </div>
+                                    </div>
+                                 
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                                    <i class="bx bx-x d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Close</span>
+                                </button>
+                                <button type="button" class="btn btn-primary ml-1" data-dismiss="modal"
+                                    id="create-form-submit-btn">
+                                    <span class="d-sm-block">Accept</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+{% endblock content %}
+
+{% block javascript %}
+
+<script>
+    function block_card(block_ele) {
+        $(block_ele).block({
+            message: '<div class="semibold"><span class="bx bx-revision icon-spin text-left"></span>&nbsp; Saving data ...</div>',
+            fadeIn: 1000,
+            fadeOut: 1000,
+            // timeout: 2000, //unblock after 2 seconds
+            overlayCSS: {
+                backgroundColor: '#fff',
+                opacity: 0.8,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                padding: '10px 15px',
+                color: '#fff',
+                width: 'auto',
+                backgroundColor: '#333'
+            }
+        });
+    }
+    $('#create-form-submit-btn').click(function (e) {
+        e.preventDefault();
+        $('#tenant-create-form').submit();
+    });
+    $('#tenant-create-form').submit(function (e) {
+        e.preventDefault();
+        var api_url = `{% url 'tenant-api:create-tenant' %}`;
+        var block_ele = $(this).closest('body');
+
+        block_card(block_ele);
+
+        let data = $(this).serialize();
+        data += `&csrfmiddlewaretoken={{csrf_token}}`;
+
+        let name = 'Tenant';
+        var reload = $(this).data('reload');
+
+        $.ajax({
+            url: api_url,
+            method: 'POST',
+            data: data,
+            success: function (response) {
+                iziToast.success({
+                    title: 'Saved',
+                    message: `Successfully inserted ${name} data`,
+                });
+                if (reload)
+                {
+                    location.reload();
+                }
+            },
+            error: function (response) {
+                response = JSON.parse(response['responseText']);
+                iziToast.error({
+                    title: 'Error',
+                    timeout: 10000,
+                    message: `Error occurred while inserting ${name} data. ${response['message']}`,
+                });
+                console.log(response);
+            },
+            complete: function (response) {
+                $(block_ele).unblock();
+            }
+        });
+    });
+</script>
+{% endblock javascript %}

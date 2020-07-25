@@ -1,0 +1,778 @@
+{% extends '_base.html' %}
+
+{% block title %}Owners{% endblock title %}
+
+{% block content %}
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <section class="users-list-wrapper">
+
+                <div class="users-list-filter px-1">
+                    <form>
+                        <div class="row border rounded py-2 mb-2">
+                            
+
+                            <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalScrollable">
+                                    Add New Owner
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                
+               
+            </section>
+
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <!-- Zero configuration table -->
+                    <section id="basic-datatable">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Investors</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body card-dashboard">
+
+                                            <div class="table-responsive">
+                                                <table class="table zero-configuration">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Title</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Property</th>
+                                                            <th>View</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Tiger Nixon</td>
+                                                            <td>System Architect</td>
+                                                            <td>Edinburgh</td>
+                                                            <td>61</td>
+                                                            <td>View Button</td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Title</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Property</th>
+                                                            <th>View</th>
+
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--/ Zero configuration table -->
+
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <!-- Zero configuration table -->
+                    <section id="basic-datatable">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Owners</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body card-dashboard">
+
+                                            <div class="table-responsive">
+                                                <table class="table zero-configuration">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Title</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Property</th>
+                                                            <th>View</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Tiger Nixon</td>
+                                                            <td>System Architect</td>
+                                                            <td>Edinburgh</td>
+                                                            <td>61</td>
+                                                            <td>View Button</td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Title</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                            <th>Property</th>
+                                                            <th>View</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--/ Zero configuration table -->
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- BEGIN: Content-->
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- page user profile start -->
+            <section class="page-user-profile">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- user profile heading section start -->
+                        <div class="card">
+                            <div class="card-content">
+
+                                <!-- user profile nav tabs start -->
+                                <div class="card-body">
+                                    <ul class="nav user-profile-nav justify-content-center justify-content-md-start nav-tabs border-bottom-0 mb-0"
+                                        role="tablist">
+                                        <li class="nav-item pb-0">
+                                            <a class=" nav-link d-flex px-1 active" id="feed-tab" data-toggle="tab"
+                                                href="#feed" aria-controls="feed" role="tab" aria-selected="true"><i
+                                                    class="bx bx-home"></i><span
+                                                    class="d-none d-md-block">Properties</span></a>
+                                        </li>
+
+                                        <li class="nav-item pb-0">
+                                            <a class="nav-link d-flex px-1" id="friends-tab" data-toggle="tab"
+                                                href="#friends" aria-controls="friends" role="tab"
+                                                aria-selected="false"><i class="bx bx-message-alt"></i><span
+                                                    class="d-none d-md-block">Friends</span></a>
+                                        </li>
+                                        <li class="nav-item pb-0 mr-0">
+                                            <a class="nav-link d-flex px-1" id="profile-tab" data-toggle="tab"
+                                                href="#profile" aria-controls="profile" role="tab"
+                                                aria-selected="false"><i class="bx bx-copy-alt"></i><span
+                                                    class="d-none d-md-block">Profile</span></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <!-- user profile nav tabs ends -->
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- user profile nav tabs content start -->
+                            <div class="col-lg">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="feed" aria-labelledby="feed-tab" role="tabpanel">
+                                        <!-- Basic tabs start -->
+                                        <section id="basic-tabs-components">
+                                            <div class="card">
+
+                                                <div class="card-content">
+                                                    <div class="card-body">
+
+                                                        <ul class="nav nav-tabs" role="tablist">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link active" id="home-tab"
+                                                                    data-toggle="tab" href="#home1"
+                                                                    aria-controls="home1" role="tab"
+                                                                    aria-selected="true">
+                                                                    <i class="bx bx-home align-middle"></i>
+                                                                    <span class="align-middle">Property Title</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" id="profile-tab" data-toggle="tab"
+                                                                    href="#profile1" aria-controls="profile1" role="tab"
+                                                                    aria-selected="false">
+                                                                    <i class="bx bx-user align-middle"></i>
+                                                                    <span class="align-middle">Property Title</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" id="about-tab" data-toggle="tab"
+                                                                    href="#about1" aria-controls="about1" role="tab"
+                                                                    aria-selected="false">
+                                                                    <i class="bx bx-message-square align-middle"></i>
+                                                                    <span class="align-middle">Property Title</span>
+                                                                </a>
+                                                            </li>
+                                                          
+                                                        </ul>
+                                                        
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="home1"
+                                                                aria-labelledby="home-tab" role="tabpanel">
+                                                                <!-- Zero configuration table -->
+                                                                <section id="basic-datatable">
+                                                                    <div class="row">
+                                                                        <div class="col-12">
+                                                                            <div class="card">
+
+                                                                                <div class="card-content">
+
+
+                                                                                    <div class="table-responsive">
+                                                                                        <table
+                                                                                            class="table zero-configuration">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Month</th>
+                                                                                                    <th>6% tax</th>
+                                                                                                    <th>Amount</th>
+                                                                                                    <th>Tags</th>
+                                                                                                    <th>Account
+                                                                                                    </th>
+                                                                                                    <th>Currency</th>
+                                                                                                    <th>Description</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td>January
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>February
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Recover Tax</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>March
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Was free</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>April
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>May
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>June
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>July
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>August
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>September
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>October
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>November
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>December
+                                                                                                    </td>
+                                                                                                    <td>33
+                                                                                                    </td>
+                                                                                                    <td>517
+                                                                                                    </td>
+                                                                                                    <td>Payment Verified</td>
+                                                                                                    <td>Name of account
+                                                                                                    </td>
+                                                                                                    <td>EURO
+                                                                                                    </td>
+                                                                                                    <td>Some description here
+                                                                                                    </td>
+                                                                                                </tr>
+
+                                                                                            </tbody>
+                                                                                            <tfoot>
+                                                                                                <tr>
+                                                                                                    <th>Month</th>
+                                                                                                    <th>6% tax</th>
+                                                                                                    <th>Amount</th>
+                                                                                                    <th>Tags</th>
+                                                                                                    <th>Account
+                                                                                                    </th>
+                                                                                                    <th>Currency</th>
+                                                                                                    <th>Description</th>
+                                                                                                </tr>
+                                                                                            </tfoot>
+                                                                                        </table>
+                                                                                    </div>
+
+                                                                                    <!-- collapse with icon -->
+                <section id="collapsible-with-icon">
+                   <br>
+                    <div class="collapsible collapse-icon accordion-icon-rotate">
+                        <div class="card collapse-header">
+                            <div id="headingCollapse5" class="card-header" data-toggle="collapse" role="button" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                <span class="collapse-title">
+                                    <i class='bx bx-spa align-middle'></i>
+                                    <span class="align-middle">Rent Contract Taxes</span>
+                                </span>
+                            </div>
+                            <div id="collapse5" role="tabpanel" aria-labelledby="headingCollapse5" class="collapse">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                    
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table zero-configuration">
+                                            <thead>
+                                                <tr>
+                                                    <th>Type</th>
+                                                    <th>Amount</th>
+                                                    <th>Account</th>
+                                                    <th>Currency</th>
+                                                    <th>Date
+                                                    </th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Building Tax / Land Tax 
+                                                    </td>
+                                                    <td>300
+                                                    </td>
+                                                    <td>Cash
+                                                    </td>
+                                                    <td>EURO</td>
+                                                    <td>10.10.2020
+                                                    </td>
+                                                    <td>Description here ...
+                                                    </td>
+                                                    
+                                                </tr>
+                                               
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Type</th>
+                                                    <th>Amount</th>
+                                                    <th>Account</th>
+                                                    <th>Currency</th>
+                                                    <th>Date
+                                                    </th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </section>
+                <!-- collapse with icon end -->
+                <section id="collapsible-with-icon">
+                    <br>
+                     <div class="collapsible collapse-icon accordion-icon-rotate">
+                         <div class="card collapse-header">
+                             <div id="headingCollapse5" class="card-header" data-toggle="collapse" role="button" data-target="#collapse13" aria-expanded="false" aria-controls="collapse5">
+                                 <span class="collapse-title">
+                                     <i class='bx bx-spa align-middle'></i>
+                                     <span class="align-middle">Property Taxes</span>
+                                 </span>
+                             </div>
+                             <div id="collapse13" role="tabpanel" aria-labelledby="headingCollapse5" class="collapse">
+                                 <div class="card-content">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                        
+                                        <div class="table-responsive">
+                                            <table
+                                                class="table zero-configuration">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Title</th>
+                                                        <th>Amount</th>
+                                                        <th>Account</th>
+                                                        <th>Currency</th>
+                                                        <th>Date
+                                                        </th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Payment
+                                                        </td>
+                                                        <td>300
+                                                        </td>
+                                                        <td>Cash
+                                                        </td>
+                                                        <td>EURO</td>
+                                                        <td>10.10.2020
+                                                        </td>
+                                                        <td>Description here ...
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                   
+    
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Title</th>
+                                                        <th>Amount</th>
+                                                        <th>Account</th>
+                                                        <th>Currency</th>
+                                                        <th>Date
+                                                        </th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                 </div>
+                             </div>
+                         </div>
+                        
+                     </div>
+                 </section>
+                 <!-- collapse with icon end -->
+                 <section id="collapsible-with-icon">
+                    <br>
+                     <div class="collapsible collapse-icon accordion-icon-rotate">
+                         <div class="card collapse-header">
+                             <div id="headingCollapse5" class="card-header" data-toggle="collapse" role="button" data-target="#collapse12" aria-expanded="false" aria-controls="collapse5">
+                                 <span class="collapse-title">
+                                     <i class='bx bx-spa align-middle'></i>
+                                     <span class="align-middle">General Expenses</span>
+
+                                    <div class="float-right">
+                                        <p> sum.of.all.expenses.from.this.table </p>
+                                    </div>
+                                 </span>
+                             </div>
+                             <div id="collapse12" role="tabpanel" aria-labelledby="headingCollapse5" class="collapse">
+                                 <div class="card-content">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                        
+                                        <div class="table-responsive">
+                                            <table
+                                                class="table zero-configuration">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Title</th>
+                                                        <th>Amount</th>
+                                                        <th>Account</th>
+                                                        <th>Currency</th>
+                                                        <th>Date
+                                                        </th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Payment
+                                                        </td>
+                                                        <td>300
+                                                        </td>
+                                                        <td>Cash
+                                                        </td>
+                                                        <td>EURO</td>
+                                                        <td>10.10.2020
+                                                        </td>
+                                                        <td>Description here ...
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                   
+    
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Title</th>
+                                                        <th>Amount</th>
+                                                        <th>Account</th>
+                                                        <th>Currency</th>
+                                                        <th>Date
+                                                        </th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                 </div>
+                             </div>
+                         </div>
+                        
+                     </div>
+                 </section>
+                 <!-- collapse with icon end -->
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>
+                                                                <!--/ Zero configuration table -->
+                                                            </div>
+                                                            <div class="tab-pane" id="profile1"
+                                                                aria-labelledby="profile-tab" role="tabpanel">
+
+
+
+                                                            </div>
+                                                            <div class="tab-pane" id="about1"
+                                                                aria-labelledby="about-tab" role="tabpanel">
+
+
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- Basic Tag Input end -->
+                                    </div>
+
+                                   
+                                    <div class="tab-pane" id="profile" aria-labelledby="profile-tab" role="tabpanel">
+                                      
+
+                                        <div class="card">
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Basic details</h5>
+                                                    <ul class="list-unstyled">
+                                                        <li><i
+                                                                class="cursor-pointer bx bx-map mb-1 mr-50"></i>California
+                                                        </li>
+                                                        <li><i
+                                                                class="cursor-pointer bx bx-phone-call mb-1 mr-50"></i>(+56)
+                                                            454 45654 </li>
+                                                        <li><i class="cursor-pointer bx bx-time mb-1 mr-50"></i>July 10
+                                                        </li>
+                                                        <li><i
+                                                                class="cursor-pointer bx bx-envelope mb-1 mr-50"></i>Jonnybravo@gmail.com
+                                                        </li>
+                                                    </ul>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <h6><small class="text-muted">Cell Phone</small></h6>
+                                                            <p>(+46) 456 54432</p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <h6><small class="text-muted">Family Phone</small></h6>
+                                                            <p>(+46) 454 22432</p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <h6><small class="text-muted">Reporter</small></h6>
+                                                            <p>John Doe</p>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <h6><small class="text-muted">Manager</small></h6>
+                                                            <p>Richie Rich</p>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <h6><small class="text-muted">Bio</small></h6>
+                                                            <p>Built-in customizer enables users to change their admin
+                                                                panel look & feel based on their
+                                                                preferences Beautifully crafted, clean & modern designed
+                                                                admin theme with 3 different demos &
+                                                                light - dark versions.</p>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        class="btn btn-sm d-none d-sm-block float-right btn-light-primary mb-2">
+                                                        <i
+                                                            class="cursor-pointer bx bx-edit font-small-3 mr-50"></i><span>Edit</span>
+                                                    </button>
+                                                    <button
+                                                        class="btn btn-sm d-block d-sm-none btn-block text-center btn-light-primary">
+                                                        <i
+                                                            class="cursor-pointer bx bx-edit font-small-3 mr-25"></i><span>Edit</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- user profile nav tabs profile ends -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- user profile nav tabs content ends -->
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

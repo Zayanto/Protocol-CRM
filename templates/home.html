@@ -1,0 +1,130 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- Dashboard Ecommerce Starts -->
+            <section id="dashboard-ecommerce">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body p-0">
+                                    <div class="d-lg-flex justify-content-between">
+                                        <div class="widget-card-details d-flex flex-column justify-content-between p-2 w-100">
+                                            <form id="send-whatsapp-form">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon3">Send Whatsapp message: </span>
+                                                    </div>
+                                                    <textarea id="message" rows="4" class="form-control" placeholder="write your message here" required></textarea>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon3">Put the mobile number: </span>
+                                                    </div>
+                                                    <input id="target-number" type="number" class="form-control" aria-describedby="basic-addon3" placeholder="+112233445566" required>
+                                                    <div class="input-group-append">
+                                                        <button id="send-whatsapp-btn" class="btn btn-secondary" type="submit">
+                                                            <span id="send-whatsapp-status" class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" style="display: none;"></span> 
+                                                            Process
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div id="radial-chart-primary"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-xl-4 col-12 dashboard-users">
+                        <div class="row  ">
+                            
+                            <!-- Statistics Cards Starts -->
+                            <div class="col-12">
+                                <div class="row">
+
+                                    <!-- Properties Count -->
+                                    <div class="col-sm-6 col-12 dashboard-users-success">
+                                        <div class="card text-center">
+                                            <div class="card-content">
+                                                <div class="card-body py-1">
+                                                    <div
+                                                        class="badge-circle badge-circle-lg badge-circle-light-success mx-auto mb-50">
+                                                        <i class="bx bx-briefcase-alt font-medium-5"></i>
+                                                    </div>
+                                                    <div class="text-muted line-ellipsis">Properties</div>
+                                                    <h3 class="mb-0">{{properties_count}}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                    <!-- Tenants Count -->
+                                    <div class="col-sm-6 col-12 dashboard-users-danger">
+                                        <div class="card text-center">
+                                            <div class="card-content">
+                                                <div class="card-body py-1">
+                                                    <div
+                                                        class="badge-circle badge-circle-lg badge-circle-light-danger mx-auto mb-50">
+                                                        <i class="bx bx-user font-medium-5"></i>
+                                                    </div>
+                                                    <div class="text-muted line-ellipsis">Tenants</div>
+                                                    <h3 class="mb-0">{{tenants_count}}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </section>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}  
+
+
+{% block javascript %}
+    <script>
+        $('#send-whatsapp-form').submit(function(e) {
+            e.preventDefault();
+            let phone_number = $('#target-number').val();
+            let message = $('#message').val();
+            $('#send-whatsapp-status').show();
+
+            $.ajax({
+                url: `{% url 'sms-api:send-whatsapp-sms' %}`,
+                method: 'GET',
+                data: {
+                    phone_number,
+                    message
+                },
+                success: function(response) {
+                    $('#send-whatsapp-status').hide();
+                    console.log(response);
+                }
+            })
+        });
+    </script>
+{% endblock javascript %}
+    

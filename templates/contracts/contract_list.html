@@ -1,0 +1,101 @@
+{% extends '_base.html' %}
+
+{% block title %}Contracts{% endblock title %}
+
+{% block content %}
+
+<!-- BEGIN: Content-->
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users list start -->
+            <section class="users-list-wrapper">
+                <div class="users-list-filter px-1">
+                    <form>
+                        <div class="row border rounded py-2 mb-2">
+                            
+                            <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
+                                <button href="{% url 'property:add' %}" class="btn btn-primary btn-block glow  mb-0">Add
+                                    Property</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- users list ends -->
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+
+                                    <div class="table-responsive">
+                                        <table class="table zero-configuration">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Amount</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Property</th>
+                                                    <th>Tenant</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for contract in contract_list %}
+                                            <tr>
+                                                <td>{{ contract.title }}</td>
+                                                <td>
+                                                    <div class="badge badge-success text-bold-500 py-50">
+                                                        {{ contract.rent_tenant }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="badge badge-light-primary text-bold-500 py-50">
+                                                        {{ contract.start_date }}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="badge badge-light-warning text-bold-500 py-50">
+                                                        {{ contract.end_date }}</div>
+                                                </td>
+                                                <td>{{ contract.apartment }}</td>
+                                                <td>{{ contract.tenant }}</td>
+
+                                                <td><a href="{{ contract.get_absolute_url }}"><i
+                                                            class="bx bx-edit-alt"></i></a></td>
+                                            </tr>
+                                            {% endfor %}
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Amount</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Property</th>
+                                                    <th>Tenant</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/ Zero configuration table -->
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+{% endblock content %}
