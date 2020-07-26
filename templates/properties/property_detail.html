@@ -249,6 +249,8 @@
                                     aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <form class="form-stage" data-api_url="{% url 'property-api:add-contract-in-monthly-expense' %}" data-reload="true">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="property_id" value="{{property.pk}}">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-primary">
                                                     <h5 class="modal-title white" id="myModalLabel160">Primary Modal</h5>
@@ -295,11 +297,7 @@
                                                     href="#without-tenant-tab" aria-controls="renovation-stage" role="tab"
                                                     aria-selected="false">
                                                     <i class="bx bx-user align-middle"></i>
-<<<<<<< HEAD
                                                     <span class="align-middle">Without Tenant</span>
-=======
-                                                    <span class="align-middle">Without Tenant {{all_contracts_tab|length}}</span>
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                 </a>
                                             </li>
                                             {% for contract in all_contracts_tab %}
@@ -353,6 +351,8 @@
                                                                                 id="create_monthly_maintenance_model_{{forloop.counter}}" aria-labelledby="create_monthly_maintenance_model_{{forloop.counter}}-tab"
                                                                                 aria-expanded="true">
                                                                                 <form class="form-stage" data-api_url="{% url 'property-api:create-monthly-maintenance-model' %}" data-name="Monthly Maintenance" data-reload="true">
+                                                                                    {% csrf_token %}
+                                                                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                                                                     <button type="button"
                                                                                         class="btn btn-primary float-right modal-submit-button">Create</button>
                                                                                     <div class="col-12 col-sm-6">
@@ -372,111 +372,12 @@
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-                                                                          
-=======
-                                                                            <div role="tabpanel" class="tab-pane"
-                                                                                id="home" aria-labelledby="home-tab"
-                                                                                aria-expanded="true">
-                                                                                <p>
-                                                                                    Display the datatable here with
-                                                                                    scroll
-                                                                                    bar (some of these tables become
-                                                                                    very
-                                                                                    long in time). Here will also be a
-                                                                                    button with a pop up form to add to
-                                                                                    this
-                                                                                    table.
-                                                                                </p>
-
-                                                                                <!-- Zero configuration table -->
-                                                                                <section id="basic-datatable">
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="card">
-
-                                                                                                <div
-                                                                                                    class="card-content">
-                                                                                                    <div
-                                                                                                        class="card-body card-dashboard">
-
-                                                                                                        <div
-                                                                                                            class="table-responsive">
-                                                                                                            <table
-                                                                                                                class="table zero-configuration">
-                                                                                                                <thead>
-                                                                                                                    <tr>
-                                                                                                                        <th>Title
-                                                                                                                        </th>
-                                                                                                                        <th>Amount
-                                                                                                                        </th>
-                                                                                                                        <th>Currency
-                                                                                                                        </th>
-                                                                                                                        <th>Account
-                                                                                                                        </th>
-                                                                                                                        <th>Description
-                                                                                                                        </th>
-                                                                                                                        <th>date
-                                                                                                                        </th>
-                                                                                                                    </tr>
-                                                                                                                </thead>
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td>Tiger
-                                                                                                                            Nixon
-                                                                                                                        </td>
-                                                                                                                        <td>System
-                                                                                                                            Architect
-                                                                                                                        </td>
-                                                                                                                        <td>Edinburgh
-                                                                                                                        </td>
-                                                                                                                        <td>61
-                                                                                                                        </td>
-                                                                                                                        <td>2011/04/25
-                                                                                                                        </td>
-                                                                                                                        <td>$320,800
-                                                                                                                        </td>
-                                                                                                                    </tr>
-
-                                                                                                                </tbody>
-                                                                                                                <tfoot>
-                                                                                                                    <tr>
-                                                                                                                        <th>Name
-                                                                                                                        </th>
-                                                                                                                        <th>Position
-                                                                                                                        </th>
-                                                                                                                        <th>Office
-                                                                                                                        </th>
-                                                                                                                        <th>Age
-                                                                                                                        </th>
-                                                                                                                        <th>Start
-                                                                                                                            date
-                                                                                                                        </th>
-                                                                                                                        <th>Salary
-                                                                                                                        </th>
-                                                                                                                    </tr>
-                                                                                                                </tfoot>
-                                                                                                            </table>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </section>
-                                                                                <!--/ Zero configuration table -->
-
-                                                                            </div>
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                             
                                                                             {% for monthly_maintenance_model in monthly_maintenance_model_list %}
                                                                                 <div class="tab-pane" id="monthly_maintenance_model_{{forloop.counter}}"
                                                                                     role="tabpanel"
                                                                                     aria-labelledby="monthly_maintenance_model_{{forloop.counter}}-tab"
                                                                                     aria-expanded="false">
-<<<<<<< HEAD
                                                                                     <div class="float-right">
                                                                                         <button data-toggle="modal"
                                                                                             data-target="#create-monthly-maintenance-{{forloop.counter}}"
@@ -491,11 +392,14 @@
                                                                                         aria-hidden="true">
                                                                                         <div class="modal-dialog" role="document">
                                                                                             <div class="modal-content">
+
                                                                                                 <form class="form-stage"
                                                                                                     data-name="Monthly Expense"
                                                                                                     data-api_url="{% url 'property-api:monthly-maintenance-create' %}"
                                                                                                     data-name="Renovation Team Expense"
                                                                                                     data-reload="true">
+                                                                                                    {% csrf_token %}
+                                                                                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                                                                                     <div class="modal-header">
                                                                                                         <h5 class="modal-title">
                                                                                                             Add Monthly Maintenance Expense
@@ -580,6 +484,14 @@
                                                                                                                 placeholder="Enter Date"
                                                                                                                 autocomplete="off">
                                                                                                         </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="document">Document</label>
+                                                                                                            <input type="file"
+                                                                                                                class="form-control"
+                                                                                                                value="" id="document"
+                                                                                                                name="document">
+                                                                                                        </div>
                                                                                                     </div>
                                                                                                     <div class="modal-footer">
                                                                                                         <button type="button"
@@ -593,8 +505,6 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                     <table
                                                                                         class="table table-hover text-center"
                                                                                         id="monthly_maintenance_model-datatable-{{forloop.counter}}"
@@ -605,15 +515,10 @@
                                                                                                 <th class="text-center">Title</th>
                                                                                                 <th class="text-center">Description</th>
                                                                                                 <th class="text-center">Amount</th>
-<<<<<<< HEAD
                                                                                                 <th class="text-center">Currency</th>
                                                                                                 <th class="text-center">Account</th>
                                                                                                 <th class="text-center">Date</th>
                                                                                                 <th class="text-center">Action</th>
-=======
-                                                                                                <th class="text-center">Account</th>
-                                                                                                <th class="text-center">Date</th>
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody class="text-center">
@@ -622,10 +527,6 @@
                                                                                 </div>
                                                                                 
                                                                             {% endfor %}
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
 
                                                                         </div>
                                                                     </div>
@@ -654,13 +555,8 @@
 
                                                                             <ul class="nav nav-pills">
                                                                                 <li class="nav-item">
-<<<<<<< HEAD
                                                                                     <a class="nav-link active" id="create-tenant-maintenance-table-{{contract.id}}-tab"
                                                                                         data-toggle="pill" href="#create-tenant-maintenance-table-{{contract.id}}"
-=======
-                                                                                    <a class="nav-link active" id="create-table-{{forloop.counter}}-tab"
-                                                                                        data-toggle="pill" href="#create-table-{{forloop.counter}}"
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                         aria-expanded="true">Create
                                                                                         Table</a>
                                                                                 </li>
@@ -673,13 +569,8 @@
                                                                                     
                                                                                     <li class="nav-item">
                                                                                         <a class="nav-link"
-<<<<<<< HEAD
                                                                                             id="tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}-tab" data-toggle="pill"
                                                                                             href="#tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}"
-=======
-                                                                                            id="tenant_monthly_maintenance_model-{{forloop.counter}}-tab" data-toggle="pill"
-                                                                                            href="#tenant_monthly_maintenance_model-{{forloop.counter}}"
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                             aria-expanded="false">{{tenant_monthly_maintenance_model.name}}
                                                                                         </a>
                                                                                     </li>
@@ -689,13 +580,11 @@
                                                                             </ul>
                                                                             <div class="tab-content">
                                                                                 <div role="tabpanel" class="tab-pane active"
-<<<<<<< HEAD
                                                                                 id="create-tenant-maintenance-table-{{contract.id}}" aria-labelledby="create-tenant-maintenance-table-{{contract.id}}-tab"
-=======
-                                                                                id="create-table-{{forloop.counter}}" aria-labelledby="create-table-{{forloop.counter}}-tab"
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                 aria-expanded="true">
                                                                                     <form class="form-stage" data-api_url="{% url 'property-api:create-tenant-monthly-maintenance-model' %}" data-name="Tenant Monthly Maintenance Model">
+                                                                                        {% csrf_token %}
+                                                                                        <input type="hidden" name="property_id" value="{{property.pk}}">
                                                                                         <button type="button" class="btn btn-primary modal-submit-button float-right">Create</button>    
                                                                                         <div class="col-12 col-sm-6">
                                                                                             <input type="text"
@@ -813,7 +702,6 @@
                                                                                 </div>
                                                                                 
                                                                                 {% for tenant_monthly_maintenance_model in tenant_monthly_maintenance_models %}        
-<<<<<<< HEAD
                                                                                     <div class="tab-pane" id="tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}"
                                                                                         role="tabpanel"
                                                                                         aria-labelledby="tenant_monthly_maintenance_model-{{tenant_monthly_maintenance_model.id}}-tab"
@@ -836,6 +724,8 @@
                                                                                                         data-name="Tenant Monthly Expense"
                                                                                                         data-api_url="{% url 'property-api:tenant-monthly-maintenance-create' %}"
                                                                                                         data-reload="true">
+                                                                                                        {% csrf_token %}
+                                                                                                        <input type="hidden" name="property_id" value="{{property.pk}}">
                                                                                                         <div class="modal-header">
                                                                                                             <h5 class="modal-title">
                                                                                                                 Add Tenant Monthly Maintenance Expense
@@ -920,6 +810,14 @@
                                                                                                                 placeholder="Enter Date"
                                                                                                                 autocomplete="off">
                                                                                                         </div>
+                                                                                                        <div class="form-group">
+                                                                                                            <label
+                                                                                                                for="document">Document</label>
+                                                                                                            <input type="file"
+                                                                                                                class="form-control"
+                                                                                                                value="" id="document"
+                                                                                                                name="document">
+                                                                                                        </div>
                                                                                                     </div>
                                                                                                     <div class="modal-footer">
                                                                                                         <button type="button"
@@ -952,15 +850,6 @@
                                                                                             <tbody class="text-center">
                                                                                             </tbody>
                                                                                         </table>
-=======
-                                                                                    <div class="tab-pane" id="tenant_monthly_maintenance_model-{{forloop.counter}}"
-                                                                                        role="tabpanel"
-                                                                                        aria-labelledby="tenant_monthly_maintenance_model-{{forloop.counter}}-tab"
-                                                                                        aria-expanded="false">
-                                                                                        <p>
-                                                                                            {{ tenant_monthly_maintenance_model.name }} tab
-                                                                                        </p>
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                     </div>
                                                                                 {% endfor %}
 
@@ -1036,6 +925,8 @@
                                                 <form class="form-stage"
                                                     data-api_url="{% url 'property-api:stage-buying' %}"
                                                     data-name="Buying Stage" data-reload="true">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                                     <fieldset class="pt-0">
                                                         <h5 class="py-50">Setup Your Buying Stage Details</h5>
                                                         <div class="row">
@@ -1180,6 +1071,8 @@
                                                         <form class="form-stage"
                                                             data-api_url="{% url 'property-api:stage-renovation' %}"
                                                             data-reload="false">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="property_id" value="{{property.pk}}">
                                                             <fieldset class="pt-0">
                                                                 <h5 class="py-50">Setup Your Renovation Stage Details
                                                                     <button
@@ -1290,6 +1183,8 @@
                                                                     <form class="form-stage" data-name="Renovation Team"
                                                                         data-api_url="{% url 'property-api:renovation-team-create' %}"
                                                                         data-reload="true">
+                                                                        {% csrf_token %}
+                                                                        <input type="hidden" name="property_id" value="{{property.pk}}">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
                                                                                 id="create-renovation-team">Create
@@ -1333,6 +1228,8 @@
                                                                         data-api_url="{% url 'property-api:expense-table-create' %}"
                                                                         data-name="Expense Table"
                                                                         data-reload="true">
+                                                                        {% csrf_token %}
+                                                                        <input type="hidden" name="property_id" value="{{property.pk}}">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
                                                                                 id="create-expense-tableLabel">Create
@@ -1452,11 +1349,7 @@
                                                                             <div class="float-right">
                                                                                 <button data-toggle="modal"
                                                                                     data-target="#create-renovation-team-expense-{{forloop.counter}}"
-<<<<<<< HEAD
                                                                                     class="btn btn-icon btn-primary add-expense-tenant-monthly-main">Add
-=======
-                                                                                    class="btn btn-icon btn-primary add-expense-button">Add
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                     Expense</button>
                                                                             </div>
                                                                         </span>
@@ -1474,6 +1367,8 @@
                                                                                     data-api_url="{% url 'property-api:renovation-team-expenses-create' %}"
                                                                                     data-name="Renovation Team Expense"
                                                                                     data-reload="true">
+                                                                                    {% csrf_token %}
+                                                                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                                                                     <div class="modal-header">
                                                                                         <h5 class="modal-title"
                                                                                             id="create-renovation-team-expense-{{forloop.counter}}">
@@ -1677,13 +1572,10 @@
                                                                                                                         class="text-center">
                                                                                                                         Company
                                                                                                                     </th>
-<<<<<<< HEAD
                                                                                                                     <th
                                                                                                                         class="text-center">
                                                                                                                         Action
                                                                                                                     </th>
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                                                                                 </tr>
                                                                                                             </thead>
                                                                                                             <tbody
@@ -1910,6 +1802,8 @@
                                                 <form class="form-stage"
                                                     data-api_url="{% url 'property-api:stage-rent' %}"
                                                     data-name="Rent Stage" data-reload="true">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                                     <fieldset class="pt-0">
                                                         <h5 class="py-50">Enter your Rent Details</h5>
                                                         <div class="row">
@@ -1948,6 +1842,8 @@
                                                 <form class="form-stage"
                                                     data-api_url="{% url 'property-api:stage-tenant' %}"
                                                     data-name="Tenant Stage" data-reload="true">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                                     <fieldset class="pt-0">
                                                         <h5 class="py-50">Enter your Tenant Details</h5>
                                                         <div class="row">
@@ -2001,11 +1897,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-opportunity' %}"
-<<<<<<< HEAD
                                     data-name="Opportunity Stage" data-key="property-id" data-value="{{property.id}}">
-=======
-                                    data-name="Opportunity Stage">
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
+                                    {% csrf_token %}
+                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">General Information</h6>
@@ -2025,22 +1919,14 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="delete-1Label">Are you sure? You are
-<<<<<<< HEAD
                                                             deleting Opportunity Stage</h5>
-=======
-                                                            deleting Opprtunity Stage</h5>
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-<<<<<<< HEAD
                                                         Please remember that all deleted information will be permanently
-=======
-                                                        Plese remember that all deleted informtion will be permanently
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                                                         lost!
                                                     </div>
                                                     <div class="modal-footer">
@@ -2389,11 +2275,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-buying' %}"
-<<<<<<< HEAD
                                     data-name="Buying Stage" data-key="property-id" data-value="{{property.id}}">
-=======
-                                    data-name="Buying Stage">
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
+                                    {% csrf_token %}
+                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">Buying Stage</h6>
@@ -2565,11 +2449,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-rent' %}"
-<<<<<<< HEAD
                                     data-name="Rent Stage" data-key="property-id" data-value="{{property.id}}">
-=======
-                                    data-name="Rent Stage">
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
+                                    {% csrf_token %}
+                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">Rent Stage</h6>
@@ -2643,11 +2525,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <form class="form-stage" data-api_url="{% url 'property-api:stage-tenant' %}"
-<<<<<<< HEAD
                                     data-name="Tenant Stage" data-key="property-id" data-value="{{property.id}}">
-=======
-                                    data-name="Tenant Stage">
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
+                                    {% csrf_token %}
+                                    <input type="hidden" name="property_id" value="{{property.pk}}">
                                     <div class="card-header user-profile-header">
                                         <div class="d-inline-block mt-25">
                                             <h6 class="mb-0 text-bold-500">Tenant Stage</h6>
@@ -2741,27 +2621,16 @@
 
 {% expense_tables_count as expense_tables_count %}
 {% monthly_maintenance_model_count as monthly_maintenance_model_count %}
-<<<<<<< HEAD
 {% tenant_monthly_maintenance_model_count as tenant_monthly_maintenance_model_count %}
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
 
 <script type="text/javascript">
     function preview_Timage() {
         var total_image = document.getElementById("image_upload").files.length;
-<<<<<<< HEAD
         var html_prev = `<div style="min-width:452px; background-color:white; height:183px; overflow:auto;">
             <div style="height: 90px;">`;
         for (var i = 0; i < total_image; i++)
         {
             html_prev += `<img style="margin: 15px; border:1px solid;" src="${URL.createObjectURL(event.target.files[i])}" width="100" height="100" alt="" />`;
-=======
-        var html_prev = `<div style="width:452px; background-color:white; height:183px; overflow:auto;">
-            <div style="width: 2000px; height: 90px;">`;
-        for (var i = 0; i < total_image; i++)
-        {
-            html_prev += `<img style="margin-right: 5px" src="${URL.createObjectURL(event.target.files[i])}" width="100" height="100" alt="" />`;
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         }
         html_prev += `</div></div>`;
         $('#preview').html(html_prev);
@@ -2879,16 +2748,11 @@
     $('.delete-button').click(function (e) {
         e.preventDefault();
     });
-<<<<<<< HEAD
     $(document).on('click', '.delete-confirm-button', function(e) {
-=======
-    $('.delete-confirm-button').click(function (e) {
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         let closest_form = $(this).closest('form');
         ajax_delete_stage(closest_form);
     });
     function ajax_delete_stage(_this) {
-<<<<<<< HEAD
         let block_ele = $(_this).closest('.card');
 
         let api_url = $(_this).data('api_url');
@@ -2896,13 +2760,6 @@
         let reload = $(_this).data('reload');
         let key = $(_this).data('key');
         let value = $(_this).data('value');
-=======
-        var block_ele = $(_this).closest('.card');
-
-        let api_url = $(_this).data('api_url');
-        let name = $(_this).data('name');
-        var reload = 'true';
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
 
         block_card(block_ele, `Deleting ${name}....`);
 
@@ -2911,12 +2768,7 @@
             method: 'DELETE',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader("X-CSRFToken", `{{csrf_token}}`);
-<<<<<<< HEAD
                 xhr.setRequestHeader(key, value);
-=======
-                xhr.setRequestHeader('property-id', '{{property.id}}');
-
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
             },
             success: function (response) {
                 iziToast.success({
@@ -2946,9 +2798,10 @@
 
         block_card(block_ele);
 
-        let data = $(_this).serialize();
-        data += `&property_id={{property.id}}`;
-        data += `&csrfmiddlewaretoken={{csrf_token}}`;
+        // let data = $(_this).serialize();
+        // data += `&property_id={{property.id}}`;
+        // data += `&csrfmiddlewaretoken={{csrf_token}}`;
+        let data = new FormData($(_this)[0]);
 
         let api_url = $(_this).data('api_url');
         let name = $(_this).data('name');
@@ -2958,6 +2811,8 @@
             url: api_url,
             method: 'POST',
             data: data,
+            processData: false,
+            contentType: false,
             success: function (response) {
                 iziToast.success({
                     title: 'Saved',
@@ -3073,16 +2928,15 @@
                             <a class="text-dark text-decoration-none" href="#" data-toggle="modal" data-target="#renovationTeamEditModal-${row['id']}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit align-middle mr-2" data-toggle="tooltip" data-original-title="Edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                             </a>
-<<<<<<< HEAD
                             <a class="text-danger text-decoration-none" href="#" data-toggle="modal" data-target="#renovationTeamDeleteModal-${row['id']}">
                                 <svg viewBox="0 0 24 24" data-toggle="tooltip" data-original-title="Delete" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
                             </a>
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                             <div class="modal fade text-left" id="renovationTeamEditModal-${row['id']}" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <form class="form-team-update" data-name="Renovation Team" data-api_url="{% url 'property-api:renovation-team-update' %}" data-reload="false">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="property_id" value="{{property.pk}}">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="create-renovation-team">Create Renovation Team</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
@@ -3118,12 +2972,13 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <div class="modal fade" id="renovationTeamDeleteModal-${row['id']}" tabindex="-1" role="dialog"
                                 aria-labelledby="renovationTeamDeleteModal-${row['id']}-label" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <form data-key="renovation-team-id" data-value="${row['id']}" data-name="Renovation Team" data-api_url="{% url 'property-api:renovation-team-delete' %}" data-reload="false">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="property_id" value="{{property.pk}}">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="renovationTeamDeleteModal-${row['id']}-label">Are you sure? You are
                                                     deleting Opportunity Stage</h5>
@@ -3147,8 +3002,6 @@
                                     </div>
                                 </div>
                             </div>
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                         </div>`;
 
                     return action;
@@ -3168,10 +3021,7 @@
     // xp = renovationTeamListTable;
 
     renovationTeamListTable.on('draw', function () {
-<<<<<<< HEAD
         $('[data-toggle="tooltip"]').tooltip();
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         renovationTeamListTable.columns.adjust();
     });
 
@@ -3207,20 +3057,11 @@
 
     // Dynamic Expense tables
     var expense_tables_count = parseInt('{{ expense_tables_count }}');
-<<<<<<< HEAD
     
     for (let i = 1; i <= expense_tables_count; i++)
     {
         let expense_table = `#expense-table-${i}`;
         
-=======
-
-    for (let i = 1; i <= expense_tables_count; i++)
-    {
-        var expense_table = `#expense-table-${i}`;
-        console.log(expense_table);
-        console.log($(expense_table).data('expense-table-id'));
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         let ExpenseTableListTable = $(expense_table).DataTable({
             "processing": true,
             "serverSide": true,
@@ -3230,10 +3071,7 @@
                 type: 'GET',
                 data: function (d) {
                     d.page_num = getPageNumber();
-<<<<<<< HEAD
                     console.log(expense_table)
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
                     d.expense_table_id = $(expense_table).data('expense-table-id');
                 }
             },
@@ -3299,7 +3137,6 @@
                     },
                     "targets": 9
                 },
-<<<<<<< HEAD
                 {
                     "render": function (data, type, row) {
                         
@@ -3315,6 +3152,8 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <form class="form-team-update" data-name="Renovation Team Expense" data-api_url="{% url 'property-api:renovation-team-expenses-update' %}" data-reload="false">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="property_id" value="{{property.pk}}">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="update-renovation-team-expense">Update Renovation Team Expense</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -3450,6 +3289,8 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <form data-key="renovation-team-expense-id" data-value="${row['id']}" data-name="Renovation Team Expense" data-api_url="{% url 'property-api:renovation-team-expenses-delete' %}" data-reload="false">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="property_id" value="{{property.pk}}">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="renovationTeamExpenseDeleteModal-${row['id']}-label">Are you sure? You are
                                                         deleting Renovation Team Expenses</h5>
@@ -3479,8 +3320,6 @@
                     },
                     "targets": 10
                 },
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
             ],
 
             "createdRow": function (row, data, dataIndex) {
@@ -3491,10 +3330,7 @@
             }
         });
         ExpenseTableListTable.on('draw', function () {
-<<<<<<< HEAD
             $('[data-toggle="tooltip"]').tooltip();
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
             ExpenseTableListTable.columns.adjust();
         });
 
@@ -3521,20 +3357,11 @@
 
     // Dynamic Monthly Maintenance Model tables
     var monthly_maintenance_model_count = parseInt('{{ monthly_maintenance_model_count }}');
-<<<<<<< HEAD
     
     for (let i = 1; i <= monthly_maintenance_model_count; i++)
     {
         let monthly_maintenance_model = `#monthly_maintenance_model-datatable-${i}`;
     
-=======
-    console.log(monthly_maintenance_model_count + ' <<<<<<<<<<<<<<<<<<< sadsad')
-    for (let i = 1; i <= monthly_maintenance_model_count; i++)
-    {
-        var monthly_maintenance_model = `#monthly_maintenance_model-datatable-${i}`;
-        console.log(monthly_maintenance_model);
-        console.log($(monthly_maintenance_model).data('monthly_maintenance_model_id'));
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         let MonthlyMaintenanceListTable = $(monthly_maintenance_model).DataTable({
             "processing": true,
             "serverSide": true,
@@ -3549,7 +3376,6 @@
             },
             "order": [],
             "columnDefs": [
-<<<<<<< HEAD
                 {
                     "render": function (data, type, row) {
                         
@@ -3602,6 +3428,8 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <form class="form-team-update" data-name="Monthly Maintenance" data-api_url="{% url 'property-api:monthly-maintenance-update' %}" data-reload="false">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="property_id" value="{{property.pk}}">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="update-renovation-team-expense">Update Monthly Maintenance</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -3694,6 +3522,8 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <form data-key="monthly-maintenance-id" data-value="${row['id']}" data-name="Monthly Maintenance" data-api_url="{% url 'property-api:monthly-maintenance-delete' %}" data-reload="false">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="property_id" value="{{property.pk}}">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="MonthlyMaintenanceDeleteModal-${row['id']}-label">Are you sure? You are
                                                         deleting Monthly Maintenance</h5>
@@ -3723,45 +3553,6 @@
                     },
                     "targets": 6
                 },
-=======
-                // {
-                //     "render": function (data, type, row) {
-                //         console.log(row + " <<<<<<<<<<<<<<>< sadasd")
-                //         return row['title'];
-                //     },
-                //     "targets": 0
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['description'];
-                //     },
-                //     "targets": 1
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['amount'];
-                //     },
-                //     "targets": 2
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['currency'];
-                //     },
-                //     "targets": 3
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['account'];
-                //     },
-                //     "targets": 4
-                // },
-                // {
-                //     "render": function (data, type, row) {
-                //         return row['date'];
-                //     },
-                //     "targets": 5
-                // },
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
             ],
 
             "createdRow": function (row, data, dataIndex) {
@@ -3771,54 +3562,33 @@
                 MonthlyMaintenanceListTable.page(getPageNumber() - 1).draw('page');
             }
         });
-<<<<<<< HEAD
         
         MonthlyMaintenanceListTable.on('draw', function () {
             $('[data-toggle="tooltip"]').tooltip();
             MonthlyMaintenanceListTable.columns.adjust();
         });
         
-=======
-        console.log('finish 1' + i)
-        MonthlyMaintenanceListTable.on('draw', function () {
-            MonthlyMaintenanceListTable.columns.adjust();
-        });
-        console.log('finish 2' + i)
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
 
         $('.sidebar-toggle').click(function () {
             MonthlyMaintenanceListTable.columns.adjust();
         });
-<<<<<<< HEAD
         
-=======
-        console.log('finish 3' + i)
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         $(monthly_maintenance_model).on('page.dt', function () {
             const info = MonthlyMaintenanceListTable.page.info();
             const page_number = info.page + 1;
             const queryString = getQueryString([{ 'key': 'page', 'value': page_number }]);
             // history.replaceState(page_number, queryString, `./${queryString}`);
         });
-<<<<<<< HEAD
         
-=======
-        console.log('finish 4' + i)
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         $(monthly_maintenance_model).on('length.dt', function (e, settings, len) {
             const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
             // history.replaceState({id: null}, queryString, `./${queryString}`);
         });
-<<<<<<< HEAD
         
-=======
-        console.log('finish 5' + i)
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         $(monthly_maintenance_model).on('search.dt', function (e, settings, len) {
             const queryString = getQueryString([{ 'key': 'page', 'value': 1 }]);
             // history.replaceState({id: null}, queryString, `./${queryString}`);
         });
-<<<<<<< HEAD
         
         // MonthlyMaintenanceListTable.ajax.reload();
     }
@@ -3895,6 +3665,8 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <form class="form-team-update" data-name="Tenant Monthly Maintenance" data-api_url="{% url 'property-api:tenant-monthly-maintenance-update' %}" data-reload="false">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="property_id" value="{{property.pk}}">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="update-renovation-team-expense">Update Tenant Monthly Maintenance</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
@@ -3987,6 +3759,8 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <form data-key="tenant-monthly-maintenance-id" data-value="${row['id']}" data-name="Tenant Monthly Maintenance" data-api_url="{% url 'property-api:tenant-monthly-maintenance-delete' %}" data-reload="false">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="property_id" value="{{property.pk}}">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="TenantMonthlyMaintenanceDeleteModal-${row['id']}-label">Are you sure? You are
                                                         deleting Tenant Monthly Maintenance</h5>
@@ -4055,14 +3829,6 @@
         
         // TenantMonthlyMaintenanceListTable.ajax.reload();
     })
-=======
-        console.log('finish 6' + i)
-        MonthlyMaintenanceListTable.ajax.reload();
-        
-        console.log('finish ' + i)
-    }
-
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
 </script>
 
 

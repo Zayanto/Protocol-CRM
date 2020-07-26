@@ -16,7 +16,7 @@ class Company_detail(models.Model):
     company_name = models.CharField(max_length=500,blank=True,null=True)
     properties_permission = models.BooleanField(default=False)
     tenants_permission = models.BooleanField(default=False)
-    contacts_permission = models.BooleanField(default=False)
+    contracts_permission = models.BooleanField(default=False)
     owners_permission = models.BooleanField(default=False)
     time = models.TimeField(auto_now=True, blank=True)
     date = models.DateField(auto_now=True, blank=True)

@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'owners.apps.OwnersConfig',
     'emails.apps.EmailsConfig',
     'drive.apps.DriveConfig',
-    'todo.apps.TodoConfig'
+    'todo.apps.TodoConfig',
     'accounts',
     'creating_user'
 ]

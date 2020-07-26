@@ -12,7 +12,7 @@ class PropertyListView(LoginRequiredMixin, ListView):
     template_name = 'properties/property_list.html'
     login_url = 'account_login'
 
-    def get_context_data(self, **kwargs):
+def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
             'StageOpportunity': StageOpportunity,

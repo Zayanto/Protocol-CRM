@@ -375,11 +375,7 @@ class RenovationTeamCreateView(APIView):
         else:
             return Response({'status': 'Error'}, status=status.HTTP_404_NOT_FOUND)
 
-<<<<<<< HEAD
 class RenovationTeamUpdateDeleteView(APIView):
-=======
-class RenovationTeamUpdateView(APIView):
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
     def post(self, request):
         property_id = request.POST.get('property_id', None)
         company_name = request.POST.get('company-name', None)
@@ -405,7 +401,7 @@ class RenovationTeamUpdateView(APIView):
 
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
 
-<<<<<<< HEAD
+
     def delete(self, request):
         renovation_team_id = request.headers['renovation-team-id']
 
@@ -425,6 +421,7 @@ class MonthlyMaintenanceCreateView(APIView):
         currency = request.POST.get('currency', None)
         account = request.POST.get('account', None)
         date = request.POST.get('date', None)
+        document = request.FILES.get('document', None)
         
         if not monthly_maintenance_model_id:
             raise exceptions.NotFound('monthly_maintenance_model_id is not given')
@@ -446,6 +443,7 @@ class MonthlyMaintenanceCreateView(APIView):
 
         if not date:
             raise exceptions.NotFound('date is not given')
+    
 
         try:
             monthly_maintenance_model = MonthlyMaintenanceModel.objects.get(id=monthly_maintenance_model_id)
@@ -456,13 +454,17 @@ class MonthlyMaintenanceCreateView(APIView):
             'monthly_maintenance_model': monthly_maintenance_model,
             'title': title,
             'description': description,
-            'amount': amount,
+            'amount': None,
             'currency': currency,
             'account': account,
-            'date': datetime.strptime(date, '%Y-%m-%d'),
+            'date': datetime.strptime(date, '%Y-%m-%d') if date else None
         }
         try:
             created = MonthlyMaintenance.objects.create(**data)
+
+            if document:
+                created.document = document
+                created.save()
         except Exception as e:
             raise exceptions.NotFound(e)
         
@@ -598,6 +600,7 @@ class TenantMonthlyMaintenanceCreateView(APIView):
         currency = request.POST.get('currency', None)
         account = request.POST.get('account', None)
         date = request.POST.get('date', None)
+        document = request.FILES.get('document', None)
         
         if not tenant_monthly_maintenance_model_id:
             raise exceptions.NotFound('tenant_monthly_maintenance_model_id is not given')
@@ -636,6 +639,9 @@ class TenantMonthlyMaintenanceCreateView(APIView):
         }
         try:
             created = TenantMonthlyMaintenance.objects.create(**data)
+            if document:
+                created.document = document
+                created.save()
         except Exception as e:
             raise exceptions.NotFound(e)
         
@@ -644,8 +650,7 @@ class TenantMonthlyMaintenanceCreateView(APIView):
         else:
             return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
 
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
+
 class RenovationTeamExpenseCreateView(APIView):
     def post(self, request):
         expense_table_id = request.POST.get('expense_table_id', None)
@@ -711,10 +716,6 @@ class RenovationTeamExpenseCreateView(APIView):
             'delivery_date': datetime.strptime(delivery_date, '%Y-%m-%d'),
             'company': company,
         }
-<<<<<<< HEAD
-=======
-        print(data)
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
         try:
             created = RenovationTeamExpenses.objects.create(**data)
         except Exception as e:
@@ -725,7 +726,6 @@ class RenovationTeamExpenseCreateView(APIView):
         else:
             return Response({'status': 'error'}, status=status.HTTP_404_NOT_FOUND)
 
-<<<<<<< HEAD
 class RenovationTeamExpenseUpdateDeleteView(APIView):
 
     def post(self, request):
@@ -806,8 +806,7 @@ class RenovationTeamExpenseUpdateDeleteView(APIView):
         
         return Response({'status': 'success'}, status=status.HTTP_200_OK)
 
-=======
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
+
 class ExpenseTableCreateView(APIView):
     def post(self, request):
         property_id = request.POST.get('property_id', None)
@@ -958,11 +957,7 @@ class RenovationTeamListDatatableAPIView(ListAPIView):
             data_array.append({
                 'id': q.id,
                 'company_name': q.company_name,
-<<<<<<< HEAD
                 'created_date': q.created_date.strftime("%b %d, %Y"),
-=======
-                'created_date': q.created_date.strftime("%b %d, %Y %H:%M:%S"),
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
             })
 
         response = {
@@ -979,7 +974,6 @@ class MonthlyMaintenanceDatatableAPIView(ListAPIView):
 
     def get_queryset(self):
         monthly_maintenance_model_id = self.request.GET.get('monthly_maintenance_model_id', None)
-        print(' <<<<sad')
         if not monthly_maintenance_model_id:
             raise exceptions.NotFound('monthly_maintenance_model_id is not given')
         
@@ -1042,8 +1036,7 @@ class MonthlyMaintenanceDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-<<<<<<< HEAD
-                'date': q.date.strftime("%Y-%m-%d"),
+                'date': q.date.strftime("%Y-%m-%d") if q.date else None,
             })
 
         response = {
@@ -1124,10 +1117,7 @@ class TenantMonthlyMaintenanceDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-                'date': q.date.strftime("%Y-%m-%d"),
-=======
-                'date': q.date.strftime("%b %d, %Y %H:%M:%S"),
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
+                'date': q.date.strftime("%Y-%m-%d") if q.date else None,
             })
 
         response = {
@@ -1209,21 +1199,12 @@ class RenovationTeamExpensesDatatableAPIView(ListAPIView):
                 'amount': q.amount,
                 'currency': q.currency,
                 'account': q.account,
-<<<<<<< HEAD
                 'date': q.date.strftime("%Y-%m-%d"),
                 'store': q.store,
                 'order_date': q.order_date.strftime("%Y-%m-%d"),
                 'delivery_date': q.delivery_date.strftime("%Y-%m-%d"),
                 'company': q.company,
                 'created_date': q.created_date.strftime("%b %d, %Y"),
-=======
-                'date': q.date.strftime("%b %d, %Y %H:%M:%S"),
-                'store': q.store,
-                'order_date': q.order_date,
-                'delivery_date': q.delivery_date,
-                'company': q.company,
-                'created_date': q.created_date.strftime("%b %d, %Y %H:%M:%S"),
->>>>>>> a22b3a0402bff5272c8be78954e841310a7a6efd
             })
 
         response = {

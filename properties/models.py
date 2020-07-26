@@ -7,7 +7,13 @@ from django.urls import reverse
 from django.conf import settings
 from django.urls import reverse
 from django.contrib.auth import get_user_model  
+from django.utils import timezone
 
+def monthly_maintenance_document_file_path(instance, filename):
+    model_name = instance.__class__.__name__
+    today = datetime.now()
+    name = f'{model_name}/{instance.id}/{today.year}/{filename}'
+    return name
 
 class Property(models.Model):
 
@@ -201,12 +207,13 @@ class MonthlyMaintenanceModel(models.Model):
 class MonthlyMaintenance(models.Model):
     monthly_maintenance_model = models.ForeignKey(MonthlyMaintenanceModel, on_delete=models.CASCADE, null=True, related_name='monthly_maintenance')
 
-    title = models.CharField(max_length=200, null=True)
+    title = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(blank=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
-    currency = models.CharField(max_length=200, null=True)
-    account = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField(null=True, blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=1, null=True, blank=True, default=0)
+    currency = models.CharField(max_length=200, null=True, blank=True)
+    account = models.CharField(max_length=200, null=True, blank=True)
+    date = models.DateTimeField(null=True, default=timezone.now)
+    document = models.FileField(null=True, blank=True, upload_to=monthly_maintenance_document_file_path)
 
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
@@ -223,12 +230,14 @@ class TenantMonthlyMaintenanceModel(models.Model):
 
 class TenantMonthlyMaintenance(models.Model):
     tenant_monthly_maintenance_model = models.ForeignKey(TenantMonthlyMaintenanceModel, on_delete=models.CASCADE, null=True, related_name='tenant_monthly_maintenance')
-    title = models.CharField(max_length=200, null=True)
+    
+    title = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(blank=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=1, null=True)
-    currency = models.CharField(max_length=200, null=True)
-    account = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField(blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=1, null=True, blank=True, default=0)
+    currency = models.CharField(max_length=200, null=True, blank=True)
+    account = models.CharField(max_length=200, null=True, blank=True)
+    date = models.DateTimeField(null=True, default=timezone.now)
+    document = models.FileField(null=True, blank=True, upload_to=monthly_maintenance_document_file_path)
 
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
